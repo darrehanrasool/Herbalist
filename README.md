@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 # HerbEsentia - Medicinal Plant Identification System
 
 ![HerbEsentia Logo](static/images/favicon.ico)
 
 **HerbEsentia** is an open-source initiative dedicated to revolutionizing the identification, classification, and analysis of medicinal plants. This project provides a comprehensive dataset encompassing **202 distinct classes** of medicinal plants, enabling advanced research in **phytochemistry, pharmacognosy, and machine learning-driven botanical studies**. HerbEsentia is designed to serve as a collaborative platform for researchers, data scientists, and medical professionals to enhance medicinal plant analysis, particularly in **India and Kashmir**.
 
----
+
 
 ## Table of Contents
 
@@ -22,13 +22,12 @@
 9. [License](#license)
 10. [Acknowledgments](#acknowledgments)
 
----
 
 ## Project Overview
 
 HerbEsentia is an open-source project that leverages **deep learning** and **computer vision** to identify and classify medicinal plants. The system uses a pre-trained model (`plant.h5`) to predict the biological name of a plant based on an uploaded image. It then compares the prediction with a comprehensive dataset (`medicinal.csv`) to provide detailed information about the plant, including its medicinal value, family, common uses, and more.
 
----
+
 
 ## Features
 
@@ -37,9 +36,6 @@ HerbEsentia is an open-source project that leverages **deep learning** and **com
 - **User-Friendly Interface**: Simple and intuitive web interface for uploading images and viewing results.
 - **Open-Source**: Fully open-source, allowing researchers and developers to contribute and improve the system.
 
----
-
----
 
 ## Setup Instructions
 
@@ -51,12 +47,8 @@ HerbEsentia is an open-source project that leverages **deep learning** and **com
    pip install -r requirements.txt
 
    python app.py
-=======
+
 #   HerbEsentia CNN (VGG16 and Xception Architecture)
-<span>
-  <a href="https://colab.research.google.com/github/Darrehan/Projects/blob/main/ML%20Projects/MedicinalPlantSystem/model/models.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-  </a>
-</span>
->>>>>>> 26a10ae1e8856d271a9e647090d131b4f763a13b
+
+
 
