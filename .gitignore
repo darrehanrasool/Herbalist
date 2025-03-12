@@ -8,7 +8,12 @@
 *.joblib
 *.npz
 *.npy
-
+__pycache__/
+venv/
+*.pyc
+*.pyo
+*.pyd
+.env
 # Data files
 *.csv
 *.json
