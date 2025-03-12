@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Title -->
+  <title>HerbEsentia - Medicinal Herbs Identification</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">
+          <img src="../static/images/logo.png" alt="HerbEsentia Logo" />
+          <span>HerbEsentia</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul>
+            <li><a href="{{ url_for('first')}}">Home</a></li>
+            <li><a href="{{ url_for('login')}}">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Upload Section -->
+  <section class="upload-section">
+    <div class="d-flex justify-content-center">
+      <h2 class="custom_heading">Preview</h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <form class="upload-form" action="/submit" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="imagefile">Upload Image</label>
+              <input type="file" name="my_image" id="imagefile" class="form-control" accept="image/*" onchange="previewImage();" required>
+            </div>
+            <div class="form-group">
+              <img id="preview" class="img-preview" alt="Image Preview">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>&copy; 2025 HerbEsentia. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+<script>
+    function previewImage() {
+      var file = document.getElementById("imagefile").files;
+      if (file.length > 0) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (event) {
+          document.getElementById("preview").setAttribute("src", event.target.result);
+        };
+        fileReader.readAsDataURL(file[0]);
+      }
+    }
+// Add class for pulsating shadow when uploading
+document.getElementById('imagefile').addEventListener('change', function () {
+  const preview = document.getElementById('preview');
+  preview.classList.add('uploading');
+});
+
+// Add class for green glow when submitting
+document.querySelector('.upload-form').addEventListener('submit', function () {
+  this.classList.add('submitting');
+});
+  </script>
+</body>
+
+</html>

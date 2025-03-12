@@ -1,0 +1,32 @@
+# Machine Learning artifacts
+*.h5
+*.ckpt
+*.pb
+*.tflite
+*.onnx
+*.pkl
+*.joblib
+*.npz
+*.npy
+
+# Data files
+*.csv
+*.json
+*.xml
+*.xlsx
+*.tsv
+*.parquet
+*.feather
+*.db
+*.sqlite
+
+# Logs and checkpoints
+/logs/
+/checkpoints/
+/tensorboard/
+/wandb/
+/mlruns/
+
+# Environment
+.env
+.DS_Store
