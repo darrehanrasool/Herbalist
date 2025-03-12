@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HerbEsentia - Medicinal Plant Identification System
 
 ![HerbEsentia Logo](static/images/favicon.ico)
@@ -50,4 +51,12 @@ HerbEsentia is an open-source project that leverages **deep learning** and **com
    pip install -r requirements.txt
 
    python app.py
+=======
+#   HerbEsentia CNN (VGG16 and Xception Architecture)
+<span>
+  <a href="https://colab.research.google.com/github/Darrehan/Projects/blob/main/ML%20Projects/MedicinalPlantSystem/model/models.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+  </a>
+</span>
+>>>>>>> 26a10ae1e8856d271a9e647090d131b4f763a13b
 
