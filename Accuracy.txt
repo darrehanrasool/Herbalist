@@ -1,4 +1,4 @@
-Medicinal Herbs Identification.
+HerbEsentia
 Algorithm / Model Used: Exception Architecture.
 Training Accuracy: 93.34%.
 Validation Accuracy of 96.79%.

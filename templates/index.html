@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/ico" href="../static/images/favicon.ico" /> 
   <!-- Title -->
-  <title>HerbEsentia - Medicinal Herbs Identification</title>
+  <title>HerbEsentia</title>
   <!-- CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -19,13 +21,9 @@
     <div class="container">
       <nav>
         <a href="index.html">
-          <img src="../static/images/logo.png" alt="HerbEsentia Logo" />
+          <img src="../static/images/favicon.ico" alt="HerbEsentia Logo" />
           <span>HerbEsentia</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul>
             <li><a href="{{ url_for('first')}}">Home</a></li>
@@ -35,7 +33,6 @@
       </nav>
     </div>
   </header>
-
   <!-- Upload Section -->
   <section class="upload-section">
     <div class="d-flex justify-content-center">
@@ -50,7 +47,7 @@
               <input type="file" name="my_image" id="imagefile" class="form-control" accept="image/*" onchange="previewImage();" required>
             </div>
             <div class="form-group">
-              <img id="preview" class="img-preview" alt="Image Preview">
+              <img id="preview" scr = "" class="img-preview" alt="Image Preview">
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Submit</button>

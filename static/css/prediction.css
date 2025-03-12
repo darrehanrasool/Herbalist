@@ -1,0 +1,103 @@
+/* Rehan Design Websiites During Depression */
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  header {
+    background: #4CAF50;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  header a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  header img {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  /* Prediction Section */
+  .prediction-section {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .prediction-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .image-container {
+    margin: 20px 0;
+  }
+  
+  .image-container img {
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.5);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .details-container h2, .details-container h3 {
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .details-container h2 i, .details-container h3 i {
+    color: #4CAF50;
+  }
+  
+  /* Footer */
+  footer {
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: none;
+  }

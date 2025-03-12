@@ -2,16 +2,17 @@ from flask import Flask, render_template, request # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
 from keras.models import load_model # type: ignore
-from tensorflow.keras.preprocessing import image # type: ignore
 from keras.preprocessing import image # type: ignore
 from keras.metrics import AUC # type: ignore
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
+
 app = Flask(__name__)
 
 dependencies = {
     'auc_roc': AUC
 }
+
 # Load model
 model = load_model('plant.h5')
 
@@ -223,6 +224,7 @@ verbose_name = {
    
 }
 
+
 def predict_label(img_path):
     test_image = image.load_img(img_path, target_size=(180, 180))
     test_image = image.img_to_array(test_image) / 255.0
@@ -233,16 +235,27 @@ def predict_label(img_path):
 
     predicted_name = verbose_name[classes_x[0]]
     
-    # Compare with CSV
+    # Fetch all fields from CSV based on Scientificname
     row = csv_data[csv_data['Scientificname'] == predicted_name]
     if not row.empty:
-        medicinal_value = row.iloc[0]['Medicinalvalue']
-        biological_name = row.iloc[0]['Biologicalname']  # Extract Biological name from CSV
+        result = {
+            'Scientificname': row.iloc[0]['Scientificname'],
+            'Biologicalname': row.iloc[0]['Biologicalname'],
+            'Medicinalvalue': row.iloc[0]['Medicinalvalue'],
+            'Family': row.iloc[0]['Family'],
+            'CommonUses': row.iloc[0]['CommonUses'],
+            'ActiveCompounds': row.iloc[0]['ActiveCompounds'],
+            'ToxicityLevel': row.iloc[0]['ToxicityLevel'],
+            'GeographicalDistribution': row.iloc[0]['GeographicalDistribution'],
+            'GrowthHabit': row.iloc[0]['GrowthHabit'],
+            'PartsUsed': row.iloc[0]['PartsUsed'],
+            'PreparationMethods': row.iloc[0]['PreparationMethods'],
+            'ConservationStatus': row.iloc[0]['ConservationStatus']
+        }
     else:
-        medicinal_value = "Not found"
-        biological_name = "Not found"
+        result = {field: "Not found" for field in csv_data.columns}
     
-    return predicted_name, medicinal_value, biological_name
+    return result, img_path
 
 @app.route("/")
 @app.route("/first")
@@ -265,9 +278,9 @@ def get_output():
         img_path = "static/tests/" + img.filename
         img.save(img_path)
 
-        predict_result, medicinal_value, biological_name = predict_label(img_path)
+        result, img_path = predict_label(img_path)
 
-        return render_template("prediction.html", prediction=predict_result, medicinal_value=medicinal_value, biological_name=biological_name, img_path=img_path)
+        return render_template("prediction.html", result=result, img_path=img_path)
 
 @app.route("/performance")
 def performance():

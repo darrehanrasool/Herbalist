@@ -1,0 +1,42 @@
+.
+├── Accuracy.txt
+├── README.md
+├── app.py
+├── dataset_structure.txt
+├── file_structure.txt
+├── filestructure.py
+├── medicinal.csv
+├── medicinal1.csv
+├── model
+│   └── models.ipynb
+├── plant.h5
+├── project_structure.txt
+├── requirements.txt
+├── static
+│   ├── css
+│   │   ├── chart.css
+│   │   ├── first.css
+│   │   ├── login.css
+│   │   ├── prediction.css
+│   │   └── style.css
+│   ├── images
+│   │   ├── Graph1.png
+│   │   ├── Graph2.png
+│   │   ├── favicon.ico
+│   │   ├── soil1.jpg
+│   │   └── soil2.jpg
+│   └── tests
+│       ├── 25.JPG
+│       ├── 26.JPG
+│       ├── 36.JPG
+│       ├── 40.JPG
+│       ├── 46.JPG
+│       └── 49.JPG
+└── templates
+    ├── chart.html
+    ├── first.html
+    ├── index.html
+    ├── login.html
+    └── prediction.html
+
+7 directories, 33 files

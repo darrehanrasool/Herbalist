@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- Basic -->
@@ -7,65 +7,77 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Medicinal Herbs Identification</title>
-
+  <!-- Favicon -->
+  <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
+  <!-- Title -->
+  <title>HerbEsentia</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/first.css') }}" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="">
-    <!-- header section strats -->
-    <header class="">
-      <div class="">
-        <nav class="">
-          <a class="navbar-brand" href="">
-            <img src="../static/images/logo.png" alt="" />
-            <span>
-              Medicinal Plant
-            </span>
-          </a>
-          <button class="" type="" data-toggle="" data-target=""
-            aria-controls="" aria-expanded="false" aria-label="">
-            <span class=""></span>
-          </button>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="../static/images/favicon.ico" alt="HerbEsentia Logo" />
+          <span>HerbEsentia</span>
+        </a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{{ url_for('first')}}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('login')}}" class="nav-link">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-          <div class="" id="">
-            <div class="">
-              <ul class="">
-              
-                <li class="">
-                  <a class="" href="{{ url_for('first')}}"> Home </a>
-                </li>
-                <li class="">
-                  <a class="" href="{{ url_for('login')}}"> Login </a>
-                </li>
-                
-                 
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-    <!-- hero section -->
-    <section class="hero_section">
-      <div class="hero_detail">
-        <h1> An AI based approach for Advancing Medicinal Plant Identification using Deep Learning</h1>
-        <h3>
-           
-          </h2>
-      </div>
-      <div class="hero_btn-box">
-        
-      </div>
-    </section>
-  </div>
-  <!-- info section -->
-  <section class="info_section layout_padding">
-    <div class="container layout_padding-top  layout_padding2-bottom">
+  <!-- About Section -->
+  <section class="about_section">
+    <div class="container">
+      <div class="about_content">
+        <h2>About HerbEsentia</h2>
+        <p>HerbEsentia is an open-source initiative dedicated to revolutionizing the identification, classification, and analysis of medicinal plants. This project provides a comprehensive dataset encompassing 202 distinct classes of medicinal plants, enabling advanced research in phytochemistry, pharmacognosy, and machine learning-driven botanical studies. HerbEsentia is designed to serve as a collaborative platform for researchers, data scientists, and medical professionals to enhance medicinal plant analysis, particularly in India and Kashmir.</p>
 
+        <h3>Project Goals</h3>
+        <p>The primary goals of HerbEsentia include developing advanced AI models for medicinal plant recognition, enhancing dataset accuracy, facilitating open collaboration, and supporting scientific research through robust data analytics and model deployment.</p>
+
+        <h3>Contributing to the Project</h3>
+        <p>You can contribute by forking and cloning the repository, developing new features, submitting pull requests, reporting bugs, and enhancing documentation. This project is an excellent research framework for AI-driven medicinal plant classification and related studies.</p>
+
+        <h3>Dataset & Model Training</h3>
+        <p>The dataset is available for download on Kaggle, and the source code is hosted on GitHub. Below are the login credentials for testing:</p>
+
+        <div class="credentials-box">
+          <p><strong>Username:</strong> Rehan</p>
+          <p><strong>Password:</strong> Rehan</p>
+        </div>
+
+        <h3>Future Roadmap</h3>
+        <p>Future plans include integrating with herbal medicine research databases, developing a mobile and web-based AI-powered plant identification application, and expanding the dataset to include cross-regional variations.</p>
+
+        <div class="author">
+          <p><strong>Author:</strong> <span class="author-name">Dar Rehan Rasool</span></p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HerbEsentia. All rights reserved.</p>
+      <p>An open-source Project in Healthcare by <strong>Dar Rehan Rasool</strong>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="../static/js/bootstrap.js"></script>
 </body>

@@ -1,39 +1,160 @@
-/* Login Section Styles */
-.login-section {
-    padding: 60px 0;
+/* General Styles */
+/* Reshan Design Websites During Depression */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  header {
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  header nav a img {
+    height: 40px;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header nav ul li {
+    margin-left: 20px;
+  }
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  header nav ul li a:hover {
+    color: #e0f7fa;
+    transform: translateY(-3px);
+  }
+  
+  /* Login Section Styles */
+  .login-section {
+    padding: 100px 20px 60px; /* Adjusted padding for fixed header */
     text-align: center;
     background: linear-gradient(135deg, #f4f7f6, #e0f7fa);
-    min-height: 100vh;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .login-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1));
+    animation: rotate 10s infinite linear;
+    z-index: 0;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
   .login-section .section-heading {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #2e7d32;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     animation: fadeInDown 1s ease;
     text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    position: relative;
+    z-index: 1;
   }
   
   .login-form {
     background: #fff;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5), 0 0 40px rgba(255, 105, 180, 0.3);
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
     animation: fadeInUp 1s ease;
+    position: relative;
+    z-index: 1;
   }
   
   .login-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: left;
   }
   
   .login-form label {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #2e7d32;
     margin-bottom: 5px;
     display: block;
@@ -42,10 +163,10 @@
   .login-form input[type="text"],
   .login-form input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: 2px solid #81c784;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #333;
     background: rgba(129, 199, 132, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -61,8 +182,8 @@
     background: #4caf50;
     color: #fff;
     border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 0.95rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,8 +196,46 @@
     box-shadow: 0 5px 15px rgba(56, 142, 60, 0.5);
   }
   
+  /* Footer Styles */
+  footer {
+    background: #2e7d32;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* Advanced Animations */
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+    }
+  }
+  
+  .login-form button:active {
+    animation: glow 0.5s ease;
+  }
+  
   /* Media Queries for Responsive Design */
   @media (max-width: 768px) {
+    .login-section {
+      padding: 90px 15px 50px;
+    }
+  
     .login-section .section-heading {
       font-size: 2rem;
     }
@@ -84,42 +243,18 @@
     .login-form {
       padding: 20px;
     }
-  
-    .login-form label {
-      font-size: 0.9rem;
-    }
-  
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-      font-size: 0.9rem;
-    }
-  
-    .login-form button {
-      padding: 10px 25px;
-      font-size: 0.9rem;
-    }
   }
   
   @media (max-width: 480px) {
+    .login-section {
+      padding: 80px 10px 40px;
+    }
+  
     .login-section .section-heading {
       font-size: 1.8rem;
     }
   
     .login-form {
       padding: 15px;
-    }
-  
-    .login-form label {
-      font-size: 0.8rem;
-    }
-  
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-      font-size: 0.8rem;
-    }
-  
-    .login-form button {
-      padding: 8px 20px;
-      font-size: 0.8rem;
     }
   }

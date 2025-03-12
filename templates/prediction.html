@@ -1,116 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <title>Medicinal Herbs Identification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/css/prediction.css" />
+  <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
+  <title>HerbEsentia</title>
 </head>
 
-<body class="">
-  <div class="">
-    <header class="">
-      <div class="">
-        <nav class="">
-          <a class="" href="index.html">
-            <img src="../static/images/logo.png" alt="" />
-            <span>
-              Medicinal Plant
-            </span>
-          </a>
-          <button class="" type="button" data-toggle="" data-target=""
-            aria-controls="" aria-expanded="" aria-label="">
-            <span class=""></span>
-          </button>
-
-          <div class="" id="">
-            <div class="">
-              <ul class="">
-                <li class="">
-                  <a class="" href="{{ url_for('first')}}">Home</a>
-                </li>
-                <li class="">
-                  <a class="" href="{{ url_for('login')}}">Login</a>
-                </li>
-                <li class="">
-                  <a class="" href="{{ url_for('index')}}">Preview</a>
-                </li>
-                <li class="">
-                  <a class="" href="{{ url_for('chart')}}">Chart</a>
-                </li>
-       
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-  
-  </div>
-  
-  <section class="">
-    <div class="">
-      <h2 class="">
-        Prediction
-      </h2>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html">
+          <img src="../static/images/favicon.ico" alt="Logo" />
+          <span>Medicinal Plant</span>
+        </a>
+        <ul>
+          <li><a href="{{ url_for('first')}}">Home</a></li>
+          <li><a href="{{ url_for('login')}}">Login</a></li>
+          <li><a href="{{ url_for('index')}}">Preview</a></li>
+          <li><a href="{{ url_for('chart')}}">Chart</a></li>
+        </ul>
+      </nav>
     </div>
-    
-    <div class="">
-      <div style="">
-        
-    <body>
-    
-<nav class="">
-<div class="">
-  <div class="">
-   
-  </div>
-  <div class=""><h2 style=""> Medicinal Plant identification   </h1></div>    
-</div>
-</nav>
+  </header>
 
-     <div class="">
-         
-        <div class="">
-          {% if prediction %}
-              <br>
-              <div style="">
-                  <img src="{{ img_path }}" height="300px" width="300px">
-              </div>
-              <br>
-              <h2>Prediction is: <i>{{ prediction }}</i></h2>
-              <h3>Biological Name: <i>{{ biological_name }}</i></h3>
-              <h3>Medicinal Value: <i>{{ medicinal_value }}</i></h3>
-          {% endif %}
+  <section class="prediction-section">
+    <div class="prediction-container">
+      <h2>Prediction</h2>
+      {% if result %}
+      <div class="image-container">
+        <img src="{{ img_path }}" alt="Predicted Plant" />
       </div>
-      
-</body>	 </div>	
-</div>
-
-
-
-  </section>
-
-
-
-  <section class="info_section layout_padding">
-    <div class="container layout_padding-top  layout_padding2-bottom">
-      
-
-
-
-
-      
+      <div class="details-container">
+        <h2>Scientific Name: <i>{{ result.Scientificname }}</i></h2>
+        <h3>Biological Name: <i>{{ result.Biologicalname }}</i></h3>
+        <h3>Medicinal Value: <i>{{ result.Medicinalvalue }}</i></h3>
+        <h3>Family: <i>{{ result.Family }}</i></h3>
+        <h3>Common Uses: <i>{{ result.CommonUses }}</i></h3>
+        <h3>Active Compounds: <i>{{ result.ActiveCompounds }}</i></h3>
+        <h3>Toxicity Level: <i>{{ result.ToxicityLevel }}</i></h3>
+        <h3>Geographical Distribution: <i>{{ result.GeographicalDistribution }}</i></h3>
+        <h3>Growth Habit: <i>{{ result.GrowthHabit }}</i></h3>
+        <h3>Parts Used: <i>{{ result.PartsUsed }}</i></h3>
+        <h3>Preparation Methods: <i>{{ result.PreparationMethods }}</i></h3>
+        <h3>Conservation Status: <i>{{ result.ConservationStatus }}</i></h3>
+      </div>
+      {% endif %}
     </div>
   </section>
-  
 
-  <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 HerbEsentia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../static/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
 </body>
 
 </html>
