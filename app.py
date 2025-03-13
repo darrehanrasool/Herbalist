@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
-from keras.models import load_model # type: ignore
 from keras.preprocessing import image # type: ignore
 from keras.metrics import AUC # type: ignore
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
+import os
+import requests # type: ignore
 
 app = Flask(__name__)
 
@@ -13,11 +14,35 @@ dependencies = {
     'auc_roc': AUC
 }
 
+# URLs for downloading files
+MODEL_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.0/plant.h5"
+CSV_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.1/medicinal.csv"
+
+# Function to download a file from a URL
+def download_file(url, file_name):
+    if not os.path.exists(file_name):
+        print(f"Downloading {file_name}...")
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open(file_name, "wb") as f:
+                f.write(response.content)
+            print(f"{file_name} downloaded successfully.")
+        else:
+            raise Exception(f"Failed to download {file_name}. Status code: {response.status_code}")
+    else:
+        print(f"{file_name} already exists.")
+
+# Download model if not present
+download_file(MODEL_URL, "plant.h5")
+
+# Download CSV if not present
+download_file(CSV_URL, "medicinal.csv")
+
 # Load model
 model = load_model('plant.h5')
 
 # Load CSV data
-csv_data = pd.read_csv(r'/Users/rehanrasool/Desktop/Project/Medicinal System/medicinal.csv')
+csv_data = pd.read_csv('medicinal.csv')
 
 # Define verbose_name mapping (if not already loaded from CSV)
 verbose_name = {
@@ -224,7 +249,6 @@ verbose_name = {
    
 }
 
-
 def predict_label(img_path):
     test_image = image.load_img(img_path, target_size=(180, 180))
     test_image = image.img_to_array(test_image) / 255.0
@@ -290,7 +314,5 @@ def performance():
 def chart():
     return render_template('chart.html')
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
     app.run(debug=True)
