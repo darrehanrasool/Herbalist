@@ -1,5 +1,4 @@
 # Machine Learning artifacts
-*.h5
 *.ckpt
 *.pb
 *.tflite
@@ -15,7 +14,7 @@ venv/
 *.pyd
 .env
 # Data files
-*.csv
+
 *.json
 *.xml
 *.xlsx
