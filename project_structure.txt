@@ -1,17 +1,19 @@
 .
 ├── Accuracy.txt
 ├── README.md
+├── Trained Data.zip
 ├── app.py
 ├── dataset_structure.txt
-├── file_structure.txt
-├── filestructure.py
+├── guide.txt
 ├── medicinal.csv
-├── medicinal1.csv
 ├── model
 │   └── models.ipynb
 ├── plant.h5
 ├── project_structure.txt
-├── requirements.txt
+├── render.yaml
+├── requirement.txt
+├── runtime.txt
+├── start.sh
 ├── static
 │   ├── css
 │   │   ├── chart.css
@@ -39,4 +41,4 @@
     ├── login.html
     └── prediction.html
 
-7 directories, 33 files
+7 directories, 35 files
