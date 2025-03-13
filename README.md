@@ -1,4 +1,4 @@
-
+# the website might not produce output its deployed on render it need adavance image processing power it will work  fine on your pc 
 # HerbEsentia - Medicinal Plant Identification System
 
 ![HerbEsentia Logo](static/images/favicon.ico)
