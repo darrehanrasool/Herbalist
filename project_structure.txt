@@ -1,4 +1,3 @@
-.
 ├── Accuracy.txt
 ├── README.md
 ├── Trained Data.zip
