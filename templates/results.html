@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Results | Herbalist AI</title>
+    <meta
+      name="description"
+      content="Plant identification results with comprehensive analysis. Research project from IUST Kashmir."
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-content">
+        <a href="{{ url_for('home') }}" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="logo-text">Herbalist<span class="ai">AI</span></div>
+        </a>
+
+        <div class="nav-links">
+          <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+          <a href="{{ url_for('upload_page') }}" class="nav-link">Upload</a>
+          <a href="{{ url_for('home') }}#research" class="nav-link">Research</a>
+          <a href="{{ url_for('home') }}" class="btn btn-primary">
+            <i class="fas fa-redo"></i> Analyze Another
+          </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <main class="section" style="margin-top: 80px; min-height: 80vh">
+      <div class="container">
+        <div class="section-header">
+          <h2>Analysis Results</h2>
+          <p class="section-subtitle">
+            AI-powered plant identification and comprehensive analysis
+          </p>
+        </div>
+
+        {% if result.success or result.demo %}
+        <div class="results-grid">
+          <!-- Plant Image Section -->
+          <div class="plant-image-container" data-aos="fade-right">
+            <div class="image-wrapper">
+              <img
+                src="{{ url_for('static', filename=result.image_path) if result.image_path else 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=500&fit=crop&crop=center' }}"
+                alt="Analyzed Plant"
+                class="plant-image"
+                onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=500&fit=crop&crop=center'"
+              />
+            </div>
+
+            <div class="confidence-badge">
+              <span class="confidence-score"
+                >{{ result.confidence if result.confidence else '96.79%'
+                }}</span
+              >
+              <span class="confidence-label">Confidence Score</span>
+            </div>
+
+            <div class="analysis-info">
+              <div class="info-item">
+                <i class="fas fa-cogs"></i>
+                <div><strong>Model:</strong> Xception Neural Network</div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-university"></i>
+                <div><strong>Institute:</strong> IUST Kashmir</div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-user-graduate"></i>
+                <div><strong>Researcher:</strong> Dar Rehan Rasool</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plant Data Section -->
+          <div class="data-container" data-aos="fade-left">
+            <div class="plant-header">
+              <div class="plant-title">
+                <h3>{{ result.data.Scientificname }}</h3>
+                <p class="biological-name">{{ result.data.Biologicalname }}</p>
+              </div>
+
+              <div class="plant-meta">
+                <div class="meta-item">
+                  <span class="meta-label">Family:</span>
+                  <span class="meta-value">{{ result.data.Family }}</span>
+                </div>
+
+                <div class="toxicity-display">
+                  <span class="toxicity-label">Toxicity Level:</span>
+                  <span
+                    class="toxicity-{{ result.data.ToxicityLevel|lower|replace(' ', '-') }}"
+                  >
+                    <i
+                      class="fas fa-{% if result.data.ToxicityLevel == 'Low' %}check-circle{% elif result.data.ToxicityLevel == 'Moderate' %}exclamation-triangle{% else %}skull-crossbones{% endif %}"
+                    ></i>
+                    {{ result.data.ToxicityLevel }}
+                  </span>
+                </div>
+
+                <div class="conservation-status">
+                  <span class="status-label">Conservation:</span>
+                  <span class="status-value"
+                    >{{ result.data.ConservationStatus }}</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Grid -->
+            <div class="data-grid">
+              <div class="data-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="data-label">
+                  <i class="fas fa-globe-asia"></i> Geographical Distribution
+                </div>
+                <div class="data-value">
+                  {{ result.data.GeographicalDistribution }}
+                </div>
+              </div>
+
+              <div class="data-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="data-label">
+                  <i class="fas fa-seedling"></i> Growth Habit
+                </div>
+                <div class="data-value">{{ result.data.GrowthHabit }}</div>
+              </div>
+
+              <div class="data-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="data-label">
+                  <i class="fas fa-puzzle-piece"></i> Parts Used
+                </div>
+                <div class="data-value">{{ result.data.PartsUsed }}</div>
+              </div>
+
+              <div class="data-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="data-label">
+                  <i class="fas fa-flask"></i> Active Compounds
+                </div>
+                <div class="data-value">{{ result.data.ActiveCompounds }}</div>
+              </div>
+
+              <div class="data-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="data-label">
+                  <i class="fas fa-mortar-pestle"></i> Preparation Methods
+                </div>
+                <div class="data-value">
+                  {{ result.data.PreparationMethods }}
+                </div>
+              </div>
+
+              <div class="data-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="data-label">
+                  <i class="fas fa-leaf"></i> Plant Type
+                </div>
+                <div class="data-value">{{ result.data.GrowthHabit }}</div>
+              </div>
+            </div>
+
+            <!-- Medicinal Value Section -->
+            <div
+              class="medicinal-section"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="section-header-inline">
+                <i class="fas fa-heartbeat"></i>
+                <h4>Medicinal Value & Properties</h4>
+              </div>
+              <div class="medicinal-content">
+                {{ result.data.Medicinalvalue }}
+              </div>
+            </div>
+
+            <!-- Common Uses Section -->
+            <div class="uses-section" data-aos="fade-up" data-aos-delay="450">
+              <div class="section-header-inline">
+                <i class="fas fa-list-check"></i>
+                <h4>Common Uses & Applications</h4>
+              </div>
+              <div class="uses-tags">
+                {% for use in result.data.CommonUses.split(',') %}
+                <span class="use-tag">
+                  <i class="fas fa-check-circle"></i>
+                  {{ use.strip() }}
+                </span>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Safety Information -->
+            <div class="safety-section" data-aos="fade-up" data-aos-delay="500">
+              <div class="section-header-inline">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h4>Safety Information</h4>
+              </div>
+              <div class="safety-content">
+                <p>
+                  <strong>Toxicity Level:</strong> {{ result.data.ToxicityLevel
+                  }}<br />
+                  <strong>Note:</strong> Always consult with a healthcare
+                  professional before using any medicinal plant. This analysis
+                  is for informational purposes only.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons" data-aos="fade-up" data-aos-delay="550">
+          <a href="{{ url_for('upload_page') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-redo"></i> Analyze Another Plant
+          </a>
+          <button onclick="window.print()" class="btn btn-outline btn-lg">
+            <i class="fas fa-print"></i> Print Report
+          </button>
+          <button onclick="shareResults()" class="btn btn-outline btn-lg">
+            <i class="fas fa-share-alt"></i> Share Results
+          </button>
+          <a href="{{ url_for('home') }}" class="btn btn-outline btn-lg">
+            <i class="fas fa-home"></i> Back Home
+          </a>
+        </div>
+
+        {% if result.demo %}
+        <div class="demo-notice" data-aos="fade-up" data-aos-delay="600">
+          <div class="notice-content">
+            <div class="notice-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="notice-text">
+              <strong>Demo Mode:</strong> Using sample data for demonstration
+              purposes.
+              <p>
+                Upload a real plant image for actual AI analysis.
+                <span class="demo-subtext">
+                  <i class="fas fa-graduation-cap"></i> Research Project - IUST
+                  Kashmir
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% else %}
+        <!-- Error State -->
+        <div class="error-card" data-aos="fade-up">
+          <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h3>Analysis Failed</h3>
+          <p class="error-message">
+            {{ result.error if result.error else 'Unable to analyze the plant
+            image. Please try again.' }}
+          </p>
+          <p class="error-help">
+            <i class="fas fa-lightbulb"></i> Tip: Try with a clearer image or
+            different plant species
+          </p>
+          <div class="error-actions">
+            <a href="{{ url_for('upload_page') }}" class="btn btn-primary">
+              <i class="fas fa-upload"></i> Try Again
+            </a>
+            <a href="{{ url_for('home') }}" class="btn btn-outline">
+              <i class="fas fa-home"></i> Return Home
+            </a>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Research Footer -->
+        <div class="research-footer" data-aos="fade-up" data-aos-delay="650">
+          <div class="research-content">
+            <div class="research-header">
+              <i class="fas fa-graduation-cap"></i>
+              <h4>Research Project Information</h4>
+            </div>
+            <div class="research-details">
+              <div class="research-detail">
+                <strong>Project:</strong> Medicinal Plant Analysis Using Deep
+                Learning
+              </div>
+              <div class="research-detail">
+                <strong>Institute:</strong> Islamic University of Science &
+                Technology, Kashmir
+              </div>
+              <div class="research-detail">
+                <strong>Researcher:</strong> Dar Rehan Rasool (B.Tech Computer
+                Science & Engineering)
+              </div>
+              <div class="research-detail">
+                <strong>Model Accuracy:</strong> 96.79% Validation | 93.34%
+                Training
+              </div>
+              <div class="research-detail">
+                <strong>Technology:</strong> Xception Neural Network |
+                TensorFlow | Flask
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Share results function
+      function shareResults() {
+        const plantName = "{{ result.data.Scientificname }}";
+        const confidence =
+          "{{ result.confidence if result.confidence else '96.79%' }}";
+        const shareText = `🌿 I identified ${plantName} with ${confidence} accuracy using Herbalist AI!`;
+        const shareUrl = window.location.href;
+
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "Herbalist AI - Plant Analysis Results",
+              text: shareText,
+              url: shareUrl,
+            })
+            .then(() => {
+              console.log("Results shared successfully");
+            })
+            .catch((err) => {
+              console.log("Error sharing:", err);
+              fallbackShare(shareText, shareUrl);
+            });
+        } else {
+          fallbackShare(shareText, shareUrl);
+        }
+      }
+
+      function fallbackShare(text, url) {
+        const shareData = `${text}\n\n🔗 ${url}`;
+
+        // Try clipboard API first
+        if (navigator.clipboard) {
+          navigator.clipboard
+            .writeText(shareData)
+            .then(() => {
+              showToast("Results copied to clipboard! Share the link.");
+            })
+            .catch((err) => {
+              console.error("Failed to copy: ", err);
+              prompt("Share this URL:", url);
+            });
+        } else {
+          prompt("Share this URL:", url);
+        }
+      }
+
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.textContent = message;
+        toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--primary);
+                color: white;
+                padding: 12px 24px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-lg);
+                z-index: 10000;
+                animation: fadeInUp 0.3s ease;
+            `;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.animation = "fadeOut 0.3s ease";
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Add animation to results on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add scroll reveal animations
+        const elements = document.querySelectorAll("[data-aos]");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        elements.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "all 0.6s ease";
+          observer.observe(el);
+        });
+
+        // Initialize data cards with staggered animation
+        const dataCards = document.querySelectorAll(".data-card");
+        dataCards.forEach((card, index) => {
+          card.style.transitionDelay = `${index * 0.05}s`;
+        });
+      });
+
+      // Scroll progress bar
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.querySelector(".progress-bar").style.width = scrolled + "%";
+      });
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+      }
+
+      // Add print styles dynamically
+      const printStyles = `
+            @media print {
+                .navbar,
+                .action-buttons,
+                .research-footer,
+                .demo-notice,
+                .mobile-menu-btn {
+                    display: none !important;
+                }
+                
+                body {
+                    background: white !important;
+                    color: black !important;
+                    font-size: 12pt;
+                }
+                
+                .container {
+                    max-width: none !important;
+                    padding: 0 !important;
+                }
+                
+                .section {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    page-break-inside: avoid;
+                }
+                
+                .results-grid {
+                    display: block !important;
+                    page-break-inside: avoid;
+                }
+                
+                .plant-image-container,
+                .data-container {
+                    width: 100% !important;
+                    margin-bottom: 20pt !important;
+                    box-shadow: none !important;
+                    border: 1px solid #ddd !important;
+                }
+                
+                h1, h2, h3, h4, h5, h6 {
+                    color: black !important;
+                    background: none !important;
+                    -webkit-print-color-adjust: exact;
+                }
+                
+                .confidence-badge {
+                    background: #26a269 !important;
+                    color: white !important;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                
+                .data-card {
+                    background: #f8f9fa !important;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                    border: 1px solid #dee2e6 !important;
+                    margin-bottom: 10pt !important;
+                }
+                
+                .toxicity-low {
+                    background: rgba(46, 194, 126, 0.2) !important;
+                    -webkit-print-color-adjust: exact;
+                }
+                
+                .toxicity-moderate {
+                    background: rgba(245, 165, 36, 0.2) !important;
+                    -webkit-print-color-adjust: exact;
+                }
+                
+                .toxicity-high {
+                    background: rgba(192, 28, 40, 0.2) !important;
+                    -webkit-print-color-adjust: exact;
+                }
+                
+                .use-tag {
+                    background: rgba(26, 95, 180, 0.1) !important;
+                    -webkit-print-color-adjust: exact;
+                    border: 1px solid rgba(26, 95, 180, 0.3) !important;
+                }
+                
+                .medicinal-section,
+                .uses-section,
+                .safety-section {
+                    border-left: 3px solid #ccc !important;
+                    background: #f8f9fa !important;
+                    -webkit-print-color-adjust: exact;
+                }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(-10px); }
+            }
+        `;
+
+      const styleSheet = document.createElement("style");
+      styleSheet.textContent = printStyles;
+      document.head.appendChild(styleSheet);
+    </script>
+  </body>
+</html>

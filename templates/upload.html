@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Plant Image | Herbalist AI</title>
+    <meta
+      name="description"
+      content="Upload plant images for AI-powered identification with 96.79% accuracy. Research project from IUST Kashmir."
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-content">
+        <a href="{{ url_for('home') }}" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="logo-text">Herbalist<span class="ai">AI</span></div>
+        </a>
+
+        <div class="nav-links">
+          <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+          <a href="{{ url_for('upload_page') }}" class="nav-link active"
+            >Upload</a
+          >
+          <a href="{{ url_for('home') }}#research" class="nav-link">Research</a>
+          <a href="{{ url_for('home') }}#institute" class="nav-link"
+            >Institute</a
+          >
+          <a href="{{ url_for('home') }}" class="btn btn-primary">
+            <i class="fas fa-home"></i> Back Home
+          </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <main class="section" style="margin-top: 80px; min-height: 80vh">
+      <div class="container">
+        <div class="section-header">
+          <h2>Analyze Plant Image</h2>
+          <p class="section-subtitle">
+            Upload plant image for AI-powered identification.
+          </p>
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-header">
+            <h3><i class="fas fa-microscope"></i> Plant Image Analysis</h3>
+            <p class="upload-subtitle">
+              Our Xception neural network will analyze your plant image against
+              200+ medicinal species
+            </p>
+          </div>
+
+          <form
+            id="uploadForm"
+            action="{{ url_for('analyze') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            onsubmit="showLoading()"
+          >
+            <div class="drop-zone" id="dropZone">
+              <div class="upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <h3>Drag & Drop Plant Image Here</h3>
+              <p>or click to browse files</p>
+              <p class="file-info">
+                Supported formats: JPG, PNG, JPEG (Max 10MB)
+              </p>
+              <input
+                type="file"
+                id="fileInput"
+                name="plant_image"
+                accept="image/*"
+                required
+                hidden
+                onchange="previewImage(event)"
+              />
+              <div class="selected-file" id="selectedFile"></div>
+
+              <div class="upload-instructions">
+                <p>
+                  <i class="fas fa-info-circle"></i> For best results, ensure
+                  the plant fills most of the frame
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="preview-container"
+              id="previewContainer"
+              style="display: none"
+            >
+              <div class="preview-header">
+                <h4><i class="fas fa-image"></i> Image Preview</h4>
+                <button
+                  type="button"
+                  class="btn btn-sm"
+                  onclick="clearPreview()"
+                >
+                  <i class="fas fa-times"></i> Remove
+                </button>
+              </div>
+              <img
+                id="imagePreview"
+                class="preview-image"
+                alt="Image preview"
+              />
+              <div class="preview-info">
+                <p>
+                  <i class="fas fa-check-circle"></i> Image ready for analysis
+                </p>
+              </div>
+            </div>
+
+            {% if error %}
+            <div class="error-message">
+              <div class="error-content">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                  <strong>Upload Error:</strong> {{ error }}
+                  <p style="margin-top: 5px; font-size: 0.9rem">
+                    Please try again with a valid image file.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="upload-actions">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                id="analyzeBtn"
+              >
+                <i class="fas fa-search"></i> Analyze Plant
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline btn-lg"
+                onclick="clearUpload()"
+              >
+                <i class="fas fa-times"></i> Clear
+              </button>
+              <a href="{{ url_for('home') }}" class="btn btn-outline btn-lg">
+                <i class="fas fa-home"></i> Home
+              </a>
+            </div>
+
+            <!-- Loading Animation -->
+            <div
+              class="upload-loading"
+              id="uploadLoading"
+              style="display: none"
+            >
+              <div class="loading-content">
+                <div class="loader"></div>
+                <p class="loading-text">
+                  <i class="fas fa-cog fa-spin"></i> Processing image with AI...
+                </p>
+                <p class="loading-subtext">
+                  Analyzing against 200+ medicinal plant species
+                </p>
+              </div>
+            </div>
+          </form>
+
+          <div class="upload-info-grid">
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4>Fast Processing</h4>
+              <p>Get results in seconds with our optimized Xception model</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h4>High Accuracy</h4>
+              <p>96.79% validation accuracy for reliable identification</p>
+            </div>
+          </div>
+
+          <div class="upload-tips">
+            <h4><i class="fas fa-lightbulb"></i> Tips for Best Results</h4>
+            <div class="tips-grid">
+              <div class="tip">
+                <div class="tip-icon">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Good Lighting</h5>
+                  <p>Use natural light for clear, well-lit images</p>
+                </div>
+              </div>
+
+              <div class="tip">
+                <div class="tip-icon">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Focus on Details</h5>
+                  <p>Capture leaves, flowers, or fruits clearly</p>
+                </div>
+              </div>
+
+              <div class="tip">
+                <div class="tip-icon">
+                  <i class="fas fa-ruler-combined"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Proper Framing</h5>
+                  <p>Ensure plant fills most of the image frame</p>
+                </div>
+              </div>
+
+              <div class="tip">
+                <div class="tip-icon">
+                  <i class="fas fa-ban"></i>
+                </div>
+                <div class="tip-content">
+                  <h5>Avoid Blur</h5>
+                  <p>Hold camera steady for sharp, focused images</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-info">
+            <h4><i class="fas fa-cogs"></i> AI Technology Used</h4>
+            <div class="tech-details">
+              <div class="tech-detail">
+                <span class="tech-label">Model:</span>
+                <span class="tech-value">Xception Neural Network</span>
+              </div>
+              <div class="tech-detail">
+                <span class="tech-label">Accuracy:</span>
+                <span class="tech-value">96.79% Validation</span>
+              </div>
+              <div class="tech-detail">
+                <span class="tech-label">Database:</span>
+                <span class="tech-value">200+ Medicinal Plants</span>
+              </div>
+              <div class="tech-detail">
+                <span class="tech-label">Processing:</span>
+                <span class="tech-value">Real-time AI Analysis</span>
+              </div>
+            </div>
+            <p class="tech-note">
+              <i class="fas fa-university"></i> Research Project - IUST Kashmir
+              | Computer Science Department
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // DOM Elements
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const previewContainer = document.getElementById("previewContainer");
+      const imagePreview = document.getElementById("imagePreview");
+      const analyzeBtn = document.getElementById("analyzeBtn");
+      const selectedFile = document.getElementById("selectedFile");
+      const uploadLoading = document.getElementById("uploadLoading");
+
+      // Initialize file input click
+      dropZone.addEventListener("click", () => fileInput.click());
+
+      // Handle file selection
+      function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+          // Validate file type
+          const validTypes = [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "image/gif",
+          ];
+          if (!validTypes.includes(file.type)) {
+            showError("Please upload a valid image file (JPG, PNG, JPEG, GIF)");
+            clearUpload();
+            return;
+          }
+
+          // Validate file size (10MB max)
+          const maxSize = 10 * 1024 * 1024;
+          if (file.size > maxSize) {
+            showError("File size must be less than 10MB");
+            clearUpload();
+            return;
+          }
+
+          // Show file name with animation
+          selectedFile.innerHTML = `
+                    <div class="file-display">
+                        <div class="file-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <div class="file-details">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${(
+                              file.size /
+                              1024 /
+                              1024
+                            ).toFixed(2)} MB</div>
+                        </div>
+                        <div class="file-status">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                `;
+          selectedFile.style.display = "block";
+          selectedFile.classList.add("show");
+
+          // Preview image
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            previewContainer.style.display = "block";
+            previewContainer.classList.add("show");
+            analyzeBtn.disabled = false;
+            analyzeBtn.innerHTML =
+              '<i class="fas fa-search"></i> Analyze Plant';
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Drag and drop functionality
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("dragover");
+        dropZone.innerHTML = `
+                <div class="upload-icon">
+                    <i class="fas fa-file-upload"></i>
+                </div>
+                <h3>Drop Image Here</h3>
+                <p>Release to upload plant image</p>
+                <div class="upload-instructions">
+                    <p><i class="fas fa-info-circle"></i> For best results, ensure the plant fills most of the frame</p>
+                </div>
+            `;
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("dragover");
+        dropZone.innerHTML = `
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drag & Drop Plant Image Here</h3>
+                <p>or click to browse files</p>
+                <p class="file-info">
+                    Supported formats: JPG, PNG, JPEG (Max 10MB)
+                </p>
+                <div class="upload-instructions">
+                    <p><i class="fas fa-info-circle"></i> For best results, ensure the plant fills most of the frame</p>
+                </div>
+            `;
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("dragover");
+        dropZone.innerHTML = `
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drag & Drop Plant Image Here</h3>
+                <p>or click to browse files</p>
+                <p class="file-info">
+                    Supported formats: JPG, PNG, JPEG (Max 10MB)
+                </p>
+                <div class="upload-instructions">
+                    <p><i class="fas fa-info-circle"></i> For best results, ensure the plant fills most of the frame</p>
+                </div>
+            `;
+
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          fileInput.files = files;
+          const event = new Event("change");
+          fileInput.dispatchEvent(event);
+        }
+      });
+
+      // Clear upload function
+      function clearUpload() {
+        fileInput.value = "";
+        selectedFile.style.display = "none";
+        selectedFile.innerHTML = "";
+        selectedFile.classList.remove("show");
+        previewContainer.style.display = "none";
+        previewContainer.classList.remove("show");
+        imagePreview.src = "";
+        analyzeBtn.disabled = false;
+        analyzeBtn.innerHTML = '<i class="fas fa-search"></i> Analyze Plant';
+
+        // Hide any error messages
+        const errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach((error) => (error.style.display = "none"));
+      }
+
+      function clearPreview() {
+        clearUpload();
+      }
+
+      // Show loading animation
+      function showLoading() {
+        if (!fileInput.files.length) {
+          showError("Please select an image to upload");
+          return false;
+        }
+
+        uploadLoading.style.display = "block";
+        analyzeBtn.disabled = true;
+        analyzeBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        return true;
+      }
+
+      // Show error message
+      function showError(message) {
+        let errorDiv = document.querySelector(".error-message");
+        if (!errorDiv) {
+          errorDiv = document.createElement("div");
+          errorDiv.className = "error-message";
+          document
+            .querySelector("form")
+            .insertBefore(errorDiv, document.querySelector(".upload-actions"));
+        }
+
+        errorDiv.innerHTML = `
+                <div class="error-content">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
+                        <strong>Upload Error:</strong> ${message}
+                        <p style="margin-top: 5px; font-size: 0.9rem;">Please try again with a valid image file.</p>
+                    </div>
+                </div>
+            `;
+        errorDiv.style.display = "block";
+
+        // Auto-hide error after 5 seconds
+        setTimeout(() => {
+          errorDiv.style.display = "none";
+        }, 5000);
+      }
+
+      // Form submission validation
+      document
+        .getElementById("uploadForm")
+        .addEventListener("submit", function (e) {
+          if (!fileInput.files.length) {
+            e.preventDefault();
+            showError("Please select an image to upload");
+            return false;
+          }
+
+          if (!showLoading()) {
+            e.preventDefault();
+            return false;
+          }
+        });
+
+      // Scroll progress bar
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.querySelector(".progress-bar").style.width = scrolled + "%";
+      });
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+      }
+
+      // Add some animations on load
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".info-card, .tip");
+        elements.forEach((el, index) => {
+          el.style.animationDelay = `${index * 0.1}s`;
+          el.classList.add("scroll-reveal");
+        });
+
+        // Initialize scroll reveal observer
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document
+          .querySelectorAll(".scroll-reveal")
+          .forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

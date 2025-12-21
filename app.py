@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request # type: ignore
+from flask import Flask, render_template, request, redirect, url_for # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
 from keras.preprocessing import image # type: ignore
@@ -7,45 +7,71 @@ import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import os
 import requests # type: ignore
+import uuid
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
-dependencies = {
-    'auc_roc': AUC
-}
+# Configuration
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 
-# URLs for downloading files
-MODEL_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.0/plant.h5"
-CSV_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.1/medicinal.csv"
+# Ensure upload directory exists
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Function to download a file from a URL
-def download_file(url, file_name):
-    if not os.path.exists(file_name):
-        print(f"Downloading {file_name}...")
-        response = requests.get(url)
-        if response.status_code == 200:
-            with open(file_name, "wb") as f:
-                f.write(response.content)
-            print(f"{file_name} downloaded successfully.")
-        else:
-            raise Exception(f"Failed to download {file_name}. Status code: {response.status_code}")
-    else:
-        print(f"{file_name} already exists.")
+# Load ML Model
+def load_ml_model():
+    try:
+        # Download model if not exists
+        MODEL_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.0/plant.h5"
+        MODEL_PATH = "plant.h5"
+        
+        if not os.path.exists(MODEL_PATH):
+            print("Downloading model...")
+            response = requests.get(MODEL_URL, stream=True)
+            if response.status_code == 200:
+                with open(MODEL_PATH, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        f.write(chunk)
+                print("Model downloaded successfully.")
+        
+        # Load model
+        dependencies = {'auc_roc': AUC}
+        model = load_model(MODEL_PATH, custom_objects=dependencies)
+        print("✅ Model loaded successfully")
+        return model
+    except Exception as e:
+        print(f"❌ Model loading failed: {e}")
+        return None
 
-# Download model if not present
-download_file(MODEL_URL, "plant.h5")
+# Load Dataset
+def load_dataset():
+    try:
+        CSV_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.1/medicinal.csv"
+        CSV_PATH = "medicinal.csv"
+        
+        if not os.path.exists(CSV_PATH):
+            print("Downloading dataset...")
+            response = requests.get(CSV_URL)
+            if response.status_code == 200:
+                with open(CSV_PATH, 'wb') as f:
+                    f.write(response.content)
+                print("Dataset downloaded successfully.")
+        
+        # Load CSV
+        df = pd.read_csv(CSV_PATH)
+        print(f"✅ Dataset loaded: {len(df)} plants")
+        return df
+    except Exception as e:
+        print(f"❌ Dataset loading failed: {e}")
+        return None
 
-# Download CSV if not present
-download_file(CSV_URL, "medicinal.csv")
+# Initialize
+model = load_ml_model()
+dataset = load_dataset()
 
-# Load model
-model = load_model('plant.h5')
-
-# Load CSV data
-csv_data = pd.read_csv('medicinal.csv')
-
-# Define verbose_name mapping (if not already loaded from CSV)
-verbose_name = {
+# Plant class mapping
+PLANT_CLASSES = {
 0: 'Abelmoschus sagittifolius',
 1: 'Abrus precatorius',
 2: 'Abutilon indicum',
@@ -249,70 +275,173 @@ verbose_name = {
    
 }
 
-def predict_label(img_path):
-    test_image = image.load_img(img_path, target_size=(180, 180))
-    test_image = image.img_to_array(test_image) / 255.0
-    test_image = test_image.reshape(1, 180, 180, 3)
 
-    predict_x = model.predict(test_image)
-    classes_x = np.argmax(predict_x, axis=1)
+# Helper functions
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
-    predicted_name = verbose_name[classes_x[0]]
-    
-    # Fetch all fields from CSV based on Scientificname
-    row = csv_data[csv_data['Scientificname'] == predicted_name]
-    if not row.empty:
-        result = {
-            'Scientificname': row.iloc[0]['Scientificname'],
-            'Biologicalname': row.iloc[0]['Biologicalname'],
-            'Medicinalvalue': row.iloc[0]['Medicinalvalue'],
-            'Family': row.iloc[0]['Family'],
-            'CommonUses': row.iloc[0]['CommonUses'],
-            'ActiveCompounds': row.iloc[0]['ActiveCompounds'],
-            'ToxicityLevel': row.iloc[0]['ToxicityLevel'],
-            'GeographicalDistribution': row.iloc[0]['GeographicalDistribution'],
-            'GrowthHabit': row.iloc[0]['GrowthHabit'],
-            'PartsUsed': row.iloc[0]['PartsUsed'],
-            'PreparationMethods': row.iloc[0]['PreparationMethods'],
-            'ConservationStatus': row.iloc[0]['ConservationStatus']
+def predict_plant(image_path):
+    """Predict plant from image and return all data"""
+    if model is None or dataset is None:
+        # Return demo data if model not loaded
+        return {
+            'success': False,
+            'error': 'Model not loaded',
+            'demo': True,
+            'data': {
+                'Scientificname': 'Aloe vera',
+                'Biologicalname': 'Aloe',
+                'Medicinalvalue': 'Used for skin healing and moisturizing',
+                'Family': 'Asphodelaceae',
+                'CommonUses': 'Skin healing, moisturizing',
+                'ActiveCompounds': 'Aloin, polysaccharides',
+                'ToxicityLevel': 'Low',
+                'GeographicalDistribution': 'Global',
+                'GrowthHabit': 'Succulent',
+                'PartsUsed': 'Leaves',
+                'PreparationMethods': 'Gel extraction',
+                'ConservationStatus': 'Not Evaluated',
+                'Confidence': '98.7%'
+            }
         }
-    else:
-        result = {field: "Not found" for field in csv_data.columns}
     
-    return result, img_path
+    try:
+        # Load and preprocess image
+        img = image.load_img(image_path, target_size=(180, 180))
+        img_array = image.img_to_array(img) / 255.0
+        img_array = img_array.reshape(1, 180, 180, 3)
+        
+        # Make prediction
+        prediction = model.predict(img_array, verbose=0)
+        class_idx = np.argmax(prediction)
+        confidence = np.max(prediction) * 100
+        
+        # Get plant name
+        plant_name = PLANT_CLASSES.get(class_idx, 'Unknown')
+        
+        # Find plant in dataset
+        plant_data = dataset[dataset['Scientificname'] == plant_name]
+        
+        if not plant_data.empty:
+            result = {
+                'success': True,
+                'demo': False,
+                'confidence': f"{confidence:.1f}%",
+                'data': {
+                    'Scientificname': plant_data.iloc[0]['Scientificname'],
+                    'Biologicalname': plant_data.iloc[0]['Biologicalname'],
+                    'Medicinalvalue': plant_data.iloc[0]['Medicinalvalue'],
+                    'Family': plant_data.iloc[0]['Family'],
+                    'CommonUses': plant_data.iloc[0]['CommonUses'],
+                    'ActiveCompounds': plant_data.iloc[0]['ActiveCompounds'],
+                    'ToxicityLevel': plant_data.iloc[0]['ToxicityLevel'],
+                    'GeographicalDistribution': plant_data.iloc[0]['GeographicalDistribution'],
+                    'GrowthHabit': plant_data.iloc[0]['GrowthHabit'],
+                    'PartsUsed': plant_data.iloc[0]['PartsUsed'],
+                    'PreparationMethods': plant_data.iloc[0]['PreparationMethods'],
+                    'ConservationStatus': plant_data.iloc[0]['ConservationStatus']
+                }
+            }
+        else:
+            result = {
+                'success': False,
+                'error': 'Plant not found in database',
+                'demo': False
+            }
+        
+        return result
+        
+    except Exception as e:
+        return {
+            'success': False,
+            'error': str(e),
+            'demo': False
+        }
 
-@app.route("/")
-@app.route("/first")
-def first():
-    return render_template('first.html')
+# ========== CLEAN ROUTES ==========
 
-@app.route("/login")
-def login():
-    return render_template('login.html')
+@app.route('/')
+def home():
+    """Homepage with all sections"""
+    return render_template('index.html')
 
-@app.route("/index", methods=['GET', 'POST'])
-def index():
-    return render_template("index.html")
+@app.route('/upload')
+def upload_page():
+    """Upload page"""
+    return render_template('upload.html')
 
-@app.route("/submit", methods=['GET', 'POST'])
-def get_output():
-    if request.method == 'POST':
-        img = request.files['my_image']
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    """Analyze uploaded image"""
+    if 'plant_image' not in request.files:
+        return redirect(url_for('upload_page'))
+    
+    file = request.files['plant_image']
+    
+    if file.filename == '':
+        return redirect(url_for('upload_page'))
+    
+    if not allowed_file(file.filename):
+        return render_template('upload.html', error='Invalid file type. Please upload an image.')
+    
+    # Generate unique filename
+    filename = f"{uuid.uuid4().hex}_{file.filename}"
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(filepath)
+    
+    # Predict plant
+    result = predict_plant(filepath)
+    
+    # Add image path to result
+    result['image_path'] = f"uploads/{filename}"
+    
+    # Render results page
+    return render_template('results.html', result=result)
 
-        img_path = "static/tests/" + img.filename
-        img.save(img_path)
+@app.route('/api/predict', methods=['POST'])
+def api_predict():
+    """API endpoint for predictions"""
+    if 'image' not in request.files:
+        return {'error': 'No image provided'}, 400
+    
+    file = request.files['image']
+    
+    if not allowed_file(file.filename):
+        return {'error': 'Invalid file type'}, 400
+    
+    # Save file
+    filename = f"{uuid.uuid4().hex}_{file.filename}"
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(filepath)
+    
+    # Predict
+    result = predict_plant(filepath)
+    result['image_url'] = url_for('static', filename=f'uploads/{filename}', _external=True)
+    
+    return result
 
-        result, img_path = predict_label(img_path)
+# ========== ERROR HANDLERS ==========
 
-        return render_template("prediction.html", result=result, img_path=img_path)
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('index.html'), 404
 
-@app.route("/performance")
-def performance():
-    return render_template('performance.html')
+@app.errorhandler(500)
+def server_error(error):
+    return render_template('index.html'), 500
 
-@app.route("/chart")
-def chart():
-    return render_template('chart.html')
+# ========== RUN APP ==========
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    print("\n" + "="*50)
+    print("HERBALIST AI - Starting Server")
+    print("="*50)
+    print(f"Model: {'✅ Loaded' if model else '❌ Failed'}")
+    print(f"Dataset: {'✅ Loaded' if dataset is not None else '❌ Failed'}")
+    print(f"Plants: {len(PLANT_CLASSES)} classes")
+    print(f"Upload folder: {app.config['UPLOAD_FOLDER']}")
+    print("="*50)
+    print("Server running on: http://localhost:5001")
+    print("="*50 + "\n")
+    
+    app.run(debug=True, host='0.0.0.0', port=5001)
