@@ -1,43 +1,41 @@
+./
 ├── Accuracy.txt
-├── README.md
-├── Trained Data.zip
-├── app.py
-├── dataset_structure.txt
 ├── guide.txt
-├── medicinal.csv
-├── model
-│   └── models.ipynb
+├── Kashmere.csv
+├── .DS_Store
+├── requirements.txt
+├── Trained Data.zip
+├── generate_structure.py
 ├── plant.h5
 ├── project_structure.txt
-├── render.yaml
-├── requirement.txt
-├── runtime.txt
+├── README.md
+├── dataset_structure.txt
+├── medicinal.csv
+├── .gitignore
+├── .gitattributes
+├── app.py
+├── imagesamplecount.csv
+├── .hintrc
 ├── start.sh
-├── static
-│   ├── css
-│   │   ├── chart.css
-│   │   ├── first.css
-│   │   ├── login.css
-│   │   ├── prediction.css
-│   │   └── style.css
-│   ├── images
-│   │   ├── Graph1.png
-│   │   ├── Graph2.png
-│   │   ├── favicon.ico
-│   │   ├── soil1.jpg
-│   │   └── soil2.jpg
-│   └── tests
-│       ├── 25.JPG
-│       ├── 26.JPG
-│       ├── 36.JPG
-│       ├── 40.JPG
-│       ├── 46.JPG
-│       └── 49.JPG
-└── templates
-    ├── chart.html
-    ├── first.html
-    ├── index.html
-    ├── login.html
-    └── prediction.html
-
-7 directories, 35 files
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── images/
+│   │   ├── favicon.ico
+│   │   ├── Graph2.png
+│   │   └── Graph1.png
+│   ├── tests/
+│   │   └── 40.JPG
+│   ├── uploads/
+│   │   ├── a3c541e0903b42f49cec69a9903ef2df_40.JPG
+│   │   ├── 9402a2c2d4714d9baa29cd3d8658b152_40.JPG
+│   │   ├── f683886599fe4fb395721111713a2891_40.JPG
+│   │   ├── 2c6a41ced50841f28a0b731281e26f97_13.JPG
+│   │   ├── e0866deb1f2f4213954e826cde733dec_38.JPG
+│   │   └── 7c3cc6ed12d447648d0e11f78f44e0d8_48.JPG
+├── model/
+│   └── models.ipynb
+├── templates/
+│   ├── index.html
+│   ├── results.html
+│   └── upload.html
