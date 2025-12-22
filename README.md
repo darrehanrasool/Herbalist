@@ -1,6 +1,5 @@
 # Medicinal Plant Analysis using Deep Learning
-
-![HerbalistAI Banner](./static/images/favicon.ico) 
+ß 
 [![Python](https://img.shields.io/badge/Python-3.9-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Flask-2.3-green.svg)](https://flask.palletsprojects.com/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13-orange.svg)](https://www.tensorflow.org/)
