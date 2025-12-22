@@ -1,4 +1,4 @@
-# 🌿 Herbalist: Medicinal Plant Analysis using Deep Learning
+# Herbalist: Medicinal Plant Analysis using Deep Learning
 
 ![HerbalistAI Banner](https://via.placeholder.com/1000x300?text=HerbalistAI+Project+Banner) 
 [![Python](https://img.shields.io/badge/Python-3.9-blue.svg)](https://www.python.org/)
@@ -43,7 +43,7 @@ We trained the model on a curated dataset of medicinal plants, employing data au
 
 | Landing Page | Analysis Result |
 | :---: | :---: |
-| <img src="path/to/landing_page.png" width="400"> | <img src="path/to/result_page.png" width="400"> |
+| <img src="./static/images/landing.png" width="400"> | <img src="./static/images/analysis.png" width="400"> |
 
 ## ⚙️ Installation & Usage
 
@@ -90,4 +90,4 @@ Contributions are what make the open-source community such an amazing place to l
 * [GitHub Profile](https://github.com/darrehanrasool)
 
 ---
-*If you like this project, please give it a ⭐ on GitHub!*
+* If you like this project, please give it a ⭐ on GitHub  *
