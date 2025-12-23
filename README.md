@@ -7,6 +7,11 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/darrehanrasool/Herbalist)
 [![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=flat&logo=render&logoColor=white)](https://herbalist.onrender.com/)
 
+> ⚠️ **Note regarding the Live Demo:**
+> The live application is hosted on **Render's Free Tier**, which has strict memory limitations (RAM). Deep Learning models like the Xception architecture used here requires significant memory.
+> 
+> If the live demo fails to process an image or times out, it is likely due to the **server running out of memory**, not a bug in the code. For a smooth, stable experience, please **run the application locally** or deploy it to a cloud environment with at least 2GB of RAM.
+
 ## 📖 Overview
 
 **Herbalist** is an advanced open-source research project designed to bridge the gap between botany and artificial intelligence. Utilizing a custom-tuned **Xception CNN architecture**, this tool identifies over **200+ medicinal plant species** with high precision.
