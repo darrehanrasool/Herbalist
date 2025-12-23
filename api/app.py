@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for # type: ignore
-api/app.py # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
 from keras.preprocessing import image # type: ignoreß
