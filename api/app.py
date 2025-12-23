@@ -23,7 +23,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 def load_ml_model():
     try:
         # Download model if not exists
-        MODEL_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.0/plant.h5"
+        MODEL_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.0/plant.h5"
         MODEL_PATH = "plant.h5"
         
         if not os.path.exists(MODEL_PATH):
@@ -47,7 +47,7 @@ def load_ml_model():
 # Load Dataset
 def load_dataset():
     try:
-        CSV_URL = "https://github.com/Darrehan/HerbEsentia/releases/download/v1.0.1/medicinal.csv"
+        CSV_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.1/medicinal.csv"
         CSV_PATH = "medicinal.csv"
         
         if not os.path.exists(CSV_PATH):
