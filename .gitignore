@@ -14,8 +14,6 @@ venv/
 *.pyd
 .env
 # Data files
-
-*.json
 *.xml
 *.xlsx
 *.tsv
