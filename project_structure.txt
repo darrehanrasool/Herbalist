@@ -4,8 +4,6 @@
 ├── Kashmere.csv
 ├── .DS_Store
 ├── requirements.txt
-├── runtime.txt
-├── versel.json
 ├── Trained Data.zip
 ├── generate_structure.py
 ├── plant.h5
@@ -16,27 +14,26 @@
 ├── .gitattributes
 ├── imagesamplecount.csv
 ├── .hintrc
-├── start.sh
-├── static/
-│   ├── .DS_Store
-│   ├── css/
-│   │   └── style.css
-│   ├── images/
-│   │   ├── favicon.ico
-│   │   ├── landing.png
-│   │   ├── Graph2.png
-│   │   ├── Graph1.png
-│   │   └── analysis.png
-│   ├── tests/
-│   │   └── 40.JPG
-│   ├── uploads/
-│   │   ├── .DS_Store
-│   │   └── f150b6cd1d7b4a0095d6a1a0ea5a3dcd_40.JPG
 ├── model/
 │   └── models.ipynb
 ├── api/
-│   └── app.py
-├── templates/
-│   ├── index.html
-│   ├── results.html
-│   └── upload.html
+│   ├── app.py
+│   ├── static/
+│   │   ├── .DS_Store
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   ├── images/
+│   │   │   ├── favicon.ico
+│   │   │   ├── landing.png
+│   │   │   ├── Graph2.png
+│   │   │   ├── Graph1.png
+│   │   │   └── analysis.png
+│   │   ├── tests/
+│   │   │   └── 40.JPG
+│   │   ├── uploads/
+│   │   │   ├── .DS_Store
+│   │   │   └── f150b6cd1d7b4a0095d6a1a0ea5a3dcd_40.JPG
+│   ├── templates/
+│   │   ├── index.html
+│   │   ├── results.html
+│   │   └── upload.html
