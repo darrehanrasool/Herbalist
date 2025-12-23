@@ -4,37 +4,38 @@
 ├── Kashmere.csv
 ├── .DS_Store
 ├── requirements.txt
+├── runtime.txt
+├── versel.json
 ├── Trained Data.zip
 ├── generate_structure.py
 ├── plant.h5
-├── project_structure.txt
 ├── README.md
 ├── dataset_structure.txt
 ├── medicinal.csv
 ├── .gitignore
 ├── .gitattributes
-├── app.py
 ├── imagesamplecount.csv
 ├── .hintrc
 ├── start.sh
 ├── static/
+│   ├── .DS_Store
 │   ├── css/
 │   │   └── style.css
 │   ├── images/
 │   │   ├── favicon.ico
+│   │   ├── landing.png
 │   │   ├── Graph2.png
-│   │   └── Graph1.png
+│   │   ├── Graph1.png
+│   │   └── analysis.png
 │   ├── tests/
 │   │   └── 40.JPG
 │   ├── uploads/
-│   │   ├── a3c541e0903b42f49cec69a9903ef2df_40.JPG
-│   │   ├── 9402a2c2d4714d9baa29cd3d8658b152_40.JPG
-│   │   ├── f683886599fe4fb395721111713a2891_40.JPG
-│   │   ├── 2c6a41ced50841f28a0b731281e26f97_13.JPG
-│   │   ├── e0866deb1f2f4213954e826cde733dec_38.JPG
-│   │   └── 7c3cc6ed12d447648d0e11f78f44e0d8_48.JPG
+│   │   ├── .DS_Store
+│   │   └── f150b6cd1d7b4a0095d6a1a0ea5a3dcd_40.JPG
 ├── model/
 │   └── models.ipynb
+├── api/
+│   └── app.py
 ├── templates/
 │   ├── index.html
 │   ├── results.html
