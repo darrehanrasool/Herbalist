@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Herbalist AI | Medicinal Plant Analysis Using Deep Learning</title>
+    <meta
+      name="description"
+      content="World-class AI system for identifying 200+ medicinal plants with 96.79% accuracy. Research project by Computer Science student from IUST Kashmir."
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container nav-content">
+        <a href="/" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="logo-text">Herbalist<span class="ai">AI</span></div>
+        </a>
+
+        <div class="nav-links">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#how-it-works" class="nav-link">How It Works</a>
+          <a href="#research" class="nav-link">Research</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="{{ url_for('upload_page') }}" class="btn btn-primary">
+            <i class="fas fa-microscope"></i> Try Now
+          </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">
+            <i class="fas fa-graduation-cap"></i>
+            Research Project - IUST Kashmir
+          </span>
+
+          <h2>Medicinal Plant Analysis Using Deep Learning</h2>
+
+          <p class="section-subtitle">
+            Advanced AI system identifying 200+ medicinal plant species with
+            96.79% validation accuracy. Revolutionizing healthcare research
+            through artificial intelligence and computer vision.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="{{ url_for('upload_page') }}"
+              class="btn btn-primary btn-lg"
+            >
+              <i class="fas fa-camera"></i> Upload Plant Image
+            </a>
+            <a href="#research" class="btn btn-outline btn-lg">
+              <i class="fas fa-book"></i> View Research
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">Medicinal Plants</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">96%</span>
+              <span class="stat-label">Validation</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">93%</span>
+              <span class="stat-label">Training</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">CNN</span>
+              <span class="stat-label">Xception</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Advanced Features</h2>
+          <p class="section-subtitle">
+            Cutting-edge technology for medicinal plant research
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Xception Architecture</h3>
+            <p>
+              State-of-the-art deep learning model with 96.79% validation
+              accuracy for precise plant identification.
+            </p>
+          </div>
+
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Comprehensive Database</h3>
+            <p>
+              200+ medicinal plant species with 12 verified pharmacological
+              parameters and toxicity levels.
+            </p>
+          </div>
+
+          <div class="feature-card scroll-reveal">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Real-time Analysis</h3>
+            <p>
+              Instant results with comprehensive 12-parameter analysis including
+              medicinal value and compounds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section bg-gray-200">
+      <div class="container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p class="section-subtitle">
+            Simple three-step process for plant identification and analysis
+          </p>
+        </div>
+
+        <div class="carousel">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <div class="carousel-icon">
+                <i class="fas fa-camera"></i>
+              </div>
+              <h3>1. Upload Plant Image</h3>
+              <p>
+                Capture or upload a clear image of the medicinal plant you want
+                to identify. Our AI works best with focused shots of leaves,
+                flowers, or fruits.
+              </p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="carousel-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3>2. AI Processing</h3>
+              <p>
+                Our Xception neural network analyzes the image with 96.79%
+                accuracy, comparing against 200+ medicinal plant species in our
+                database.
+              </p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="carousel-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <h3>3. Get Detailed Analysis</h3>
+              <p>
+                Receive comprehensive data including medicinal properties,
+                toxicity levels, active compounds, preparation methods, and
+                conservation status.
+              </p>
+            </div>
+          </div>
+
+          <button class="carousel-nav prev" onclick="prevSlide()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Research Methodology</h2>
+          <p class="section-subtitle">
+            Scientific approach to medicinal plant analysis
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-number">1</div>
+            <div class="timeline-content">
+              <h4>Dataset Collection & Curation</h4>
+              <p>
+                Collected and curated dataset of 200+ medicinal plants with 12
+                pharmacological parameters each, including toxicity levels,
+                medicinal value, and active compounds.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-number">2</div>
+            <div class="timeline-content">
+              <h4>Model Architecture Design</h4>
+              <p>
+                Implemented Xception neural network architecture optimized for
+                plant image classification with depthwise separable convolutions
+                for efficiency.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-number">3</div>
+            <div class="timeline-content">
+              <h4>Training & Validation</h4>
+              <p>
+                Achieved 93.34% training accuracy and 96.79% validation accuracy
+                using transfer learning and data augmentation techniques.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item scroll-reveal">
+            <div class="timeline-number">4</div>
+            <div class="timeline-content">
+              <h4>Web Deployment</h4>
+              <p>
+                Developed Flask-based web interface with real-time processing
+                capabilities and comprehensive result presentation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="tech-stack"
+          style="margin-top: var(--space-3xl); text-align: center"
+        >
+          <h3 style="margin-bottom: var(--space-lg)">Technology Stack</h3>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: var(--space-md);
+              flex-wrap: wrap;
+            "
+          >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >TensorFlow 2.13</span
+            >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >Python 3.9</span
+            >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >Flask 2.3</span
+            >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >Xception CNN</span
+            >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >OpenCV</span
+            >
+            <span
+              class="badge"
+              style="font-size: 1rem; padding: var(--space-sm) var(--space-lg)"
+              >Pandas</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about Herbalist AI
+          </p>
+        </div>
+
+        <div class="faq-section">
+          <div class="faq-item scroll-reveal">
+            <div class="faq-question">
+              What is the accuracy of Herbalist AI?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              The system achieves 93.34% training accuracy and 96.79% validation
+              accuracy using the Xception neural network architecture, making it
+              highly reliable for medicinal plant identification.
+            </div>
+          </div>
+
+          <div class="faq-item scroll-reveal">
+            <div class="faq-question">
+              How many plant species can it identify?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Herbalist AI can identify 200+ medicinal plant species, each with
+              comprehensive pharmacological data including toxicity levels,
+              medicinal value, active compounds, and preparation methods.
+            </div>
+          </div>
+
+          <div class="faq-item scroll-reveal">
+            <div class="faq-question">
+              What information does it provide about identified plants?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              For each identified plant, you receive 12 parameters: Scientific
+              name, biological name, medicinal value, family, common uses,
+              active compounds, toxicity level, geographical distribution,
+              growth habit, parts used, preparation methods, and conservation
+              status.
+            </div>
+          </div>
+
+          <div class="faq-item scroll-reveal">
+            <div class="faq-question">
+              Is this a commercial or research project?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              This is an academic research project conducted by a Computer
+              Science student from IUST Kashmir. It focuses on applying deep
+              learning techniques to medicinal plant analysis and traditional
+              medicine preservation.
+            </div>
+          </div>
+
+          <div class="faq-item scroll-reveal">
+            <div class="faq-question">
+              What technology stack is used in this project?
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              The project uses TensorFlow for deep learning, Xception CNN
+              architecture, Python Flask for backend, OpenCV for image
+              processing, Pandas for data handling, and modern web technologies
+              for the frontend interface.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Herbalist<span class="ai">AI</span></h4>
+            <p>
+              Advanced AI-powered medicinal plant analysis system for healthcare
+              research and traditional medicine preservation.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/darrehanrasool"
+                target="_blank"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/darrehanrasool/"
+                target="_blank"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://x.com/darrehanrasool"
+                target="_blank"
+                title="Twitter/X"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="mailto:student@iust.ac.in" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Quick Links</h5>
+            <div class="footer-links">
+              <a href="#home">Home</a>
+              <a href="{{ url_for('upload_page') }}">Upload Image</a>
+              <a href="#features">Features</a>
+              <a href="#research">Research</a>
+              <a href="#faq">FAQ</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Resources</h5>
+            <div class="footer-links">
+              <a href="https://github.com/Darrehan/HerbEsentia" target="_blank"
+                >GitHub Repository</a
+              >
+              <a href="#research">Research Paper</a>
+              <a href="#faq">Documentation</a>
+              <a href="#institute">Institute Info</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h5>Contact Info</h5>
+            <div class="footer-contact">
+              <p>
+                <i class="fas fa-university"></i> Islamic University of Science
+                & Technology
+              </p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Awantipora, Pulwama, Jammu
+                & Kashmir
+              </p>
+              <p>
+                <i class="fas fa-graduation-cap"></i> Department of Computer
+                Science & Engineering
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Herbalist AI Research Project by Dar Rehan Rasool
+            (B.Tech CSE, IUST Kashmir).
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Scroll progress bar
+        window.addEventListener("scroll", function () {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          document.querySelector(".progress-bar").style.width = scrolled + "%";
+
+          // Navbar scroll effect
+          const navbar = document.getElementById("navbar");
+          if (window.scrollY > 100) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            if (this.getAttribute("href") === "#") return;
+
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Scroll reveal animation
+        const scrollRevealElements =
+          document.querySelectorAll(".scroll-reveal");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        scrollRevealElements.forEach((el) => observer.observe(el));
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".carousel-slide");
+        const track = document.getElementById("carouselTrack");
+
+        function updateCarousel() {
+          track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        window.nextSlide = function () {
+          currentSlide = (currentSlide + 1) % slides.length;
+          updateCarousel();
+        };
+
+        window.prevSlide = function () {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          updateCarousel();
+        };
+
+        // Auto-rotate carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // FAQ toggle functionality
+        document.querySelectorAll(".faq-question").forEach((question) => {
+          question.addEventListener("click", () => {
+            const item = question.parentElement;
+            item.classList.toggle("active");
+          });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const navLinks = document.querySelector(".nav-links");
+
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll("section[id]");
+
+        window.addEventListener("scroll", () => {
+          let current = "";
+          const scrollPosition = window.scrollY + 100;
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (
+              scrollPosition >= sectionTop &&
+              scrollPosition < sectionTop + sectionHeight
+            ) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
+
+        // Add animation to hero elements
+        const heroElements = document.querySelectorAll(
+          ".hero-badge, .hero-content h1, .hero-content p, .hero-actions"
+        );
+        heroElements.forEach((el, index) => {
+          el.style.animationDelay = `${index * 0.2}s`;
+        });
+      });
+
+      // Add some console art for fun
+      console.log(
+        "%c🌿 Herbalist AI %c- Medicinal Plant Analysis System",
+        "color: #26a269; font-size: 18px; font-weight: bold;",
+        "color: #77767b; font-size: 14px;"
+      );
+      console.log(
+        "%c🔬 Research Project - IUST Kashmir",
+        "color: #1a5fb4; font-weight: bold;"
+      );
+      console.log(
+        "%c📊 Accuracy: 96.79% Validation | 93.34% Training",
+        "color: #9141ac;"
+      );
+    </script>
+  </body>
+</html>
