@@ -1,10 +1,12 @@
 # Roadmap
 
-## Planned Features
+# Planned Features
+
 - Core functionality implementation
 - Performance improvements
 - UI/UX enhancements
 
-## Future Ideas
+# Future Ideas
+
 - Advanced features
 - Community contributions
