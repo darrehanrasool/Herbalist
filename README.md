@@ -11,11 +11,7 @@
 
 ### 📥 **View Sample Output**
 
-**Curious about the results? Download a generated research report here:**
-
-> **[📄 Download Analysis Results (PDF)](./HerbalistAI.pdf)** > _Includes pharmacological insights, chemical compounds, and toxicity levels._
-
----
+## **Curious about the results? Download a generated research report here:**
 
 > ⚠️ **Note regarding the Live Demo:**
 > The live application is hosted on **Render's Free Tier**, which has strict memory limitations (RAM). Deep Learning models like the Xception architecture used here require significant memory.
