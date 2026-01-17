@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,7 +29,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="{{ url_for('static', filename='images/leaf.svg') }}"
+      href="{{ url_for('static', filename='images/leaves.png') }}"
     />
   </head>
   <body>
@@ -547,7 +547,7 @@
           {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px",
-          }
+          },
         );
 
         scrollRevealElements.forEach((el) => observer.observe(el));
@@ -620,7 +620,7 @@
 
         // Add animation to hero elements
         const heroElements = document.querySelectorAll(
-          ".hero-badge, .hero-content h1, .hero-content p, .hero-actions"
+          ".hero-badge, .hero-content h1, .hero-content p, .hero-actions",
         );
         heroElements.forEach((el, index) => {
           el.style.animationDelay = `${index * 0.2}s`;
@@ -631,15 +631,15 @@
       console.log(
         "%c🌿 Herbalist AI %c- Medicinal Plant Analysis System",
         "color: #26a269; font-size: 18px; font-weight: bold;",
-        "color: #77767b; font-size: 14px;"
+        "color: #77767b; font-size: 14px;",
       );
       console.log(
         "%c🔬 Research Project - IUST Kashmir",
-        "color: #1a5fb4; font-weight: bold;"
+        "color: #1a5fb4; font-weight: bold;",
       );
       console.log(
         "%c📊 Accuracy: 96.79% Validation | 93.34% Training",
-        "color: #9141ac;"
+        "color: #9141ac;",
       );
     </script>
   </body>
