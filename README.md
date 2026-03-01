@@ -9,7 +9,7 @@
 
 ---
 
-### 📥 **View Sample Output**
+## 📥 View Sample Output
 
 ## **Curious about the results? Download a generated research report here:**
 
@@ -58,44 +58,44 @@ We trained the model on a curated dataset of medicinal plants, employing data au
 
 ## ⚙️ Installation & Usage
 
-1.  **Clone the Repository**
+1. **Clone the Repository**
 
-    ```bash
-    git clone [https://github.com/darrehanrasool/Herbalist.git](https://github.com/darrehanrasool/Herbalist.git)
-    cd Herbalist
-    ```
+   ```bash
+   git clone [https://github.com/darrehanrasool/Herbalist.git](https://github.com/darrehanrasool/Herbalist.git)
+   cd Herbalist
+   ```
 
-2.  **Create a Virtual Environment**
+2. **Create a Virtual Environment**
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
-3.  **Install Dependencies**
+3. **Install Dependencies**
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4.  **Run the Application**
+4. **Run the Application**
 
-    ```bash
-    python app.py
-    ```
+   ```bash
+   python app.py
+   ```
 
-5.  **Access the Web Interface**
-    Open your browser and navigate to `http://localhost:5001`
+5. **Access the Web Interface**
+   Open your browser and navigate to `http://localhost:5001`
 
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 👤 Author
 
