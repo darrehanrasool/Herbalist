@@ -24,7 +24,7 @@
 ## 📂 Enterprise Repository Structure
 
 ```
-KidneyCare-AI / Herbalist-AI
+Herbalist-AI / Herbalist-AI
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
