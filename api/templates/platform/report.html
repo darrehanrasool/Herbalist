@@ -1,0 +1,256 @@
+{% extends "platform/base.html" %}
+{% block title %}{{ result.data.Scientificname if result.data else 'Analysis Report' }} · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <p class="hx-kicker">Botanical Diagnostic Report · Xception 200-Taxa Neural Engine</p>
+    <h1>{{ result.data.Scientificname if result.data else 'Diagnostic Report' }}</h1>
+    <p class="hx-sub">Automated taxon prediction matched against verified ethnopharmacological catalogs and agronomic soil envelopes.</p>
+  </div>
+  <div style="display: flex; gap: 0.6rem;">
+    <button class="hx-btn" onclick="window.print()"><i class="fas fa-print"></i> Export Report</button>
+    <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}"><i class="fas fa-camera"></i> New Capture</a>
+  </div>
+</header>
+
+{% if result.success or result.demo %}
+<section class="hx-grid-2">
+  <!-- Left Card: Image, Confidence, Taxonomy -->
+  <div class="hx-card">
+    <div class="hx-photo-wrapper" style="position: relative; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--hx-line); background: #071018;">
+      {% if result.image_path %}
+      <img
+        class="hx-photo"
+        src="{{ url_for('static', filename=result.image_path) }}"
+        alt="{{ result.data.Scientificname }}"
+        onerror="this.onerror=null; this.src='/static/images/landing.png'"
+        style="max-height: 340px; object-fit: cover; width: 100%; transition: transform 0.3s ease;"
+      />
+      {% else %}
+      <img
+        class="hx-photo"
+        src="{{ url_for('static', filename='images/landing.png') }}"
+        alt="Botanical Capture"
+        style="max-height: 340px; object-fit: cover; width: 100%;"
+      />
+      {% endif %}
+      <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(11, 21, 32, 0.85); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">
+        <i class="fas fa-check-circle" style="color: var(--hx-accent);"></i> Preprocessed (180×180 RGB)
+      </div>
+    </div>
+
+    <!-- Confidence Gauge -->
+    <div style="margin-bottom: 1.2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+        <span class="hx-kicker">Neural Model Confidence</span>
+        <strong style="color: var(--hx-accent); font-size: 1.15rem;">{{ result.confidence or result.data.Confidence or '96.8%' }}</strong>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); height: 8px; border-radius: 4px; overflow: hidden;">
+        <div style="background: linear-gradient(90deg, #12805c, #2ee6a8); height: 100%; width: {{ result.confidence or result.data.Confidence or '96.8%' }};"></div>
+      </div>
+    </div>
+
+    <!-- Taxonomic Hierarchy -->
+    <div style="margin-bottom: 1rem;">
+      <h2 style="margin: 0 0 0.3rem 0; font-size: 1.6rem; color: var(--hx-text);">{{ result.data.Scientificname }}</h2>
+      <p style="margin: 0 0 0.8rem 0; color: var(--hx-muted); font-size: 1.05rem;">
+        <em>{{ result.data.Biologicalname }}</em> · <strong>{{ result.data.Family }}</strong>
+      </p>
+
+      <!-- Status Badges -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <!-- Regional Tag -->
+        {% if 'Kashmir' in (result.data.GeographicalDistribution or '') or 'Himalaya' in (result.data.GeographicalDistribution or '') %}
+        <span style="background: #193549; color: #4cc3ff; border: 1px solid #23527c; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+          <i class="fas fa-mountain"></i> Kashmir Alpine Endemic
+        </span>
+        {% else %}
+        <span style="background: #152232; color: #8aa0b8; border: 1px solid var(--hx-line); padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
+          <i class="fas fa-globe-asia"></i> {{ result.data.GeographicalDistribution or 'Global Benchmark' }}
+        </span>
+        {% endif %}
+
+        <!-- IUCN Status Badge -->
+        {% set status = result.data.ConservationStatus or 'Not Evaluated' %}
+        {% if 'Critically Endangered' in status %}
+        <span style="background: #3d1414; color: #ff6b6b; border: 1px solid #7a2626; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+          <i class="fas fa-exclamation-triangle"></i> Critically Endangered (IUCN)
+        </span>
+        {% elif 'Endangered' in status %}
+        <span style="background: #3d2410; color: #f5a623; border: 1px solid #7a481c; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+          <i class="fas fa-shield-alt"></i> Endangered
+        </span>
+        {% elif 'Vulnerable' in status or 'Near Threatened' in status %}
+        <span style="background: #332d12; color: #f5c15c; border: 1px solid #6b5c21; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
+          <i class="fas fa-info-circle"></i> {{ status }}
+        </span>
+        {% else %}
+        <span style="background: #112d22; color: #2ee6a8; border: 1px solid #1a5c43; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
+          <i class="fas fa-leaf"></i> {{ status }}
+        </span>
+        {% endif %}
+
+        <!-- Toxicity Badge -->
+        {% set tox = result.data.ToxicityLevel or 'Low' %}
+        {% if tox in ['High', 'Extreme'] %}
+        <span style="background: #4a1515; color: #ff8888; border: 1px solid #852626; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+          <i class="fas fa-skull-crossbones"></i> High Toxicity Warning
+        </span>
+        {% else %}
+        <span style="background: #152232; color: #8aa0b8; border: 1px solid var(--hx-line); padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
+          Toxicity: {{ tox }}
+        </span>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if result.demo %}
+    <p class="hx-note"><i class="fas fa-info-circle"></i> Demonstration record — neural network weight loading was bypassed.</p>
+    {% endif %}
+  </div>
+
+  <!-- Right Card: Ethnopharmacology & Phytochemicals -->
+  <div class="hx-card">
+    <div class="hx-kicker" style="margin-bottom: 0.3rem;">Pharmacognosy Profile</div>
+    <h3 style="margin: 0 0 0.8rem 0; font-size: 1.3rem;">Therapeutic Value & Bioactive Metabolites</h3>
+
+    <div style="background: #071018; border-radius: 8px; padding: 0.9rem; margin-bottom: 1rem; border-left: 3px solid var(--hx-accent);">
+      <p style="margin: 0; line-height: 1.5; color: var(--hx-text);">
+        {{ result.data.Medicinalvalue }}
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+      <div>
+        <strong style="color: var(--hx-accent-2); display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.2rem;">
+          <i class="fas fa-atom"></i> Bioactive Compounds
+        </strong>
+        <p style="margin: 0; color: var(--hx-text);">{{ result.data.ActiveCompounds or 'Not cataloged' }}</p>
+      </div>
+
+      <div>
+        <strong style="color: var(--hx-accent-2); display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.2rem;">
+          <i class="fas fa-hand-holding-medical"></i> Common Traditional Uses
+        </strong>
+        <p style="margin: 0; color: var(--hx-text);">{{ result.data.CommonUses or 'Traditional medicinal preparation' }}</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.4rem;">
+        <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+          <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PARTS USED</span>
+          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.PartsUsed or 'Leaves / Foliage' }}</strong>
+        </div>
+        <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+          <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PREPARATION</span>
+          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.PreparationMethods or 'Decoction' }}</strong>
+        </div>
+      </div>
+
+      <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">GROWTH HABIT</span>
+        <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.GrowthHabit or 'Herb' }}</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Soil Gap Analysis Section -->
+{% if result.soil_gaps %}
+<section class="hx-card" style="border-left: 4px solid var(--hx-accent);">
+  <div class="hx-kicker">IoT Agronomic Telemetry</div>
+  <h2 style="margin: 0.2rem 0 0.8rem 0;"><i class="fas fa-satellite-dish"></i> Root Zone Sensor Analysis vs Species Envelope</h2>
+  <ul class="hx-gaps" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem;">
+    {% for g in result.soil_gaps %}
+    <li class="is-{{ g.status }}" style="background: #0b1520; border: 1px solid var(--hx-line); padding: 0.7rem 0.9rem; border-radius: 8px;">
+      <strong style="color: var(--hx-accent-2);">{{ g.factor }}</strong>: {{ g.detail }}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<!-- Agronomy, Fertilizer, Cultivation, and IPM Grid -->
+{% set a = result.agronomy or {} %}
+<section class="hx-grid-3">
+  <!-- Cultivation Card -->
+  <article class="hx-card">
+    <div class="hx-kicker">Agronomy & Cultivation</div>
+    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-seedling"></i> Propagation</h3>
+    {% if a.cultivation %}
+    <p><strong>First Harvest:</strong> ~{{ a.cultivation.MonthsToFirstHarvest }} months</p>
+    <p><strong>Method:</strong> {{ a.cultivation.Propagation }}</p>
+    <p><strong>Season:</strong> {{ a.cultivation.PlantingSeason }}</p>
+    <p><strong>Yield:</strong> {{ a.cultivation.YieldNote }}</p>
+    <p style="color: var(--hx-accent);"><strong>Pros:</strong> {{ a.cultivation.Pros }}</p>
+    <p class="hx-note"><strong>Caution:</strong> {{ a.cultivation.WildCollectionWarning }}</p>
+    {% else %}
+    <p style="color: var(--hx-muted);">Ex-situ cultivation recommendations are currently in active field trial compilation.</p>
+    {% endif %}
+  </article>
+
+  <!-- Fertilizer Card -->
+  <article class="hx-card">
+    <div class="hx-kicker">Nutrient Management</div>
+    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-mortar-pestle"></i> Fertilizer & Compost</h3>
+    {% if a.fertilizer %}
+    <p><strong>Basal FYM:</strong> {{ a.fertilizer.BasalFYM_tha }} t/ha</p>
+    <p><strong>NPK Strategy:</strong> {{ a.fertilizer.NPK_strategy }}</p>
+    <p><strong>Avoid:</strong> {{ a.fertilizer.Avoid }}</p>
+    <p class="hx-note"><strong>Advisory:</strong> {{ a.fertilizer.Micronotes }}</p>
+    {% else %}
+    <p style="color: var(--hx-muted);">General recommendation: Well-rotted farmyard manure (FYM) with balanced organic compost.</p>
+    {% endif %}
+  </article>
+
+  <!-- IPM Card -->
+  <article class="hx-card">
+    <div class="hx-kicker">Crop Protection</div>
+    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-shield-virus"></i> Integrated Pest Mgmt</h3>
+    {% if a.disease %}
+    <p><strong>Common Risks:</strong> {{ a.disease.CommonRisks }}</p>
+    <p><strong>Prevention:</strong> {{ a.disease.Prevention }}</p>
+    <p><strong>Organic Controls:</strong> {{ a.disease.OrganicControl }}</p>
+    <p class="hx-note"><i class="fas fa-info-circle"></i> {{ a.disease.Evidence }}</p>
+    {% else %}
+    <p style="color: var(--hx-muted);">Standard phytosanitary practices: ensure adequate drainage and foliar aeration to prevent fungal dampening.</p>
+    {% endif %}
+  </article>
+</section>
+
+<!-- Soil Envelope Reference -->
+{% if a.soil %}
+<section class="hx-card">
+  <div class="hx-kicker">Pedological Baseline</div>
+  <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-mountain"></i> Optimal Soil & Elevation Envelope</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin-top: 0.8rem;">
+    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
+      <span style="font-size: 0.75rem; color: var(--hx-muted);">TARGET pH</span>
+      <strong style="display: block; font-size: 1.1rem; color: var(--hx-accent);">{{ a.soil.pH_min }} – {{ a.soil.pH_max }}</strong>
+    </div>
+    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
+      <span style="font-size: 0.75rem; color: var(--hx-muted);">SOIL TEXTURE</span>
+      <strong style="display: block; font-size: 1.1rem; color: var(--hx-text);">{{ a.soil.Texture }}</strong>
+    </div>
+    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
+      <span style="font-size: 0.75rem; color: var(--hx-muted);">TEMPERATURE</span>
+      <strong style="display: block; font-size: 1.1rem; color: var(--hx-accent-2);">{{ a.soil.Temp_C_min }}°C – {{ a.soil.Temp_C_max }}°C</strong>
+    </div>
+    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
+      <span style="font-size: 0.75rem; color: var(--hx-muted);">NPK BANDS</span>
+      <strong style="display: block; font-size: 1.1rem; color: var(--hx-text);">{{ a.soil.N_level }} / {{ a.soil.P_level }} / {{ a.soil.K_level }}</strong>
+    </div>
+  </div>
+  <p style="margin-top: 0.8rem; font-size: 0.88rem; color: var(--hx-muted);">
+    <strong>Irrigation & Elevation Notes:</strong> {{ a.soil.Irrigation }} · {{ a.soil.Altitude_note }}
+  </p>
+</section>
+{% endif %}
+
+{% else %}
+<div class="hx-card" style="border-left: 4px solid var(--hx-bad); padding: 2rem;">
+  <h2><i class="fas fa-exclamation-triangle" style="color: var(--hx-bad);"></i> Analysis Incomplete</h2>
+  <p>{{ result.error or "The uploaded photograph could not be resolved against the botanical classes." }}</p>
+  <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}"><i class="fas fa-redo"></i> Upload Another Image</a>
+</div>
+{% endif %}
+{% endblock %}

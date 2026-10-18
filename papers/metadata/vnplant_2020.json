@@ -1,0 +1,14 @@
+{
+  "paper_id": "vnplant_2020",
+  "title": "VNPlant-200: A Public and Large-Scale Dataset of Vietnamese Medicinal Plant Images",
+  "authors": ["Nguyen Quoc", "Truong Hoang"],
+  "year": 2020,
+  "venue": "Pattern Recognition Letters",
+  "doi": "10.13140/RG.2.2.14811.59688",
+  "dataset": "VNPlant-200",
+  "taxa_count": 200,
+  "total_images": 17973,
+  "reported_accuracy": 0.9679,
+  "architecture": "Xception Transfer Learning",
+  "relevance": "Direct foundational benchmark dataset and backbone architecture utilized in Herbalist AI."
+}

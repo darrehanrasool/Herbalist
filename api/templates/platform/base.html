@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Herbalist AI{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/platform.css') }}"
+    />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="hx">
+    <aside class="hx-nav">
+      <a class="hx-brand" href="{{ url_for('home') }}">
+        <i class="fas fa-leaf"></i>
+        <span>Herbalist <em>AI</em></span>
+      </a>
+      <nav>
+        <a href="{{ url_for('home') }}"><i class="fas fa-border-all"></i> Workspace</a>
+        <a href="{{ url_for('upload_page') }}"><i class="fas fa-camera"></i> Identify</a>
+        <a href="{{ url_for('sensors_page') }}"><i class="fas fa-satellite-dish"></i> Sensors</a>
+        <a href="{{ url_for('agronomy') }}"><i class="fas fa-seedling"></i> Agronomy</a>
+        <a href="{{ url_for('lab') }}"><i class="fas fa-chart-area"></i> Lab graphs</a>
+        <a href="{{ url_for('plants_browser') }}"><i class="fas fa-book"></i> Catalog</a>
+        <a href="{{ url_for('research_lab') }}"><i class="fas fa-flask"></i> Research</a>
+        <a href="{{ url_for('classic_home') }}"><i class="fas fa-landmark"></i> BTech site</a>
+      </nav>
+      <div class="hx-nav-foot">
+        {% if session.get('user') %}
+        <span>{{ session.user.username }} · {{ session.user.role }}</span>
+        <a href="{{ url_for('logout') }}">Sign out</a>
+        {% else %}
+        <a class="hx-btn" href="{{ url_for('login') }}">Scientist login</a>
+        {% endif %}
+      </div>
+    </aside>
+    <main class="hx-main">
+      {% block content %}{% endblock %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/platform.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "architecture": "Xception (frozen ImageNet backbone)",
+  "reported_train_accuracy": 0.9334,
+  "reported_val_accuracy": 0.9679,
+  "input_resolution": [
+    180,
+    180,
+    3
+  ],
+  "training_classes": 200,
+  "epochs_trained": 6,
+  "status": "Verified against plant.h5 weight headers and Accuracy.txt",
+  "accuracy_file_found": true
+}

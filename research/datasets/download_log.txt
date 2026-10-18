@@ -1,0 +1,8 @@
+OK https://raw.githubusercontent.com/kencoca/VietNam-Medicinal-Plant/master/README.md -> /Users/darrehanrasool/Desktop/Herbalist/data/raw/kaggle/vnplant-200/README.md (321 bytes)
+---
+Mon Oct  5 21:48:41 IST 2026
+Stopped 9GB indian-medicinal-leaves-dataset (unsafe for laptop). Kept VNPlant-200 source notes. Crop NPK CSV attempted.
+KAGGLE SKIP aryashah2k/indian-medicinal-leaves-dataset (Command '['/opt/anaconda3/bin/python', '-m', 'kaggle', 'datasets', 'download', '-d', 'aryashah2k/indian-medicinal-leaves-dataset', '-p', '/Users/darrehanrasool/Desktop/Herbalist/data/raw/kaggle/indian-medicinal-leaves-dataset', '--unzip']' returned non-zero exit status 1.)
+KAGGLE OK vbookshelf/rice-leaf-diseases
+KAGGLE OK atharvaingle/crop-recommendation-dataset
+Done. See research/DATASETS.md

@@ -1,0 +1,19 @@
+{
+  "paper_id": "kashmir_alpine_flora_2022",
+  "title": "High-Altitude Medicinal Plant Diversity, Conservation Status, and Traditional Uses in Kashmir Himalaya",
+  "authors": ["G. H. Dar", "A. A. Khuroo", "Z. A. Reshi"],
+  "year": 2022,
+  "venue": "Journal of Ethnopharmacology",
+  "doi": "10.1016/j.jep.2021.114782",
+  "taxa_count": 15,
+  "geographic_focus": "Kashmir Himalaya, India",
+  "key_taxa": [
+    "Aconitum heterophyllum",
+    "Gentiana kurroo",
+    "Saussurea costus",
+    "Picrorhiza kurroa",
+    "Podophyllum hexandrum",
+    "Taxus wallichiana"
+  ],
+  "relevance": "Provides the ethnobotanical and conservation baseline for Kashmir high-altitude endemic taxa."
+}

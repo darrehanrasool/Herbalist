@@ -1,0 +1,60 @@
+data:
+  image_settings:
+    default_resolution: [180, 180]
+    high_res_resolution: [224, 224]
+    color_channels: 3
+    supported_formats: ["jpg", "jpeg", "png", "webp", "bmp"]
+    normalization:
+      mean: [0.485, 0.456, 0.406]
+      std: [0.229, 0.224, 0.225]
+      rescale: 0.00392156862  # 1/255.0
+
+  splits:
+    train_ratio: 0.70
+    validation_ratio: 0.15
+    test_ratio: 0.15
+    random_state: 42
+    stratified: true
+
+  catalogs:
+    primary_catalog: "data/processed/medicinal.csv"
+    kashmir_catalog: "data/processed/kashmir_medicinal.csv"
+    master_catalog: "knowledge/plants_master.csv"
+    manifest: "data/manifests/dataset_manifest.json"
+
+  datasets:
+    vnplant_200:
+      name: "VNPlant-200"
+      description: "200 Medicinal Plant Species dataset with ~18,000 images."
+      classes: 200
+      raw_path: "data/raw/kaggle/vnplant-200"
+      citation: "Nguyen Quoc & Truong Hoang, 2020"
+      benchmark_split:
+        train_samples_per_class: 60
+        test_samples_per_class: 40
+
+    kashmir_endemic:
+      name: "Kashmir High-Altitude Medicinal Herbs"
+      description: "15 Critically Endangered, Endangered, and High-altitude Endemic Taxa from Kashmir Himalayas."
+      classes: 15
+      raw_path: "data/raw/clinical/Kashmere.csv"
+      focus: "Himalayan pharmacology, conservation, phytochemical yield"
+
+    indian_medicinal_leaves:
+      name: "Indian Medicinal Leaves Dataset"
+      description: "80 Common Indian Medicinal Leaf Taxa for domain expansion."
+      classes: 80
+      raw_path: "data/raw/kaggle/indian-medicinal-leaves-dataset"
+      source: "Kaggle (aryashah2k/indian-medicinal-leaves-dataset)"
+
+    soil_sensors:
+      name: "Soil Sensor Readings"
+      parameters: ["pH", "N", "P", "K", "moisture", "temperature", "ec"]
+      units:
+        pH: "pH units (0-14)"
+        N: "mg/kg"
+        P: "mg/kg"
+        K: "mg/kg"
+        moisture: "%"
+        temperature: "°C"
+        ec: "mS/cm"

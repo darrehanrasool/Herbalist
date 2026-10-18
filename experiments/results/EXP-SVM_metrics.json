@@ -1,0 +1,9 @@
+{
+  "top1_accuracy": 0.2167,
+  "top3_accuracy": 0.7833,
+  "macro_precision": 0.1501,
+  "macro_recall": 0.223,
+  "macro_f1": 0.1667,
+  "weighted_f1": 0.1608,
+  "cohens_kappa": -0.0441
+}

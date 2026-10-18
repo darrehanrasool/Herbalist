@@ -1,0 +1,14 @@
+{% extends "platform/base.html" %}
+{% block title %}Login · Herbalist AI{% endblock %}
+{% block content %}
+<div class="hx-card hx-login">
+  <h1>Scientist sign-in</h1>
+  <p class="hx-sub">Demo accounts (change before any public deploy): <code>scientist</code> / <code>herbalist</code> and <code>farmer</code> / <code>herbalist</code>.</p>
+  {% if error %}<p class="hx-error">{{ error }}</p>{% endif %}
+  <form method="post" class="hx-fields">
+    <label>Username <input name="username" required /></label>
+    <label>Password <input name="password" type="password" required /></label>
+    <button class="hx-btn hx-btn-primary" type="submit">Enter workspace</button>
+  </form>
+</div>
+{% endblock %}

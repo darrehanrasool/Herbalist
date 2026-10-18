@@ -1,0 +1,22 @@
+hardware:
+  preferred_backend: "auto"  # auto, mps, cuda, cpu
+  allow_mps: true
+  allow_cuda: true
+  fallback_to_cpu: true
+
+  memory:
+    max_ram_usage_percent: 85
+    min_free_ram_gb: 2.0
+    vram_growth: true
+    oom_prevention:
+      auto_reduce_batch_size: true
+      fallback_batch_sizes: [32, 16, 8, 4, 1]
+
+  concurrency:
+    num_workers: 4
+    pin_memory: true
+    prefetch_factor: 2
+
+  logging:
+    log_gpu_metrics: true
+    sample_interval_sec: 10

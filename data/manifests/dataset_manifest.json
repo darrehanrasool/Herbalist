@@ -1,0 +1,85 @@
+{
+  "manifest_version": "2.0.0",
+  "generated_at": "2026-10-18T23:30:00Z",
+  "geographic_focus": {
+    "primary": "Kashmir Himalaya, India",
+    "global_benchmark": "VNPlant-200"
+  },
+  "datasets": [
+    {
+      "id": "kashmir_medicinal",
+      "name": "Kashmir Himalayan High-Altitude Endemic Medicinal Flora",
+      "file_path": "data/processed/kashmir_medicinal.csv",
+      "raw_path": "data/raw/clinical/Kashmere.csv",
+      "records": 15,
+      "columns": [
+        "Scientificname",
+        "Biologicalname",
+        "Medicinalvalue",
+        "Family",
+        "CommonUses",
+        "ActiveCompounds",
+        "ToxicityLevel",
+        "GeographicalDistribution",
+        "GrowthHabit",
+        "PartsUsed",
+        "PreparationMethods",
+        "ConservationStatus"
+      ],
+      "endemic_status": "Critically Endangered, Endangered, Vulnerable, Near Threatened",
+      "iucn_highlights": {
+        "Critically Endangered": ["Gentiana kurroo", "Saussurea costus"],
+        "Endangered": ["Aconitum heterophyllum", "Fritillaria roylei", "Picrorhiza kurroa", "Podophyllum hexandrum", "Taxus wallichiana"],
+        "Vulnerable": ["Colchicum luteum", "Rheum emodi"],
+        "Near Threatened": ["Berberis lycium", "Jurinea dolomiaea", "Valeriana jatamansi"]
+      }
+    },
+    {
+      "id": "medicinal_catalog_200",
+      "name": "VNPlant-200 Global / Southeast Asian Medicinal Taxa Catalog",
+      "file_path": "data/processed/medicinal.csv",
+      "raw_path": "data/raw/clinical/medicinal.csv",
+      "records": 200,
+      "classes": 200,
+      "task": "200-class species identification and pharmacological attribute joining"
+    },
+    {
+      "id": "plants_master_integrated",
+      "name": "Integrated Master Knowledge Base (Kashmir + 200 Species)",
+      "file_path": "knowledge/plants_master.csv",
+      "records": 215,
+      "classes": 215,
+      "features": [
+        "Cultivation windows",
+        "Soil NPK & pH thresholds",
+        "Phytochemical literature",
+        "Disease IPM guidance"
+      ]
+    }
+  ],
+  "external_sources_tracked": [
+    {
+      "source_name": "VNPlant-200 Image Repository",
+      "url": "https://github.com/kencoca/VietNam-Medicinal-Plant",
+      "image_count": 17973,
+      "split": "12000 train / 5973 test",
+      "target_size": "180x180 RGB"
+    },
+    {
+      "source_name": "Indian Medicinal Leaves Dataset (Kaggle)",
+      "slug": "aryashah2k/indian-medicinal-leaves-dataset",
+      "size_gb": 9.2,
+      "taxa_count": 80
+    },
+    {
+      "source_name": "GBIF Occurrence Records - Kashmir Himalaya",
+      "url": "https://www.gbif.org",
+      "purpose": "Geospatial coordinate validation and distribution envelope verification"
+    },
+    {
+      "source_name": "PlantVillage Crop Disease Benchmark",
+      "url": "https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset",
+      "purpose": "Transfer learning for foliar stress and IPM classification"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{% extends "platform/base.html" %}
+{% block title %}Catalog · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head"><div><h1>Species catalog</h1><p class="hx-sub">Master table used for joins after CNN labelling.</p></div></header>
+<div class="hx-card">
+  <table class="hx-table">
+    <thead><tr><th>Scientific</th><th>Biological</th><th>Family</th><th>Toxicity</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for p in plants %}
+      <tr>
+        <td><a href="{{ url_for('agronomy', species=p.Scientificname) }}">{{ p.Scientificname }}</a></td>
+        <td>{{ p.Biologicalname }}</td>
+        <td>{{ p.Family }}</td>
+        <td>{{ p.ToxicityLevel }}</td>
+        <td>{{ p.SourceCatalog }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

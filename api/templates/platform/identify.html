@@ -1,0 +1,150 @@
+{% extends "platform/base.html" %}
+{% block title %}Identify Botanical Taxa · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <p class="hx-kicker">Deep Learning Computer Vision · 200 Species</p>
+    <h1>Species Identification & Field Diagnostics</h1>
+    <p class="hx-sub">Upload foliar or floral photography for neural network classification, coupled with optional real-time soil telemetry for agronomic gap analysis.</p>
+  </div>
+</header>
+
+<form class="hx-card hx-identify" action="{{ url_for('analyze') }}" method="POST" enctype="multipart/form-data" id="identifyForm">
+  <div class="hx-drop-zone" id="dropZone">
+    <label class="hx-drop" for="plantImageInput">
+      <div id="dropPrompt">
+        <i class="fas fa-cloud-upload-alt hx-drop-icon"></i>
+        <strong>Drop a leaf or plant photograph here</strong>
+        <span>JPEG, PNG, WebP up to 10 MB (Auto-scaled to 180×180 RGB)</span>
+        <span class="hx-drop-btn"><i class="fas fa-folder-open"></i> Browse Files</span>
+      </div>
+      <div id="previewContainer" style="display: none; text-align: center;">
+        <img id="imagePreview" src="#" alt="Preview" class="hx-preview-img" />
+        <p id="imageMeta" class="hx-kicker" style="margin-top: 0.5rem;"></p>
+        <span class="hx-btn" id="changePhotoBtn"><i class="fas fa-redo"></i> Choose Different Image</span>
+      </div>
+      <input type="file" id="plantImageInput" name="plant_image" accept="image/*" required style="display: none;" />
+    </label>
+  </div>
+
+  {% if error %}
+  <p class="hx-error"><i class="fas fa-exclamation-triangle"></i> {{ error }}</p>
+  {% endif %}
+
+  <div class="hx-section-header">
+    <h3><i class="fas fa-vial"></i> Optional Soil & Microclimate Sensor Reading</h3>
+    <p class="hx-note">Used to benchmark current root zone parameters against the species optimal agronomic envelope.</p>
+  </div>
+
+  <div class="hx-fields">
+    <label>Soil pH <input name="soil_ph" id="soil_ph" type="number" step="0.01" placeholder="e.g. 6.5" /></label>
+    <label>Nitrogen (N) <input name="soil_n" id="soil_n" type="number" step="0.1" placeholder="mg/kg" /></label>
+    <label>Phosphorus (P) <input name="soil_p" id="soil_p" type="number" step="0.1" placeholder="mg/kg" /></label>
+    <label>Potassium (K) <input name="soil_k" id="soil_k" type="number" step="0.1" placeholder="mg/kg" /></label>
+    <label>Moisture % <input name="soil_moisture" id="soil_moisture" type="number" step="0.1" placeholder="e.g. 35.0" /></label>
+    <label>Temperature °C <input name="soil_temp" id="soil_temp" type="number" step="0.1" placeholder="e.g. 22.0" /></label>
+    <label>Conductivity (EC) <input name="soil_ec" id="soil_ec" type="number" step="0.01" placeholder="mS/cm" /></label>
+  </div>
+
+  <div style="display: flex; gap: 0.8rem; margin-top: 1rem; align-items: center; flex-wrap: wrap;">
+    <button class="hx-btn hx-btn-primary" type="submit" id="submitBtn">
+      <i class="fas fa-microscope"></i> Run Neural Identification
+    </button>
+    <button type="button" class="hx-btn" id="kashmirPresetBtn">
+      <i class="fas fa-mountain"></i> Load Kashmir Alpine Soil Preset
+    </button>
+    <button type="button" class="hx-btn" id="valleyPresetBtn">
+      <i class="fas fa-seedling"></i> Load Kashmir Valley Loam Preset
+    </button>
+  </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const fileInput = document.getElementById("plantImageInput");
+  const dropZone = document.getElementById("dropZone");
+  const dropPrompt = document.getElementById("dropPrompt");
+  const previewContainer = document.getElementById("previewContainer");
+  const imagePreview = document.getElementById("imagePreview");
+  const imageMeta = document.getElementById("imageMeta");
+  const changePhotoBtn = document.getElementById("changePhotoBtn");
+
+  function handleFile(file) {
+    if (!file || !file.type.startsWith("image/")) {
+      alert("Please upload a valid image file.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      imagePreview.src = e.target.result;
+      dropPrompt.style.display = "none";
+      previewContainer.style.display = "block";
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      imageMeta.textContent = `${file.name} (${sizeMB} MB)`;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  fileInput.addEventListener("change", function(e) {
+    if (e.target.files.length > 0) {
+      handleFile(e.target.files[0]);
+    }
+  });
+
+  changePhotoBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    fileInput.click();
+  });
+
+  // Drag and drop events
+  ["dragenter", "dragover"].forEach(eventName => {
+    dropZone.addEventListener(eventName, function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.add("hx-drop-active");
+    }, false);
+  });
+
+  ["dragleave", "drop"].forEach(eventName => {
+    dropZone.addEventListener(eventName, function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.remove("hx-drop-active");
+    }, false);
+  });
+
+  dropZone.addEventListener("drop", function(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+      fileInput.files = files;
+      handleFile(files[0]);
+    }
+  }, false);
+
+  // Kashmir Presets
+  document.getElementById("kashmirPresetBtn").addEventListener("click", function() {
+    document.getElementById("soil_ph").value = "5.85";
+    document.getElementById("soil_n").value = "38.0";
+    document.getElementById("soil_p").value = "14.5";
+    document.getElementById("soil_k").value = "22.0";
+    document.getElementById("soil_moisture").value = "45.0";
+    document.getElementById("soil_temp").value = "12.5";
+    document.getElementById("soil_ec").value = "0.65";
+  });
+
+  document.getElementById("valleyPresetBtn").addEventListener("click", function() {
+    document.getElementById("soil_ph").value = "6.60";
+    document.getElementById("soil_n").value = "55.0";
+    document.getElementById("soil_p").value = "24.0";
+    document.getElementById("soil_k").value = "35.0";
+    document.getElementById("soil_moisture").value = "32.0";
+    document.getElementById("soil_temp").value = "20.0";
+    document.getElementById("soil_ec").value = "1.10";
+  });
+});
+</script>
+{% endblock %}

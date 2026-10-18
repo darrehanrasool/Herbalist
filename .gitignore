@@ -1,34 +1,163 @@
-# Machine Learning artifacts
-*.ckpt
-*.pb
-*.tflite
-*.onnx
-*.pkl
-*.joblib
-*.npz
-*.npy
+# ==============================================================================
+# Python & Bytecode
+# ==============================================================================
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ==============================================================================
+# Virtual Environments & Tooling
+# ==============================================================================
+.venv/
+.venv*/
 venv/
-*.pyc
-*.pyo
-*.pyd
-.env
-# Data files
-*.xml
-*.xlsx
-*.tsv
-*.parquet
-*.feather
-*.db
-*.sqlite
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Logs and checkpoints
-/logs/
-/checkpoints/
-/tensorboard/
-/wandb/
-/mlruns/
-
-# Environment
+# ==============================================================================
+# Environment Variables & Secrets
+# ==============================================================================
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+
+# ==============================================================================
+# Model Weights & Trained Checkpoints (Kept local / downloaded via scripts)
+# ==============================================================================
+# Specific root & API models
+plant.h5
+api/plant.h5
+
+# Binary model & serialized weights formats
+*.h5
+*.hdf5
+*.keras
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.weights
+*.safetensors
+*.bin
+*.ckpt
+*.joblib
+*.pkl
+
+# Model directories (preserve folder structure via .gitkeep)
+checkpoints/best/*
+checkpoints/latest/*
+checkpoints/periodic/*
+!checkpoints/**/.gitkeep
+!checkpoints/**/README.md
+!checkpoints/metadata/*.json
+
+models/deep_learning/*
+models/classical_ml/*
+models/ensemble/*
+models/explainability/*
+!models/**/.gitkeep
+!models/**/README.md
+!models/**/*.py
+
+outputs/trained_models/*
+outputs/predictions/*
+!outputs/**/.gitkeep
+!outputs/**/README.md
+
+# ==============================================================================
+# Large Datasets & Raw Media
+# ==============================================================================
+# Raw Kaggle downloads (1.1GB+ archives & raw extracted folders)
+data/raw/kaggle/
+
+# Raw imaging & large unprocessed data
+data/raw/imaging/*
+!data/raw/imaging/.gitkeep
+!data/raw/imaging/README.md
+
+data/interim/*
+!data/interim/.gitkeep
+!data/interim/README.md
+
+data/external/*
+!data/external/.gitkeep
+!data/external/README.md
+
+# Compressed archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.rar
+*.7z
+
+# Uploaded test images & temp uploads
+static/uploads/*
+api/static/uploads/*
+!static/uploads/.gitkeep
+!api/static/uploads/.gitkeep
+34.JPG
+*.JPG
+*.jpeg
+*.jpg
+*.bmp
+*.tiff
+
+# UI static assets & documentation graphics whitelist
+!api/static/graphs/*.png
+!api/static/images/*.png
+!static/images/*.png
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.svg
+
+# ==============================================================================
+# Data Whitelist (Ensure curated CSVs and manifests are tracked)
+# ==============================================================================
+!data/raw/clinical/*.csv
+!data/raw/catalog/*.csv
+!data/splits/**/*.csv
+!data/processed/*.csv
+!data/manifests/*
+!imagesamplecount.csv
+!experiments/experiment_registry.csv
+
+# ==============================================================================
+# Caches, Logs & Runtime Files
+# ==============================================================================
+.keras/
+scratch/
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+logs/**/*.log
+logs/*/*.log
+!logs/**/.gitkeep
+
+# ==============================================================================
+# IDE & OS Metadata
+# ==============================================================================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

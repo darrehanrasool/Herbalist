@@ -1,0 +1,96 @@
+{% extends "platform/base.html" %}
+{% block title %}Workspace · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <p class="hx-kicker">IUST Kashmir · medicinal plant intelligence</p>
+    <h1>Scientist workspace</h1>
+    <p class="hx-sub">
+      Photo ID still uses the BTech Xception model (200 classes, 96.79% reported val acc).
+      Soil, fertilizer, IPM and graphs are joined after identification.
+    </p>
+  </div>
+  <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}">
+    <i class="fas fa-microscope"></i> Identify a plant
+  </a>
+</header>
+
+<section class="hx-stats">
+  <article>
+    <span>Live model</span>
+    <strong>{{ "Loaded" if model_ok else "Missing" }}</strong>
+  </article>
+  <article>
+    <span>ID classes</span>
+    <strong>{{ plant_count }}</strong>
+  </article>
+  <article>
+    <span>Catalog CSV</span>
+    <strong>{{ "Ready" if dataset_ok else "Missing" }}</strong>
+  </article>
+  <article>
+    <span>Lab figures</span>
+    <strong>{{ graphs|length }}+</strong>
+  </article>
+</section>
+
+<section class="hx-grid-2">
+  <div class="hx-card">
+    <h2>How the live pipeline works</h2>
+    <ol class="hx-steps">
+      <li>Image → 180×180 → Xception softmax (frozen ImageNet backbone).</li>
+      <li>Argmax class → scientific name in VNPlant-200.</li>
+      <li>Name joined to medicinal + soil + fertilizer + IPM tables.</li>
+      <li>Optional pH / NPK / moisture compared with target bands.</li>
+    </ol>
+    <p class="hx-note">
+      Chemistry on screen is literature text, not HPLC. Soil bands are heuristics until you replace them with plot data.
+    </p>
+  </div>
+  <div class="hx-card">
+    <h2>Connect a soil probe</h2>
+    <p>POST JSON to <code>/api/sensors/ingest</code> or use the Sensors page. Demo login: <code>scientist</code> / <code>herbalist</code>.</p>
+    <pre class="hx-code">{
+  "device_id": "plot-01",
+  "pH": 6.4, "N": 40, "P": 18, "K": 30,
+  "moisture": 28, "temperature": 22
+}</pre>
+    <a class="hx-btn" href="{{ url_for('sensors_page') }}">Open sensor console</a>
+  </div>
+</section>
+
+{% if graphs %}
+<section>
+  <div class="hx-row">
+    <h2>Training & catalog graphs</h2>
+    <a href="{{ url_for('lab') }}">View all 20 →</a>
+  </div>
+  <div class="hx-graph-strip">
+    {% for g in graphs %}
+    <a href="{{ url_for('lab') }}">
+      <img src="{{ url_for('static', filename='graphs/' + g) }}" alt="{{ g }}" />
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="hx-card">
+  <h2>Catalog snapshot</h2>
+  <table class="hx-table">
+    <thead>
+      <tr><th>Scientific name</th><th>Local / biological</th><th>Family</th><th>Toxicity</th></tr>
+    </thead>
+    <tbody>
+      {% for p in plants %}
+      <tr>
+        <td><a href="{{ url_for('agronomy', species=p.Scientificname) }}">{{ p.Scientificname }}</a></td>
+        <td>{{ p.Biologicalname }}</td>
+        <td>{{ p.Family }}</td>
+        <td>{{ p.ToxicityLevel }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

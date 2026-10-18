@@ -1,0 +1,13 @@
+{
+  "paper_id": "indian_medicinal_leaves_2021",
+  "title": "Deep Learning Framework for Identification of Indian Medicinal Leaf Species",
+  "authors": ["P. Gopal", "S. Sharma"],
+  "year": 2021,
+  "venue": "Computers and Electronics in Agriculture",
+  "doi": "10.1016/j.compag.2021.106200",
+  "dataset": "Indian-Medicinal-Leaves-80",
+  "taxa_count": 80,
+  "reported_accuracy": 0.9420,
+  "architecture": "MobileNetV2 / EfficientNet-B0",
+  "relevance": "Benchmark for expanding Herbalist AI from 200 species to encompass broader Indian subcontinent flora."
+}

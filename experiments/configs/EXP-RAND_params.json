@@ -1,0 +1,5 @@
+{
+  "model_type": "classical",
+  "backbone": "random_forest",
+  "dataset": "synthetic_agronomic"
+}

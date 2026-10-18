@@ -78,7 +78,12 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    system-ui,
     sans-serif;
   background: var(--white);
   color: var(--gray-900);
@@ -367,7 +372,8 @@ p {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.95) 0%,
       rgba(245, 245, 245, 0.95) 100%
@@ -386,7 +392,8 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 80%,
       rgba(13, 71, 161, 0.08) 0%,
       transparent 50%

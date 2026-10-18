@@ -1,0 +1,28 @@
+# Default training config — Herbalist AI
+# Override with CLI flags. Paths assume images already sit in data/splits.
+
+data:
+  train_dir: data/splits/train
+  val_dir: data/splits/validation
+  test_dir: data/splits/test
+  img_size: 180
+  batch_size: 16
+  seed: 42
+
+model:
+  arch: xception          # xception | efficientnetv2b0 | resnet50 | mobilenetv3 | vgg16
+  num_classes: 200
+  freeze_backbone: true
+  dropout: 0.2
+
+train:
+  epochs: 6
+  optimizer: adam
+  learning_rate: 0.001
+  loss: categorical_crossentropy
+  metrics: [accuracy]
+
+output:
+  checkpoint_dir: artifacts/checkpoints
+  history_json: artifacts/metrics/history.json
+  experiment_log: training/experiments/experiment_log.csv

@@ -1,0 +1,5 @@
+{
+  "model_type": "classical",
+  "backbone": "logistic_regression",
+  "dataset": "synthetic_agronomic"
+}

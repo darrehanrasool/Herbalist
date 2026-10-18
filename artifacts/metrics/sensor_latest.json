@@ -1,0 +1,12 @@
+{
+  "device_id": "sim-plot-01",
+  "pH": 5.71,
+  "N": 45.6,
+  "P": 25.9,
+  "K": 35.7,
+  "moisture": 38.3,
+  "temperature": 18.0,
+  "ec": 0.79,
+  "timestamp": "2026-10-06T09:19:44.953465+00:00",
+  "source": "simulator"
+}

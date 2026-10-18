@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "herbalist"
+version = "2.0.0"
+description = "Enterprise Research Framework for Himalayan and Global Medicinal Flora Classification, Pharmacognosy, and Precision Agronomy."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Darrehan Rasool", email = "darrehanrasool@gmail.com"}
+]
+keywords = [
+  "computational-botany",
+  "deep-learning",
+  "medicinal-plants",
+  "kashmir-himalaya",
+  "ethnopharmacology",
+  "precision-agronomy",
+  "xception"
+]
+dependencies = [
+  "tensorflow>=2.13.0",
+  "pandas>=2.0.0",
+  "numpy>=1.24.0",
+  "Pillow>=10.0.0",
+  "scikit-learn>=1.3.0",
+  "Flask>=2.3.0",
+  "PyYAML>=6.0",
+  "matplotlib>=3.7.0",
+  "requests>=2.31.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4.0",
+  "flake8>=6.1.0",
+  "black>=23.7.0",
+  "mypy>=1.5.0",
+  "pre-commit>=3.4.0"
+]
+
+[project.scripts]
+herbalist = "src.herbalist.main:main"
+kidneycare = "src.kidneycare.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

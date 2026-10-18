@@ -1,0 +1,72 @@
+{% extends "platform/base.html" %}
+{% block title %}Sensors · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <h1>Sensor console</h1>
+    <p class="hx-sub">Ingest live probes or simulate a plot. Compare against the selected species’ soil envelope.</p>
+  </div>
+  <form method="post" action="{{ url_for('sensors_sim') }}" onsubmit="event.preventDefault(); fetch(this.action,{method:'POST'}).then(()=>location.reload())">
+    <button class="hx-btn" type="submit">Simulate reading</button>
+  </form>
+</header>
+
+<form class="hx-card hx-fields" method="get">
+  <label>Species
+    <select name="species" onchange="this.form.submit()">
+      {% for p in plants %}
+      <option value="{{ p.Scientificname }}" {% if p.Scientificname==species %}selected{% endif %}>{{ p.Scientificname }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</form>
+
+<section class="hx-stats">
+  <article><span>pH</span><strong>{{ reading.pH }}</strong></article>
+  <article><span>N</span><strong>{{ reading.N }}</strong></article>
+  <article><span>P</span><strong>{{ reading.P }}</strong></article>
+  <article><span>K</span><strong>{{ reading.K }}</strong></article>
+  <article><span>Moisture</span><strong>{{ reading.moisture }}</strong></article>
+  <article><span>Temp</span><strong>{{ reading.temperature }}°C</strong></article>
+</section>
+
+<div class="hx-grid-2">
+  <div class="hx-card">
+    <h2>Gap analysis · {{ species }}</h2>
+    <ul class="hx-gaps">
+      {% for g in analysis %}
+      <li class="is-{{ g.status }}"><strong>{{ g.factor }}</strong> — {{ g.detail }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="hx-card">
+    <h2>Manual ingest</h2>
+    <form method="post" action="{{ url_for('sensors_ingest') }}" class="hx-fields" id="ingestForm">
+      <label>Device <input name="device_id" value="plot-01" /></label>
+      <label>pH <input name="pH" type="number" step="0.01" required /></label>
+      <label>N <input name="N" type="number" step="0.1" /></label>
+      <label>P <input name="P" type="number" step="0.1" /></label>
+      <label>K <input name="K" type="number" step="0.1" /></label>
+      <label>Moisture <input name="moisture" type="number" step="0.1" /></label>
+      <label>Temp <input name="temperature" type="number" step="0.1" /></label>
+      <button class="hx-btn hx-btn-primary" type="submit">Save reading</button>
+    </form>
+    <p class="hx-note">ESP32: POST the same fields as JSON to <code>/api/sensors/ingest</code>.</p>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+  document.getElementById("ingestForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const body = Object.fromEntries(fd.entries());
+    await fetch(e.target.action, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    location.reload();
+  });
+</script>
+{% endblock %}

@@ -1,20 +1,30 @@
+import os
+import sys
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+os.environ.setdefault('KERAS_HOME', os.path.join(ROOT, '.keras'))
+os.makedirs(os.environ['KERAS_HOME'], exist_ok=True)
+
 from flask import Flask, render_template, request, redirect, url_for # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
-from keras.preprocessing import image # type: ignoreß
+from keras.preprocessing import image # type: ignore
 from keras.metrics import AUC # type: ignore
 import numpy as np # type: ignore
 import pandas as pd # type: ignore
-import os
 import requests # type: ignore
 import uuid
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # Configuration
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+UPLOAD_DIR = os.path.join(app.root_path, 'static', 'uploads')
+app.config['UPLOAD_FOLDER'] = UPLOAD_DIR
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max
-app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'PNG', 'JPG', 'JPEG'}
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -22,23 +32,30 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 # Load ML Model
 def load_ml_model():
     try:
-        # Download model if not exists
-        MODEL_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.0/plant.h5"
-        MODEL_PATH = "plant.h5"
-        
-        if not os.path.exists(MODEL_PATH):
-            print("Downloading model...")
+        candidates = [
+            os.path.join(app.root_path, "plant.h5"),
+            os.path.join(ROOT, "plant.h5"),
+            os.path.join(ROOT, "models", "deep_learning", "plant.h5"),
+            os.path.join(ROOT, "models", "plant.h5"),
+            "plant.h5",
+        ]
+        MODEL_PATH = next((c for c in candidates if os.path.exists(c)), None)
+
+        if not MODEL_PATH:
+            MODEL_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.0/plant.h5"
+            MODEL_PATH = os.path.join(app.root_path, "plant.h5")
+            print(f"Downloading model to {MODEL_PATH}...")
             response = requests.get(MODEL_URL, stream=True)
             if response.status_code == 200:
                 with open(MODEL_PATH, 'wb') as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
                 print("Model downloaded successfully.")
-        
+
         # Load model
         dependencies = {'auc_roc': AUC}
         model = load_model(MODEL_PATH, custom_objects=dependencies)
-        print("✅ Model loaded successfully")
+        print(f"✅ Model loaded successfully from {MODEL_PATH}")
         return model
     except Exception as e:
         print(f"❌ Model loading failed: {e}")
@@ -47,20 +64,28 @@ def load_ml_model():
 # Load Dataset
 def load_dataset():
     try:
-        CSV_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.1/medicinal.csv"
-        CSV_PATH = "medicinal.csv"
-        
-        if not os.path.exists(CSV_PATH):
-            print("Downloading dataset...")
+        candidates = [
+            os.path.join(app.root_path, "medicinal.csv"),
+            os.path.join(ROOT, "medicinal.csv"),
+            os.path.join(ROOT, "data", "raw", "clinical", "medicinal.csv"),
+            os.path.join(ROOT, "data", "processed", "medicinal.csv"),
+            "medicinal.csv",
+        ]
+        CSV_PATH = next((c for c in candidates if os.path.exists(c)), None)
+
+        if not CSV_PATH:
+            CSV_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.1/medicinal.csv"
+            CSV_PATH = os.path.join(app.root_path, "medicinal.csv")
+            print(f"Downloading dataset to {CSV_PATH}...")
             response = requests.get(CSV_URL)
             if response.status_code == 200:
                 with open(CSV_PATH, 'wb') as f:
                     f.write(response.content)
                 print("Dataset downloaded successfully.")
-        
+
         # Load CSV
         df = pd.read_csv(CSV_PATH)
-        print(f"✅ Dataset loaded: {len(df)} plants")
+        print(f"✅ Dataset loaded from {CSV_PATH}: {len(df)} plants")
         return df
     except Exception as e:
         print(f"❌ Dataset loading failed: {e}")
@@ -272,7 +297,7 @@ PLANT_CLASSES = {
 197: 'Zingiber officinale',
 198: 'Ziziphus mauritiana',
 199: 'helicteres hirsuta',
-   
+
 }
 
 
@@ -304,24 +329,24 @@ def predict_plant(image_path):
                 'Confidence': '98.7%'
             }
         }
-    
+
     try:
         # Load and preprocess image
         img = image.load_img(image_path, target_size=(180, 180))
         img_array = image.img_to_array(img) / 255.0
         img_array = img_array.reshape(1, 180, 180, 3)
-        
+
         # Make prediction
         prediction = model.predict(img_array, verbose=0)
         class_idx = np.argmax(prediction)
         confidence = np.max(prediction) * 100
-        
+
         # Get plant name
         plant_name = PLANT_CLASSES.get(class_idx, 'Unknown')
-        
+
         # Find plant in dataset
         plant_data = dataset[dataset['Scientificname'] == plant_name]
-        
+
         if not plant_data.empty:
             result = {
                 'success': True,
@@ -348,9 +373,9 @@ def predict_plant(image_path):
                 'error': 'Plant not found in database',
                 'demo': False
             }
-        
+
         return result
-        
+
     except Exception as e:
         return {
             'success': False,
@@ -358,77 +383,139 @@ def predict_plant(image_path):
             'demo': False
         }
 
+
+def _form_soil_reading():
+    reading = {}
+    mapping = {
+        "soil_ph": "pH",
+        "soil_n": "N",
+        "soil_p": "P",
+        "soil_k": "K",
+        "soil_moisture": "moisture",
+        "soil_temp": "temperature",
+        "soil_ec": "ec",
+    }
+    for form_key, out_key in mapping.items():
+        raw = request.form.get(form_key)
+        if raw not in (None, ""):
+            try:
+                reading[out_key] = float(raw)
+            except ValueError:
+                pass
+    return reading
+
+
+def _attach_agronomy(result, soil_reading=None):
+    from backend.knowledge import agronomy_bundle
+    from sensors.protocol import gaps, save_reading
+
+    result["agronomy"] = {}
+    result["soil_gaps"] = []
+    result["soil_reading"] = soil_reading or {}
+    if not result.get("data"):
+        return result
+    name = result["data"].get("Scientificname")
+    bundle = agronomy_bundle(name) if name else {}
+    result["agronomy"] = bundle
+    if soil_reading:
+        save_reading({**soil_reading, "source": "identify-form", "species": name})
+        soil_row = bundle.get("soil") or {}
+        if soil_row:
+            result["soil_gaps"] = gaps(soil_reading, soil_row)
+    return result
+
+
 # ========== CLEAN ROUTES ==========
 
 @app.route('/')
 def home():
-    """Homepage with all sections"""
-    return render_template('index.html')
+    """Scientist workspace — BTech landing remains at /classic"""
+    from backend.knowledge import plant_index
+    graphs = []
+    gdir = os.path.join(os.path.dirname(__file__), "static", "graphs")
+    if os.path.isdir(gdir):
+        graphs = sorted(f for f in os.listdir(gdir) if f.endswith(".png"))[:8]
+    return render_template(
+        "platform/dashboard.html",
+        plant_count=len(PLANT_CLASSES),
+        model_ok=model is not None,
+        dataset_ok=dataset is not None,
+        graphs=graphs,
+        plants=plant_index()[:12],
+    )
+
 
 @app.route('/upload')
 def upload_page():
     """Upload page"""
-    return render_template('upload.html')
+    return render_template('platform/identify.html')
+
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
     """Analyze uploaded image"""
     if 'plant_image' not in request.files:
         return redirect(url_for('upload_page'))
-    
+
     file = request.files['plant_image']
-    
+
     if file.filename == '':
         return redirect(url_for('upload_page'))
-    
+
     if not allowed_file(file.filename):
-        return render_template('upload.html', error='Invalid file type. Please upload an image.')
-    
+        return render_template('platform/identify.html', error='Invalid file type. Please upload an image.')
+
     # Generate unique filename
     filename = f"{uuid.uuid4().hex}_{file.filename}"
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
-    
+
     # Predict plant
     result = predict_plant(filepath)
-    
+    result = _attach_agronomy(result, _form_soil_reading())
+
     # Add image path to result
     result['image_path'] = f"uploads/{filename}"
-    
+
     # Render results page
-    return render_template('results.html', result=result)
+    return render_template('platform/report.html', result=result)
 
 @app.route('/api/predict', methods=['POST'])
 def api_predict():
     """API endpoint for predictions"""
     if 'image' not in request.files:
         return {'error': 'No image provided'}, 400
-    
+
     file = request.files['image']
-    
+
     if not allowed_file(file.filename):
         return {'error': 'Invalid file type'}, 400
-    
+
     # Save file
     filename = f"{uuid.uuid4().hex}_{file.filename}"
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
-    
+
     # Predict
     result = predict_plant(filepath)
+    result = _attach_agronomy(result, None)
     result['image_url'] = url_for('static', filename=f'uploads/{filename}', _external=True)
-    
+
     return result
 
 # ========== ERROR HANDLERS ==========
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('index.html'), 404
+    return render_template('platform/dashboard.html', plant_count=len(PLANT_CLASSES), model_ok=model is not None, dataset_ok=dataset is not None, graphs=[], plants=[]), 404
 
 @app.errorhandler(500)
 def server_error(error):
-    return render_template('index.html'), 500
+    return render_template('platform/dashboard.html', plant_count=len(PLANT_CLASSES), model_ok=model is not None, dataset_ok=dataset is not None, graphs=[], plants=[]), 500
+
+from backend.platform_routes import register_platform
+
+register_platform(app)
 
 # ========== RUN APP ==========
 
@@ -443,5 +530,5 @@ if __name__ == '__main__':
     print("="*50)
     print("Server running on: http://localhost:5001")
     print("="*50 + "\n")
-    
+
     app.run(debug=True, host='0.0.0.0', port=5001)

@@ -1,0 +1,5 @@
+{
+  "model_type": "classical",
+  "backbone": "gradient_boosting",
+  "dataset": "synthetic_agronomic"
+}

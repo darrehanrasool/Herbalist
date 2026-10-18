@@ -1,0 +1,30 @@
+project:
+  name: "Herbalist AI"
+  slug: "herbalist-ai"
+  version: "2.0.0"
+  description: "Enterprise Research Platform for Himalayan (Kashmir) and Global Medicinal Flora Identification, Phytochemical Characterization, and Agronomic Soil Diagnostics."
+  authors:
+    - name: "Darrehan Rasool"
+      institution: "Islamic University of Science and Technology (IUST), Kashmir"
+      contact: "darrehanrasool@gmail.com"
+  domain: "Computational Botany, Deep Learning, Phytochemistry, Agronomy"
+  license: "MIT"
+  repository: "https://github.com/darrehanrasool/Herbalist"
+
+paths:
+  root: "."
+  configs_dir: "configs"
+  data_dir: "data"
+  models_dir: "models"
+  logs_dir: "logs"
+  checkpoints_dir: "checkpoints"
+  experiments_dir: "experiments"
+  reports_dir: "reports"
+  visualizations_dir: "visualizations"
+  papers_dir: "papers"
+  outputs_dir: "outputs"
+
+geographic_scope:
+  primary: "Kashmir Himalaya (Jammu & Kashmir, India)"
+  secondary: "Indian Subcontinent (Western Ghats, Indo-Gangetic, Deccan Plateau)"
+  global_benchmark: "VNPlant-200 (Tropical / Southeast Asia & Global Medicinal Taxa)"

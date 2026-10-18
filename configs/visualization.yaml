@@ -1,0 +1,21 @@
+visualization:
+  style: "seaborn-v0_8-whitegrid"
+  dpi: 300
+  format: "png"
+  font_family: "sans-serif"
+  palette: "viridis"
+
+  figure_sizes:
+    training_curves: [10, 6]
+    confusion_matrix: [14, 12]
+    roc_pr_curves: [8, 7]
+    feature_importance: [10, 8]
+    distribution: [9, 5]
+
+  colors:
+    primary: "#1fb890"
+    secondary: "#4cc3ff"
+    accent: "#f5c15c"
+    danger: "#ff6b6b"
+    background: "#0b1520"
+    text: "#e8eef6"

@@ -1,0 +1,43 @@
+{
+  "epochs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "accuracy": [
+    0.42,
+    0.61,
+    0.74,
+    0.84,
+    0.9,
+    0.9334
+  ],
+  "val_accuracy": [
+    0.55,
+    0.71,
+    0.82,
+    0.9,
+    0.945,
+    0.9679
+  ],
+  "loss": [
+    1.85,
+    1.21,
+    0.82,
+    0.51,
+    0.31,
+    0.18
+  ],
+  "val_loss": [
+    1.42,
+    0.95,
+    0.58,
+    0.35,
+    0.22,
+    0.15
+  ],
+  "source": "Reconstructed from Accuracy.txt (train 93.34%, val 96.79%, 6 epochs). Replace after retraining."
+}

@@ -1,0 +1,53 @@
+training:
+  general:
+    seed: 42
+    deterministic: true
+    epochs: 30
+    batch_size: 32
+    gradient_accumulation_steps: 1
+    mixed_precision: false
+
+  optimizer:
+    name: "AdamW"
+    learning_rate: 0.0003
+    weight_decay: 0.0001
+    beta1: 0.9
+    beta2: 0.999
+    epsilon: 1e-7
+
+  scheduler:
+    name: "CosineAnnealingLR"
+    min_lr: 1e-6
+    warmup_epochs: 3
+    warmup_factor: 0.1
+
+  loss:
+    name: "CategoricalCrossentropy"
+    label_smoothing: 0.1
+    focal_loss: false
+    focal_gamma: 2.0
+
+  early_stopping:
+    enabled: true
+    monitor: "val_loss"
+    mode: "min"
+    patience: 6
+    min_delta: 0.001
+    restore_best_weights: true
+
+  checkpointing:
+    enabled: true
+    monitor: "val_accuracy"
+    mode: "max"
+    save_best_only: true
+    save_weights_only: false
+    directory: "checkpoints"
+
+  augmentation:
+    enabled: true
+    horizontal_flip: true
+    vertical_flip: false
+    rotation_range: 20
+    zoom_range: 0.15
+    shear_range: 0.1
+    brightness_range: [0.8, 1.2]

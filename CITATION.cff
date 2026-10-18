@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use Herbalist AI in your scientific research or dissertation, please cite it as below."
+authors:
+  - family-names: "Rasool"
+    given-names: "Darrehan"
+    affiliation: "Islamic University of Science and Technology (IUST), Kashmir"
+    email: "darrehanrasool@gmail.com"
+title: "Herbalist AI: Deep Learning Framework for Himalayan and Global Medicinal Flora Classification, Pharmacognosy, and Precision Agronomy"
+version: 2.0.0
+date-released: 2026-10-18
+url: "https://github.com/darrehanrasool/Herbalist"
+keywords:
+  - computational botany
+  - transfer learning
+  - medicinal plants
+  - Kashmir Himalaya
+  - ethnopharmacology
+  - Xception
+  - precision agronomy

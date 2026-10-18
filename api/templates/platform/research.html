@@ -1,0 +1,15 @@
+{% extends "platform/base.html" %}
+{% block title %}Research · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <h1>Research datasets</h1>
+    <p class="hx-sub">Links and download log for the thesis. Full text also lives in <code>research/DATASETS.md</code>.</p>
+  </div>
+</header>
+<div class="hx-card"><pre class="hx-md">{{ catalog }}</pre></div>
+<div class="hx-card">
+  <h2>Download log</h2>
+  <pre class="hx-md">{{ download_log }}</pre>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -79,7 +79,10 @@
                 src="{{ url_for('static', filename=result.image_path) if result.image_path else 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=500&fit=crop&crop=center' }}"
                 alt="Analyzed Plant"
                 class="plant-image"
-                onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=500&fit=crop&crop=center'"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=500&fit=crop&crop=center'
+                "
               />
             </div>
 
@@ -421,7 +424,7 @@
               }
             });
           },
-          { threshold: 0.1 }
+          { threshold: 0.1 },
         );
 
         elements.forEach((el) => {
@@ -470,29 +473,29 @@
                 .mobile-menu-btn {
                     display: none !important;
                 }
-                
+
                 body {
                     background: white !important;
                     color: black !important;
                     font-size: 12pt;
                 }
-                
+
                 .container {
                     max-width: none !important;
                     padding: 0 !important;
                 }
-                
+
                 .section {
                     padding: 0 !important;
                     margin: 0 !important;
                     page-break-inside: avoid;
                 }
-                
+
                 .results-grid {
                     display: block !important;
                     page-break-inside: avoid;
                 }
-                
+
                 .plant-image-container,
                 .data-container {
                     width: 100% !important;
@@ -500,20 +503,20 @@
                     box-shadow: none !important;
                     border: 1px solid #ddd !important;
                 }
-                
+
                 h1, h2, h3, h4, h5, h6 {
                     color: black !important;
                     background: none !important;
                     -webkit-print-color-adjust: exact;
                 }
-                
+
                 .confidence-badge {
                     background: #26a269 !important;
                     color: white !important;
                     -webkit-print-color-adjust: exact;
                     print-color-adjust: exact;
                 }
-                
+
                 .data-card {
                     background: #f8f9fa !important;
                     -webkit-print-color-adjust: exact;
@@ -521,28 +524,28 @@
                     border: 1px solid #dee2e6 !important;
                     margin-bottom: 10pt !important;
                 }
-                
+
                 .toxicity-low {
                     background: rgba(46, 194, 126, 0.2) !important;
                     -webkit-print-color-adjust: exact;
                 }
-                
+
                 .toxicity-moderate {
                     background: rgba(245, 165, 36, 0.2) !important;
                     -webkit-print-color-adjust: exact;
                 }
-                
+
                 .toxicity-high {
                     background: rgba(192, 28, 40, 0.2) !important;
                     -webkit-print-color-adjust: exact;
                 }
-                
+
                 .use-tag {
                     background: rgba(26, 95, 180, 0.1) !important;
                     -webkit-print-color-adjust: exact;
                     border: 1px solid rgba(26, 95, 180, 0.3) !important;
                 }
-                
+
                 .medicinal-section,
                 .uses-section,
                 .safety-section {
@@ -551,7 +554,7 @@
                     -webkit-print-color-adjust: exact;
                 }
             }
-            
+
             @keyframes fadeOut {
                 from { opacity: 1; transform: translateY(0); }
                 to { opacity: 0; transform: translateY(-10px); }

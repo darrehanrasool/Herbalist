@@ -1,0 +1,38 @@
+{% extends "platform/base.html" %}
+{% block title %}Agronomy · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <h1>Grow · fertilize · protect</h1>
+    <p class="hx-sub">Heuristic agronomy tables for the merged VNPlant + Kashmir catalogs. Replace cells with ICAR/NMPB values when you have them.</p>
+  </div>
+</header>
+<form class="hx-card" method="get">
+  <label>Species
+    <select name="species" onchange="this.form.submit()">
+      <option value="">Select…</option>
+      {% for p in plants %}
+      <option value="{{ p.Scientificname }}" {% if p.Scientificname==species %}selected{% endif %}>{{ p.Scientificname }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</form>
+{% if bundle %}
+<section class="hx-grid-2">
+  {% for key, row in bundle.items() %}
+  <article class="hx-card">
+    <h2>{{ key }}</h2>
+    {% if row %}
+    <dl class="hx-dl">
+      {% for k, v in row.items() %}
+      <dt>{{ k }}</dt><dd>{{ v }}</dd>
+      {% endfor %}
+    </dl>
+    {% else %}
+    <p>No row.</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+{% endblock %}
