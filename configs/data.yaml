@@ -27,7 +27,8 @@ data:
       name: "VNPlant-200"
       description: "200 Medicinal Plant Species dataset with ~18,000 images."
       classes: 200
-      raw_path: "data/raw/kaggle/vnplant-200"
+      raw_path: "data/raw/online/vnplant-200"
+      legacy_path: "data/raw/kaggle/vnplant-200"
       citation: "Nguyen Quoc & Truong Hoang, 2020"
       benchmark_split:
         train_samples_per_class: 60
@@ -37,7 +38,9 @@ data:
       name: "Kashmir High-Altitude Medicinal Herbs"
       description: "15 Critically Endangered, Endangered, and High-altitude Endemic Taxa from Kashmir Himalayas."
       classes: 15
-      raw_path: "data/raw/clinical/Kashmere.csv"
+      raw_path: "data/raw/kashmir"
+      images_path: "data/raw/kashmir/images"
+      catalog_path: "data/raw/clinical/Kashmere.csv"
       focus: "Himalayan pharmacology, conservation, phytochemical yield"
 
     indian_medicinal_leaves:

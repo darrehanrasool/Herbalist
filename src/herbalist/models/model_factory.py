@@ -36,6 +36,18 @@ class ModelFactory:
             return build_vision_backbone(architecture=name, **kwargs)
         elif name == "voting_ensemble":
             return SoftVotingEnsemble(**kwargs)
+        elif name in ("global_vision", "global_classifier", "btech_baseline"):
+            from .architectures import GlobalVisionClassifier
+            return GlobalVisionClassifier(**kwargs)
+        elif name in ("kashmir_vision", "kashmir_classifier", "alpine_specialist"):
+            from .architectures import KashmirVisionClassifier
+            return KashmirVisionClassifier(**kwargs)
+        elif name in ("agronomy_tabular", "soil_mlp"):
+            from .architectures import AgronomyTabularMLP
+            return AgronomyTabularMLP(**kwargs)
+        elif name in ("hierarchical_fusion", "combined_ensemble", "multimodal_fusion"):
+            from .architectures import HierarchicalFusionEnsemble
+            return HierarchicalFusionEnsemble(**kwargs)
         else:
             raise ValueError(f"Unknown model architecture requested: {model_name}")
 

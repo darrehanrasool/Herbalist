@@ -64,7 +64,24 @@ models:
       max_iter: 1000
       random_state: 42
 
+    kashmir_alpine_specialist:
+      architecture: "MobileNetV3Large"
+      weights: "imagenet"
+      classes: 15
+      input_shape: [224, 224, 3]
+      dropout_rate: 0.3
+      learning_rate: 0.0005
+      path: "models/kashmir/kashmir_alpine.h5"
+      species_list: "data/raw/clinical/Kashmere.csv"
+
   ensemble:
     voting_ensemble:
       voting: "soft"
       weights: [0.6, 0.2, 0.2]
+
+    hierarchical_fusion:
+      type: "multimodal_hierarchical"
+      vision_weight: 0.70
+      geographic_elevation_weight: 0.15
+      agronomic_soil_weight: 0.15
+      path: "models/fusion/hierarchical_fusion.h5"
