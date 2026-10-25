@@ -8,7 +8,7 @@ if ROOT not in sys.path:
 os.environ.setdefault('KERAS_HOME', os.path.join(ROOT, '.keras'))
 os.makedirs(os.environ['KERAS_HOME'], exist_ok=True)
 
-from flask import Flask, render_template, request, redirect, url_for # type: ignore
+from flask import Flask, render_template, request, redirect, url_for, jsonify, Response # type: ignore
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model # type: ignore
 from keras.preprocessing import image # type: ignore
@@ -17,6 +17,7 @@ import numpy as np # type: ignore
 import pandas as pd # type: ignore
 import requests # type: ignore
 import uuid
+import io
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -306,13 +307,21 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 def predict_plant(image_path):
-    """Predict plant from image and return all data"""
+    """Predict plant from image and return all data with top-5 candidate rankings"""
     if model is None or dataset is None:
         # Return demo data if model not loaded
+        demo_candidates = [
+            {"scientific_name": "Aloe vera", "confidence": "96.4%", "probability": 96.4},
+            {"scientific_name": "Agave americana", "confidence": "2.1%", "probability": 2.1},
+            {"scientific_name": "Kalanchoe pinnata", "confidence": "0.9%", "probability": 0.9},
+            {"scientific_name": "Sansevieria hyacinthoides", "confidence": "0.4%", "probability": 0.4},
+            {"scientific_name": "Euphorbia tirucalli", "confidence": "0.2%", "probability": 0.2},
+        ]
         return {
             'success': False,
             'error': 'Model not loaded',
             'demo': True,
+            'top5_candidates': demo_candidates,
             'data': {
                 'Scientificname': 'Aloe vera',
                 'Biologicalname': 'Aloe',
@@ -326,7 +335,7 @@ def predict_plant(image_path):
                 'PartsUsed': 'Leaves',
                 'PreparationMethods': 'Gel extraction',
                 'ConservationStatus': 'Not Evaluated',
-                'Confidence': '98.7%'
+                'Confidence': '96.4%'
             }
         }
 
@@ -341,7 +350,20 @@ def predict_plant(image_path):
         class_idx = np.argmax(prediction)
         confidence = np.max(prediction) * 100
 
-        # Get plant name
+        # Calculate top-5 candidates
+        probs = prediction[0]
+        top5_indices = np.argsort(probs)[::-1][:5]
+        top5_candidates = []
+        for idx in top5_indices:
+            p_name = PLANT_CLASSES.get(idx, f"Class {idx}")
+            p_val = float(probs[idx]) * 100
+            top5_candidates.append({
+                "scientific_name": p_name,
+                "confidence": f"{p_val:.1f}%",
+                "probability": round(p_val, 2)
+            })
+
+        # Get top-1 plant name
         plant_name = PLANT_CLASSES.get(class_idx, 'Unknown')
 
         # Find plant in dataset
@@ -352,6 +374,7 @@ def predict_plant(image_path):
                 'success': True,
                 'demo': False,
                 'confidence': f"{confidence:.1f}%",
+                'top5_candidates': top5_candidates,
                 'data': {
                     'Scientificname': plant_data.iloc[0]['Scientificname'],
                     'Biologicalname': plant_data.iloc[0]['Biologicalname'],
@@ -371,6 +394,7 @@ def predict_plant(image_path):
             result = {
                 'success': False,
                 'error': 'Plant not found in database',
+                'top5_candidates': top5_candidates,
                 'demo': False
             }
 
@@ -380,6 +404,7 @@ def predict_plant(image_path):
         return {
             'success': False,
             'error': str(e),
+            'top5_candidates': [],
             'demo': False
         }
 
@@ -502,6 +527,50 @@ def api_predict():
     result['image_url'] = url_for('static', filename=f'uploads/{filename}', _external=True)
 
     return result
+
+# ========== SCIENTIFIC DOSSIER EXPORT ROUTES ==========
+
+@app.route('/api/export/json/<path:species>')
+def export_species_json(species):
+    """Export complete scientific dossier for a species as JSON."""
+    from backend.knowledge import agronomy_bundle, curated_row_for
+    curated = curated_row_for(species)
+    bundle = agronomy_bundle(species)
+    dossier = {
+        "metadata": {
+            "platform": "Herbalist AI Scientific Platform",
+            "institution": "Centre for Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir",
+            "scientific_version": "2.0.0-PROD",
+            "curation_standards": ["POWO 2024", "ICMR Medicinal Plants", "Ayurvedic Pharmacopoeia of India", "IUCN Red List 2024"]
+        },
+        "species_query": species,
+        "taxonomy_and_curated": curated,
+        "edaphic_envelope": bundle.get("soil", {}),
+        "cultivation_protocol": bundle.get("cultivation", {}),
+        "nutrient_regime": bundle.get("fertilizer", {}),
+        "phytopathology_ipm": bundle.get("disease", {}),
+        "chemotaxonomy_hybridization": bundle.get("hybridization", [])
+    }
+    return jsonify(dossier)
+
+
+@app.route('/api/export/csv/<path:species>')
+def export_species_csv(species):
+    """Export curated attribute record for a species as CSV."""
+    from backend.knowledge import curated_row_for
+    curated = curated_row_for(species)
+    if not curated:
+        return "Species record not found in curated catalog", 404
+    df_single = pd.DataFrame([curated])
+    buffer = io.StringIO()
+    df_single.to_csv(buffer, index=False)
+    buffer.seek(0)
+    safe_name = species.replace(" ", "_").lower()
+    return Response(
+        buffer.getvalue(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": f"attachment; filename=herbalist_{safe_name}_record.csv"}
+    )
 
 # ========== ERROR HANDLERS ==========
 

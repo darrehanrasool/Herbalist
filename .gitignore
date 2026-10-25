@@ -116,6 +116,7 @@ api/static/uploads/*
 
 # UI static assets & documentation graphics whitelist
 !api/static/graphs/*.png
+!reports/figures/*.png
 !api/static/images/*.png
 !static/images/*.png
 !docs/**/*.png

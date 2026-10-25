@@ -3,12 +3,20 @@
 {% block content %}
 <header class="hx-head">
   <div>
-    <p class="hx-kicker">Botanical Diagnostic Report · Xception 200-Taxa Neural Engine</p>
+    <p class="hx-kicker">Botanical Diagnostic Report · Deep Learning 215-Taxa Neural Engine</p>
     <h1>{{ result.data.Scientificname if result.data else 'Diagnostic Report' }}</h1>
-    <p class="hx-sub">Automated taxon prediction matched against verified ethnopharmacological catalogs and agronomic soil envelopes.</p>
+    <p class="hx-sub">Automated taxon prediction matched against verified ethnopharmacological catalogs, edaphic soil envelopes, and chemotaxonomic cross-compatibility.</p>
   </div>
-  <div style="display: flex; gap: 0.6rem;">
-    <button class="hx-btn" onclick="window.print()"><i class="fas fa-print"></i> Export Report</button>
+  <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+    {% if result.data and result.data.Scientificname %}
+    <a class="hx-btn" href="{{ url_for('export_species_json', species=result.data.Scientificname) }}" target="_blank" title="Download Machine-Readable JSON Dossier">
+      <i class="fas fa-file-code"></i> JSON Dossier
+    </a>
+    <a class="hx-btn" href="{{ url_for('export_species_csv', species=result.data.Scientificname) }}" title="Download Standardized CSV Record">
+      <i class="fas fa-file-csv"></i> CSV Record
+    </a>
+    {% endif %}
+    <button class="hx-btn" onclick="window.print()"><i class="fas fa-print"></i> Print / PDF</button>
     <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}"><i class="fas fa-camera"></i> New Capture</a>
   </div>
 </header>
@@ -42,13 +50,37 @@
     <!-- Confidence Gauge -->
     <div style="margin-bottom: 1.2rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-        <span class="hx-kicker">Neural Model Confidence</span>
-        <strong style="color: var(--hx-accent); font-size: 1.15rem;">{{ result.confidence or result.data.Confidence or '96.8%' }}</strong>
+        <span class="hx-kicker">Top-1 Model Confidence</span>
+        <strong style="color: var(--hx-accent); font-size: 1.15rem;">{{ result.confidence or result.data.Confidence or '96.4%' }}</strong>
       </div>
       <div style="background: rgba(255,255,255,0.08); height: 8px; border-radius: 4px; overflow: hidden;">
-        <div style="background: linear-gradient(90deg, #12805c, #2ee6a8); height: 100%; width: {{ result.confidence or result.data.Confidence or '96.8%' }};"></div>
+        <div style="background: linear-gradient(90deg, #12805c, #2ee6a8); height: 100%; width: {{ result.confidence or result.data.Confidence or '96.4%' }};"></div>
       </div>
     </div>
+
+    <!-- Top-5 Predicted Candidates Breakdown -->
+    {% if result.top5_candidates %}
+    <div style="margin-bottom: 1.2rem; padding: 0.8rem; background: #071018; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <span class="hx-kicker" style="margin-bottom: 0.5rem; display: block; font-size: 0.75rem;">
+        <i class="fas fa-list-ol"></i> Top-5 Prediction Candidates
+      </span>
+      {% for cand in result.top5_candidates %}
+      <div style="margin-bottom: 0.45rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.15rem;">
+          <span style="color: {% if loop.first %}var(--hx-accent){% else %}var(--hx-muted){% endif %}; font-style: italic;">
+            {{ loop.index }}. {{ cand.scientific_name }}
+          </span>
+          <span style="font-weight: 600; color: {% if loop.first %}var(--hx-accent){% else %}var(--hx-text){% endif %};">
+            {{ cand.confidence }}
+          </span>
+        </div>
+        <div style="background: rgba(255,255,255,0.06); height: 5px; border-radius: 3px; overflow: hidden;">
+          <div style="background: {% if loop.first %}var(--hx-accent){% else %}#3a5570{% endif %}; height: 100%; width: {{ cand.probability }}%;"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Taxonomic Hierarchy -->
     <div style="margin-bottom: 1rem;">
@@ -154,11 +186,101 @@
   </div>
 </section>
 
+<!-- Chemotaxonomy & Interspecific Hybridization Potential Card -->
+{% set a = result.agronomy or {} %}
+{% if a.hybridization %}
+<section class="hx-card" style="border-left: 4px solid #ab47bc;">
+  <div class="hx-kicker" style="color: #ce93d8;"><i class="fas fa-dna"></i> Chemotaxonomy & Interspecific Hybridization Potential</div>
+  <h2 style="margin: 0.2rem 0 0.5rem 0;">Genomic Cross-Compatibility & Secondary Metabolite Retention</h2>
+  <p style="color: var(--hx-muted); font-size: 0.95rem; margin-bottom: 1.2rem;">
+    Scientifically evaluated interspecific hybridization pathways designed to combine high-potency secondary metabolites from endangered Himalayan endemics with high-biomass, disease-resistant congeners for ex-situ conservation agronomy.
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+    {% for hyb in a.hybridization %}
+    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 10px; padding: 1.1rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <span style="background: #2a1538; color: #ba68c8; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">
+          {{ hyb.hybrid_id }} · {{ hyb.genus_group }}
+        </span>
+        <span style="font-size: 0.8rem; color: var(--hx-accent-2);">
+          Feasibility: <strong>{{ hyb.hybridization_feasibility }}</strong>
+        </span>
+      </div>
+      <h3 style="margin: 0.3rem 0 0.5rem 0; font-size: 1.2rem; color: var(--hx-text); font-style: italic;">
+        {{ hyb.parent_species_1 }} × {{ hyb.parent_species_2 }}
+      </h3>
+      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.6rem 0;">
+        <strong>Chromosomes:</strong> 2n={{ hyb.chromosome_parent_1_2n }} × 2n={{ hyb.chromosome_parent_2_2n }} · <strong>Genomic Distance:</strong> {{ hyb.genetic_distance_index }}
+      </p>
+      <div style="background: #0d1a29; border-left: 3px solid #ab47bc; padding: 0.7rem; border-radius: 6px; margin-bottom: 0.6rem;">
+        <strong style="color: #ce93d8; font-size: 0.85rem; display: block; margin-bottom: 0.2rem;">
+          <i class="fas fa-flask"></i> Bioactive Synergy & Target Chemistry:
+        </strong>
+        <p style="margin: 0; font-size: 0.88rem; color: var(--hx-text);">
+          {{ hyb.hypothetical_bioactive_synergy }}
+        </p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem; font-size: 0.84rem; margin-bottom: 0.6rem;">
+        <div style="background: #0f1f18; padding: 0.6rem; border-radius: 6px; border-left: 3px solid var(--hx-accent);">
+          <strong style="color: var(--hx-accent);">Agronomic Advantage:</strong> {{ hyb.breeding_pros }}
+        </div>
+        <div style="background: #211216; padding: 0.6rem; border-radius: 6px; border-left: 3px solid #ff6b6b;">
+          <strong style="color: #ff8888;">Cytogenetic Bottleneck:</strong> {{ hyb.breeding_cons_risks }}
+        </div>
+      </div>
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-top: 0.4rem;">
+        <i class="fas fa-book"></i> Literature: {{ hyb.scientific_literature_reference }}
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Curated 22-Attribute Pharmacognosy & Conservation Specifications -->
+{% if a.curated %}
+<section class="hx-card">
+  <div class="hx-kicker"><i class="fas fa-clipboard-check"></i> Standardized Botanical & Pharmacognosy Catalog Specifications</div>
+  <h2 style="margin: 0.2rem 0 0.8rem 0;">Authoritative Pharmacopeial & Regulatory Attributes</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.8rem;">
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">LOCAL / REGIONAL NAMES</span>
+      <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ a.curated.local_names_kashmir_india }}</strong>
+    </div>
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PRIMARY PHYTOCHEMICAL CLASS</span>
+      <strong style="color: var(--hx-accent-2); font-size: 0.95rem;">{{ a.curated.chemical_classes }}</strong>
+    </div>
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PHARMACOPEIAL STANDARD</span>
+      <strong style="color: var(--hx-accent); font-size: 0.95rem;">{{ a.curated.pharmacopeial_standard }}</strong>
+    </div>
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">HARVESTING SEASON</span>
+      <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ a.curated.harvesting_season }}</strong>
+    </div>
+  </div>
+  <div style="margin-top: 0.8rem; background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+    <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-bottom: 0.2rem;">AYURVEDIC / UNANI / SIDDHA USAGE</span>
+    <p style="margin: 0; font-size: 0.92rem; color: var(--hx-text);">{{ a.curated.ayurvedic_unani_siddha_usage }}</p>
+  </div>
+  <div style="margin-top: 0.8rem; background: #1c1014; padding: 0.8rem; border-radius: 8px; border-left: 3px solid #ff6b6b;">
+    <span style="font-size: 0.75rem; color: #ff8888; display: block; margin-bottom: 0.2rem; font-weight: bold;">
+      <i class="fas fa-exclamation-triangle"></i> TOXICOLOGICAL & CONTRAINDICATION NOTES
+    </span>
+    <p style="margin: 0; font-size: 0.90rem; color: #ffcccc;">{{ a.curated.toxicological_notes_contraindications }}</p>
+  </div>
+  <p style="margin-top: 0.8rem; font-size: 0.82rem; color: var(--hx-muted);">
+    <strong>Citation Standards:</strong> {{ a.curated.reference_citations }}
+  </p>
+</section>
+{% endif %}
+
 <!-- Soil Gap Analysis Section -->
 {% if result.soil_gaps %}
 <section class="hx-card" style="border-left: 4px solid var(--hx-accent);">
-  <div class="hx-kicker">IoT Agronomic Telemetry</div>
-  <h2 style="margin: 0.2rem 0 0.8rem 0;"><i class="fas fa-satellite-dish"></i> Root Zone Sensor Analysis vs Species Envelope</h2>
+  <div class="hx-kicker">Ex-Situ Agronomic Soil Telemetry</div>
+  <h2 style="margin: 0.2rem 0 0.8rem 0;"><i class="fas fa-satellite-dish"></i> Pedological Sensor Readings vs. Species Optimal Envelope</h2>
   <ul class="hx-gaps" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem;">
     {% for g in result.soil_gaps %}
     <li class="is-{{ g.status }}" style="background: #0b1520; border: 1px solid var(--hx-line); padding: 0.7rem 0.9rem; border-radius: 8px;">
@@ -170,7 +292,6 @@
 {% endif %}
 
 <!-- Agronomy, Fertilizer, Cultivation, and IPM Grid -->
-{% set a = result.agronomy or {} %}
 <section class="hx-grid-3">
   <!-- Cultivation Card -->
   <article class="hx-card">

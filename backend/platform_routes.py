@@ -43,7 +43,7 @@ def register_platform(app):
 
     @app.route("/classic")
     def classic_home():
-        return render_template("index.html")
+        return redirect(url_for("home"))
 
     @app.route("/lab")
     def lab():

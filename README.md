@@ -1,6 +1,6 @@
 # Herbalist-AI: Enterprise Deep Learning & Botanical Intelligence Platform
 
-[![Tests: 18 Passed](https://img.shields.io/badge/tests-18%20passed-brightgreen.svg?logo=pytest)](tests/)
+[![Tests: 22 Passed](https://img.shields.io/badge/tests-22%20passed-brightgreen.svg?logo=pytest)](tests/)
 [![CI Workflow](https://img.shields.io/badge/CI%20Workflow-passing-brightgreen.svg?logo=github-actions)](https://github.com/darrehanrasool/Herbalist/actions/workflows/tests.yml)
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
 [![DOI: Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.herbalist--ai-blue.svg)](https://zenodo.org/)
@@ -20,8 +20,8 @@ This research project is designed, engineered, and maintained at the **Centre of
 | Role                                                | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                   |
 | :-------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                    |
-| **Contributing Researcher & Author**                | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
-| **Contributing Researcher**                         | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Deep Convolutional Modeling, Ethnopharmacology Diagnostics & Platform Engineering                                 |
+| **Project Lead & Author**                           | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
+| **Project Lead & Author**                           | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Pharmacognosy Curation & Chemotaxonomy Modeling                   |
 | **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Agronomic Soil Modeling, Phytochemical Feature Engineering & Cross-Dataset Evaluation                             |
 | **Contributing Researcher**                         | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity                                |
 
@@ -34,9 +34,11 @@ This research project is designed, engineered, and maintained at the **Centre of
 
 - **Extreme Inception Decoupled Vision Architecture**: Decoupled Depthwise Separable Convolutions (36 conv layers across 14 modules, yielding an $88.9\%$ reduction in FLOP compute over standard convolutions) achieving **$96.79\%$ validation accuracy** across 200 medicinal taxa.
 - **Kashmir Himalayan Endemic Specialist Engine**: Dedicated high-altitude taxonomic intelligence module targeting 15 critically endangered and threatened alpine medicinal taxa (_Gentiana kurroo_, _Saussurea costus_, _Picrorhiza kurroa_, _Aconitum heterophyllum_, _Podophyllum hexandrum_, etc.) with elevation gating ($> 2,500\text{ m}$ masl).
+- **Chemotaxonomy & Interspecific Hybridization Engine**: Evaluates cross-breeding compatibility ($2n$ karyotype synapsis, genetic distance $D_{\text{genomic}}$), bioactive secondary metabolite retention, and agronomic biomass vigour across 12 verified Himalayan-global congener pairs.
+- **Curated 22-Attribute Botanical Catalog**: 215 medicinal taxa cross-referenced against Kew POWO, ICMR, NMPB, and Ayurvedic/Unani standards with zero random or unverified values.
+- **10 Publication-Quality Research Visualizations**: 300 DPI figures covering altitudinal zonation, edaphic envelopes, confusion matrices, ROC curves, and breeding matrices.
 - **Hierarchical Multi-Modal Fusion**: Unifies deep visual representations ($2048$-dimensional feature vectors from Xception) with geographic elevation priors ($\mathbb{P}(\text{Taxon} \mid \text{Altitude})$) and 7-dimensional physicochemical soil telemetry (pH, N, P, K, moisture, temperature, EC) to eliminate out-of-distribution taxonomic hallucinations.
-- **Pharmacological & Phytochemical Profiling**: Automated mapping of identified species to active therapeutic secondary metabolites (e.g. picrosides, costunolides, atisine, gentiopicrin, podophyllotoxin), traditional medicinal formulations (Ayurvedic/Unani), and clinical toxicity advisories.
-- **Interactive Agronomy & Lab Console**: Full-stack web application featuring drag-and-drop live leaf image diagnosis, dynamic confidence gauges, Kashmir alpine habitat badges, interactive agronomic soil gap analysis, and real-time sensor telemetry simulation.
+- **1-Click Scientific Dossier Downloads**: Instant export of machine-readable JSON dossiers and standardized CSV records directly from the scientific workbench.
 - **Hardware-Aware Acceleration & Boundary Guarantees**: Optimized execution across Apple Silicon Metal Performance Shaders (MPS), NVIDIA CUDA, and vectorized CPU, maintaining memory bounds under $150\text{ MB}$ for mobile field and edge agricultural deployment.
 
 ---
