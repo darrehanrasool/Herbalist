@@ -1,14 +1,14 @@
 # Model Card · Herbalist AI Vision Classifier
 
 ## 1. Model Details
-- **Developer**: Darrehan Rasool (Islamic University of Science & Technology, Kashmir).
+- **Research Team & Developers**: Dr. Muzafar Rasool Bhat, Dar Rehan Rasool, Sehreen, Muneeb Syed Shah, Shafiya Bashir Pampori (Centre for Artificial Intelligence, Islamic University of Science & Technology, Kashmir).
 - **Model Release Date**: June 2025 (Initial BTech release v1.0.0); October 2026 (Enterprise v2.0.0).
 - **Model Type**: Deep Convolutional Neural Network (Transfer Learning).
 - **Backbone Architecture**: Xception (36 convolutional stages, depthwise separable convolutions, Global Average Pooling).
-- **Weight Archive**: `models/deep_learning/plant.h5` (~88 MB, 20.8 million parameters).
+- **Weight Archive**: `models/deep_learning/plant.h5` (~88 MB, 21.2 million parameters).
 - **Input Dimensions**: $180 \times 180 \times 3$ RGB (Normalized $[0, 1]$).
 - **Output Layer**: 200-dimensional categorical softmax.
-- **License**: MIT.
+- **License**: Strict Academic & Non-Commercial Research License.
 
 ---
 

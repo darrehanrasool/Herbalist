@@ -1,29 +1,56 @@
-# Contributor Covenant Code of Conduct
+# Academic & Research Code of Conduct · Herbalist-AI
 
-## Our Pledge
+## 1. Purpose & Guiding Principles
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
+The **Herbalist-AI** research initiative, maintained under the auspices of the **Centre of Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir**, is dedicated to fostering a scholarly, respectful, and scientifically rigorous research environment.
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+We believe that high-impact scientific inquiry thrives when researchers, faculty, students, botanists, and software engineers collaborate with mutual dignity, academic honesty, and professional courtesy.
 
-## Our Standards
+---
 
-Examples of behavior that contributes to a positive environment for our community include:
+## 2. Standards of Professional Conduct
 
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
-- Focusing on what is best not just for us as individuals, but for the overall community
+All project participants, maintainers, and community contributors are expected to uphold the following standards:
 
-## Enforcement Responsibilities
+### 2.1 Academic Integrity & Scientific Rigor
+- **Honesty in Research**: Report datasets, methodology, evaluation metrics, and experimental results truthfully. Fabrication, data tampering, and selective omission of failure cases are strictly prohibited.
+- **Attribution & Intellectual Honesty**: Properly cite all literature, baseline models, prior works, and external datasets. Plagiarism in code, documentation, or publications will not be tolerated.
+- **Reproducibility**: Ensure code, preprocessing pipelines, and experimental scripts are documented and verifiable by independent researchers.
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+### 2.2 Respectful & Collegial Interaction
+- **Professional Courtesy**: Treat all collaborators, reviewers, students, and maintainers with politeness, kindness, and dignity.
+- **Constructive Peer Review**: Frame feedback, technical critiques, and code reviews objectively, focusing on technical merits and scientific clarity rather than personal criticism.
+- **Collaborative Spirit**: Support new contributors, mentor junior researchers, and maintain an environment of intellectual generosity.
 
-## Scope
+### 2.3 Ethical Botanical & Environmental Stewardship
+- **Conservation Ethics**: Field research, specimen imaging, and data collection must comply with Indian Wildlife and Forest Protection regulations, biodiversity conservation guidelines, and CITES treaties.
+- **Protection of Endangered Flora**: Destructive sampling, uprooting, or commercial exploitation of critically endangered high-altitude taxa (such as *Gentiana kurroo*, *Saussurea costus*, and *Aconitum heterophyllum*) is strictly prohibited.
 
-This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces.
+---
 
-## Contact
+## 3. Unacceptable Behavior
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainer at `darrehanrasool@gmail.com`.
+The following actions are strictly prohibited in all project repositories, communication channels, issues, pull requests, and associated academic meetings:
+
+- **Harassment & Intimidation**: Abusive language, derogatory comments, personal attacks, or aggressive behavior toward any researcher, student, or contributor.
+- **Academic Sabotage & Trolling**: Deliberately opening disruptive issues, introducing malicious code/backdoors, poisoning dataset manifests, or engaging in bad-faith debates.
+- **Unprofessional Conduct**: Using vulgar, profane, or inflammatory language in commit messages, documentation, discussions, or code comments.
+- **Unauthorized Data Sharing**: Publishing sensitive geospatial coordinates of critically endangered wild flora habitats that could facilitate illegal poaching or biopiracy.
+
+---
+
+## 4. Enforcement & Reporting Protocol
+
+The leadership team and project maintainers are responsible for maintaining research standards and will take fair, proportional action against violations:
+
+1. **Informal Guidance**: For minor infractions or inadvertent lapses in professional decorum, maintainers will provide private feedback and clarification.
+2. **Formal Warning**: Repeated or deliberate violations will result in an official written reprimand and temporary suspension of contributor permissions.
+3. **Permanent Removal**: Severe breaches—including academic dishonesty, harassment, or deliberate code sabotage—will lead to immediate, permanent revocation of repository access and reporting to institutional authorities.
+
+### Reporting an Incident
+If you observe behavior that violates this Code of Conduct, please contact the project maintainers and research leadership:
+
+- **Project Lead**: Dar Rehan Rasool (`darrehanrasool@gmail.com`)
+- **Academic Unit**: Centre of Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
+
+All reports will be reviewed promptly, discreetly, and with strict confidentiality.

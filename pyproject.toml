@@ -8,9 +8,13 @@ version = "2.0.0"
 description = "Enterprise Research Framework for Himalayan and Global Medicinal Flora Classification, Pharmacognosy, and Precision Agronomy."
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = {text = "Strict Academic & Non-Commercial Research License"}
 authors = [
-  {name = "Darrehan Rasool", email = "darrehanrasool@gmail.com"}
+  {name = "Dr. Muzafar Rasool Bhat", email = "muzafar.rasool@iust.ac.in"},
+  {name = "Dar Rehan Rasool", email = "darrehanrasool@gmail.com"},
+  {name = "Sehreen"},
+  {name = "Muneeb Syed Shah"},
+  {name = "Shafiya Bashir Pampori"}
 ]
 keywords = [
   "computational-botany",
