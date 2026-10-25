@@ -52,8 +52,8 @@ def load_trained_vision_model(model_path: Optional[str] = None) -> Optional[mode
     """Load a pretrained Keras model (.h5) with custom objects."""
     candidates = [
         model_path,
-        str(ROOT_DIR / "checkpoints" / "best" / "plant.h5"),
         str(ROOT_DIR / "models" / "deep_learning" / "plant.h5"),
+        str(ROOT_DIR / "checkpoints" / "best" / "plant.h5"),
         str(ROOT_DIR / "api" / "plant.h5"),
         str(ROOT_DIR / "plant.h5"),
     ]

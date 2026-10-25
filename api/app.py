@@ -34,9 +34,10 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 def load_ml_model():
     try:
         candidates = [
+            os.path.join(ROOT, "models", "deep_learning", "plant.h5"),
+            os.path.join(ROOT, "checkpoints", "best", "plant.h5"),
             os.path.join(app.root_path, "plant.h5"),
             os.path.join(ROOT, "plant.h5"),
-            os.path.join(ROOT, "models", "deep_learning", "plant.h5"),
             os.path.join(ROOT, "models", "plant.h5"),
             "plant.h5",
         ]
@@ -44,7 +45,8 @@ def load_ml_model():
 
         if not MODEL_PATH:
             MODEL_URL = "https://github.com/darrehanrasool/Herbalist/releases/download/v1.0.0/plant.h5"
-            MODEL_PATH = os.path.join(app.root_path, "plant.h5")
+            MODEL_PATH = os.path.join(ROOT, "models", "deep_learning", "plant.h5")
+            os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
             print(f"Downloading model to {MODEL_PATH}...")
             response = requests.get(MODEL_URL, stream=True)
             if response.status_code == 200:
