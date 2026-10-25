@@ -17,13 +17,13 @@ Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, 
 
 This research project is designed, engineered, and maintained at the **Centre of Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir**.
 
-| Role | Name | Designation & Affiliation | Research & Project Contribution |
-| :--- | :--- | :--- | :--- |
-| **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction |
-| **Project Lead & Author** | **Dar Rehan Rasool** | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
-| **Project Lead & Author** | **Sehreen** | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST | Deep Convolutional Modeling, Ethnopharmacology Diagnostics & Platform Engineering |
-| **Contributing Researcher** | **Muneeb Syed Shah** | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST | Agronomic Soil Modeling, Phytochemical Feature Engineering & Cross-Dataset Evaluation |
-| **Contributing Researcher** | **Shafiya Bashir Pampori** | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity |
+| Role                                                | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                   |
+| :-------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                    |
+| **Contributing Researcher & Author**                | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
+| **Contributing Researcher**                         | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Deep Convolutional Modeling, Ethnopharmacology Diagnostics & Platform Engineering                                 |
+| **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Agronomic Soil Modeling, Phytochemical Feature Engineering & Cross-Dataset Evaluation                             |
+| **Contributing Researcher**                         | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity                                |
 
 - **Academic Unit**: Centre of Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
@@ -33,7 +33,7 @@ This research project is designed, engineered, and maintained at the **Centre of
 ## Key Features
 
 - **Extreme Inception Decoupled Vision Architecture**: Decoupled Depthwise Separable Convolutions (36 conv layers across 14 modules, yielding an $88.9\%$ reduction in FLOP compute over standard convolutions) achieving **$96.79\%$ validation accuracy** across 200 medicinal taxa.
-- **Kashmir Himalayan Endemic Specialist Engine**: Dedicated high-altitude taxonomic intelligence module targeting 15 critically endangered and threatened alpine medicinal taxa (*Gentiana kurroo*, *Saussurea costus*, *Picrorhiza kurroa*, *Aconitum heterophyllum*, *Podophyllum hexandrum*, etc.) with elevation gating ($> 2,500\text{ m}$ masl).
+- **Kashmir Himalayan Endemic Specialist Engine**: Dedicated high-altitude taxonomic intelligence module targeting 15 critically endangered and threatened alpine medicinal taxa (_Gentiana kurroo_, _Saussurea costus_, _Picrorhiza kurroa_, _Aconitum heterophyllum_, _Podophyllum hexandrum_, etc.) with elevation gating ($> 2,500\text{ m}$ masl).
 - **Hierarchical Multi-Modal Fusion**: Unifies deep visual representations ($2048$-dimensional feature vectors from Xception) with geographic elevation priors ($\mathbb{P}(\text{Taxon} \mid \text{Altitude})$) and 7-dimensional physicochemical soil telemetry (pH, N, P, K, moisture, temperature, EC) to eliminate out-of-distribution taxonomic hallucinations.
 - **Pharmacological & Phytochemical Profiling**: Automated mapping of identified species to active therapeutic secondary metabolites (e.g. picrosides, costunolides, atisine, gentiopicrin, podophyllotoxin), traditional medicinal formulations (Ayurvedic/Unani), and clinical toxicity advisories.
 - **Interactive Agronomy & Lab Console**: Full-stack web application featuring drag-and-drop live leaf image diagnosis, dynamic confidence gauges, Kashmir alpine habitat badges, interactive agronomic soil gap analysis, and real-time sensor telemetry simulation.
@@ -100,6 +100,7 @@ make run
 ```
 
 Access URL: **[http://127.0.0.1:5001](http://127.0.0.1:5001)**
+
 - Modern Platform Console: **[http://127.0.0.1:5001/platform/](http://127.0.0.1:5001/platform/)**
 - Species Identification & Diagnosis: **[http://127.0.0.1:5001/platform/identify](http://127.0.0.1:5001/platform/identify)**
 - Kashmir & Global Taxa Explorer: **[http://127.0.0.1:5001/platform/plants](http://127.0.0.1:5001/platform/plants)**
@@ -144,26 +145,26 @@ pytest tests/ -v
 Evaluated across **17,973 images** spanning **200 medicinal plant species** (12,000 training, 5,973 validation/testing):
 
 | Epoch | Step Duration | Training Loss | Training Accuracy | Validation Loss | Validation Accuracy | Epoch Delta ($\Delta \text{Val Acc}$) |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1** | 1,704s | 2.4598 | 47.82% | 1.0457 | 74.89% | Baseline initialization |
-| **2** | 1,726s | 1.0808 | 73.73% | 0.6013 | 85.79% | $+10.90\%$ |
-| **3** | 1,738s | 0.6936 | 82.74% | 0.4381 | 89.42% | $+3.63\%$ |
-| **4** | 1,155s | 0.4859 | 87.77% | 0.3137 | 93.00% | $+3.58\%$ |
-| **5** | 1,111s | 0.3506 | 91.47% | 0.2160 | 95.45% | $+2.45\%$ |
-| **6** | 1,114s | **0.2653** | **93.57%** | **0.1672** | **96.79%** | **$+1.34\%$** |
+| :---: | :-----------: | :-----------: | :---------------: | :-------------: | :-----------------: | :-----------------------------------: |
+| **1** |    1,704s     |    2.4598     |      47.82%       |     1.0457      |       74.89%        |        Baseline initialization        |
+| **2** |    1,726s     |    1.0808     |      73.73%       |     0.6013      |       85.79%        |              $+10.90\%$               |
+| **3** |    1,738s     |    0.6936     |      82.74%       |     0.4381      |       89.42%        |               $+3.63\%$               |
+| **4** |    1,155s     |    0.4859     |      87.77%       |     0.3137      |       93.00%        |               $+3.58\%$               |
+| **5** |    1,111s     |    0.3506     |      91.47%       |     0.2160      |       95.45%        |               $+2.45\%$               |
+| **6** |    1,114s     |  **0.2653**   |    **93.57%**     |   **0.1672**    |     **96.79%**      |             **$+1.34\%$**             |
 
 ### Priority Kashmir Endemic Taxa Catalog
 
-| Botanical Taxon | Common / Kashmiri Name | IUCN Conservation Status | Elevation Range | Active Phytochemical Compounds |
-| :--- | :--- | :--- | :--- | :--- |
-| *Gentiana kurroo* | Nilkanth / Neel Kanth | **Critically Endangered (CR)** | 1,800 – 3,000 m | Gentiopicroside, Amarogentin, Swertiamarin |
-| *Saussurea costus* | Kuth / Costus | **Critically Endangered (CR)** (CITES I) | 2,500 – 3,800 m | Costunolide, Dehydrocostus lactone, Saussurine |
-| *Picrorhiza kurroa* | Kutki / Kour | **Endangered (EN)** | 3,000 – 4,500 m | Picroside I, Picroside II, Kutkoside |
-| *Aconitum heterophyllum* | Atis / Patris | **Critically Endangered (CR)** | 2,400 – 4,000 m | Atisine, Heteratisine, Aconitine |
-| *Podophyllum hexandrum* | Wanwangan / Bankakri | **Endangered (EN)** | 2,700 – 4,200 m | Podophyllotoxin, 4'-demethylpodophyllotoxin |
-| *Arnebia benthamii* | Kahzaban | **Critically Endangered (CR)** | 3,000 – 4,300 m | Shikonin derivatives, Alkannin |
-| *Inula racemosa* | Poshkar | **Endangered (EN)** | 2,000 – 3,200 m | Alantolactone, Isoalantolactone |
-| *Rheum webbianum* | Pambchalan | **Vulnerable (VU)** | 2,800 – 4,200 m | Emodin, Rhein, Chrysophanol |
+| Botanical Taxon          | Common / Kashmiri Name | IUCN Conservation Status                 | Elevation Range | Active Phytochemical Compounds                 |
+| :----------------------- | :--------------------- | :--------------------------------------- | :-------------- | :--------------------------------------------- |
+| _Gentiana kurroo_        | Nilkanth / Neel Kanth  | **Critically Endangered (CR)**           | 1,800 – 3,000 m | Gentiopicroside, Amarogentin, Swertiamarin     |
+| _Saussurea costus_       | Kuth / Costus          | **Critically Endangered (CR)** (CITES I) | 2,500 – 3,800 m | Costunolide, Dehydrocostus lactone, Saussurine |
+| _Picrorhiza kurroa_      | Kutki / Kour           | **Endangered (EN)**                      | 3,000 – 4,500 m | Picroside I, Picroside II, Kutkoside           |
+| _Aconitum heterophyllum_ | Atis / Patris          | **Critically Endangered (CR)**           | 2,400 – 4,000 m | Atisine, Heteratisine, Aconitine               |
+| _Podophyllum hexandrum_  | Wanwangan / Bankakri   | **Endangered (EN)**                      | 2,700 – 4,200 m | Podophyllotoxin, 4'-demethylpodophyllotoxin    |
+| _Arnebia benthamii_      | Kahzaban               | **Critically Endangered (CR)**           | 3,000 – 4,300 m | Shikonin derivatives, Alkannin                 |
+| _Inula racemosa_         | Poshkar                | **Endangered (EN)**                      | 2,000 – 3,200 m | Alantolactone, Isoalantolactone                |
+| _Rheum webbianum_        | Pambchalan             | **Vulnerable (VU)**                      | 2,800 – 4,200 m | Emodin, Rhein, Chrysophanol                    |
 
 ---
 
