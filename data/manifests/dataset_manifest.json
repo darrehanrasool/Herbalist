@@ -9,9 +9,9 @@
     {
       "id": "kashmir_medicinal",
       "name": "Kashmir Himalayan High-Altitude Endemic Medicinal Flora",
-      "file_path": "data/processed/kashmir_medicinal.csv",
+      "file_path": "data/csv/kashmir_medicinal_plants.csv",
       "raw_path": "data/raw/clinical/Kashmere.csv",
-      "records": 15,
+      "records": 16,
       "columns": [
         "Scientificname",
         "Biologicalname",
@@ -37,18 +37,18 @@
     {
       "id": "medicinal_catalog_200",
       "name": "VNPlant-200 Global / Southeast Asian Medicinal Taxa Catalog",
-      "file_path": "data/processed/medicinal.csv",
+      "file_path": "data/csv/medicinal.csv",
       "raw_path": "data/raw/clinical/medicinal.csv",
-      "records": 200,
-      "classes": 200,
-      "task": "200-class species identification and pharmacological attribute joining"
+      "records": 216,
+      "classes": 216,
+      "task": "216-class species identification and pharmacological attribute joining"
     },
     {
       "id": "plants_master_integrated",
       "name": "Integrated Master Knowledge Base (Kashmir + 200 Species)",
-      "file_path": "knowledge/plants_master.csv",
-      "records": 215,
-      "classes": 215,
+      "file_path": "data/csv/medicinal_plants_master.csv",
+      "records": 216,
+      "classes": 216,
       "features": [
         "Cultivation windows",
         "Soil NPK & pH thresholds",

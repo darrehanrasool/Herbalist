@@ -14,7 +14,7 @@ class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
         self.assertTrue(curated_path.exists(), f"Missing {curated_path}")
 
         df = pd.read_csv(curated_path)
-        self.assertEqual(len(df), 215, "Curated catalog must contain 215 species")
+        self.assertEqual(len(df), 216, "Curated catalog must contain 216 species")
         self.assertEqual(len(df.columns), 22, "Curated catalog must contain exactly 22 standardized attributes")
 
         expected_columns = [
@@ -84,6 +84,10 @@ class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
         self.assertTrue(csv_dir.exists(), "data/csv/ directory must exist")
 
         required_csvs = [
+            "medicinal.csv",
+            "fertiliser.csv",
+            "fertilizer.csv",
+            "chemicaltaxonomy.csv",
             "medicinal_plants_master.csv",
             "kashmir_medicinal_plants.csv",
             "chemotaxonomy_hybridization.csv",
@@ -99,6 +103,30 @@ class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
             self.assertTrue(csv_path.exists(), f"Missing canonical CSV: {name}")
             df = pd.read_csv(csv_path)
             self.assertGreater(len(df), 0, f"Canonical CSV {name} cannot be empty")
+
+    def test_non_repetitive_scientific_data_and_image_splits(self):
+        csv_dir = ROOT_DIR / "data" / "csv"
+        fert_df = pd.read_csv(csv_dir / "fertiliser.csv")
+        self.assertEqual(len(fert_df), 216, "fertiliser.csv must have 216 rows")
+        self.assertGreater(fert_df["agronomic_avoid_contraindications"].nunique(), 15, "Avoid must have distinct values")
+
+        chem_df = pd.read_csv(csv_dir / "chemicaltaxonomy.csv")
+        self.assertEqual(len(chem_df), 216, "chemicaltaxonomy.csv must have 216 rows")
+        self.assertGreater(chem_df["primary_chemical_class"].nunique(), 5)
+
+        med_df = pd.read_csv(csv_dir / "medicinal.csv")
+        self.assertEqual(len(med_df), 216, "medicinal.csv must have 216 rows")
+
+        # Verify no stray CSVs in data/processed/ or data/splits/
+        processed_dir = ROOT_DIR / "data" / "processed"
+        splits_dir = ROOT_DIR / "data" / "splits"
+        self.assertEqual(len(list(processed_dir.glob("*.csv"))), 0, "No CSV files allowed in data/processed/")
+        self.assertEqual(len(list(splits_dir.rglob("*.csv"))), 0, "No CSV files allowed in data/splits/")
+
+        # Verify processed/train contains image folders
+        train_dir = processed_dir / "train"
+        self.assertTrue(train_dir.exists())
+        self.assertGreater(len(list(train_dir.iterdir())), 50, "processed/train must contain class image folders")
 
     def test_kashmir_dslr_pipeline_components(self):
         from src.herbalist.data.kashmir_dslr_pipeline import KashmirDSLRDatasetPipeline

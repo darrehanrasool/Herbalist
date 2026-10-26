@@ -129,10 +129,10 @@ api/static/uploads/*
 !data/csv/
 !data/csv/*.csv
 !data/csv/*.md
+!data/csv/tabular_splits/*.csv
+!data/splits/README.md
 !data/raw/clinical/*.csv
 !data/raw/catalog/*.csv
-!data/splits/**/*.csv
-!data/processed/*.csv
 !data/manifests/*
 !imagesamplecount.csv
 !experiments/experiment_registry.csv

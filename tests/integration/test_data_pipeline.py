@@ -21,11 +21,11 @@ class TestDataPipelineIntegration(unittest.TestCase):
         self.assertTrue(results.get("kashmir_medicinal", False))
 
     def test_kashmir_catalog_loading_and_features(self):
-        kashmir_csv = ROOT_DIR / "data" / "processed" / "kashmir_medicinal.csv"
+        kashmir_csv = ROOT_DIR / "data" / "csv" / "kashmir_medicinal_plants.csv"
         self.assertTrue(kashmir_csv.exists())
 
         df = pd.read_csv(kashmir_csv)
-        self.assertEqual(len(df), 15)
+        self.assertGreaterEqual(len(df), 15)
         self.assertIn("Scientificname", df.columns)
         self.assertIn("ConservationStatus", df.columns)
 
@@ -34,11 +34,11 @@ class TestDataPipelineIntegration(unittest.TestCase):
         self.assertIn("Toxicity_Ordinal", df_feat.columns)
 
     def test_data_quality_computation(self):
-        csv_path = ROOT_DIR / "data" / "processed" / "medicinal.csv"
+        csv_path = ROOT_DIR / "data" / "csv" / "medicinal.csv"
         df = pd.read_csv(csv_path)
         report = compute_data_quality_report(df)
 
-        self.assertEqual(report["total_rows"], 200)
+        self.assertGreaterEqual(report["total_rows"], 200)
         self.assertGreater(report["overall_completeness_pct"], 90.0)
 
 

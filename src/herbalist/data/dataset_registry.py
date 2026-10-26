@@ -33,10 +33,10 @@ class DatasetRegistry:
             name="Kashmir High-Altitude Endemic Medicinal Flora",
             modality="tabular",
             region="kashmir",
-            path="data/processed/kashmir_medicinal.csv",
-            num_classes=15,
+            path="data/csv/kashmir_medicinal_plants.csv",
+            num_classes=16,
             status="available",
-            description="15 Critically endangered & endangered high-altitude medicinal herbs endemic to Kashmir Himalaya.",
+            description="16 Critically endangered & endangered high-altitude medicinal herbs endemic to Kashmir Himalaya.",
             citation="Herbalist AI Ethnobotany Catalog (Rasool et al., 2025)"
         ))
         self.register(DatasetEntry(
@@ -44,19 +44,19 @@ class DatasetRegistry:
             name="VNPlant-200 Medicinal Flora Benchmark Catalog",
             modality="tabular",
             region="global",
-            path="data/processed/medicinal.csv",
-            num_classes=200,
+            path="data/csv/medicinal.csv",
+            num_classes=216,
             status="available",
-            description="Reference catalog of 200 medicinal species with active compounds, uses, and toxicity levels.",
-            citation="Nguyen Quoc & Truong Hoang, 2020"
+            description="Reference catalog of 216 medicinal species with active compounds, uses, and toxicity levels.",
+            citation="Nguyen Quoc & Truong Hoang, 2020 / Rasool et al., 2025"
         ))
         self.register(DatasetEntry(
             id="plants_master",
             name="Integrated Master Medicinal & Agronomy Catalog",
             modality="tabular",
             region="global",
-            path="knowledge/plants_master.csv",
-            num_classes=215,
+            path="data/csv/medicinal_plants_master.csv",
+            num_classes=216,
             status="available",
             description="Unified catalog merging Kashmir endemic taxa with global 200 species and agronomic parameters."
         ))

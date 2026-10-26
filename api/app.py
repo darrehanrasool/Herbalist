@@ -68,6 +68,8 @@ def load_ml_model():
 def load_dataset():
     try:
         candidates = [
+            os.path.join(ROOT, "data", "csv", "medicinal.csv"),
+            os.path.join(ROOT, "data", "csv", "medicinal_plants_master.csv"),
             os.path.join(app.root_path, "medicinal.csv"),
             os.path.join(ROOT, "medicinal.csv"),
             os.path.join(ROOT, "data", "raw", "clinical", "medicinal.csv"),
@@ -299,7 +301,23 @@ PLANT_CLASSES = {
 196: 'Zanthoxylum avicennae',
 197: 'Zingiber officinale',
 198: 'Ziziphus mauritiana',
-199: 'helicteres hirsuta',
+199: 'Helicteres hirsuta',
+200: 'Aconitum heterophyllum',
+201: 'Artemisia absinthium',
+202: 'Berberis lycium',
+203: 'Colchicum luteum',
+204: 'Datura stramonium',
+205: 'Fritillaria roylei',
+206: 'Gentiana kurroo',
+207: 'Hyoscyamus niger',
+208: 'Jurinea dolomiaea',
+209: 'Picrorhiza kurroa',
+210: 'Podophyllum hexandrum',
+211: 'Rheum emodi',
+212: 'Saussurea costus',
+213: 'Taxus wallichiana',
+214: 'Valeriana jatamansi',
+215: 'Crocus sativus',
 
 }
 

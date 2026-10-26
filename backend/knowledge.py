@@ -14,11 +14,14 @@ KNOW = ROOT / "knowledge"
 @lru_cache(maxsize=1)
 def _tables():
     mapping = {
-        "master": (CSV_DIR / "medicinal_plants_master.csv", KNOW / "plants_master.csv"),
-        "curated": (CSV_DIR / "medicinal_plants_master.csv", KNOW / "medicinal_plants_global_curated.csv"),
+        "medicinal": (CSV_DIR / "medicinal.csv", CSV_DIR / "medicinal_plants_master.csv"),
+        "master": (CSV_DIR / "medicinal.csv", CSV_DIR / "medicinal_plants_master.csv"),
+        "curated": (CSV_DIR / "medicinal.csv", KNOW / "medicinal_plants_global_curated.csv"),
+        "fertiliser": (CSV_DIR / "fertiliser.csv", CSV_DIR / "nutrient_fertilizer_guidelines.csv"),
+        "fertilizer": (CSV_DIR / "nutrient_fertilizer_guidelines.csv", CSV_DIR / "fertiliser.csv"),
+        "chemicaltaxonomy": (CSV_DIR / "chemicaltaxonomy.csv", CSV_DIR / "chemotaxonomy_hybridization.csv"),
         "soil": (CSV_DIR / "soil_pedological_requirements.csv", KNOW / "soil_requirements.csv"),
         "cultivation": (CSV_DIR / "agronomic_cultivation_protocols.csv", KNOW / "cultivation.csv"),
-        "fertilizer": (CSV_DIR / "nutrient_fertilizer_guidelines.csv", KNOW / "fertilizer_guide.csv"),
         "disease": (CSV_DIR / "phytopathology_disease_ipm.csv", KNOW / "disease_ipm.csv"),
         "chemistry": (CSV_DIR / "biochemical_literature.csv", KNOW / "chemistry_literature.csv"),
         "hybridization": (CSV_DIR / "chemotaxonomy_hybridization.csv", KNOW / "chemotaxonomy_hybridization.csv"),
