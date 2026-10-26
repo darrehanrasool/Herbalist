@@ -79,6 +79,47 @@ class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
             self.assertTrue((reports_dir / fig_name).exists(), f"Missing figure in reports: {fig_name}")
             self.assertTrue((static_dir / fig_name).exists(), f"Missing figure in static graphs: {fig_name}")
 
+    def test_unified_csv_directory_integrity(self):
+        csv_dir = ROOT_DIR / "data" / "csv"
+        self.assertTrue(csv_dir.exists(), "data/csv/ directory must exist")
+
+        required_csvs = [
+            "medicinal_plants_master.csv",
+            "kashmir_medicinal_plants.csv",
+            "chemotaxonomy_hybridization.csv",
+            "soil_pedological_requirements.csv",
+            "agronomic_cultivation_protocols.csv",
+            "nutrient_fertilizer_guidelines.csv",
+            "phytopathology_disease_ipm.csv",
+            "biochemical_literature.csv",
+            "dataset_image_sample_counts.csv",
+        ]
+        for name in required_csvs:
+            csv_path = csv_dir / name
+            self.assertTrue(csv_path.exists(), f"Missing canonical CSV: {name}")
+            df = pd.read_csv(csv_path)
+            self.assertGreater(len(df), 0, f"Canonical CSV {name} cannot be empty")
+
+    def test_kashmir_dslr_pipeline_components(self):
+        from src.herbalist.data.kashmir_dslr_pipeline import KashmirDSLRDatasetPipeline
+        from PIL import Image
+
+        pipeline = KashmirDSLRDatasetPipeline()
+        hw = pipeline.detect_hardware_accelerator()
+        self.assertIn("device", hw)
+
+        # Test quality audit on synthetic image
+        test_img = Image.new("RGB", (200, 200), color=(120, 180, 100))
+        audit = pipeline.audit_quality(test_img)
+        self.assertTrue(audit.is_valid)
+        self.assertGreaterEqual(audit.blur_score, 0.0)
+
+    def test_gpu_trainer_device_resolution(self):
+        from src.herbalist.training.gpu_trainer import GPUTrainingEngine
+        engine = GPUTrainingEngine(architecture="xception", device="auto")
+        self.assertIn(engine.resolved_device, ["GPU", "CPU"])
+        self.assertIn("type", engine.device_details)
+
 
 if __name__ == "__main__":
     unittest.main()

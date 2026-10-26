@@ -1,0 +1,43 @@
+{
+  "pipeline_version": "2.0.0",
+  "executed_at": "2026-10-26T08:52:35.907426Z",
+  "institution": "Centre for Artificial Intelligence, IUST Kashmir",
+  "hardware_platform": {
+    "device": "CPU",
+    "framework": "PyTorch / TensorFlow",
+    "cores": "8"
+  },
+  "target_resolution": "180x180",
+  "statistics": {
+    "total_discovered": 3,
+    "total_processed": 3,
+    "total_blurry_flagged": 0,
+    "total_rejected": 0
+  },
+  "species_splits": {
+    "Aconitum heterophyllum": {
+      "train": 0,
+      "val": 0,
+      "test": 1,
+      "rejected": 0
+    },
+    "images": {
+      "train": 0,
+      "val": 0,
+      "test": 0,
+      "rejected": 0
+    },
+    "Gentiana kurroo": {
+      "train": 1,
+      "val": 0,
+      "test": 1,
+      "rejected": 0
+    },
+    "metadata": {
+      "train": 0,
+      "val": 0,
+      "test": 0,
+      "rejected": 0
+    }
+  }
+}

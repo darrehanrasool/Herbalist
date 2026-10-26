@@ -1,0 +1,92 @@
+{% extends "platform/base.html" %}
+{% block title %}Chemotaxonomy & Hybridization Explorer · Herbalist AI{% endblock %}
+{% block content %}
+<header class="hx-head">
+  <div>
+    <p class="hx-kicker">Phytochemical Genetics & Ex-Situ Breeding · IUST Kashmir</p>
+    <h1>Chemotaxonomic Interspecific Hybridization Explorer</h1>
+    <p class="hx-sub">
+      Scientifically modeled breeding pathways combining high-potency secondary metabolites from
+      endangered Kashmir alpines with high-biomass, disease-resistant global congeners (2n chromosome synapsis).
+    </p>
+  </div>
+  <div style="display: flex; gap: 0.6rem;">
+    <a class="hx-btn" href="{{ url_for('export_species_json', species='Gentiana kurroo') }}" target="_blank">
+      <i class="fas fa-file-code"></i> Sample Hybrid JSON
+    </a>
+  </div>
+</header>
+
+<!-- Search Bar -->
+<section class="hx-card" style="margin-bottom: 1.5rem; padding: 1rem 1.2rem;">
+  <form method="GET" action="{{ url_for('hybridization_explorer') }}" style="display: flex; gap: 0.8rem; align-items: center;">
+    <div style="flex: 1; position: relative;">
+      <input
+        type="text"
+        name="q"
+        value="{{ query or '' }}"
+        placeholder="Filter by genus, parent species, or bioactive compound (e.g. Gentiana, Picrorhiza, atisine)..."
+        style="width: 100%; padding: 0.7rem 1rem; border-radius: 8px; border: 1px solid var(--hx-line); background: #071018; color: var(--hx-text); font-size: 0.95rem;"
+      />
+    </div>
+    <button type="submit" class="hx-btn hx-btn-primary"><i class="fas fa-search"></i> Filter</button>
+    {% if query %}
+    <a href="{{ url_for('hybridization_explorer') }}" class="hx-btn"><i class="fas fa-times"></i> Clear</a>
+    {% endif %}
+  </form>
+</section>
+
+<!-- Cards Grid -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.2rem;">
+  {% for hyb in pairs %}
+  <article class="hx-card" style="border-left: 4px solid #ab47bc; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+        <span style="background: #2a1538; color: #ba68c8; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;">
+          {{ hyb.hybrid_id }} · Genus {{ hyb.genus_group }}
+        </span>
+        <span style="font-size: 0.8rem; color: var(--hx-accent-2);">
+          Feasibility: <strong>{{ hyb.hybridization_feasibility }}</strong>
+        </span>
+      </div>
+
+      <h3 style="margin: 0.2rem 0 0.5rem 0; font-size: 1.25rem; color: var(--hx-text); font-style: italic;">
+        {{ hyb.parent_species_1 }} × {{ hyb.parent_species_2 }}
+      </h3>
+
+      <div style="font-size: 0.82rem; color: var(--hx-muted); margin-bottom: 0.8rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+        <span><strong>Karyotype:</strong> 2n={{ hyb.chromosome_parent_1_2n }} × 2n={{ hyb.chromosome_parent_2_2n }}</span>
+        <span><strong>D<sub>genomic</sub>:</strong> {{ hyb.genetic_distance_index }}</span>
+      </div>
+
+      <div style="background: #09131e; border-left: 3px solid #ab47bc; padding: 0.8rem; border-radius: 6px; margin-bottom: 0.8rem;">
+        <strong style="color: #ce93d8; font-size: 0.84rem; display: block; margin-bottom: 0.2rem;">
+          <i class="fas fa-flask"></i> Bioactive Synergy & Target Chemistry:
+        </strong>
+        <p style="margin: 0; font-size: 0.88rem; color: var(--hx-text); line-height: 1.4;">
+          {{ hyb.hypothetical_bioactive_synergy }}
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.8rem;">
+        <div style="background: #0e2018; padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid var(--hx-accent); font-size: 0.84rem;">
+          <strong style="color: var(--hx-accent);">Agronomic Advantage:</strong> {{ hyb.breeding_pros }}
+        </div>
+        <div style="background: #241116; padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid #ff6b6b; font-size: 0.84rem;">
+          <strong style="color: #ff8888;">Cytogenetic Bottleneck:</strong> {{ hyb.breeding_cons_risks }}
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top: 0.8rem; border-top: 1px solid var(--hx-line); font-size: 0.78rem; color: var(--hx-muted);">
+      <i class="fas fa-book"></i> Ref: {{ hyb.scientific_literature_reference }}
+    </div>
+  </article>
+  {% else %}
+  <div class="hx-card" style="grid-column: 1 / -1; padding: 2rem; text-align: center;">
+    <p style="color: var(--hx-muted); font-size: 1.1rem;">No hybridization pairs found matching "{{ query }}".</p>
+    <a href="{{ url_for('hybridization_explorer') }}" class="hx-btn">View All 12 Pairs</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

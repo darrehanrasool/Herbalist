@@ -1,12 +1,12 @@
 # Herbalist-AI: Enterprise Deep Learning & Botanical Intelligence Platform
 
-[![Tests: 22 Passed](https://img.shields.io/badge/tests-22%20passed-brightgreen.svg?logo=pytest)](tests/)
+[![Tests: 25 Passed](https://img.shields.io/badge/tests-25%20passed-brightgreen.svg?logo=pytest)](tests/)
 [![CI Workflow](https://img.shields.io/badge/CI%20Workflow-passing-brightgreen.svg?logo=github-actions)](https://github.com/darrehanrasool/Herbalist/actions/workflows/tests.yml)
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
 [![DOI: Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.herbalist--ai-blue.svg)](https://zenodo.org/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Top-1 Accuracy: 96.79%](https://img.shields.io/badge/Top--1%20Accuracy-96.79%25-brightgreen.svg)](reports/evaluation/evaluation_report.md)
-[![Kashmir Endemic Focus](https://img.shields.io/badge/Flora-Kashmir%20Himalaya-emerald.svg)](data/processed/kashmir_medicinal.csv)
+[![Kashmir Endemic Focus](https://img.shields.io/badge/Flora-Kashmir%20Himalaya-emerald.svg)](data/csv/kashmir_medicinal_plants.csv)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa, protect critically endangered high-altitude flora of the Kashmir Himalayas, predict active bioactive secondary metabolites, and guide precision agronomic ex-situ cultivation.
@@ -21,7 +21,7 @@ This research project is designed, engineered, and maintained at the **Centre of
 | :-------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                    |
 | **Project Lead & Author**                           | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
-| **Contributing Researcher**                         | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Pharmacognosy Curation & Chemotaxonomy Modeling                   |
+| **Research Contributor**                            | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Pharmacognosy Curation & Chemotaxonomy Modeling                   |
 | **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Agronomic Soil Modeling, Phytochemical Feature Engineering & Cross-Dataset Evaluation                             |
 | **Contributing Researcher**                         | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity                                |
 
@@ -34,12 +34,13 @@ This research project is designed, engineered, and maintained at the **Centre of
 
 - **Extreme Inception Decoupled Vision Architecture**: Decoupled Depthwise Separable Convolutions (36 conv layers across 14 modules, yielding an $88.9\%$ reduction in FLOP compute over standard convolutions) achieving **$96.79\%$ validation accuracy** across 200 medicinal taxa.
 - **Kashmir Himalayan Endemic Specialist Engine**: Dedicated high-altitude taxonomic intelligence module targeting 15 critically endangered and threatened alpine medicinal taxa (_Gentiana kurroo_, _Saussurea costus_, _Picrorhiza kurroa_, _Aconitum heterophyllum_, _Podophyllum hexandrum_, etc.) with elevation gating ($> 2,500\text{ m}$ masl).
+- **Automated Kashmir DSLR Ingestion & Stratified Splitting**: Native decoding of camera RAW (.CR2, .CR3, .NEF, .ARW) and standard RGB, Laplacian blur detection ($\sigma^2 < 80.0$), EXIF altitude extraction, and automated stratified 70/15/15 train/val/test splitting.
+- **Unified Canonical CSV Repository (`data/csv/`)**: Centrally organizes all 9 primary tabular datasets with zero filename clashes and standardized `snake_case` schema.
 - **Chemotaxonomy & Interspecific Hybridization Engine**: Evaluates cross-breeding compatibility ($2n$ karyotype synapsis, genetic distance $D_{\text{genomic}}$), bioactive secondary metabolite retention, and agronomic biomass vigour across 12 verified Himalayan-global congener pairs.
-- **Curated 22-Attribute Botanical Catalog**: 215 medicinal taxa cross-referenced against Kew POWO, ICMR, NMPB, and Ayurvedic/Unani standards with zero random or unverified values.
+- **GPU-Scale Training Engine**: Multi-platform accelerator support (Apple Silicon Metal MPS / NVIDIA CUDA / CPU), Label Smoothing, Cosine Decay LR, and live JSONL telemetry logging.
 - **10 Publication-Quality Research Visualizations**: 300 DPI figures covering altitudinal zonation, edaphic envelopes, confusion matrices, ROC curves, and breeding matrices.
 - **Hierarchical Multi-Modal Fusion**: Unifies deep visual representations ($2048$-dimensional feature vectors from Xception) with geographic elevation priors ($\mathbb{P}(\text{Taxon} \mid \text{Altitude})$) and 7-dimensional physicochemical soil telemetry (pH, N, P, K, moisture, temperature, EC) to eliminate out-of-distribution taxonomic hallucinations.
 - **1-Click Scientific Dossier Downloads**: Instant export of machine-readable JSON dossiers and standardized CSV records directly from the scientific workbench.
-- **Hardware-Aware Acceleration & Boundary Guarantees**: Optimized execution across Apple Silicon Metal Performance Shaders (MPS), NVIDIA CUDA, and vectorized CPU, maintaining memory bounds under $150\text{ MB}$ for mobile field and edge agricultural deployment.
 
 ---
 
@@ -49,29 +50,36 @@ This research project is designed, engineered, and maintained at the **Centre of
 Herbalist-AI/
 ├── .github/              # Issue templates, PR templates, and GitHub Actions CI/CD workflows
 ├── configs/              # YAML configurations for project, data, models, training, hardware, viz
-├── data/                 # Raw online & Kashmir field images, interim data, processed splits, manifests
-├── docs/                 # Architectural specifications, data dictionary, safety, reproducibility
+├── data/
+│   ├── csv/              # Unified canonical CSV tables (master, kashmir, soil, disease, etc.)
+│   ├── manifests/        # Dataset manifests, checksums, and DSLR split logs
+│   ├── raw/
+│   │   ├── kashmir/      # Kashmir DSLR in-situ field photography
+│   │   └── kaggle/       # Standard botanical benchmarks
+│   ├── interim/          # Standardized normalized intermediate crops
+│   ├── processed/        # Stratified Train (70%), Val (15%), Test (15%) splits
+│   └── splits/           # Tabular train/val/test splits
+├── docs/                 # Architectural specifications, data lineage, safety, reproducibility
 ├── experiments/          # Experiment tracking, parameter configs, and experiment_registry.csv
 ├── logs/                 # Dedicated logs for application, training, errors, datasets, hardware
-├── models/               # Model weights for global vision, Kashmir specialist, agronomy, and fusion
+├── models/
+│   └── deep_learning/    # Trained weights (plant.h5, 21.2M parameters)
 ├── notebooks/            # Publication-ready Jupyter notebooks for baseline, quality, and comparison
 ├── papers/               # Research PDFs, metadata JSON, literature reviews, mathematical formulas
-├── reports/              # Quality audits, evaluation benchmarks, and model cards
-├── scripts/              # Operational CLI scripts for download, verification, training, evaluation
+├── reports/
+│   └── figures/          # 300 DPI publication-quality figures
+├── scripts/              # Operational CLI scripts (process_kashmir_dslr, train_model, curate)
 ├── src/herbalist/        # Production modular source code
 │   ├── core/             # Configuration, constants, typed exceptions, reproducibility
-│   ├── data/             # Ingestion, validation, preprocessing, feature engineering, splitting
+│   ├── data/             # Ingestion, DSLR pipeline, augmentation, feature engineering
 │   ├── hardware/         # Device detection (MPS/CUDA), memory bounds, resource monitoring
-│   ├── models/           # Global vision (Xception), Kashmir specialist (MobileNetV3), Agronomy MLP, Fusion
-│   ├── training/         # Trainer, callbacks, optimizer, early stopping, checkpoint manager
+│   ├── models/           # Global vision (Xception), Kashmir specialist (MobileNetV3), Agronomy MLP
+│   ├── training/         # GPU trainer, callbacks, optimizer, checkpoint manager
 │   ├── validation/       # Cross-validation, threshold tuning, probability calibration
 │   ├── evaluation/       # Multi-class metrics, statistical testing (McNemar, Wilcoxon)
-│   ├── explainability/   # SHAP analysis, feature importance ranking, botanist reports
-│   ├── visualization/    # Confusion matrices, ROC curves, PR curves, loss curves
-│   ├── research/         # Paper registry, baseline comparison, literature metadata
-│   ├── monitoring/       # Experiment telemetry, system monitors, progress trackers
+│   ├── explainability/   # Grad-CAM, feature importance ranking, botanist reports
 │   └── utils/            # File I/O, hashing, microsecond timers
-└── tests/                # Unit and integration pytest test suite (18 passing tests)
+└── tests/                # Unit and integration pytest test suite (25 passing tests)
 ```
 
 ---

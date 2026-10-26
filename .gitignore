@@ -126,6 +126,9 @@ api/static/uploads/*
 # ==============================================================================
 # Data Whitelist (Ensure curated CSVs and manifests are tracked)
 # ==============================================================================
+!data/csv/
+!data/csv/*.csv
+!data/csv/*.md
 !data/raw/clinical/*.csv
 !data/raw/catalog/*.csv
 !data/splits/**/*.csv
@@ -145,6 +148,8 @@ htmlcov/
 *.log
 logs/**/*.log
 logs/*/*.log
+logs/**/*.jsonl
+logs/*/*.jsonl
 !logs/**/.gitkeep
 
 # ==============================================================================

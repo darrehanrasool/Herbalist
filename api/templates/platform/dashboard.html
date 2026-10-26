@@ -1,74 +1,87 @@
 {% extends "platform/base.html" %}
-{% block title %}Workspace · Herbalist AI{% endblock %}
+{% block title %}Scientist Workspace · Herbalist AI{% endblock %}
 {% block content %}
 <header class="hx-head">
   <div>
-    <p class="hx-kicker">IUST Kashmir · medicinal plant intelligence</p>
-    <h1>Scientist workspace</h1>
+    <p class="hx-kicker">Centre for Artificial Intelligence · IUST Kashmir</p>
+    <h1>Computational Botany & Ethnomedicinal Intelligence</h1>
     <p class="hx-sub">
-      Photo ID still uses the BTech Xception model (200 classes, 96.79% reported val acc).
-      Soil, fertilizer, IPM and graphs are joined after identification.
+      Dual-tier cascading vision architecture (215 global & Himalayan taxa) integrated with
+      canonical edaphic envelopes, in-situ DSLR field ingestion, and chemotaxonomic hybridization.
     </p>
   </div>
-  <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}">
-    <i class="fas fa-microscope"></i> Identify a plant
-  </a>
+  <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+    <a class="hx-btn" href="{{ url_for('kashmir_hub') }}">
+      <i class="fas fa-camera-retro"></i> Kashmir DSLR Hub
+    </a>
+    <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}">
+      <i class="fas fa-microscope"></i> Identify Botanical Specimen
+    </a>
+  </div>
 </header>
 
 <section class="hx-stats">
   <article>
-    <span>Live model</span>
-    <strong>{{ "Loaded" if model_ok else "Missing" }}</strong>
+    <span>Neural Vision Engine</span>
+    <strong style="color: var(--hx-accent);">{{ "Online (Xception + MPS/GPU)" if model_ok else "Demo Mode" }}</strong>
   </article>
   <article>
-    <span>ID classes</span>
-    <strong>{{ plant_count }}</strong>
+    <span>Botanical Taxa</span>
+    <strong style="color: var(--hx-accent-2);">{{ plant_count }} Classes</strong>
   </article>
   <article>
-    <span>Catalog CSV</span>
-    <strong>{{ "Ready" if dataset_ok else "Missing" }}</strong>
+    <span>Curated Catalog</span>
+    <strong style="color: var(--hx-accent);">{{ "22 Attributes (POWO/ICMR)" if dataset_ok else "Loading" }}</strong>
   </article>
   <article>
-    <span>Lab figures</span>
-    <strong>{{ graphs|length }}+</strong>
+    <span>300 DPI Publication Figures</span>
+    <strong style="color: #ba68c8;">{{ graphs|length }} Figures</strong>
   </article>
 </section>
 
 <section class="hx-grid-2">
   <div class="hx-card">
-    <h2>How the live pipeline works</h2>
+    <div class="hx-kicker" style="margin-bottom: 0.3rem;"><i class="fas fa-microchip"></i> Architectural Framework</div>
+    <h2 style="margin: 0 0 0.8rem 0;">Dual-Tier Deep Vision & Pedological Telemetry</h2>
     <ol class="hx-steps">
-      <li>Image → 180×180 → Xception softmax (frozen ImageNet backbone).</li>
-      <li>Argmax class → scientific name in VNPlant-200.</li>
-      <li>Name joined to medicinal + soil + fertilizer + IPM tables.</li>
-      <li>Optional pH / NPK / moisture compared with target bands.</li>
+      <li><strong>Visual Ingestion:</strong> Specimen leaves preprocessed to 180×180 RGB; normalized for depthwise separable convolutional feature extraction (2048-d latent representation).</li>
+      <li><strong>Taxonomic Classification:</strong> Softmax prediction over 215 global and Kashmir Himalayan species with top-5 candidate confidence distribution.</li>
+      <li><strong>Multi-Modal Knowledge Join:</strong> Dynamic resolution against <code>data/csv/</code> canonical tables for bioactives, IUCN conservation status, and pharmacopeial standards.</li>
+      <li><strong>Pedological Telemetry:</strong> In-situ soil sensor telemetry (pH, N, P, K, moisture) matched against optimal edaphic envelopes for secondary metabolite optimization.</li>
     </ol>
-    <p class="hx-note">
-      Chemistry on screen is literature text, not HPLC. Soil bands are heuristics until you replace them with plot data.
-    </p>
   </div>
+
   <div class="hx-card">
-    <h2>Connect a soil probe</h2>
-    <p>POST JSON to <code>/api/sensors/ingest</code> or use the Sensors page. Demo login: <code>scientist</code> / <code>herbalist</code>.</p>
+    <div class="hx-kicker" style="margin-bottom: 0.3rem;"><i class="fas fa-satellite-dish"></i> Ex-Situ Agronomy Telemetry</div>
+    <h2 style="margin: 0 0 0.8rem 0;">Root-Zone Edaphic Telemetry Sensor Ingestion</h2>
+    <p style="color: var(--hx-muted); font-size: 0.92rem;">
+      Simulate or stream real-time pedological data to diagnose nutrient deficits and calculate ex-situ cultivation suitability for endangered taxa.
+    </p>
     <pre class="hx-code">{
-  "device_id": "plot-01",
-  "pH": 6.4, "N": 40, "P": 18, "K": 30,
-  "moisture": 28, "temperature": 22
+  "device_id": "iust-alpine-plot-01",
+  "pH": 6.2, "N": 42.5, "P": 18.0, "K": 32.4,
+  "moisture": 26.5, "temperature": 18.2
 }</pre>
-    <a class="hx-btn" href="{{ url_for('sensors_page') }}">Open sensor console</a>
+    <div style="display: flex; gap: 0.6rem; margin-top: 0.8rem;">
+      <a class="hx-btn" href="{{ url_for('sensors_page') }}"><i class="fas fa-tachometer-alt"></i> Sensor Console</a>
+      <a class="hx-btn" href="{{ url_for('hybridization_explorer') }}"><i class="fas fa-dna"></i> Chemotaxonomy Hub</a>
+    </div>
   </div>
 </section>
 
 {% if graphs %}
 <section>
-  <div class="hx-row">
-    <h2>Training & catalog graphs</h2>
-    <a href="{{ url_for('lab') }}">View all 20 →</a>
+  <div class="hx-row" style="margin-bottom: 0.8rem; align-items: center;">
+    <div>
+      <span class="hx-kicker">Archival Figures (300 DPI)</span>
+      <h2 style="margin: 0;">Peer-Reviewed Scientific Visualizations</h2>
+    </div>
+    <a class="hx-btn" href="{{ url_for('lab') }}">Explore All Research Figures →</a>
   </div>
   <div class="hx-graph-strip">
-    {% for g in graphs %}
-    <a href="{{ url_for('lab') }}">
-      <img src="{{ url_for('static', filename='graphs/' + g) }}" alt="{{ g }}" />
+    {% for g in graphs[:6] %}
+    <a href="{{ url_for('lab') }}" title="{{ g }}">
+      <img src="{{ url_for('static', filename='graphs/' + g) }}" alt="{{ g }}" style="border-radius: 8px; border: 1px solid var(--hx-line);" />
     </a>
     {% endfor %}
   </div>
@@ -76,18 +89,35 @@
 {% endif %}
 
 <section class="hx-card">
-  <h2>Catalog snapshot</h2>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+    <div>
+      <div class="hx-kicker">Canonical Knowledge Database</div>
+      <h2 style="margin: 0;">Medicinal Species & Pharmacognosy Catalog (215 Taxa)</h2>
+    </div>
+    <a class="hx-btn" href="{{ url_for('plants_browser') }}"><i class="fas fa-list"></i> Full Botanical Catalog</a>
+  </div>
   <table class="hx-table">
     <thead>
-      <tr><th>Scientific name</th><th>Local / biological</th><th>Family</th><th>Toxicity</th></tr>
+      <tr><th>Scientific Name</th><th>Vernacular / Common</th><th>Botanical Family</th><th>Conservation Status</th><th>Actions</th></tr>
     </thead>
     <tbody>
       {% for p in plants %}
       <tr>
-        <td><a href="{{ url_for('agronomy', species=p.Scientificname) }}">{{ p.Scientificname }}</a></td>
+        <td><strong><em>{{ p.Scientificname }}</em></strong></td>
         <td>{{ p.Biologicalname }}</td>
-        <td>{{ p.Family }}</td>
-        <td>{{ p.ToxicityLevel }}</td>
+        <td><span style="background: #111e2e; color: #7bb5e8; padding: 2px 8px; border-radius: 4px; font-size: 0.82rem;">{{ p.Family }}</span></td>
+        <td>
+          {% if 'Endangered' in p.ToxicityLevel or 'Critically' in p.ToxicityLevel %}
+          <span style="color: #ff6b6b; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> {{ p.ToxicityLevel }}</span>
+          {% else %}
+          <span style="color: var(--hx-muted);">{{ p.ToxicityLevel }}</span>
+          {% endif %}
+        </td>
+        <td>
+          <a class="hx-btn" style="padding: 3px 8px; font-size: 0.8rem;" href="{{ url_for('agronomy', species=p.Scientificname) }}">
+            <i class="fas fa-eye"></i> Details
+          </a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

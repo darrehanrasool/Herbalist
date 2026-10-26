@@ -1,4 +1,4 @@
-"""Load knowledge CSVs and join by scientific name."""
+"""Load unified canonical CSVs from data/csv/ and join by scientific name."""
 from __future__ import annotations
 
 from functools import lru_cache
@@ -7,33 +7,46 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
+CSV_DIR = ROOT / "data" / "csv"
 KNOW = ROOT / "knowledge"
 
 
 @lru_cache(maxsize=1)
 def _tables():
-    files = {
-        "master": "plants_master.csv",
-        "soil": "soil_requirements.csv",
-        "cultivation": "cultivation.csv",
-        "fertilizer": "fertilizer_guide.csv",
-        "disease": "disease_ipm.csv",
-        "chemistry": "chemistry_literature.csv",
-        "curated": "medicinal_plants_global_curated.csv",
-        "hybridization": "chemotaxonomy_hybridization.csv",
+    mapping = {
+        "master": (CSV_DIR / "medicinal_plants_master.csv", KNOW / "plants_master.csv"),
+        "curated": (CSV_DIR / "medicinal_plants_master.csv", KNOW / "medicinal_plants_global_curated.csv"),
+        "soil": (CSV_DIR / "soil_pedological_requirements.csv", KNOW / "soil_requirements.csv"),
+        "cultivation": (CSV_DIR / "agronomic_cultivation_protocols.csv", KNOW / "cultivation.csv"),
+        "fertilizer": (CSV_DIR / "nutrient_fertilizer_guidelines.csv", KNOW / "fertilizer_guide.csv"),
+        "disease": (CSV_DIR / "phytopathology_disease_ipm.csv", KNOW / "disease_ipm.csv"),
+        "chemistry": (CSV_DIR / "biochemical_literature.csv", KNOW / "chemistry_literature.csv"),
+        "hybridization": (CSV_DIR / "chemotaxonomy_hybridization.csv", KNOW / "chemotaxonomy_hybridization.csv"),
+        "kashmir": (CSV_DIR / "kashmir_medicinal_plants.csv", ROOT / "data" / "processed" / "kashmir_medicinal.csv"),
+        "counts": (CSV_DIR / "dataset_image_sample_counts.csv", ROOT / "data" / "manifests" / "imagesamplecount.csv"),
     }
     out = {}
-    for key, name in files.items():
-        path = KNOW / name
-        out[key] = pd.read_csv(path) if path.exists() else pd.DataFrame()
+    for key, (primary, fallback) in mapping.items():
+        if primary.exists():
+            out[key] = pd.read_csv(primary)
+        elif fallback.exists():
+            out[key] = pd.read_csv(fallback)
+        else:
+            out[key] = pd.DataFrame()
     return out
 
 
 def row_for(table: str, scientific_name: str) -> dict:
     df = _tables().get(table)
-    if df is None or df.empty or "Scientificname" not in df.columns:
+    if df is None or df.empty:
         return {}
-    hit = df[df["Scientificname"].astype(str) == str(scientific_name)]
+    name_col = "Scientificname" if "Scientificname" in df.columns else ("scientific_name" if "scientific_name" in df.columns else None)
+    if not name_col:
+        return {}
+    hit = df[df[name_col].astype(str).str.lower() == str(scientific_name).strip().lower()]
+    if hit.empty:
+        genus = str(scientific_name).split()[0] if str(scientific_name) else ""
+        hit = df[df[name_col].astype(str).str.contains(genus, case=False, na=False)]
     if hit.empty:
         return {}
     return hit.iloc[0].fillna("").to_dict()
@@ -41,13 +54,15 @@ def row_for(table: str, scientific_name: str) -> dict:
 
 def curated_row_for(scientific_name: str) -> dict:
     df = _tables().get("curated")
-    if df is None or df.empty or "scientific_name" not in df.columns:
+    if df is None or df.empty:
         return {}
-    hit = df[df["scientific_name"].astype(str).str.lower() == str(scientific_name).strip().lower()]
+    name_col = "scientific_name" if "scientific_name" in df.columns else ("Scientificname" if "Scientificname" in df.columns else None)
+    if not name_col:
+        return {}
+    hit = df[df[name_col].astype(str).str.lower() == str(scientific_name).strip().lower()]
     if hit.empty:
-        # Try genus or partial match
         genus = str(scientific_name).split()[0] if str(scientific_name) else ""
-        hit = df[df["scientific_name"].astype(str).str.contains(genus, case=False, na=False)]
+        hit = df[df[name_col].astype(str).str.contains(genus, case=False, na=False)]
     if hit.empty:
         return {}
     return hit.iloc[0].fillna("").to_dict()
@@ -82,8 +97,18 @@ def agronomy_bundle(scientific_name: str) -> dict:
 
 
 def plant_index(limit: int = 400) -> list[dict]:
-    df = _tables()["master"]
-    if df.empty:
+    df = _tables().get("master")
+    if df is None or df.empty:
         return []
-    cols = [c for c in ["Scientificname", "Biologicalname", "Family", "ToxicityLevel", "SourceCatalog"] if c in df.columns]
-    return df[cols].head(limit).fillna("").to_dict(orient="records")
+    cols = [c for c in ["Scientificname", "scientific_name", "Biologicalname", "common_name", "Family", "family", "ToxicityLevel", "iucn_conservation_status", "SourceCatalog"] if c in df.columns]
+    records = df[cols].head(limit).fillna("").to_dict(orient="records")
+    normalized = []
+    for r in records:
+        normalized.append({
+            "Scientificname": r.get("Scientificname") or r.get("scientific_name", ""),
+            "Biologicalname": r.get("Biologicalname") or r.get("common_name", ""),
+            "Family": r.get("Family") or r.get("family", ""),
+            "ToxicityLevel": r.get("ToxicityLevel") or r.get("iucn_conservation_status", "Low"),
+            "SourceCatalog": r.get("SourceCatalog", "POWO / ICMR / AYUSH Master")
+        })
+    return normalized

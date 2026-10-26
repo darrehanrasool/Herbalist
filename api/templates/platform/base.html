@@ -27,13 +27,14 @@
       </a>
       <nav>
         <a href="{{ url_for('home') }}"><i class="fas fa-border-all"></i> Workspace</a>
-        <a href="{{ url_for('upload_page') }}"><i class="fas fa-camera"></i> Identify</a>
-        <a href="{{ url_for('sensors_page') }}"><i class="fas fa-satellite-dish"></i> Sensors</a>
+        <a href="{{ url_for('upload_page') }}"><i class="fas fa-microscope"></i> Identify</a>
+        <a href="{{ url_for('kashmir_hub') }}"><i class="fas fa-camera-retro"></i> Kashmir DSLR Hub</a>
+        <a href="{{ url_for('hybridization_explorer') }}"><i class="fas fa-dna"></i> Chemotaxonomy</a>
+        <a href="{{ url_for('sensors_page') }}"><i class="fas fa-satellite-dish"></i> Sensors & Pedology</a>
         <a href="{{ url_for('agronomy') }}"><i class="fas fa-seedling"></i> Agronomy</a>
-        <a href="{{ url_for('lab') }}"><i class="fas fa-chart-area"></i> Lab graphs</a>
-        <a href="{{ url_for('plants_browser') }}"><i class="fas fa-book"></i> Catalog</a>
-        <a href="{{ url_for('research_lab') }}"><i class="fas fa-flask"></i> Research</a>
-        <a href="{{ url_for('classic_home') }}"><i class="fas fa-landmark"></i> BTech site</a>
+        <a href="{{ url_for('lab') }}"><i class="fas fa-chart-area"></i> Research Figures</a>
+        <a href="{{ url_for('plants_browser') }}"><i class="fas fa-book"></i> Botanical Catalog</a>
+        <a href="{{ url_for('research_lab') }}"><i class="fas fa-flask"></i> Standards</a>
       </nav>
       <div class="hx-nav-foot">
         {% if session.get('user') %}

@@ -1,0 +1,216 @@
+Scientificname,Family,GrowthHabit,pH_min,pH_max,Texture,N_level,P_level,K_level,Moisture,Temp_C_min,Temp_C_max,Irrigation,Altitude_note,Evidence
+Abelmoschus sagittifolius,Malvaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Abrus precatorius,Fabaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Abutilon indicum,Malvaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Acanthus integrifolius,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Acorus tatarinowii,Acoraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Agave americana,Asparagaceae,Succulent,6.0,7.5,Sandy loam,Low,Medium,Medium,Low-Medium,18,35,"Sparse, well-drained",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ageratum conyzoides,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Allium ramosum,Amaryllidaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Alocasia macrorrhizos,Araceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Aloe vera,Asphodelaceae,Succulent,6.0,7.5,Sandy loam,Low,Medium,Medium,Low-Medium,18,35,"Sparse, well-drained",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Alpinia officinarum,Zingiberaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Amomum longiligulare,Zingiberaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ampelopsis cantoniensis,Vitaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Andrographis paniculata,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Angelica dahurica,Apiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ardisia sylvestris,Primulaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Artemisia vulgaris,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Artocarpus altilis,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Artocarpus heterophyllus,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Artocarpus lakoocha,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Asparagus cochinchinensis,Asparagaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Asparagus officinalis,Asparagaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Averrhoa carambola,Oxalidaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Baccaurea sp,Phyllanthaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Barleria lupulina,Acanthaceae,Shrub,5.2,7.0,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,Moderate,Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Bengal Arum,Araceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Berchemia lineata,Rhamnaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Bidens pilosa,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Bischofia trifoliata,Phyllanthaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Blackberry Lily,Iridaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Blumea balsamifera,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Boehmeria nivea,Urticaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Breynia vitis,Phyllanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Caesalpinia sappan,Fabaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Callerya speciosa,Fabaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Callisia fragrans,Commelinaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Calophyllum inophyllum,Calophyllaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Calotropis gigantea,Apocynaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Camellia chrysantha,Theaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Caprifoliaceae,Caprifoliaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Capsicum annuum,Solanaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Carica papaya,Caricaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Catharanthus roseus,Apocynaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Celastrus hindsii,Celastraceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Celosia argentea,Amaranthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Centella asiatica,Apiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Citrus aurantifolia,Rutaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Citrus hystrix,Rutaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Clausena indica,Rutaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Cleistocalyx operculatus,Myrtaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Clerodendrum inerme,Lamiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Clinacanthus nutans,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Glycyrrhiza uralensis,Fabaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Coix lacryma-jobi,Poaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Cordyline fruticosa,Asparagaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Costus speciosus,Costaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Crescentia cujete,Bignoniaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Crinum asiaticum,Amaryllidaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Crinum latifolium,Amaryllidaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Croton oblongifolius,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Croton tonkinensis,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Curculigo gracilis,Hypoxidaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Curculigo orchioides,Hypoxidaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Cymbopogon,Poaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Datura metel,Solanaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Derris elliptica,Fabaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Dianella ensifolia,Asphodelaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Dicliptera chinensis,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Dimocarpus longan,Sapindaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Dioscorea persimilis,Dioscoreaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Eichhornia crassipes,Pontederiaceae,Aquatic plant,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Eleutherine bulbosa,Iridaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Erythrina variegata,Fabaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Eupatorium fortunei,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Eupatorium triplinerve,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Euphorbia hirta,Euphorbiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Euphorbia pulcherrima,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Euphorbia tirucalli,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Euphorbia tithymaloides,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Eurycoma longifolia,Simaroubaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Excoecaria cochinchinensis,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Excoecaria sp,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Fallopia multiflora,Polygonaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ficus auriculata,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ficus racemosa,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Fructus lycii,Solanaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Glochidion eriocarpum,Phyllanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Glycosmis pentaphylla,Rutaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Gonocaryum lobbianum,Icacinaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Gymnema sylvestre,Apocynaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Gynura divaricata,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Helicteres hirsuta,Malvaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hemerocallis fulva,Xanthorrhoeaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hemigraphis glaucescens,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hibiscus mutabilis,Malvaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hibiscus rosa-sinensis,Malvaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hibiscus sabdariffa,Malvaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Holarrhena pubescens,Apocynaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Homalomena occulta,Araceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Houttuynia cordata,Saururaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Imperata cylindrica,Poaceae,Grass,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Iris domestica,Iridaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ixora coccinea,Rubiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Jasminum sambac,Oleaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Jatropha gossypiifolia,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Jatropha multifida,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Jatropha podagrica,Euphorbiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Justicia gendarussa,Acanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Kalanchoe pinnata,Crassulaceae,Succulent,6.0,7.5,Sandy loam,Low,Medium,Medium,Low-Medium,18,35,"Sparse, well-drained",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Lactuca indica,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Lantana camara,Verbenaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Lawsonia inermis,Lythraceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Leea rubra,Vitaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Litsea glutinosa,Lauraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Lonicera dasystyla,Caprifoliaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ipomoea sp,Convolvulaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Maesa,Primulaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Mallotus barbatus,Euphorbiaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Mangifera,Anacardiaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Melastoma malabathricum,Melastomataceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Mentha spicata,Lamiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Microcos tomentosa,Malvaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Micromelum falcatum,Rutaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Millettia pulchra,Fabaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Mimosa pudica,Fabaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Morinda citrifolia,Rubiaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Moringa oleifera,Moringaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Morus alba,Moraceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Mussaenda philippica,Rubiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Nelumbo nucifera,Nelumbonaceae,Aquatic plant,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ocimum basilicum,Lamiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ocimum gratissimum,Lamiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ocimum sanctum,Lamiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Oenanthe javanica,Apiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ophiopogon japonicus,Asparagaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Paederia lanuginosa,Rubiaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pandanus amaryllifolius,Pandanaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pandanus sp,Pandanaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pandanus tectorius,Pandanaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Parameria laevigata,Apocynaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Passiflora foetida,Passifloraceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pereskia sacharosa,Cactaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Persicaria odorata,Polygonaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Phlogacanthus turgidus,Acanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Phrynium placentarium,Marantaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Phyllanthus reticulatus,Phyllanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Piper betle,Piperaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Piper sarmentosum,Piperaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Plantago,Plantaginaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Platycladus orientalis,Cupressaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Plectranthus amboinicus,Lamiaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pluchea pteropoda,Asteraceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Plukenetia volubilis,Euphorbiaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Plumbago indica,Plumbaginaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Plumeria rubra,Apocynaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Polygonum cuspidatum,Polygonaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Polyscias fruticosa,Araliaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Polyscias guilfoylei,Araliaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Polyscias scutellaria,Araliaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pouzolzia zeylanica,Urticaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Premna serratifolia,Lamiaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Pseuderanthemum latifolium,Acanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Psidium guajava,Myrtaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Psychotria reevesii,Rubiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Psychotria rubra,Rubiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Quisqualis indica,Combretaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Rauvolfia,Apocynaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Rauvolfia tetraphylla,Apocynaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Rhinacanthus nasutus,Acanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Rhodomyrtus tomentosa,Myrtaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ruellia tuberosa,Acanthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Sansevieria canaliculata,Asparagaceae,Succulent,6.0,7.5,Sandy loam,Low,Medium,Medium,Low-Medium,18,35,"Sparse, well-drained",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Sansevieria hyacinthoides,Asparagaceae,Succulent,6.0,7.5,Sandy loam,Low,Medium,Medium,Low-Medium,18,35,"Sparse, well-drained",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Sarcandra glabra,Chloranthaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Sauropus androgynus,Phyllanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Schefflera heptaphylla,Araliaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Schefflera venulosa,Araliaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Senna alata,Fabaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Sida acuta,Malvaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Solanum mammosum,Solanaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Solanum torvum,Solanaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Spilanthes acmella,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Spondias dulcis,Anacardiaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Stachytarpheta jamaicensis,Verbenaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Stephania dielsiana,Menispermaceae,Vine,5.8,7.0,Rich loam,Medium,Medium,High,Medium-High,16,34,Consistent moisture,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Stereospermum chelonoides,Bignoniaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Streptocaulon juventas,Apocynaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Syzygium nervosum,Myrtaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Tabernaemontana divaricata,Apocynaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Tacca subflabellata,Taccaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Tamarindus indica,Fabaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Terminalia catappa,Combretaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Tradescantia discolor,Commelinaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Trichanthera gigantea,Acanthaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Vernonia amygdalina,Asteraceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Vitex negundo,Lamiaceae,Shrub,5.5,7.0,Loam,Medium,Medium,Medium,Medium,12,32,Moderate,Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Xanthium strumarium,Asteraceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Zanthoxylum avicennae,Rutaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Zingiber officinale,Zingiberaceae,Herb,5.8,7.2,Loam,Medium,Medium,Medium,Medium,15,32,"Regular, not waterlogged",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Ziziphus mauritiana,Rhamnaceae,Tree,5.5,7.5,Deep loam,Medium,Low-Medium,Medium,Medium,10,38,"Deep, infrequent",Follow native range,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Aconitum heterophyllum,Ranunculaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Artemisia absinthium,Asteraceae,Shrub,5.2,7.0,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,Moderate,Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Berberis lycium,Berberidaceae,Shrub,5.2,7.0,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,Moderate,Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Colchicum luteum,Colchicaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Datura stramonium,Solanaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Fritillaria roylei,Liliaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Gentiana kurroo,Gentianaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Hyoscyamus niger,Solanaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Jurinea dolomiaea,Asteraceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Picrorhiza kurroa,Plantaginaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Podophyllum hexandrum,Berberidaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Rheum emodi,Polygonaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Saussurea costus,Asteraceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Taxus wallichiana,Taxaceae,Tree,5.2,7.5,Acidic mountain loam / well-drained slope,Medium,Low-Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Deep, infrequent",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
+Valeriana jatamansi,Caprifoliaceae,Herb,5.2,7.2,Acidic mountain loam / well-drained slope,Medium,Medium,Medium,"Medium; snowmelt + monsoon, avoid waterlogging",5,26,"Regular, not waterlogged",Temperate Himalayan band preferred,Heuristic by habit/region — replace with ICAR/NMPB/plot data
