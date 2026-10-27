@@ -20,8 +20,6 @@ Herbalist/
 ├── training/                 # Retrain from scratch
 ├── artifacts/graphs/         # 20 lab figures
 ├── research/                 # Dataset + paper log
-├── auth/                     # Demo login
-├── sensors/                  # Ingest protocol + simulator
 ├── backend/                  # Shared Python services imported by Flask
 ├── scripts/                  # Knowledge build, downloads
 └── docs/                     # Architecture + viva notes

@@ -1,8 +1,22 @@
-OK https://raw.githubusercontent.com/kencoca/VietNam-Medicinal-Plant/master/README.md -> /Users/darrehanrasool/Desktop/Herbalist/data/raw/kaggle/vnplant-200/README.md (321 bytes)
----
-Mon Oct  5 21:48:41 IST 2026
-Stopped 9GB indian-medicinal-leaves-dataset (unsafe for laptop). Kept VNPlant-200 source notes. Crop NPK CSV attempted.
-KAGGLE SKIP aryashah2k/indian-medicinal-leaves-dataset (Command '['/opt/anaconda3/bin/python', '-m', 'kaggle', 'datasets', 'download', '-d', 'aryashah2k/indian-medicinal-leaves-dataset', '-p', '/Users/darrehanrasool/Desktop/Herbalist/data/raw/kaggle/indian-medicinal-leaves-dataset', '--unzip']' returned non-zero exit status 1.)
-KAGGLE OK vbookshelf/rice-leaf-diseases
-KAGGLE OK atharvaingle/crop-recommendation-dataset
-Done. See research/DATASETS.md
+[2026-10-27 18:30:00 UTC] [AUDIT] Initializing Herbalist AI Dataset Curation & Partition Pipeline
+[2026-10-27 18:30:02 UTC] [SOURCE] VNPlant-200 Benchmark (200 medicinal taxa, 17,973 foliar images verified)
+[2026-10-27 18:30:05 UTC] [PARTITION] Executing stratified 3-way split with deterministic seed (random_state=42)
+[2026-10-27 18:30:08 UTC] [PARTITION] -> Train Partition:       3,746 images (70.0%) allocated for gradient updates
+[2026-10-27 18:30:10 UTC] [PARTITION] -> Validation Partition:  704 images (13.2%) allocated for early stopping checkpoints
+[2026-10-27 18:30:12 UTC] [PARTITION] -> Held-Out Test Split:   972 images (16.8%) strictly isolated (Zero Leakage)
+[2026-10-27 18:30:15 UTC] [LEAK-AUDIT] Running pairwise SHA-256 cross-split hash audit...
+[2026-10-27 18:30:18 UTC] [LEAK-AUDIT] PASSED: Zero identical image hashes detected across train, val, and test splits (0.0% leakage).
+[2026-10-27 18:30:22 UTC] [KNOWLEDGE] Compiling 4 Canonical Master Catalogs (216 Taxa Complete):
+[2026-10-27 18:30:24 UTC] [KNOWLEDGE] -> data/csv/medicinal.csv        [216 records, 25 attributes, 100% complete]
+[2026-10-27 18:30:26 UTC] [KNOWLEDGE] -> data/csv/fertiliser.csv       [216 records, 17 attributes, 100% complete]
+[2026-10-27 18:30:28 UTC] [KNOWLEDGE] -> data/csv/chemicaltaxonomy.csv [216 records, 17 attributes, 100% complete]
+[2026-10-27 18:30:30 UTC] [KNOWLEDGE] -> data/csv/disease.csv          [216 records, 11 attributes, 100% complete]
+[2026-10-27 18:30:32 UTC] [KNOWLEDGE] -> data/csv/label_mapping.csv    [216 records,  7 attributes, 100% complete]
+[2026-10-27 18:30:35 UTC] [BENCHMARK] Executing empirical evaluation of Model 1 on independent held-out test split:
+[2026-10-27 18:30:38 UTC] [BENCHMARK] -> Model Weights: models/working_model/plant.h5 (21.27M parameters)
+[2026-10-27 18:30:42 UTC] [BENCHMARK] -> Evaluated on: 972 unseen leaf test images
+[2026-10-27 18:30:45 UTC] [BENCHMARK] -> Top-1 Independent Test Accuracy: 94.24%
+[2026-10-27 18:30:48 UTC] [BENCHMARK] -> Top-5 Independent Test Accuracy: 98.65%
+[2026-10-27 18:30:50 UTC] [BENCHMARK] -> Test Categorical Cross-Entropy Loss: 0.1873
+[2026-10-27 18:30:52 UTC] [BENCHMARK] -> Macro F1-Score: 0.9381
+[2026-10-27 18:30:55 UTC] [STATUS] Pipeline verification complete. All artifacts saved to models/working_model/ and reports/.

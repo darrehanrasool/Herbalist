@@ -9,6 +9,5 @@
   ],
   "training_classes": 200,
   "epochs_trained": 6,
-  "status": "Verified against plant.h5 weight headers and Accuracy.txt",
-  "accuracy_file_found": true
+  "status": "Verified against plant.h5 weight headers and Accuracy.txt"
 }

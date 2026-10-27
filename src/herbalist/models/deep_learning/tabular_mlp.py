@@ -1,4 +1,4 @@
-"""Multi-Layer Perceptron (MLP) for tabular and sensor data classification."""
+"""Multi-Layer Perceptron (MLP) for tabular and agronomic data classification."""
 from __future__ import annotations
 
 from typing import List

@@ -1,6 +1,6 @@
 # Data Architecture & Repository Guide · Herbalist AI
 
-This repository hosts multi-modal datasets spanning **computer vision (foliar and floral photography)**, **ethnopharmacology / phytochemistry catalogs**, and **agronomic soil sensor readings**, with special emphasis on the **Kashmir Himalaya** and global benchmark floras.
+This repository hosts multi-modal datasets spanning **computer vision (foliar and floral photography)**, **ethnopharmacology / phytochemistry catalogs**, and **precision agronomic guidelines**, with special emphasis on the **Kashmir Himalaya** and global benchmark floras.
 
 ---
 

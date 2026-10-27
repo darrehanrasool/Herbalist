@@ -11,7 +11,7 @@ from ..core.constants import ROOT_DIR
 class DatasetEntry:
     id: str
     name: str
-    modality: str  # "tabular", "vision", "multimodal", "sensor"
+    modality: str  # "tabular", "vision", "multimodal"
     region: str    # "kashmir", "india", "global", "vietnam"
     path: str
     num_classes: Optional[int]
@@ -100,16 +100,6 @@ class DatasetRegistry:
             status="downloadable",
             description="80 common Indian medicinal leaf taxa (~9GB) for subcontinent model transfer.",
             citation="Kaggle: aryashah2k/indian-medicinal-leaves-dataset"
-        ))
-        self.register(DatasetEntry(
-            id="soil_sensors",
-            name="Agronomic Soil NPK and pH Sensor Stream",
-            modality="sensor",
-            region="kashmir",
-            path="artifacts/metrics/sensor_latest.json",
-            num_classes=None,
-            status="available",
-            description="Real-time and simulated soil NPK, pH, moisture, and temperature readings for precision agronomy."
         ))
 
     def register(self, entry: DatasetEntry) -> None:

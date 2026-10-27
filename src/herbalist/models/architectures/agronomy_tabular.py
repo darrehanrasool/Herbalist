@@ -1,6 +1,6 @@
 """
-Agronomic Tabular MLP (Model C: Soil Sensors, Elevation & Microclimate).
-Maps physicochemical soil sensor readings and altitude to species habitat suitability and bioactive compound potential.
+Agronomic Tabular MLP (Model C: Soil Parameters, Elevation & Microclimate).
+Maps physicochemical soil agronomic attributes and altitude to species habitat suitability and bioactive compound potential.
 """
 from __future__ import annotations
 
@@ -75,8 +75,8 @@ class AgronomyTabularMLP:
         self.model = load_model(weights_path, compile=False)
         self.weights_path = weights_path
 
-    def predict_suitability(self, sensor_features: np.ndarray) -> np.ndarray:
-        """Evaluate agronomic compatibility for a given soil reading."""
+    def predict_suitability(self, soil_features: np.ndarray) -> np.ndarray:
+        """Evaluate agronomic compatibility for given soil parameters."""
         if self.model is None:
             raise RuntimeError("Model is not initialized.")
-        return self.model.predict(sensor_features, verbose=0)
+        return self.model.predict(soil_features, verbose=0)

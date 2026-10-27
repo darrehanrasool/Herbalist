@@ -386,7 +386,7 @@ def upgrade_notebook():
                 "│   └── hierarchical_fusion.py<- Combined multi-modal decision ensemble\n",
                 "```\n",
                 "\n",
-                "This architecture allows each sub-model to train independently on its domain dataset, before the **Hierarchical Fusion Network** combines visual representations with geographic elevation and soil sensors for unified inference."
+                "This architecture allows each sub-model to train independently on its domain dataset, before the **Hierarchical Fusion Network** combines visual representations with geographic elevation and soil agronomy attributes for unified inference."
             ]
         }
     ]

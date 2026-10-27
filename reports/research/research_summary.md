@@ -11,13 +11,13 @@
   - Formulated full research repository architecture.
   - Implemented strict reproducibility, automated hardware detection (Apple Silicon MPS, CUDA, CPU).
   - Resolved upload static file path bugs ensuring 100% reliable UI display.
-  - Curated specialized Kashmir Himalayan endemic taxa catalog (`data/processed/kashmir_medicinal.csv`).
-  - Integrated IoT sensor protocol for precision agronomy and soil NPK diagnostics.
-  - Authored comprehensive test suite (18 unit and integration tests passing).
+  - Curated specialized Kashmir Himalayan endemic taxa catalog (`data/csv/medicinal.csv` and `data/csv/chemicaltaxonomy.csv`).
+  - Integrated 4 canonical master catalogs for precision agronomy, chemotaxonomy, and phytopathology.
+  - Authored comprehensive test suite (26 unit and integration tests passing).
 
 ---
 
 ## 2. Next Steps: Dataset Expansion & Himalayan Fine-Tuning
-1. Download Indian Medicinal Leaves (80 taxa, 9.2 GB).
-2. Field photography expedition across Gulmarg, Pahalgam, and Dachigam alpine meadows to collect original imagery of Kashmir's 15 endemic taxa.
-3. Train multimodal fusion networks combining foliar imagery with soil sensor telemetry.
+1. Download and curate global medicinal benchmarks.
+2. Field photography expedition across Gulmarg, Pahalgam, and Dachigam alpine meadows to collect original DSLR imagery of Kashmir's 16 endemic taxa.
+3. Train dedicated Kashmir endemic deep learning vision model and evaluate against independent held-out test benchmarks.

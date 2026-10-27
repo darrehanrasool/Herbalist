@@ -5,7 +5,7 @@ from typing import Dict, Any
 import pandas as pd
 
 
-# Default baseline agronomic priors when field sensors fail
+# Default baseline agronomic priors when tabular parameters are missing
 AGRONOMIC_DEFAULTS = {
     "pH": 6.5,
     "N": 40.0,
@@ -18,7 +18,7 @@ AGRONOMIC_DEFAULTS = {
 
 
 def impute_soil_readings(reading: Dict[str, Any]) -> Dict[str, float]:
-    """Impute missing soil readings with agronomic priors."""
+    """Impute missing soil parameters with standard agronomic priors."""
     clean_reading = {}
     for param, default_val in AGRONOMIC_DEFAULTS.items():
         val = reading.get(param)

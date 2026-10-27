@@ -5,43 +5,36 @@ The live identification service is still the BTech Flask app (`api/app.py`, port
 ## Runtime (what stays up)
 
 ```Browser →  Flask (api/app.py)
-              ├─ POST /analyze          existing Xception + CSV
-              ├─ POST /api/predict      existing JSON API
-              ├─ /lab /sensors /agronomy /research /login   new UI
-              ├─ POST /api/sensors/ingest
-              └─ knowledge/*.csv        agronomy join after ID
+              ├─ POST /analyze          Active Xception (200 Taxa) + 4 Master Catalogs
+              ├─ POST /api/predict      JSON prediction API
+              ├─ /lab /agronomy /plants /hybridization /research-lab
+              └─ data/csv/*.csv         4 Canonical Master Catalogs
 ```
 
-Run (unchanged):
+Run:
 
 ```bash
-cd api
-python app.py
+python api/app.py
 # http://localhost:5001
 ```
 
 ## Layers
 
-1. **Perception** — photo → species (current: Xception 200-way). Future: EfficientNet / disease head.
-2. **Knowledge** — scientific name → chemistry literature, soil bands, fertilizer, IPM, cultivation.
-3. **Sensing** — pH, N, P, K, moisture, temperature, EC (manual form or JSON ingest). Hardware can POST later.
-4. **Decision** — gap vs target bands (rules). Not a claim of HPLC yield.
-5. **Lab UI** — graphs, catalogs, research dataset links.
+1. **Perception** — leaf/flower image → species prediction (Active Model 1: Xception 200-way; Planned Model 2: Kashmir Endemics 16-way).
+2. **Knowledge Foundation** — scientific name → 4 Canonical Master Catalogs (`medicinal.csv`, `fertiliser.csv`, `chemicaltaxonomy.csv`, `disease.csv`) mapped via `label_mapping.csv`.
+3. **Agronomy & Phytopathology** — Soil requirements, NPK basal/top-dress schedules, cultural/organic IPM sanitation protocols.
+4. **Research & Terminal Console** — Reproducibility audit, zero-leakage test validation, dataset lineage, and export APIs.
 
 ## Data layout
 
 | Path                                   | Purpose                          |
 | -------------------------------------- | -------------------------------- |
-| `data/raw/catalog/`                    | Copies of BTech CSVs             |
-| `data/raw/kaggle/<dataset_id>/`        | One folder per Kaggle download   |
-| `data/processed/`                      | Cleaned tables / resized indexes |
-| `data/splits/{train,test,validation}/` | Image folders for new training   |
-| `knowledge/`                           | Join tables for the web report   |
+| `data/csv/`                            | 4 Canonical Master Catalogs (216 Taxa) |
+| `data/working_model/`                  | Partitions for Model 1 (train, val, test) |
+| `data/kashmir/`                        | Partitions for Model 2 (train, val, test) |
+| `models/working_model/`                | Active Model 1 weights & evaluation artifacts |
+| `models/kashmir/`                      | Planned Model 2 weights & specs |
 | `research/`                            | Links, paper notes, dataset log  |
-| `training/`                            | Train-from-scratch code          |
-| `artifacts/graphs/`                    | 20 lab figures                   |
-| `auth/`                                | Demo scientist login             |
-| `sensors/`                             | Protocol + simulator             |
 
 ## Training (new, does not run unless you start it)
 

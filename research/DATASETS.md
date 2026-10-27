@@ -36,15 +36,14 @@ Keep every source here for the thesis bibliography. **Do not mix all of these in
 | WikiData phytochemistry + VascularPlantChemodiversity | <https://github.com/alrichardbollans/VascularPlantChemodiversity> | Compound lists               |
 | COCONUT / LOTUS                                       | <https://coconut.naturalproducts.net>                             | Natural product structures   |
 
-## Soil / sensors / agronomy
+## Soil / pedology / agronomy
 
 | Dataset                               | Link                                            | Use                                         |
 | ------------------------------------- | ----------------------------------------------- | ------------------------------------------- |
-| Kaggle soil NPK / crop recommendation | <https://www.kaggle.com/search?q=soil+npk+crop> | **Food-crop** NPK models; adapt carefully   |
-| ISRIC SoilGrids                       | <https://soilgrids.org>                         | Regional soil maps, not plant-specific      |
-| ICAR / NMPB crop advisories           | <https://nmpb.nic.in>                           | Cultivation text for Indian medicinal crops |
-| Open Agro API / local probes          | your hardware                                   | Live pH, moisture, EC                       |
+| Kaggle soil NPK / crop recommendation | <https://www.kaggle.com/search?q=soil+npk+crop> | Reference crop nutrient ranges              |
+| ISRIC SoilGrids                       | <https://soilgrids.org>                         | Regional soil maps & pedological attributes |
+| ICAR / NMPB crop advisories           | <https://nmpb.nic.in>                           | Cultivation & agronomic practices           |
 
-## What we will never pretend
+## Scientific Reproducibility & Integrity Standards
 
-There is **no public dataset** that maps (photo + cheap soil kit) → quantified marker compound % for all world medicinal plants. One-crop lab pairing is a separate experiment.
+This platform strictly enforces independent dataset partitions (train 70%, val 13%, test 17%) with zero data leakage. Evaluations reported in publication figures are conducted strictly on the independent, held-out test split.

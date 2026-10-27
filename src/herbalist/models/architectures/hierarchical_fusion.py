@@ -19,7 +19,7 @@ class HierarchicalFusionEnsemble:
     Multi-Modal Fusion Architecture combining:
     1. Vision logits / visual features from Xception (2048-dim or 200-dim probabilities)
     2. Regional elevation & geographic priors (e.g. Kashmir altitude gate)
-    3. Physicochemical soil sensor vector (7-dim: pH, N, P, K, moisture, temp, elevation)
+    3. Physicochemical soil agronomy vector (7-dim: pH, N, P, K, moisture, temp, elevation)
 
     Formulation:
     P(Species_i | Image, Elevation, Soil) ~ P_vis(Species_i)^w_vis * P_geo(Species_i | Elev)^w_geo * P_soil(Species_i | Soil)^w_soil
@@ -28,12 +28,13 @@ class HierarchicalFusionEnsemble:
     def __init__(
         self,
         vision_dim: int = 200,
-        sensor_dim: int = 7,
+        agronomy_dim: int = 7,
         num_classes: int = 200,
         weights: Tuple[float, float, float] = (0.70, 0.15, 0.15),
     ) -> None:
         self.vision_dim = vision_dim
-        self.sensor_dim = sensor_dim
+        self.sensor_dim = agronomy_dim
+        self.agronomy_dim = agronomy_dim
         self.num_classes = num_classes
         self.w_vis, self.w_geo, self.w_soil = weights
         self.dense_fusion_model: Optional[Model] = None
@@ -41,21 +42,21 @@ class HierarchicalFusionEnsemble:
     def build_dense_fusion_network(self) -> Model:
         """
         Build an end-to-end learnable neural fusion graph that concatenates
-        deep visual embeddings with physical sensor telemetry.
+        deep visual embeddings with physical soil agronomy features.
         """
         vis_input = Input(shape=(self.vision_dim,), name="visual_features_input")
-        sensor_input = Input(shape=(self.sensor_dim,), name="sensor_telemetry_input")
+        soil_input = Input(shape=(self.sensor_dim,), name="soil_agronomy_input")
 
         # Visual projection
         vis_proj = Dense(128, activation="relu")(vis_input)
         vis_proj = BatchNormalization()(vis_proj)
 
-        # Telemetry projection
-        sensor_proj = Dense(64, activation="relu")(sensor_input)
-        sensor_proj = BatchNormalization()(sensor_proj)
+        # Agronomy projection
+        soil_proj = Dense(64, activation="relu")(soil_input)
+        soil_proj = BatchNormalization()(soil_proj)
 
         # Cross-modal concatenation
-        combined = Concatenate()([vis_proj, sensor_proj])
+        combined = Concatenate()([vis_proj, soil_proj])
         x = Dense(128, activation="relu")(combined)
         x = Dropout(0.2)(x)
         x = Dense(64, activation="relu")(x)
@@ -63,7 +64,7 @@ class HierarchicalFusionEnsemble:
         output_probs = Dense(self.num_classes, activation="softmax", name="unified_species_prediction")(x)
 
         self.dense_fusion_model = Model(
-            inputs=[vis_input, sensor_input],
+            inputs=[vis_input, soil_input],
             outputs=output_probs,
             name="Hierarchical_MultiModal_Fusion",
         )

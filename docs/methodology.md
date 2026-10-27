@@ -47,9 +47,9 @@ $$\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$$
 
 ---
 
-## 2. Agronomic Soil Gap Analysis Methodology
+## 2. Agronomic Soil Gap & Nutrient Envelope Methodology
 
-When real-time sensor readings $\mathbf{s} = \{ \text{pH}, \text{N}, \text{P}, \text{K}, \text{Moisture}, \text{Temp} \}$ are submitted, the system queries the species agronomic envelope $[\mathbf{l}_{\min}, \mathbf{l}_{\max}]$ from `knowledge/soil_requirements.csv`.
+For any evaluated botanical taxon, the agronomic parameter vector $\mathbf{s} = \{ \text{pH}, \text{N}, \text{P}, \text{K}, \text{Moisture}, \text{Elevation} \}$ is queried against the authoritative envelope $[\mathbf{l}_{\min}, \mathbf{l}_{\max}]$ curated in `data/csv/fertiliser.csv`.
 
 For each parameter $i$, the discrepancy $\Delta_i$ is evaluated:
 $$\Delta_i = \begin{cases}

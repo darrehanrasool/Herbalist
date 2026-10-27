@@ -12,4 +12,4 @@ Alpine plants exhibit morphological dwarfing, altered leaf pubescence, and antho
 
 ### 3. Multimodal Integration of Soil Chemistry with Foliar Vision
 Existing computer vision systems treat classification purely as pixel mapping, ignoring soil chemistry. However, phytochemical potency is directly coupled to soil NPK, pH, and electrical conductivity.
-- **Proposed Solution**: Multimodal fusion network combining foliar image embeddings with tabular soil sensor readings.
+- **Proposed Solution**: Multimodal fusion network combining foliar image embeddings with tabular chemotaxonomic and agronomic feature vectors.

@@ -39,19 +39,3 @@ This document establishes the precise metadata definitions, data types, constrai
 | `Moisture_Max_pct`| `float` | 10 – 95 | % | Field water capacity threshold before root hypoxia. |
 | `Temp_Min_C` | `float` | -15 – 35 | °C | Minimum thermal growth envelope (crucial for alpine taxa). |
 | `Temp_Max_C` | `float` | 15 – 50 | °C | Thermal stress upper ceiling. |
-
----
-
-## 3. Real-Time Soil Sensor Ingestion Schema (`/api/sensors/ingest`)
-
-| Parameter | Type | Required | Range | Description |
-|---|---|---|---|---|
-| `device_id` | `string` | Yes | Alphanumeric | Unique probe or IoT gateway identifier (e.g. `kashmir-field-01`). |
-| `pH` | `float` | Yes | 0.0 – 14.0 | Direct probe potential of hydrogen reading. |
-| `N` | `float` | Optional | 0.0 – 500.0 | Soil nitrogen concentration. |
-| `P` | `float` | Optional | 0.0 – 500.0 | Soil phosphorus concentration. |
-| `K` | `float` | Optional | 0.0 – 500.0 | Soil potassium concentration. |
-| `moisture` | `float` | Optional | 0.0 – 100.0 | Soil moisture percentage. |
-| `temperature` | `float` | Optional | -40.0 – 80.0 | Probe temperature in Celsius. |
-| `ec` | `float` | Optional | 0.0 – 10.0 | Electrical conductivity in mS/cm. |
-| `timestamp` | `string` | Auto-generated | ISO-8601 | UTC timestamp of observation. |

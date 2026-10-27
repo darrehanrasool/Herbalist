@@ -49,15 +49,3 @@ data:
       classes: 80
       raw_path: "data/raw/kaggle/indian-medicinal-leaves-dataset"
       source: "Kaggle (aryashah2k/indian-medicinal-leaves-dataset)"
-
-    soil_sensors:
-      name: "Soil Sensor Readings"
-      parameters: ["pH", "N", "P", "K", "moisture", "temperature", "ec"]
-      units:
-        pH: "pH units (0-14)"
-        N: "mg/kg"
-        P: "mg/kg"
-        K: "mg/kg"
-        moisture: "%"
-        temperature: "°C"
-        ec: "mS/cm"

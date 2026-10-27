@@ -30,7 +30,7 @@ flowchart TD
     subgraph Presentation & APIs
         D3 --> E1[Interactive Web Platform / UI]
         D3 --> E2[REST API Endpoints: /api/predict]
-        D3 --> E3[Sensor Ingestion API: /api/sensors/ingest]
+        D3 --> E3[Scientific Export APIs: /api/export/json, /api/export/csv]
     end
 ```
 
