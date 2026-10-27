@@ -17,13 +17,13 @@ Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, 
 
 This research project is designed, engineered, and maintained at the **Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir**.
 
-| Role                                    | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                  |
-| :-------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| **Head of Department (HOD) Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                   |
-| **Contributing Researcher**             | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
-| **Contributing Researcher**             | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification                                |
-| **Contributing Researcher**             | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity                             |
-| **Research Contributor**                | **Sehreen Jeelani**         | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Literature Synthesis, Chemotaxonomy Modeling & Ethnomedicinal Annotation                           |
+| Role                            | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                  |
+| :------------------------------ | :-------------------------- | :------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| **Faculty Supervisor & Mentor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                   |
+| **Contributing Researcher**     | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
+| **Contributing Researcher**     | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification                                |
+| **Contributing Researcher**     | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity                             |
+| **Research Contributor**        | **Sehreen Jeelani**         | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Literature Synthesis, Chemotaxonomy Modeling & Ethnomedicinal Annotation                           |
 
 - **Academic Unit**: Centre for Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
