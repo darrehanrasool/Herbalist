@@ -28,21 +28,15 @@
       <nav>
         <a href="{{ url_for('home') }}"><i class="fas fa-border-all"></i> Workspace</a>
         <a href="{{ url_for('upload_page') }}"><i class="fas fa-microscope"></i> Identify</a>
-        <a href="{{ url_for('kashmir_hub') }}"><i class="fas fa-camera-retro"></i> Kashmir DSLR Hub</a>
         <a href="{{ url_for('hybridization_explorer') }}"><i class="fas fa-dna"></i> Chemotaxonomy</a>
-        <a href="{{ url_for('sensors_page') }}"><i class="fas fa-satellite-dish"></i> Sensors & Pedology</a>
-        <a href="{{ url_for('agronomy') }}"><i class="fas fa-seedling"></i> Agronomy</a>
+        <a href="{{ url_for('agronomy') }}"><i class="fas fa-seedling"></i> Agronomy & Nutrients</a>
         <a href="{{ url_for('lab') }}"><i class="fas fa-chart-area"></i> Research Figures</a>
         <a href="{{ url_for('plants_browser') }}"><i class="fas fa-book"></i> Botanical Catalog</a>
-        <a href="{{ url_for('research_lab') }}"><i class="fas fa-flask"></i> Standards</a>
+        <a href="{{ url_for('research_lab') }}"><i class="fas fa-flask"></i> Standards & Lineage</a>
       </nav>
-      <div class="hx-nav-foot">
-        {% if session.get('user') %}
-        <span>{{ session.user.username }} · {{ session.user.role }}</span>
-        <a href="{{ url_for('logout') }}">Sign out</a>
-        {% else %}
-        <a class="hx-btn" href="{{ url_for('login') }}">Scientist login</a>
-        {% endif %}
+      <div class="hx-nav-foot" style="padding: 0.8rem 1rem; border-top: 1px solid var(--hx-line); background: #071018;">
+        <span style="font-size: 0.8rem; color: var(--hx-muted); display: block;"><i class="fas fa-university"></i> CAI · IUST Kashmir</span>
+        <span style="font-size: 0.75rem; color: var(--hx-accent); font-weight: 600;"><i class="fas fa-check-circle"></i> Dual-Model Cascade</span>
       </div>
     </aside>
     <main class="hx-main">

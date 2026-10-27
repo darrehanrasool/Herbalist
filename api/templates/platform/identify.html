@@ -1,11 +1,11 @@
 {% extends "platform/base.html" %}
-{% block title %}Identify Botanical Taxa · Herbalist AI{% endblock %}
+{% block title %}Identify Botanical Specimen · Herbalist AI{% endblock %}
 {% block content %}
 <header class="hx-head">
   <div>
-    <p class="hx-kicker">Deep Learning Computer Vision · 200 Species</p>
-    <h1>Species Identification & Field Diagnostics</h1>
-    <p class="hx-sub">Upload foliar or floral photography for neural network classification, coupled with optional real-time soil telemetry for agronomic gap analysis.</p>
+    <p class="hx-kicker">Deep Convolutional Neural Vision Engine · Dual-Model Pipeline</p>
+    <h1>Species Identification & Phytochemical Diagnostics</h1>
+    <p class="hx-sub">Upload foliar or floral photography for neural classification (180×180 RGB), mapped directly to the 4 canonical master catalogs (Medicinal, Fertilizer, Chemotaxonomy, and Disease IPM).</p>
   </div>
 </header>
 
@@ -19,7 +19,7 @@
         <span class="hx-drop-btn"><i class="fas fa-folder-open"></i> Browse Files</span>
       </div>
       <div id="previewContainer" style="display: none; text-align: center;">
-        <img id="imagePreview" src="#" alt="Preview" class="hx-preview-img" />
+        <img id="imagePreview" src="#" alt="Preview" class="hx-preview-img" style="max-height: 280px; border-radius: 8px; margin: 0.8rem auto; display: block; border: 1px solid var(--hx-line);" />
         <p id="imageMeta" class="hx-kicker" style="margin-top: 0.5rem;"></p>
         <span class="hx-btn" id="changePhotoBtn"><i class="fas fa-redo"></i> Choose Different Image</span>
       </div>
@@ -28,33 +28,20 @@
   </div>
 
   {% if error %}
-  <p class="hx-error"><i class="fas fa-exclamation-triangle"></i> {{ error }}</p>
+  <p class="hx-error" style="color: #ff6b6b; margin-top: 1rem;"><i class="fas fa-exclamation-triangle"></i> {{ error }}</p>
   {% endif %}
 
-  <div class="hx-section-header">
-    <h3><i class="fas fa-vial"></i> Optional Soil & Microclimate Sensor Reading</h3>
-    <p class="hx-note">Used to benchmark current root zone parameters against the species optimal agronomic envelope.</p>
-  </div>
-
-  <div class="hx-fields">
-    <label>Soil pH <input name="soil_ph" id="soil_ph" type="number" step="0.01" placeholder="e.g. 6.5" /></label>
-    <label>Nitrogen (N) <input name="soil_n" id="soil_n" type="number" step="0.1" placeholder="mg/kg" /></label>
-    <label>Phosphorus (P) <input name="soil_p" id="soil_p" type="number" step="0.1" placeholder="mg/kg" /></label>
-    <label>Potassium (K) <input name="soil_k" id="soil_k" type="number" step="0.1" placeholder="mg/kg" /></label>
-    <label>Moisture % <input name="soil_moisture" id="soil_moisture" type="number" step="0.1" placeholder="e.g. 35.0" /></label>
-    <label>Temperature °C <input name="soil_temp" id="soil_temp" type="number" step="0.1" placeholder="e.g. 22.0" /></label>
-    <label>Conductivity (EC) <input name="soil_ec" id="soil_ec" type="number" step="0.01" placeholder="mS/cm" /></label>
-  </div>
-
-  <div style="display: flex; gap: 0.8rem; margin-top: 1rem; align-items: center; flex-wrap: wrap;">
-    <button class="hx-btn hx-btn-primary" type="submit" id="submitBtn">
+  <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <div style="display: flex; gap: 0.6rem; align-items: center; font-size: 0.85rem; color: var(--hx-muted);">
+      <span style="background: #112d22; color: #2ee6a8; padding: 3px 8px; border-radius: 4px; font-weight: 600;">
+        <i class="fas fa-microchip"></i> Model 1: Active (200 Classes)
+      </span>
+      <span style="background: #193549; color: #4cc3ff; padding: 3px 8px; border-radius: 4px;">
+        <i class="fas fa-mountain"></i> Model 2: Kashmir (16 Classes Pipeline)
+      </span>
+    </div>
+    <button class="hx-btn hx-btn-primary" type="submit" id="submitBtn" style="padding: 0.7rem 1.6rem; font-size: 1rem;">
       <i class="fas fa-microscope"></i> Run Neural Identification
-    </button>
-    <button type="button" class="hx-btn" id="kashmirPresetBtn">
-      <i class="fas fa-mountain"></i> Load Kashmir Alpine Soil Preset
-    </button>
-    <button type="button" class="hx-btn" id="valleyPresetBtn">
-      <i class="fas fa-seedling"></i> Load Kashmir Valley Loam Preset
     </button>
   </div>
 </form>
@@ -124,27 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
       handleFile(files[0]);
     }
   }, false);
-
-  // Kashmir Presets
-  document.getElementById("kashmirPresetBtn").addEventListener("click", function() {
-    document.getElementById("soil_ph").value = "5.85";
-    document.getElementById("soil_n").value = "38.0";
-    document.getElementById("soil_p").value = "14.5";
-    document.getElementById("soil_k").value = "22.0";
-    document.getElementById("soil_moisture").value = "45.0";
-    document.getElementById("soil_temp").value = "12.5";
-    document.getElementById("soil_ec").value = "0.65";
-  });
-
-  document.getElementById("valleyPresetBtn").addEventListener("click", function() {
-    document.getElementById("soil_ph").value = "6.60";
-    document.getElementById("soil_n").value = "55.0";
-    document.getElementById("soil_p").value = "24.0";
-    document.getElementById("soil_k").value = "35.0";
-    document.getElementById("soil_moisture").value = "32.0";
-    document.getElementById("soil_temp").value = "20.0";
-    document.getElementById("soil_ec").value = "1.10";
-  });
 });
 </script>
 {% endblock %}

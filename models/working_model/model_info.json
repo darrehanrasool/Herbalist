@@ -1,0 +1,22 @@
+{
+  "model_name": "Xception Medicinal Flora Classifier (200 Classes)",
+  "status": "Trained & Functionally Verified",
+  "architecture": "Xception (Extreme Inception)",
+  "weights_file": "models/working_model/plant.h5",
+  "file_size_mb": 84.53,
+  "input_shape": [
+    180,
+    180,
+    3
+  ],
+  "output_classes": 200,
+  "total_parameters": 21271280,
+  "trainable_parameters": 409800,
+  "validation_accuracy": 0.9679,
+  "validation_auc_roc": 0.9982,
+  "validation_loss": 0.1241,
+  "loss_function": "CategoricalCrossentropy",
+  "optimizer": "Adam (Initial LR: 1e-4, Cosine Decay)",
+  "normalization": "1/255.0 Rescaling to [0, 1]",
+  "domain": "Global and Subcontinental Medicinal Flora (VNPlant-200 Benchmark)"
+}

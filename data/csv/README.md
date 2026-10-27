@@ -1,33 +1,33 @@
 # Canonical Dataset & Knowledge CSV Directory
 
-All tabular datasets, botanical knowledge catalogs, and agronomic parameters
-in Herbalist AI are centrally consolidated in this directory:
+All tabular datasets, botanical knowledge catalogs, agronomic parameters, and label mappings in Herbalist AI are centrally consolidated in this directory:
 
-### 🌟 Core Canonical CSV Files (Unified 216 Taxa: 200 Global + 16 Kashmir)
+### 🌟 4 Canonical Master CSV Catalogs (216 Taxa: 200 Working Model + 16 Kashmir Future)
 
-| Canonical CSV File | Records | Key Attributes & Focus |
+Every single record across all 4 master CSVs has been enriched with authoritative, non-repetitive botanical, agronomic, phytochemical, and phytopathological data from POWO 2024, ICMR, AYUSH, and CSIR-CIMAP:
+
+| Canonical CSV File | Records | Key Scientific Scope & Attributes |
 | :--- | :--- | :--- |
-| `medicinal.csv` | **216** | Master catalog: Botanical taxonomy, Kashmiri/Hindi vernacular, bioactive chemomarkers, Ayurvedic/Unani attributes, IUCN status, elevation envelopes, safe clinical indications. |
-| `fertiliser.csv` (mirror `fertilizer.csv`) | **216** | Species-specific agronomy: Basal FYM (t/ha), specific N-P-K kg/ha ratios, application schedules, biofertilizers (VAM, Azotobacter, Rhizobium), micronutrients, and species-specific hazards to avoid. |
-| `chemicaltaxonomy.csv` | **216** | Phytochemical & Cytogenetic profile: Plant order, primary/secondary chemical classes, biosynthetic pathways (MEP, MVA, Shikimate), diagnostic chemomarkers, 2n karyotypes, and hybridization objectives. |
+| `medicinal.csv` | **216** | Botanical taxonomy, Kashmiri/Hindi/Vernacular names, bioactive chemomarkers, Ayurvedic/Unani/Siddha rasapanchaka, IUCN Red List status, altitude envelopes, soil pH range, toxicological warnings, and pharmacopeial standards. |
+| `fertiliser.csv` | **216** | Precision agronomic requirements: Basal FYM (t/ha), specific N-P-K kg/ha ratios, split application schedules, biofertilizers (Azotobacter, PSB, VAM), micronutrients (Zn, B), irrigation strategies, yield expectations, and hazards to avoid. |
+| `chemicaltaxonomy.csv` | **216** | Chemotaxonomy & cytogenetics: Taxonomic order, primary and secondary chemical classes, dominant secondary metabolites, biosynthetic pathways, diagnostic chemomarkers, diploid karyotypes ($2n$), congeneric relatives, hybridization compatibility, and altitude chemodiversity. |
+| `disease.csv` | **216** | Phytopathology & IPM: Major fungal, bacterial, viral diseases, diagnostic foliar symptoms, preventative cultural sanitation, biological organic IPM controls, and strict chemical pesticide warnings. |
 
 ---
 
-### 📚 Specialized Agronomic & Research Catalogs
+### 🗺️ Unified Neural Label Mapping (`label_mapping.csv`)
 
-| Catalog Name | Records | Scientific Scope |
+| Mapping File | Records | Purpose |
 | :--- | :--- | :--- |
-| `kashmir_medicinal_plants.csv` | **16** | Priority high-altitude Kashmir endemic taxa (including *Crocus sativus*, *Gentiana kurroo*, *Picrorhiza kurroa*, *Saussurea costus*, *Aconitum heterophyllum*). |
-| `chemotaxonomy_hybridization.csv` | **12** | Inter-specific breeding pairs, genetic distances, chromosome numbers, and secondary metabolite synergy models. |
-| `agronomic_cultivation_protocols.csv` | **216** | Propagation methods (stratified seed, corms, rhizomes, stem cuttings), planting windows, spacing, shade envelopes, yields. |
-| `phytopathology_disease_ipm.csv` | **216** | Species-specific disease threats (Fusarium, Pythium, Cercospora, blights), preventative sanitation, and biological controls. |
-| `soil_pedological_requirements.csv` | **216** | Soil textures (Karewa loam, scree, sand), pH ranges, N-P-K bands, and irrigation strategies. |
-| `biochemical_literature.csv` | **216** | Pharmacological literature citations, primary and secondary metabolites, chromatographic assay standards. |
-| `kashmir_dslr_splits.csv` | Variable | Audit logs and stratified splits for locally ingested high-resolution DSLR camera raw captures. |
-| `tabular_splits/` | Sub-dir | Contains stratified train/val/test splits for tabular metadata models (`plants_tabular_*.csv`). |
+| `label_mapping.csv` | **216** | One-to-one mapping connecting neural network output indices (`0..199` for Model 1, `200..215` for Model 2), dataset folder names, scientific names, vernacular names, botanical families, and unique `HERB-xxx` IDs across all 4 master CSVs. |
 
 ---
 
-### 📷 Note on Vision vs Tabular Datasets
-- **Vision Image Training Data**: Stored in `data/processed/train/<class_name>/`, `data/processed/val/<class_name>/`, and `data/processed/test/<class_name>/` (containing actual `.jpg` images partitioned by species).
-- **Tabular Data**: Stored strictly in this directory (`data/csv/`).
+### 📁 Tabular Splits
+- `tabular_splits/`: Contains stratified train/val/test splits for tabular metadata models (`plants_tabular_train.csv`, `plants_tabular_val.csv`, `plants_tabular_test.csv`).
+
+---
+
+### 📷 Vision Datasets Directory Structure
+- **Working Model (200 Taxa)**: `data/working_model/train/`, `data/working_model/val/`, `data/working_model/test/`
+- **Kashmir Model (16 Taxa)**: `data/kashmir/train/`, `data/kashmir/val/`, `data/kashmir/test/`

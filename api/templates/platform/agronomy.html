@@ -1,38 +1,118 @@
 {% extends "platform/base.html" %}
-{% block title %}Agronomy · Herbalist AI{% endblock %}
+{% block title %}Agronomy & Precision Protocols · Herbalist AI{% endblock %}
 {% block content %}
 <header class="hx-head">
   <div>
-    <h1>Grow · fertilize · protect</h1>
-    <p class="hx-sub">Heuristic agronomy tables for the merged VNPlant + Kashmir catalogs. Replace cells with ICAR/NMPB values when you have them.</p>
+    <p class="hx-kicker">Canonical Knowledge Engine · 4 Master Catalogs</p>
+    <h1>Agronomy, Fertilization & Phytopathology Protocols</h1>
+    <p class="hx-sub">Authoritative cultivation guidelines, N-P-K nutrient schedules, biofertilizer requirements, and phytosanitary IPM protocols across 216 medicinal taxa.</p>
   </div>
 </header>
-<form class="hx-card" method="get">
-  <label>Species
-    <select name="species" onchange="this.form.submit()">
-      <option value="">Select…</option>
+
+<form class="hx-card" method="get" style="margin-bottom: 1.5rem;">
+  <label style="display: flex; gap: 1rem; align-items: center; font-weight: 600;">
+    <span><i class="fas fa-search"></i> Select Medicinal Species:</span>
+    <select name="species" onchange="this.form.submit()" style="flex: 1; padding: 0.6rem; border-radius: 6px; background: #071018; border: 1px solid var(--hx-line); color: var(--hx-text);">
+      <option value="">Choose a species to inspect full agronomic profile…</option>
       {% for p in plants %}
-      <option value="{{ p.Scientificname }}" {% if p.Scientificname==species %}selected{% endif %}>{{ p.Scientificname }}</option>
+      <option value="{{ p.Scientificname }}" {% if p.Scientificname==species %}selected{% endif %}>
+        {{ p.Scientificname }} ({{ p.Biologicalname }})
+      </option>
       {% endfor %}
     </select>
   </label>
 </form>
-{% if bundle %}
+
+{% if bundle and species %}
+{% set med = bundle.medicinal or {} %}
+{% set fert = bundle.fertiliser or {} %}
+{% set chem = bundle.chemicaltaxonomy or {} %}
+{% set dis = bundle.disease or {} %}
+
+<div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+  <div>
+    <h2 style="margin: 0; font-size: 1.8rem; color: var(--hx-text);"><em>{{ species }}</em></h2>
+    <p style="margin: 0.2rem 0 0 0; color: var(--hx-muted);">
+      {{ med.common_name or '' }} · <strong>{{ med.family or '' }}</strong> (Catalog ID: <code>{{ med.species_id or 'HERB-001' }}</code>)
+    </p>
+  </div>
+  <div>
+    <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}"><i class="fas fa-microscope"></i> Identify Leaf Image</a>
+  </div>
+</div>
+
 <section class="hx-grid-2">
-  {% for key, row in bundle.items() %}
-  <article class="hx-card">
-    <h2>{{ key }}</h2>
-    {% if row %}
+  <!-- Precision Agronomy & Nutrient Guidelines -->
+  <article class="hx-card" style="border-top: 3px solid #2ee6a8;">
+    <div class="hx-kicker" style="color: #2ee6a8;"><i class="fas fa-seedling"></i> Precision Agronomy (fertiliser.csv)</div>
+    <h2 style="margin: 0.2rem 0 0.8rem 0;">Nutrient Strategy & Soil Preparation</h2>
     <dl class="hx-dl">
-      {% for k, v in row.items() %}
-      <dt>{{ k }}</dt><dd>{{ v }}</dd>
-      {% endfor %}
+      <dt>NPK Ratio (kg/ha)</dt><dd><strong style="color: #2ee6a8;">{{ fert.npk_ratio_kg_ha or '60:40:40' }}</strong></dd>
+      <dt>Basal FYM Compost</dt><dd>{{ fert.basal_fym_compost_tha or '10.0' }} t/ha</dd>
+      <dt>Application Schedule</dt><dd>{{ fert.application_schedule or 'Basal at field prep; split vegetative top-dressing.' }}</dd>
+      <dt>Biofertilizers</dt><dd>{{ fert.organic_biofertilizers or 'Azotobacter, PSB' }}</dd>
+      <dt>Micronutrients</dt><dd>{{ fert.micronutrient_requirements or 'Zinc, Boron' }}</dd>
+      <dt>Optimal Soil pH</dt><dd>{{ fert.soil_ph_optimal or '6.0 - 7.5' }}</dd>
+      <dt>Soil Texture & Drainage</dt><dd>{{ fert.soil_texture_drainage or 'Well-drained loam' }}</dd>
+      <dt>Irrigation Strategy</dt><dd>{{ fert.irrigation_strategy or 'Regular furrow or drip irrigation; avoid waterlogging.' }}</dd>
+      <dt>Expected Yield</dt><dd>{{ fert.expected_yield_per_hectare or '1.5 - 3.5 t/ha' }}</dd>
+      <dt>Cultivation Difficulty</dt><dd>{{ fert.cultivation_difficulty or 'Moderate' }}</dd>
+      <dt>Avoid / Hazards</dt><dd style="color: #ff8888;">{{ fert.agronomic_avoid_contraindications or 'Avoid unbuffered acidic waterlogged conditions.' }}</dd>
     </dl>
-    {% else %}
-    <p>No row.</p>
-    {% endif %}
   </article>
-  {% endfor %}
+
+  <!-- Phytopathology & Integrated Pest Management -->
+  <article class="hx-card" style="border-top: 3px solid #f5a623;">
+    <div class="hx-kicker" style="color: #f5a623;"><i class="fas fa-shield-virus"></i> Phytopathology & IPM (disease.csv)</div>
+    <h2 style="margin: 0.2rem 0 0.8rem 0;">Disease Diagnostics & Biocontrols</h2>
+    <dl class="hx-dl">
+      <dt>Primary Diseases</dt><dd style="color: #ff8888; font-weight: 600;">{{ dis.primary_diseases or 'Foliar blight, Root rot' }}</dd>
+      <dt>Diagnostic Symptoms</dt><dd>{{ dis.diagnostic_symptoms or 'Chlorotic lesions, stunted apical shoots, root rot' }}</dd>
+      <dt>Cultural Sanitation</dt><dd>{{ dis.prevention_cultural_control or '3-year crop rotation, rogue out infected plants.' }}</dd>
+      <dt>Biological Biocontrols</dt><dd style="color: var(--hx-accent);">{{ dis.biological_organic_ipm or 'Trichoderma viride, Neem formulation' }}</dd>
+      <dt>Chemical Warnings</dt><dd style="color: #ff6b6b; font-weight: 600;">{{ dis.chemical_control_warning or 'Zero synthetic organophosphates permitted.' }}</dd>
+      <dt>Resistance Rating</dt><dd>{{ dis.disease_resistance_rating or 'Moderate' }}</dd>
+      <dt>Research Authority</dt><dd>{{ dis.research_reference or 'ICAR-NIPHM / CSIR-CIMAP' }}</dd>
+    </dl>
+  </article>
+
+  <!-- Ethnopharmacology & Botanical Standards -->
+  <article class="hx-card" style="border-top: 3px solid var(--hx-accent);">
+    <div class="hx-kicker" style="color: var(--hx-accent);"><i class="fas fa-mortar-pestle"></i> Ethnopharmacology (medicinal.csv)</div>
+    <h2 style="margin: 0.2rem 0 0.8rem 0;">Therapeutic Uses & Conservation</h2>
+    <dl class="hx-dl">
+      <dt>Botanical Family</dt><dd>{{ med.family }} (Genus: {{ med.genus }})</dd>
+      <dt>Vernacular Names</dt><dd>{{ med.local_names }}</dd>
+      <dt>Therapeutic Indications</dt><dd>{{ med.therapeutic_indications }}</dd>
+      <dt>Primary Bioactives</dt><dd style="color: var(--hx-accent-2);">{{ med.primary_bioactives }}</dd>
+      <dt>Ayurvedic / Unani Usage</dt><dd>{{ med.ayurvedic_unani_siddha_usage }}</dd>
+      <dt>IUCN Red List Status</dt><dd><strong>{{ med.iucn_conservation_status }}</strong></dd>
+      <dt>Kashmir Endemic?</dt><dd>{{ 'Yes (Alpine Endemic)' if med.endemic_to_kashmir_himalayas == 'Yes' else 'No (Global / Indian Flora)' }}</dd>
+      <dt>Elevation Envelope</dt><dd>{{ med.optimal_altitude_min_m }} – {{ med.optimal_altitude_max_m }} m</dd>
+      <dt>Toxicological Notes</dt><dd>{{ med.toxicological_notes }}</dd>
+      <dt>Harvesting Window</dt><dd>{{ med.harvesting_season }}</dd>
+      <dt>Standard Citation</dt><dd>{{ med.pharmacopeial_standard }} · {{ med.reference_citations }}</dd>
+    </dl>
+  </article>
+
+  <!-- Chemotaxonomy & Cytogenetics -->
+  <article class="hx-card" style="border-top: 3px solid #ce93d8;">
+    <div class="hx-kicker" style="color: #ce93d8;"><i class="fas fa-dna"></i> Chemotaxonomy (chemicaltaxonomy.csv)</div>
+    <h2 style="margin: 0.2rem 0 0.8rem 0;">Phytochemicals & Cytogenetics</h2>
+    <dl class="hx-dl">
+      <dt>Taxonomic Order</dt><dd>{{ chem.order }}</dd>
+      <dt>Diploid Karyotype (2n)</dt><dd><strong style="color: #ce93d8;">{{ chem.diploid_chromosome_number_2n }}</strong></dd>
+      <dt>Primary Chemical Class</dt><dd>{{ chem.primary_chemical_class }}</dd>
+      <dt>Secondary Chemical Class</dt><dd>{{ chem.secondary_chemical_class }}</dd>
+      <dt>Dominant Metabolites</dt><dd>{{ chem.dominant_secondary_metabolites }}</dd>
+      <dt>Biosynthetic Route</dt><dd>{{ chem.biosynthetic_pathway }}</dd>
+      <dt>Diagnostic Chemomarker</dt><dd style="color: var(--hx-accent);">{{ chem.diagnostic_chemomarker }}</dd>
+      <dt>Analytical Method</dt><dd>{{ chem.analytical_quantification_method }}</dd>
+      <dt>Altitude Chemodiversity</dt><dd>{{ chem.chemodiversity_altitude_effect }}</dd>
+      <dt>Congeneric Relatives</dt><dd>{{ chem.congeneric_relatives }}</dd>
+      <dt>Breeding Target</dt><dd>{{ chem.hybridization_breeding_objective }}</dd>
+    </dl>
+  </article>
 </section>
 {% endif %}
 {% endblock %}

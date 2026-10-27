@@ -1,0 +1,217 @@
+model_index,class_folder_name,scientific_name,common_name,family,species_id,is_kashmir_future
+0,Abelmoschus_sagittifolius,Abelmoschus sagittifolius,Arrowleaf Sida,Malvaceae,HERB-001,No
+1,Abrus_precatorius,Abrus precatorius,Rosary Pea,Fabaceae,HERB-002,No
+2,Abutilon_indicum,Abutilon indicum,Indian Mallow,Malvaceae,HERB-003,No
+3,Acanthus_integrifolius,Acanthus integrifolius,Thorny Oyster Plant,Acanthaceae,HERB-004,No
+4,Acorus_tatarinowii,Acorus tatarinowii,Sweet Flag,Acoraceae,HERB-005,No
+5,Agave_americana,Agave americana,Century Plant,Asparagaceae,HERB-006,No
+6,Ageratum_conyzoides,Ageratum conyzoides,Goatweed,Asteraceae,HERB-007,No
+7,Allium_ramosum,Allium ramosum,Chinese Chives,Amaryllidaceae,HERB-008,No
+8,Alocasia_macrorrhizos,Alocasia macrorrhizos,Giant Taro,Araceae,HERB-009,No
+9,Aloe_vera,Aloe vera,Aloe,Asphodelaceae,HERB-010,No
+10,Alpinia_officinarum,Alpinia officinarum,Galangal,Zingiberaceae,HERB-011,No
+11,Amomum_longiligulare,Amomum longiligulare,Cardamom,Zingiberaceae,HERB-012,No
+12,Ampelopsis_cantoniensis,Ampelopsis cantoniensis,Chinese Ampelopsis,Vitaceae,HERB-013,No
+13,Andrographis_paniculata,Andrographis paniculata,King of Bitters,Acanthaceae,HERB-014,No
+14,Angelica_dahurica,Angelica dahurica,Dahurian Angelica,Apiaceae,HERB-015,No
+15,Ardisia_sylvestris,Ardisia sylvestris,Wild Ardisia,Primulaceae,HERB-016,No
+16,Artemisia_vulgaris,Artemisia vulgaris,Mugwort,Asteraceae,HERB-017,No
+17,Artocarpus_altilis,Artocarpus altilis,Breadfruit,Moraceae,HERB-018,No
+18,Artocarpus_heterophyllus,Artocarpus heterophyllus,Jackfruit,Moraceae,HERB-019,No
+19,Artocarpus_lakoocha,Artocarpus lakoocha,Monkey Jack,Moraceae,HERB-020,No
+20,Asparagus_cochinchinensis,Asparagus cochinchinensis,Chinese Asparagus,Asparagaceae,HERB-021,No
+21,Asparagus_officinalis,Asparagus officinalis,Asparagus,Asparagaceae,HERB-022,No
+22,Averrhoa_carambola,Averrhoa carambola,Starfruit,Oxalidaceae,HERB-023,No
+23,Baccaurea_sp,Baccaurea sp,Rambai,Phyllanthaceae,HERB-024,No
+24,Barleria_lupulina,Barleria lupulina,Himalayan Barleria,Acanthaceae,HERB-025,No
+25,Bengal_Arum,Bengal Arum,Bengal Arum,Araceae,HERB-026,No
+26,Berchemia_lineata,Berchemia lineata,Blackberry Lily,Rhamnaceae,HERB-027,No
+27,Bidens_pilosa,Bidens pilosa,Spanish Needle,Asteraceae,HERB-028,No
+28,Bischofia_trifoliata,Bischofia trifoliata,Bischofia,Phyllanthaceae,HERB-029,No
+29,Blackberry_Lily,Blackberry Lily,Blackberry Lily,Iridaceae,HERB-030,No
+30,Blumea_balsamifera,Blumea balsamifera,Balsam Plant,Asteraceae,HERB-031,No
+31,Boehmeria_nivea,Boehmeria nivea,Ramie,Urticaceae,HERB-032,No
+32,Breynia_vitis,Breynia vitis,Breynia,Phyllanthaceae,HERB-033,No
+33,Caesalpinia_sappan,Caesalpinia sappan,Sappan Wood,Fabaceae,HERB-034,No
+34,Callerya_speciosa,Callerya speciosa,Tamarind Tree,Fabaceae,HERB-035,No
+35,Callisia_fragrans,Callisia fragrans,Horsetail Plant,Commelinaceae,HERB-036,No
+36,Calophyllum_inophyllum,Calophyllum inophyllum,Tamanu Tree,Calophyllaceae,HERB-037,No
+37,Calotropis_gigantea,Calotropis gigantea,Crown Flower,Apocynaceae,HERB-038,No
+38,Camellia_chrysantha,Camellia chrysantha,Golden Camellia,Theaceae,HERB-039,No
+39,Caprifoliaceae,Caprifoliaceae,Honeysuckle Family,Caprifoliaceae,HERB-040,No
+40,Capsicum_annuum,Capsicum annuum,Bell Pepper,Solanaceae,HERB-041,No
+41,Carica_papaya,Carica papaya,Papaya,Caricaceae,HERB-042,No
+42,Catharanthus_roseus,Catharanthus roseus,Madagascar Periwinkle,Apocynaceae,HERB-043,No
+43,Celastrus_hindsii,Celastrus hindsii,Chinese Celastrus,Celastraceae,HERB-044,No
+44,Celosia_argentea,Celosia argentea,Cockscomb,Amaranthaceae,HERB-045,No
+45,Centella_asiatica,Centella asiatica,Gotu Kola,Apiaceae,HERB-046,No
+46,Citrus_aurantifolia,Citrus aurantifolia,Lime,Rutaceae,HERB-047,No
+47,Citrus_hystrix,Citrus hystrix,Kaffir Lime,Rutaceae,HERB-048,No
+48,Clausena_indica,Clausena indica,Indian Clausena,Rutaceae,HERB-049,No
+49,Cleistocalyx_operculatus,Cleistocalyx operculatus,Java Plum,Myrtaceae,HERB-050,No
+50,Clerodendrum_inerme,Clerodendrum inerme,Seaside Clerodendrum,Lamiaceae,HERB-051,No
+51,Clinacanthus_nutans,Clinacanthus nutans,Green Chiretta,Acanthaceae,HERB-052,No
+52,Glycyrrhiza_uralensis,Glycyrrhiza uralensis,Licorice Root,Fabaceae,HERB-053,No
+53,Coix_lacryma-jobi,Coix lacryma-jobi,Job's Tears,Poaceae,HERB-054,No
+54,Cordyline_fruticosa,Cordyline fruticosa,Ti Plant,Asparagaceae,HERB-055,No
+55,Costus_speciosus,Costus speciosus,Crepe Ginger,Costaceae,HERB-056,No
+56,Crescentia_cujete,Crescentia cujete,Calabash Tree,Bignoniaceae,HERB-057,No
+57,Crinum_asiaticum,Crinum asiaticum,Asian Crinum Lily,Amaryllidaceae,HERB-058,No
+58,Crinum_latifolium,Crinum latifolium,Broadleaf Crinum,Amaryllidaceae,HERB-059,No
+59,Croton_oblongifolius,Croton oblongifolius,Croton,Euphorbiaceae,HERB-060,No
+60,Croton_tonkinensis,Croton tonkinensis,Vietnamese Croton,Euphorbiaceae,HERB-061,No
+61,Curculigo_gracilis,Curculigo gracilis,Curculigo,Hypoxidaceae,HERB-062,No
+62,Curculigo_orchioides,Curculigo orchioides,Black Musli,Hypoxidaceae,HERB-063,No
+63,Cymbopogon,Cymbopogon,Lemongrass,Poaceae,HERB-064,No
+64,Datura_metel,Datura metel,Devil's Trumpet,Solanaceae,HERB-065,No
+65,Derris_elliptica,Derris elliptica,Toxicodendron,Fabaceae,HERB-066,No
+66,Dianella_ensifolia,Dianella ensifolia,Blue Flax Lily,Asphodelaceae,HERB-067,No
+67,Dicliptera_chinensis,Dicliptera chinensis,Chinese Dicliptera,Acanthaceae,HERB-068,No
+68,Dimocarpus_longan,Dimocarpus longan,Longan,Sapindaceae,HERB-069,No
+69,Dioscorea_persimilis,Dioscorea persimilis,African Yam,Dioscoreaceae,HERB-070,No
+70,Eichhornia_crassipes,Eichhornia crassipes,Water Hyacinth,Pontederiaceae,HERB-071,No
+71,Eleutherine_bulbosa,Eleutherine bulbosa,Eleutherine,Iridaceae,HERB-072,No
+72,Erythrina_variegata,Erythrina variegata,Variegated Coral Tree,Fabaceae,HERB-073,No
+73,Eupatorium_fortunei,Eupatorium fortunei,Japanese Boneset,Asteraceae,HERB-074,No
+74,Eupatorium_triplinerve,Eupatorium triplinerve,Three-nerved Eupatorium,Asteraceae,HERB-075,No
+75,Euphorbia_hirta,Euphorbia hirta,Asthma Plant,Euphorbiaceae,HERB-076,No
+76,Euphorbia_pulcherrima,Euphorbia pulcherrima,Poinsettia,Euphorbiaceae,HERB-077,No
+77,Euphorbia_tirucalli,Euphorbia tirucalli,Pencil Tree,Euphorbiaceae,HERB-078,No
+78,Euphorbia_tithymaloides,Euphorbia tithymaloides,Crown of Thorns,Euphorbiaceae,HERB-079,No
+79,Eurycoma_longifolia,Eurycoma longifolia,Tongkat Ali,Simaroubaceae,HERB-080,No
+80,Excoecaria_cochinchinensis,Excoecaria cochinchinensis,Blind-your-eye Tree,Euphorbiaceae,HERB-081,No
+81,Excoecaria_sp,Excoecaria sp,Excoecaria,Euphorbiaceae,HERB-082,No
+82,Fallopia_multiflora,Fallopia multiflora,Fo-Ti,Polygonaceae,HERB-083,No
+83,Ficus_auriculata,Ficus auriculata,Wild Fig,Moraceae,HERB-084,No
+84,Ficus_racemosa,Ficus racemosa,Cluster Fig,Moraceae,HERB-085,No
+85,Fructus_lycii,Fructus lycii,Goji Berry,Solanaceae,HERB-086,No
+86,Glochidion_eriocarpum,Glochidion eriocarpum,Glochidion,Phyllanthaceae,HERB-087,No
+87,Glycosmis_pentaphylla,Glycosmis pentaphylla,Chinese Orange Berry,Rutaceae,HERB-088,No
+88,Gonocaryum_lobbianum,Gonocaryum lobbianum,Gonocaryum,Icacinaceae,HERB-089,No
+89,Gymnema_sylvestre,Gymnema sylvestre,Gymnema,Apocynaceae,HERB-090,No
+90,Gynura_divaricata,Gynura divaricata,Longevity Spinach,Asteraceae,HERB-091,No
+91,Helicteres_hirsuta,Helicteres hirsuta,Hairy Helicteres,Malvaceae,HERB-092,No
+92,Hemerocallis_fulva,Hemerocallis fulva,Daylily,Xanthorrhoeaceae,HERB-093,No
+93,Hemigraphis_glaucescens,Hemigraphis glaucescens,Watermelon Plant,Acanthaceae,HERB-094,No
+94,Hibiscus_mutabilis,Hibiscus mutabilis,Cotton Rose,Malvaceae,HERB-095,No
+95,Hibiscus_rosa-sinensis,Hibiscus rosa-sinensis,Chinese Hibiscus,Malvaceae,HERB-096,No
+96,Hibiscus_sabdariffa,Hibiscus sabdariffa,Roselle,Malvaceae,HERB-097,No
+97,Holarrhena_pubescens,Holarrhena pubescens,Conventional Holarrhena,Apocynaceae,HERB-098,No
+98,Homalomena_occulta,Homalomena occulta,Homalomena,Araceae,HERB-099,No
+99,Houttuynia_cordata,Houttuynia cordata,Fish Mint,Saururaceae,HERB-100,No
+100,Imperata_cylindrica,Imperata cylindrica,Cogongrass,Poaceae,HERB-101,No
+101,Iris_domestica,Iris domestica,Blackberry Lily,Iridaceae,HERB-102,No
+102,Ixora_coccinea,Ixora coccinea,Flame of the Woods,Rubiaceae,HERB-103,No
+103,Jasminum_sambac,Jasminum sambac,Arabian Jasmine,Oleaceae,HERB-104,No
+104,Jatropha_gossypiifolia,Jatropha gossypiifolia,Cotton Leaved Jatropha,Euphorbiaceae,HERB-105,No
+105,Jatropha_multifida,Jatropha multifida,Bellyache Bush,Euphorbiaceae,HERB-106,No
+106,Jatropha_podagrica,Jatropha podagrica,Guatemala Rhubarb,Euphorbiaceae,HERB-107,No
+107,Justicia_gendarussa,Justicia gendarussa,Malabar Nut,Acanthaceae,HERB-108,No
+108,Kalanchoe_pinnata,Kalanchoe pinnata,Life Plant,Crassulaceae,HERB-109,No
+109,Lactuca_indica,Lactuca indica,Wild Lettuce,Asteraceae,HERB-110,No
+110,Lantana_camara,Lantana camara,Spanish Flag,Verbenaceae,HERB-111,No
+111,Lawsonia_inermis,Lawsonia inermis,Henna,Lythraceae,HERB-112,No
+112,Leea_rubra,Leea rubra,Leea,Vitaceae,HERB-113,No
+113,Litsea_glutinosa,Litsea glutinosa,Giant Nutmeg,Lauraceae,HERB-114,No
+114,Lonicera_dasystyla,Lonicera dasystyla,Honeysuckle,Caprifoliaceae,HERB-115,No
+115,Ipomoea_sp,Ipomoea sp,Morning Glory,Convolvulaceae,HERB-116,No
+116,Maesa,Maesa,Maesa,Primulaceae,HERB-117,No
+117,Mallotus_barbatus,Mallotus barbatus,Red Mallotus,Euphorbiaceae,HERB-118,No
+118,Mangifera,Mangifera,Mango,Anacardiaceae,HERB-119,No
+119,Melastoma_malabathricum,Melastoma malabathricum,Malabar Melastome,Melastomataceae,HERB-120,No
+120,Mentha_spicata,Mentha spicata,Spearmint,Lamiaceae,HERB-121,No
+121,Microcos_tomentosa,Microcos tomentosa,Hairy Microcos,Malvaceae,HERB-122,No
+122,Micromelum_falcatum,Micromelum falcatum,Micromelum,Rutaceae,HERB-123,No
+123,Millettia_pulchra,Millettia pulchra,Beautiful Millettia,Fabaceae,HERB-124,No
+124,Mimosa_pudica,Mimosa pudica,Sensitive Plant,Fabaceae,HERB-125,No
+125,Morinda_citrifolia,Morinda citrifolia,Noni,Rubiaceae,HERB-126,No
+126,Moringa_oleifera,Moringa oleifera,Drumstick Tree,Moringaceae,HERB-127,No
+127,Morus_alba,Morus alba,White Mulberry,Moraceae,HERB-128,No
+128,Mussaenda_philippica,Mussaenda philippica,Golden Mussaenda,Rubiaceae,HERB-129,No
+129,Nelumbo_nucifera,Nelumbo nucifera,Lotus,Nelumbonaceae,HERB-130,No
+130,Ocimum_basilicum,Ocimum basilicum,Basil,Lamiaceae,HERB-131,No
+131,Ocimum_gratissimum,Ocimum gratissimum,African Basil,Lamiaceae,HERB-132,No
+132,Ocimum_sanctum,Ocimum sanctum,Holy Basil,Lamiaceae,HERB-133,No
+133,Oenanthe_javanica,Oenanthe javanica,Water Celery,Apiaceae,HERB-134,No
+134,Ophiopogon_japonicus,Ophiopogon japonicus,Mondo Grass,Asparagaceae,HERB-135,No
+135,Paederia_lanuginosa,Paederia lanuginosa,Hairy Paederia,Rubiaceae,HERB-136,No
+136,Pandanus_amaryllifolius,Pandanus amaryllifolius,Pandan,Pandanaceae,HERB-137,No
+137,Pandanus_sp,Pandanus sp,Screw Pine,Pandanaceae,HERB-138,No
+138,Pandanus_tectorius,Pandanus tectorius,Hala Tree,Pandanaceae,HERB-139,No
+139,Parameria_laevigata,Parameria laevigata,Parameria,Apocynaceae,HERB-140,No
+140,Passiflora_foetida,Passiflora foetida,Wild Passionflower,Passifloraceae,HERB-141,No
+141,Pereskia_sacharosa,Pereskia sacharosa,Rose Cactus,Cactaceae,HERB-142,No
+142,Persicaria_odorata,Persicaria odorata,Vietnamese Mint,Polygonaceae,HERB-143,No
+143,Phlogacanthus_turgidus,Phlogacanthus turgidus,Phlogacanthus,Acanthaceae,HERB-144,No
+144,Phrynium_placentarium,Phrynium placentarium,Rattlesnake Plant,Marantaceae,HERB-145,No
+145,Phyllanthus_reticulatus,Phyllanthus reticulatus,Leaf Flower,Phyllanthaceae,HERB-146,No
+146,Piper_betle,Piper betle,Betel Leaf,Piperaceae,HERB-147,No
+147,Piper_sarmentosum,Piper sarmentosum,Wild Betel Leaf,Piperaceae,HERB-148,No
+148,Plantago,Plantago,Plantain,Plantaginaceae,HERB-149,No
+149,Platycladus_orientalis,Platycladus orientalis,Oriental Arborvitae,Cupressaceae,HERB-150,No
+150,Plectranthus_amboinicus,Plectranthus amboinicus,Oregano Bush,Lamiaceae,HERB-151,No
+151,Pluchea_pteropoda,Pluchea pteropoda,Scented Pluchea,Asteraceae,HERB-152,No
+152,Plukenetia_volubilis,Plukenetia volubilis,Sacha Inchi,Euphorbiaceae,HERB-153,No
+153,Plumbago_indica,Plumbago indica,Leadwort,Plumbaginaceae,HERB-154,No
+154,Plumeria_rubra,Plumeria rubra,Frangipani,Apocynaceae,HERB-155,No
+155,Polygonum_cuspidatum,Polygonum cuspidatum,Japanese Knotweed,Polygonaceae,HERB-156,No
+156,Polyscias_fruticosa,Polyscias fruticosa,Hawaiian Willow,Araliaceae,HERB-157,No
+157,Polyscias_guilfoylei,Polyscias guilfoylei,Polyscias,Araliaceae,HERB-158,No
+158,Polyscias_scutellaria,Polyscias scutellaria,Shield Polyscias,Araliaceae,HERB-159,No
+159,Pouzolzia_zeylanica,Pouzolzia zeylanica,Pouzolzia,Urticaceae,HERB-160,No
+160,Premna_serratifolia,Premna serratifolia,Premna,Lamiaceae,HERB-161,No
+161,Pseuderanthemum_latifolium,Pseuderanthemum latifolium,Broadleaf Pseuderanthemum,Acanthaceae,HERB-162,No
+162,Psidium_guajava,Psidium guajava,Guava,Myrtaceae,HERB-163,No
+163,Psychotria_reevesii,Psychotria reevesii,Reeves' Psychotria,Rubiaceae,HERB-164,No
+164,Psychotria_rubra,Psychotria rubra,Red Psychotria,Rubiaceae,HERB-165,No
+165,Quisqualis_indica,Quisqualis indica,Rangoon Creeper,Combretaceae,HERB-166,No
+166,Rauvolfia,Rauvolfia,Rauvolfia,Apocynaceae,HERB-167,No
+167,Rauvolfia_tetraphylla,Rauvolfia tetraphylla,Devil Pepper,Apocynaceae,HERB-168,No
+168,Rhinacanthus_nasutus,Rhinacanthus nasutus,Snakeweed,Acanthaceae,HERB-169,No
+169,Rhodomyrtus_tomentosa,Rhodomyrtus tomentosa,Rose Myrtle,Myrtaceae,HERB-170,No
+170,Ruellia_tuberosa,Ruellia tuberosa,Minced Plant,Acanthaceae,HERB-171,No
+171,Sansevieria_canaliculata,Sansevieria canaliculata,Channelled Snake Plant,Asparagaceae,HERB-172,No
+172,Sansevieria_hyacinthoides,Sansevieria hyacinthoides,Hyacinth Snake Plant,Asparagaceae,HERB-173,No
+173,Sarcandra_glabra,Sarcandra glabra,Shui Xian,Chloranthaceae,HERB-174,No
+174,Sauropus_androgynus,Sauropus androgynus,Katuk,Phyllanthaceae,HERB-175,No
+175,Schefflera_heptaphylla,Schefflera heptaphylla,Umbrella Tree,Araliaceae,HERB-176,No
+176,Schefflera_venulosa,Schefflera venulosa,Venulous Schefflera,Araliaceae,HERB-177,No
+177,Senna_alata,Senna alata,Candle Bush,Fabaceae,HERB-178,No
+178,Sida_acuta,Sida acuta,Sida,Malvaceae,HERB-179,No
+179,Solanum_mammosum,Solanum mammosum,Nipple Fruit,Solanaceae,HERB-180,No
+180,Solanum_torvum,Solanum torvum,Turkey Berry,Solanaceae,HERB-181,No
+181,Spilanthes_acmella,Spilanthes acmella,Toothache Plant,Asteraceae,HERB-182,No
+182,Spondias_dulcis,Spondias dulcis,Ambarella,Anacardiaceae,HERB-183,No
+183,Stachytarpheta_jamaicensis,Stachytarpheta jamaicensis,Vervain,Verbenaceae,HERB-184,No
+184,Stephania_dielsiana,Stephania dielsiana,Diels' Stephania,Menispermaceae,HERB-185,No
+185,Stereospermum_chelonoides,Stereospermum chelonoides,Indian Trumpet Tree,Bignoniaceae,HERB-186,No
+186,Streptocaulon_juventas,Streptocaulon juventas,Juventa,Apocynaceae,HERB-187,No
+187,Syzygium_nervosum,Syzygium nervosum,Nervous Syzygium,Myrtaceae,HERB-188,No
+188,Tabernaemontana_divaricata,Tabernaemontana divaricata,Crape Jasmine,Apocynaceae,HERB-189,No
+189,Tacca_subflabellata,Tacca subflabellata,Flat Tacca,Taccaceae,HERB-190,No
+190,Tamarindus_indica,Tamarindus indica,Tamarind,Fabaceae,HERB-191,No
+191,Terminalia_catappa,Terminalia catappa,Indian Almond,Combretaceae,HERB-192,No
+192,Tradescantia_discolor,Tradescantia discolor,Purple Heart,Commelinaceae,HERB-193,No
+193,Trichanthera_gigantea,Trichanthera gigantea,Giant Chaff Flower,Acanthaceae,HERB-194,No
+194,Vernonia_amygdalina,Vernonia amygdalina,Bitter Leaf,Asteraceae,HERB-195,No
+195,Vitex_negundo,Vitex negundo,Chaste Tree,Lamiaceae,HERB-196,No
+196,Xanthium_strumarium,Xanthium strumarium,Cocklebur,Asteraceae,HERB-197,No
+197,Zanthoxylum_avicennae,Zanthoxylum avicennae,Spiny Zanthoxylum,Rutaceae,HERB-198,No
+198,Zingiber_officinale,Zingiber officinale,Ginger,Zingiberaceae,HERB-199,No
+199,Ziziphus_mauritiana,Ziziphus mauritiana,Indian Jujube,Rhamnaceae,HERB-200,No
+200,Aconitum_heterophyllum,Aconitum heterophyllum,Indian Atees / Atis,Ranunculaceae,HERB-201,Yes
+201,Artemisia_absinthium,Artemisia absinthium,Wormwood / Tethwan,Asteraceae,HERB-202,Yes
+202,Berberis_lycium,Berberis lycium,Indian Barberry / Kawdakh,Berberidaceae,HERB-203,Yes
+203,Colchicum_luteum,Colchicum luteum,Himalayan Colchicum / Virkum,Colchicaceae,HERB-204,Yes
+204,Datura_stramonium,Datura stramonium,Jimsonweed / Dhatur,Solanaceae,HERB-205,Yes
+205,Fritillaria_roylei,Fritillaria roylei,Himalayan Fritillary / Sheethkhar,Liliaceae,HERB-206,Yes
+206,Gentiana_kurroo,Gentiana kurroo,Himalayan Gentian / Nilkanth,Gentianaceae,HERB-207,Yes
+207,Hyoscyamus_niger,Hyoscyamus niger,Black Henbane / Bazarbhang,Solanaceae,HERB-208,Yes
+208,Jurinea_dolomiaea,Jurinea dolomiaea,Dolomiaea / Dhoop,Asteraceae,HERB-209,Yes
+209,Picrorhiza_kurroa,Picrorhiza kurroa,Kutki / Kour,Plantaginaceae,HERB-210,Yes
+210,Podophyllum_hexandrum,Podophyllum hexandrum,Himalayan Mayapple / Bankakri,Berberidaceae,HERB-211,Yes
+211,Rheum_emodi,Rheum emodi,Himalayan Rhubarb / Pambchalan,Polygonaceae,HERB-212,Yes
+212,Saussurea_costus,Saussurea costus,Kuth / Costus,Asteraceae,HERB-213,Yes
+213,Taxus_wallichiana,Taxus wallichiana,Himalayan Yew / Posthal,Taxaceae,HERB-214,Yes
+214,Valeriana_jatamansi,Valeriana jatamansi,Indian Valerian / Mushkbala,Caprifoliaceae,HERB-215,Yes
+215,Crocus_sativus,Crocus sativus,Kashmir Saffron / Kong / Kesar,Iridaceae,HERB-216,Yes

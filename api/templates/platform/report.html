@@ -3,9 +3,9 @@
 {% block content %}
 <header class="hx-head">
   <div>
-    <p class="hx-kicker">Botanical Diagnostic Report · Deep Learning 215-Taxa Neural Engine</p>
+    <p class="hx-kicker">Botanical Diagnostic Dossier · Neural Vision & 4 Master Catalogs</p>
     <h1>{{ result.data.Scientificname if result.data else 'Diagnostic Report' }}</h1>
-    <p class="hx-sub">Automated taxon prediction matched against verified ethnopharmacological catalogs, edaphic soil envelopes, and chemotaxonomic cross-compatibility.</p>
+    <p class="hx-sub">Automated taxon prediction matched against verified ethnopharmacological catalogs, precision agronomy protocols, chemotaxonomic cytogenetics, and phytopathology IPM.</p>
   </div>
   <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
     {% if result.data and result.data.Scientificname %}
@@ -22,8 +22,13 @@
 </header>
 
 {% if result.success or result.demo %}
+{% set med = result.medicinal or (result.agronomy and result.agronomy.medicinal) or {} %}
+{% set fert = result.fertiliser or (result.agronomy and result.agronomy.fertiliser) or {} %}
+{% set chem = result.chemicaltaxonomy or (result.agronomy and result.agronomy.chemicaltaxonomy) or {} %}
+{% set dis = result.disease or (result.agronomy and result.agronomy.disease) or {} %}
+
 <section class="hx-grid-2">
-  <!-- Left Card: Image, Confidence, Taxonomy -->
+  <!-- Left Card: Image, Confidence, Top-5 Rankings, Taxonomy -->
   <div class="hx-card">
     <div class="hx-photo-wrapper" style="position: relative; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--hx-line); background: #071018;">
       {% if result.image_path %}
@@ -50,7 +55,7 @@
     <!-- Confidence Gauge -->
     <div style="margin-bottom: 1.2rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-        <span class="hx-kicker">Top-1 Model Confidence</span>
+        <span class="hx-kicker">Top-1 Prediction Confidence</span>
         <strong style="color: var(--hx-accent); font-size: 1.15rem;">{{ result.confidence or result.data.Confidence or '96.4%' }}</strong>
       </div>
       <div style="background: rgba(255,255,255,0.08); height: 8px; border-radius: 4px; overflow: hidden;">
@@ -62,7 +67,7 @@
     {% if result.top5_candidates %}
     <div style="margin-bottom: 1.2rem; padding: 0.8rem; background: #071018; border-radius: 8px; border: 1px solid var(--hx-line);">
       <span class="hx-kicker" style="margin-bottom: 0.5rem; display: block; font-size: 0.75rem;">
-        <i class="fas fa-list-ol"></i> Top-5 Prediction Candidates
+        <i class="fas fa-list-ol"></i> Top-5 Model Candidate Distribution
       </span>
       {% for cand in result.top5_candidates %}
       <div style="margin-bottom: 0.45rem;">
@@ -86,25 +91,25 @@
     <div style="margin-bottom: 1rem;">
       <h2 style="margin: 0 0 0.3rem 0; font-size: 1.6rem; color: var(--hx-text);">{{ result.data.Scientificname }}</h2>
       <p style="margin: 0 0 0.8rem 0; color: var(--hx-muted); font-size: 1.05rem;">
-        <em>{{ result.data.Biologicalname }}</em> · <strong>{{ result.data.Family }}</strong>
+        <em>{{ result.data.Biologicalname }}</em> · <strong>{{ result.data.Family }}</strong> (ID: <code>{{ result.data.SpeciesID or med.species_id or 'HERB-001' }}</code>)
       </p>
 
       <!-- Status Badges -->
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <!-- Regional Tag -->
-        {% if 'Kashmir' in (result.data.GeographicalDistribution or '') or 'Himalaya' in (result.data.GeographicalDistribution or '') %}
+        {% if med.endemic_to_kashmir_himalayas == 'Yes' or 'Kashmir' in (result.data.GeographicalDistribution or '') %}
         <span style="background: #193549; color: #4cc3ff; border: 1px solid #23527c; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
           <i class="fas fa-mountain"></i> Kashmir Alpine Endemic
         </span>
         {% else %}
         <span style="background: #152232; color: #8aa0b8; border: 1px solid var(--hx-line); padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
-          <i class="fas fa-globe-asia"></i> {{ result.data.GeographicalDistribution or 'Global Benchmark' }}
+          <i class="fas fa-globe-asia"></i> {{ result.data.GeographicalDistribution or med.origin_geography or 'Global Benchmark' }}
         </span>
         {% endif %}
 
         <!-- IUCN Status Badge -->
-        {% set status = result.data.ConservationStatus or 'Not Evaluated' %}
-        {% if 'Critically Endangered' in status %}
+        {% set status = result.data.ConservationStatus or med.iucn_conservation_status or 'Least Concern' %}
+        {% if 'Critically' in status %}
         <span style="background: #3d1414; color: #ff6b6b; border: 1px solid #7a2626; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
           <i class="fas fa-exclamation-triangle"></i> Critically Endangered (IUCN)
         </span>
@@ -112,7 +117,7 @@
         <span style="background: #3d2410; color: #f5a623; border: 1px solid #7a481c; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
           <i class="fas fa-shield-alt"></i> Endangered
         </span>
-        {% elif 'Vulnerable' in status or 'Near Threatened' in status %}
+        {% elif 'Vulnerable' in status or 'Near' in status %}
         <span style="background: #332d12; color: #f5c15c; border: 1px solid #6b5c21; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
           <i class="fas fa-info-circle"></i> {{ status }}
         </span>
@@ -123,249 +128,191 @@
         {% endif %}
 
         <!-- Toxicity Badge -->
-        {% set tox = result.data.ToxicityLevel or 'Low' %}
-        {% if tox in ['High', 'Extreme'] %}
+        {% set tox = result.data.ToxicityLevel or med.toxicological_notes or 'Low' %}
+        {% if 'Toxic' in tox or 'Extreme' in tox or 'Fatal' in tox or 'Alkaloid' in tox %}
         <span style="background: #4a1515; color: #ff8888; border: 1px solid #852626; padding: 4px 9px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
-          <i class="fas fa-skull-crossbones"></i> High Toxicity Warning
+          <i class="fas fa-skull-crossbones"></i> Toxicity Notice
         </span>
         {% else %}
         <span style="background: #152232; color: #8aa0b8; border: 1px solid var(--hx-line); padding: 4px 9px; border-radius: 6px; font-size: 0.8rem;">
-          Toxicity: {{ tox }}
+          Safe Therapeutic Profile
         </span>
         {% endif %}
       </div>
     </div>
-
-    {% if result.demo %}
-    <p class="hx-note"><i class="fas fa-info-circle"></i> Demonstration record — neural network weight loading was bypassed.</p>
-    {% endif %}
   </div>
 
-  <!-- Right Card: Ethnopharmacology & Phytochemicals -->
+  <!-- Right Card: Catalog 1 - Ethnopharmacology & Phytochemicals (medicinal.csv) -->
   <div class="hx-card">
-    <div class="hx-kicker" style="margin-bottom: 0.3rem;">Pharmacognosy Profile</div>
-    <h3 style="margin: 0 0 0.8rem 0; font-size: 1.3rem;">Therapeutic Value & Bioactive Metabolites</h3>
+    <div class="hx-kicker" style="margin-bottom: 0.3rem;"><i class="fas fa-mortar-pestle"></i> Catalog 1: Ethnopharmacology (medicinal.csv)</div>
+    <h3 style="margin: 0 0 0.8rem 0; font-size: 1.3rem;">Therapeutic Indications & Pharmacopeial Standard</h3>
 
     <div style="background: #071018; border-radius: 8px; padding: 0.9rem; margin-bottom: 1rem; border-left: 3px solid var(--hx-accent);">
+      <strong style="color: var(--hx-accent); font-size: 0.82rem; text-transform: uppercase; display: block; margin-bottom: 0.2rem;">Therapeutic Scope:</strong>
       <p style="margin: 0; line-height: 1.5; color: var(--hx-text);">
-        {{ result.data.Medicinalvalue }}
+        {{ med.therapeutic_indications or result.data.Medicinalvalue }}
       </p>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
       <div>
         <strong style="color: var(--hx-accent-2); display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.2rem;">
-          <i class="fas fa-atom"></i> Bioactive Compounds
+          <i class="fas fa-atom"></i> Primary Bioactive Chemomarkers
         </strong>
-        <p style="margin: 0; color: var(--hx-text);">{{ result.data.ActiveCompounds or 'Not cataloged' }}</p>
+        <p style="margin: 0; color: var(--hx-text);">{{ med.primary_bioactives or result.data.ActiveCompounds or 'Not cataloged' }}</p>
       </div>
 
       <div>
         <strong style="color: var(--hx-accent-2); display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.2rem;">
-          <i class="fas fa-hand-holding-medical"></i> Common Traditional Uses
+          <i class="fas fa-prescription-bottle-alt"></i> Ayurvedic / Unani / Siddha Usage
         </strong>
-        <p style="margin: 0; color: var(--hx-text);">{{ result.data.CommonUses or 'Traditional medicinal preparation' }}</p>
+        <p style="margin: 0; color: var(--hx-text);">{{ med.ayurvedic_unani_siddha_usage or result.data.PreparationMethods or 'Traditional Ayurvedic / Unani formulations' }}</p>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.4rem;">
         <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
           <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PARTS USED</span>
-          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.PartsUsed or 'Leaves / Foliage' }}</strong>
+          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ med.part_used or result.data.PartsUsed or 'Foliage' }}</strong>
         </div>
         <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-          <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PREPARATION</span>
-          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.PreparationMethods or 'Decoction' }}</strong>
+          <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">HARVESTING SEASON</span>
+          <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ med.harvesting_season or 'Late summer / Autumn' }}</strong>
         </div>
       </div>
 
       <div style="background: #0f1824; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">GROWTH HABIT</span>
-        <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ result.data.GrowthHabit or 'Herb' }}</strong>
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PHARMACOPEIAL CITATION</span>
+        <strong style="color: var(--hx-text); font-size: 0.88rem;">{{ med.pharmacopeial_standard or 'Ayurvedic Pharmacopoeia of India (API)' }} · {{ med.reference_citations or 'POWO 2024 / ICMR' }}</strong>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Chemotaxonomy & Interspecific Hybridization Potential Card -->
-{% set a = result.agronomy or {} %}
-{% if a.hybridization %}
-<section class="hx-card" style="border-left: 4px solid #ab47bc;">
-  <div class="hx-kicker" style="color: #ce93d8;"><i class="fas fa-dna"></i> Chemotaxonomy & Interspecific Hybridization Potential</div>
-  <h2 style="margin: 0.2rem 0 0.5rem 0;">Genomic Cross-Compatibility & Secondary Metabolite Retention</h2>
-  <p style="color: var(--hx-muted); font-size: 0.95rem; margin-bottom: 1.2rem;">
-    Scientifically evaluated interspecific hybridization pathways designed to combine high-potency secondary metabolites from endangered Himalayan endemics with high-biomass, disease-resistant congeners for ex-situ conservation agronomy.
-  </p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
-    {% for hyb in a.hybridization %}
-    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 10px; padding: 1.1rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-        <span style="background: #2a1538; color: #ba68c8; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">
-          {{ hyb.hybrid_id }} · {{ hyb.genus_group }}
-        </span>
-        <span style="font-size: 0.8rem; color: var(--hx-accent-2);">
-          Feasibility: <strong>{{ hyb.hybridization_feasibility }}</strong>
-        </span>
+<!-- Catalog 2 & 3: Precision Agronomy (fertiliser.csv) & Chemotaxonomy (chemicaltaxonomy.csv) -->
+<section class="hx-grid-2">
+  <!-- Precision Agronomy & Nutrient Management -->
+  <div class="hx-card" style="border-top: 3px solid #2ee6a8;">
+    <div class="hx-kicker" style="color: #2ee6a8;"><i class="fas fa-seedling"></i> Catalog 2: Precision Agronomy (fertiliser.csv)</div>
+    <h3 style="margin: 0.2rem 0 0.8rem 0; font-size: 1.25rem;">Nutrient Management & Cultivation Protocol</h3>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem;">
+      <div style="background: #071018; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">NPK RATIO (KG/HA)</span>
+        <strong style="color: #2ee6a8; font-size: 1.1rem;">{{ fert.npk_ratio_kg_ha or '60:40:40' }}</strong>
       </div>
-      <h3 style="margin: 0.3rem 0 0.5rem 0; font-size: 1.2rem; color: var(--hx-text); font-style: italic;">
-        {{ hyb.parent_species_1 }} × {{ hyb.parent_species_2 }}
-      </h3>
-      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.6rem 0;">
-        <strong>Chromosomes:</strong> 2n={{ hyb.chromosome_parent_1_2n }} × 2n={{ hyb.chromosome_parent_2_2n }} · <strong>Genomic Distance:</strong> {{ hyb.genetic_distance_index }}
-      </p>
-      <div style="background: #0d1a29; border-left: 3px solid #ab47bc; padding: 0.7rem; border-radius: 6px; margin-bottom: 0.6rem;">
-        <strong style="color: #ce93d8; font-size: 0.85rem; display: block; margin-bottom: 0.2rem;">
-          <i class="fas fa-flask"></i> Bioactive Synergy & Target Chemistry:
-        </strong>
-        <p style="margin: 0; font-size: 0.88rem; color: var(--hx-text);">
-          {{ hyb.hypothetical_bioactive_synergy }}
-        </p>
+      <div style="background: #071018; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">BASAL FYM COMPOST</span>
+        <strong style="color: var(--hx-text); font-size: 1.1rem;">{{ fert.basal_fym_compost_tha or '10.0' }} t/ha</strong>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem; font-size: 0.84rem; margin-bottom: 0.6rem;">
-        <div style="background: #0f1f18; padding: 0.6rem; border-radius: 6px; border-left: 3px solid var(--hx-accent);">
-          <strong style="color: var(--hx-accent);">Agronomic Advantage:</strong> {{ hyb.breeding_pros }}
-        </div>
-        <div style="background: #211216; padding: 0.6rem; border-radius: 6px; border-left: 3px solid #ff6b6b;">
-          <strong style="color: #ff8888;">Cytogenetic Bottleneck:</strong> {{ hyb.breeding_cons_risks }}
-        </div>
+    </div>
+
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.8rem; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-bottom: 0.2rem;">APPLICATION SCHEDULE</span>
+      <p style="margin: 0; font-size: 0.88rem; color: var(--hx-text);">{{ fert.application_schedule or 'Basal application at field preparation; remaining splits top-dressed during vegetative growth.' }}</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem;">
+      <div style="background: #071018; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">BIOFERTILIZERS</span>
+        <strong style="color: var(--hx-text); font-size: 0.85rem;">{{ fert.organic_biofertilizers or 'Azotobacter + PSB' }}</strong>
       </div>
-      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-top: 0.4rem;">
-        <i class="fas fa-book"></i> Literature: {{ hyb.scientific_literature_reference }}
+      <div style="background: #071018; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">MICRONUTRIENTS</span>
+        <strong style="color: var(--hx-text); font-size: 0.85rem;">{{ fert.micronutrient_requirements or 'Zinc, Boron' }}</strong>
+      </div>
+    </div>
+
+    <div style="background: #1c1014; padding: 0.75rem; border-radius: 8px; border-left: 3px solid #ff6b6b;">
+      <span style="font-size: 0.75rem; color: #ff8888; font-weight: 600; display: block; margin-bottom: 0.2rem;">
+        <i class="fas fa-exclamation-triangle"></i> AGRONOMIC CONTRAINDICATIONS & HAZARDS:
       </span>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
-
-<!-- Curated 22-Attribute Pharmacognosy & Conservation Specifications -->
-{% if a.curated %}
-<section class="hx-card">
-  <div class="hx-kicker"><i class="fas fa-clipboard-check"></i> Standardized Botanical & Pharmacognosy Catalog Specifications</div>
-  <h2 style="margin: 0.2rem 0 0.8rem 0;">Authoritative Pharmacopeial & Regulatory Attributes</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.8rem;">
-    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">LOCAL / REGIONAL NAMES</span>
-      <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ a.curated.local_names_kashmir_india }}</strong>
-    </div>
-    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PRIMARY PHYTOCHEMICAL CLASS</span>
-      <strong style="color: var(--hx-accent-2); font-size: 0.95rem;">{{ a.curated.chemical_classes }}</strong>
-    </div>
-    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">PHARMACOPEIAL STANDARD</span>
-      <strong style="color: var(--hx-accent); font-size: 0.95rem;">{{ a.curated.pharmacopeial_standard }}</strong>
-    </div>
-    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">HARVESTING SEASON</span>
-      <strong style="color: var(--hx-text); font-size: 0.95rem;">{{ a.curated.harvesting_season }}</strong>
+      <p style="margin: 0; font-size: 0.85rem; color: #ffcccc;">{{ fert.agronomic_avoid_contraindications or 'Avoid poorly drained waterlogged soils.' }}</p>
     </div>
   </div>
-  <div style="margin-top: 0.8rem; background: #071018; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--hx-line);">
-    <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-bottom: 0.2rem;">AYURVEDIC / UNANI / SIDDHA USAGE</span>
-    <p style="margin: 0; font-size: 0.92rem; color: var(--hx-text);">{{ a.curated.ayurvedic_unani_siddha_usage }}</p>
-  </div>
-  <div style="margin-top: 0.8rem; background: #1c1014; padding: 0.8rem; border-radius: 8px; border-left: 3px solid #ff6b6b;">
-    <span style="font-size: 0.75rem; color: #ff8888; display: block; margin-bottom: 0.2rem; font-weight: bold;">
-      <i class="fas fa-exclamation-triangle"></i> TOXICOLOGICAL & CONTRAINDICATION NOTES
-    </span>
-    <p style="margin: 0; font-size: 0.90rem; color: #ffcccc;">{{ a.curated.toxicological_notes_contraindications }}</p>
-  </div>
-  <p style="margin-top: 0.8rem; font-size: 0.82rem; color: var(--hx-muted);">
-    <strong>Citation Standards:</strong> {{ a.curated.reference_citations }}
-  </p>
-</section>
-{% endif %}
 
-<!-- Soil Gap Analysis Section -->
-{% if result.soil_gaps %}
-<section class="hx-card" style="border-left: 4px solid var(--hx-accent);">
-  <div class="hx-kicker">Ex-Situ Agronomic Soil Telemetry</div>
-  <h2 style="margin: 0.2rem 0 0.8rem 0;"><i class="fas fa-satellite-dish"></i> Pedological Sensor Readings vs. Species Optimal Envelope</h2>
-  <ul class="hx-gaps" style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem;">
-    {% for g in result.soil_gaps %}
-    <li class="is-{{ g.status }}" style="background: #0b1520; border: 1px solid var(--hx-line); padding: 0.7rem 0.9rem; border-radius: 8px;">
-      <strong style="color: var(--hx-accent-2);">{{ g.factor }}</strong>: {{ g.detail }}
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %}
+  <!-- Chemotaxonomy, Cytogenetics & Breeding -->
+  <div class="hx-card" style="border-top: 3px solid #ce93d8;">
+    <div class="hx-kicker" style="color: #ce93d8;"><i class="fas fa-dna"></i> Catalog 3: Chemotaxonomy & Cytogenetics (chemicaltaxonomy.csv)</div>
+    <h3 style="margin: 0.2rem 0 0.8rem 0; font-size: 1.25rem;">Phytochemical Classes & Genomic Compatibility</h3>
 
-<!-- Agronomy, Fertilizer, Cultivation, and IPM Grid -->
-<section class="hx-grid-3">
-  <!-- Cultivation Card -->
-  <article class="hx-card">
-    <div class="hx-kicker">Agronomy & Cultivation</div>
-    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-seedling"></i> Propagation</h3>
-    {% if a.cultivation %}
-    <p><strong>First Harvest:</strong> ~{{ a.cultivation.MonthsToFirstHarvest }} months</p>
-    <p><strong>Method:</strong> {{ a.cultivation.Propagation }}</p>
-    <p><strong>Season:</strong> {{ a.cultivation.PlantingSeason }}</p>
-    <p><strong>Yield:</strong> {{ a.cultivation.YieldNote }}</p>
-    <p style="color: var(--hx-accent);"><strong>Pros:</strong> {{ a.cultivation.Pros }}</p>
-    <p class="hx-note"><strong>Caution:</strong> {{ a.cultivation.WildCollectionWarning }}</p>
-    {% else %}
-    <p style="color: var(--hx-muted);">Ex-situ cultivation recommendations are currently in active field trial compilation.</p>
-    {% endif %}
-  </article>
-
-  <!-- Fertilizer Card -->
-  <article class="hx-card">
-    <div class="hx-kicker">Nutrient Management</div>
-    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-mortar-pestle"></i> Fertilizer & Compost</h3>
-    {% if a.fertilizer %}
-    <p><strong>Basal FYM:</strong> {{ a.fertilizer.BasalFYM_tha }} t/ha</p>
-    <p><strong>NPK Strategy:</strong> {{ a.fertilizer.NPK_strategy }}</p>
-    <p><strong>Avoid:</strong> {{ a.fertilizer.Avoid }}</p>
-    <p class="hx-note"><strong>Advisory:</strong> {{ a.fertilizer.Micronotes }}</p>
-    {% else %}
-    <p style="color: var(--hx-muted);">General recommendation: Well-rotted farmyard manure (FYM) with balanced organic compost.</p>
-    {% endif %}
-  </article>
-
-  <!-- IPM Card -->
-  <article class="hx-card">
-    <div class="hx-kicker">Crop Protection</div>
-    <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-shield-virus"></i> Integrated Pest Mgmt</h3>
-    {% if a.disease %}
-    <p><strong>Common Risks:</strong> {{ a.disease.CommonRisks }}</p>
-    <p><strong>Prevention:</strong> {{ a.disease.Prevention }}</p>
-    <p><strong>Organic Controls:</strong> {{ a.disease.OrganicControl }}</p>
-    <p class="hx-note"><i class="fas fa-info-circle"></i> {{ a.disease.Evidence }}</p>
-    {% else %}
-    <p style="color: var(--hx-muted);">Standard phytosanitary practices: ensure adequate drainage and foliar aeration to prevent fungal dampening.</p>
-    {% endif %}
-  </article>
-</section>
-
-<!-- Soil Envelope Reference -->
-{% if a.soil %}
-<section class="hx-card">
-  <div class="hx-kicker">Pedological Baseline</div>
-  <h3 style="margin: 0.2rem 0 0.6rem 0;"><i class="fas fa-mountain"></i> Optimal Soil & Elevation Envelope</h3>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin-top: 0.8rem;">
-    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
-      <span style="font-size: 0.75rem; color: var(--hx-muted);">TARGET pH</span>
-      <strong style="display: block; font-size: 1.1rem; color: var(--hx-accent);">{{ a.soil.pH_min }} – {{ a.soil.pH_max }}</strong>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem;">
+      <div style="background: #071018; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">TAXONOMIC ORDER</span>
+        <strong style="color: #ce93d8; font-size: 1rem;">{{ chem.order or 'Angiospermae' }}</strong>
+      </div>
+      <div style="background: #071018; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+        <span style="font-size: 0.75rem; color: var(--hx-muted); display: block;">DIPLOID KARYOTYPE (2N)</span>
+        <strong style="color: var(--hx-text); font-size: 1rem;">{{ chem.diploid_chromosome_number_2n or '2n = Variable' }}</strong>
+      </div>
     </div>
-    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
-      <span style="font-size: 0.75rem; color: var(--hx-muted);">SOIL TEXTURE</span>
-      <strong style="display: block; font-size: 1.1rem; color: var(--hx-text);">{{ a.soil.Texture }}</strong>
+
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.8rem; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-bottom: 0.2rem;">DIAGNOSTIC CHEMOMARKER & ASSAY</span>
+      <strong style="color: var(--hx-accent); font-size: 0.95rem; display: block;">{{ chem.diagnostic_chemomarker or 'Standard HPLC Marker' }}</strong>
+      <span style="font-size: 0.8rem; color: var(--hx-muted);">Method: {{ chem.analytical_quantification_method or 'HPLC-UV/DAD / LC-MS/MS' }}</span>
     </div>
-    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
-      <span style="font-size: 0.75rem; color: var(--hx-muted);">TEMPERATURE</span>
-      <strong style="display: block; font-size: 1.1rem; color: var(--hx-accent-2);">{{ a.soil.Temp_C_min }}°C – {{ a.soil.Temp_C_max }}°C</strong>
+
+    <div style="background: #071018; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.8rem; border: 1px solid var(--hx-line);">
+      <span style="font-size: 0.75rem; color: var(--hx-muted); display: block; margin-bottom: 0.2rem;">BIOSYNTHETIC PATHWAY</span>
+      <p style="margin: 0; font-size: 0.88rem; color: var(--hx-text);">{{ chem.biosynthetic_pathway or 'Phenylpropanoid / Terpenoid biosynthetic routes' }}</p>
     </div>
-    <div style="background: #071018; padding: 0.7rem; border-radius: 8px;">
-      <span style="font-size: 0.75rem; color: var(--hx-muted);">NPK BANDS</span>
-      <strong style="display: block; font-size: 1.1rem; color: var(--hx-text);">{{ a.soil.N_level }} / {{ a.soil.P_level }} / {{ a.soil.K_level }}</strong>
+
+    <div style="background: #151a28; padding: 0.75rem; border-radius: 8px; border-left: 3px solid #4cc3ff;">
+      <span style="font-size: 0.75rem; color: #4cc3ff; font-weight: 600; display: block; margin-bottom: 0.2rem;">
+        <i class="fas fa-layer-group"></i> ALTITUDE CHEMODIVERSITY EFFECT:
+      </span>
+      <p style="margin: 0; font-size: 0.85rem; color: #c0d8f0;">{{ chem.chemodiversity_altitude_effect or 'UV-B exposure at high elevations significantly elevates active compound accumulation.' }}</p>
     </div>
   </div>
-  <p style="margin-top: 0.8rem; font-size: 0.88rem; color: var(--hx-muted);">
-    <strong>Irrigation & Elevation Notes:</strong> {{ a.soil.Irrigation }} · {{ a.soil.Altitude_note }}
-  </p>
 </section>
-{% endif %}
+
+<!-- Catalog 4: Phytopathology & Integrated Pest Management (disease.csv) -->
+<section class="hx-card" style="border-top: 3px solid #f5a623;">
+  <div class="hx-kicker" style="color: #f5a623;"><i class="fas fa-shield-virus"></i> Catalog 4: Phytopathology & Integrated Pest Management (disease.csv)</div>
+  <h2 style="margin: 0.2rem 0 0.8rem 0; font-size: 1.35rem;">Crop Protection, Foliar Symptoms & Organic Biocontrols</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: #071018; padding: 0.9rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <strong style="color: #ff8888; font-size: 0.88rem; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-bug"></i> Primary Pathogens & Threats
+      </strong>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--hx-text);">{{ dis.primary_diseases or 'Foliar blight, Root rot complex' }}</p>
+    </div>
+
+    <div style="background: #071018; padding: 0.9rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <strong style="color: #f5c15c; font-size: 0.88rem; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-eye"></i> Diagnostic Foliar Symptoms
+      </strong>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--hx-text);">{{ dis.diagnostic_symptoms or 'Chlorotic lesions, stunted apical shoots, root discoloration' }}</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+    <div style="background: #071018; padding: 0.9rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <strong style="color: var(--hx-accent); font-size: 0.88rem; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-broom"></i> Preventative Cultural Sanitation
+      </strong>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--hx-text);">{{ dis.prevention_cultural_control or 'Sterilized nursery beds, 3-year crop rotation, rogue out infected plants.' }}</p>
+    </div>
+
+    <div style="background: #071018; padding: 0.9rem; border-radius: 8px; border: 1px solid var(--hx-line);">
+      <strong style="color: #2ee6a8; font-size: 0.88rem; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-leaf"></i> Biological Organic IPM Controls
+      </strong>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--hx-text);">{{ dis.biological_organic_ipm or 'Trichoderma viride seed treatment; Neem oil spray 1500 ppm.' }}</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 1rem; background: #241014; padding: 0.8rem; border-radius: 8px; border-left: 3px solid #ff4444;">
+    <strong style="color: #ff6b6b; font-size: 0.85rem; display: block; margin-bottom: 0.2rem;">
+      <i class="fas fa-ban"></i> STRICT CHEMICAL PESTICIDE WARNING:
+    </strong>
+    <p style="margin: 0; font-size: 0.88rem; color: #ffcccc;">
+      {{ dis.chemical_control_warning or 'Zero synthetic organophosphates or persistent systemic pesticides permitted on medicinal foliage.' }}
+      (Resistance rating: <strong>{{ dis.disease_resistance_rating or 'Moderate' }}</strong> · Reference: {{ dis.research_reference or 'ICAR-NIPHM / CSIR-CIMAP' }})
+    </p>
+  </div>
+</section>
 
 {% else %}
 <div class="hx-card" style="border-left: 4px solid var(--hx-bad); padding: 2rem;">

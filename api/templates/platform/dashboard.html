@@ -6,13 +6,13 @@
     <p class="hx-kicker">Centre for Artificial Intelligence · IUST Kashmir</p>
     <h1>Computational Botany & Ethnomedicinal Intelligence</h1>
     <p class="hx-sub">
-      Dual-tier cascading vision architecture (215 global & Himalayan taxa) integrated with
-      canonical edaphic envelopes, in-situ DSLR field ingestion, and chemotaxonomic hybridization.
+      Dual-model cascading deep learning architecture integrated with 4 canonical master catalogs
+      (Medicinal Ethnopharmacology, Precision Agronomy, Chemotaxonomic Cytogenetics, and Phytopathology IPM).
     </p>
   </div>
   <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-    <a class="hx-btn" href="{{ url_for('kashmir_hub') }}">
-      <i class="fas fa-camera-retro"></i> Kashmir DSLR Hub
+    <a class="hx-btn" href="{{ url_for('plants_browser') }}">
+      <i class="fas fa-book"></i> Browse 216 Taxa Catalog
     </a>
     <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}">
       <i class="fas fa-microscope"></i> Identify Botanical Specimen
@@ -22,49 +22,130 @@
 
 <section class="hx-stats">
   <article>
-    <span>Neural Vision Engine</span>
-    <strong style="color: var(--hx-accent);">{{ "Online (Xception + MPS/GPU)" if model_ok else "Demo Mode" }}</strong>
+    <span>Model 1: Working Flora Classifier</span>
+    <strong style="color: var(--hx-accent);">{{ "200 Classes (Online)" if model_ok else "Loading..." }}</strong>
   </article>
   <article>
-    <span>Botanical Taxa</span>
-    <strong style="color: var(--hx-accent-2);">{{ plant_count }} Classes</strong>
+    <span>Model 2: Kashmir Alpine Classifier</span>
+    <strong style="color: #4cc3ff;">16 Classes (Pipeline Ready)</strong>
   </article>
   <article>
-    <span>Curated Catalog</span>
-    <strong style="color: var(--hx-accent);">{{ "22 Attributes (POWO/ICMR)" if dataset_ok else "Loading" }}</strong>
+    <span>Canonical Master Catalogs</span>
+    <strong style="color: var(--hx-accent-2);">4 CSVs (216 Taxa)</strong>
   </article>
   <article>
-    <span>300 DPI Publication Figures</span>
-    <strong style="color: #ba68c8;">{{ graphs|length }} Figures</strong>
+    <span>Publication Visualizations</span>
+    <strong style="color: #ba68c8;">{{ graphs|length }} Research Figures</strong>
   </article>
 </section>
 
+<!-- Dual-Model Architecture Grid -->
 <section class="hx-grid-2">
-  <div class="hx-card">
-    <div class="hx-kicker" style="margin-bottom: 0.3rem;"><i class="fas fa-microchip"></i> Architectural Framework</div>
-    <h2 style="margin: 0 0 0.8rem 0;">Dual-Tier Deep Vision & Pedological Telemetry</h2>
-    <ol class="hx-steps">
-      <li><strong>Visual Ingestion:</strong> Specimen leaves preprocessed to 180×180 RGB; normalized for depthwise separable convolutional feature extraction (2048-d latent representation).</li>
-      <li><strong>Taxonomic Classification:</strong> Softmax prediction over 215 global and Kashmir Himalayan species with top-5 candidate confidence distribution.</li>
-      <li><strong>Multi-Modal Knowledge Join:</strong> Dynamic resolution against <code>data/csv/</code> canonical tables for bioactives, IUCN conservation status, and pharmacopeial standards.</li>
-      <li><strong>Pedological Telemetry:</strong> In-situ soil sensor telemetry (pH, N, P, K, moisture) matched against optimal edaphic envelopes for secondary metabolite optimization.</li>
-    </ol>
+  <!-- Model 1 Card -->
+  <div class="hx-card" style="border-top: 3px solid var(--hx-accent);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <span class="hx-kicker" style="color: var(--hx-accent);"><i class="fas fa-check-circle"></i> Model 1: Active & Verified</span>
+      <span style="background: #112d22; color: #2ee6a8; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">96.79% Val Accuracy</span>
+    </div>
+    <h2 style="margin: 0 0 0.6rem 0; font-size: 1.35rem;">General & Indian Flora Classifier (200 Taxa)</h2>
+    <p style="color: var(--hx-muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+      Fully validated deep convolutional vision model (Xception backbone with global average pooling) trained on 200 medicinal species.
+    </p>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.88rem; color: var(--hx-text); line-height: 1.8;">
+      <li><i class="fas fa-file-code" style="color: var(--hx-accent); width: 20px;"></i> <strong>Weights:</strong> <code>models/working_model/plant.h5</code> (84.5 MB)</li>
+      <li><i class="fas fa-layer-group" style="color: var(--hx-accent); width: 20px;"></i> <strong>Resolution:</strong> 180×180 RGB (20,894,264 parameters)</li>
+      <li><i class="fas fa-folder-open" style="color: var(--hx-accent); width: 20px;"></i> <strong>Data Partitions:</strong> <code>data/working_model/</code> (3,746 train / 704 val / 972 test)</li>
+      <li><i class="fas fa-chart-line" style="color: var(--hx-accent); width: 20px;"></i> <strong>Empirical Test:</strong> 88.0% verified sample top-1 accuracy</li>
+    </ul>
+    <div style="display: flex; gap: 0.6rem;">
+      <a class="hx-btn hx-btn-primary" href="{{ url_for('upload_page') }}"><i class="fas fa-camera"></i> Test With Leaf Image</a>
+      <a class="hx-btn" href="{{ url_for('lab') }}"><i class="fas fa-chart-bar"></i> View Curves</a>
+    </div>
   </div>
 
-  <div class="hx-card">
-    <div class="hx-kicker" style="margin-bottom: 0.3rem;"><i class="fas fa-satellite-dish"></i> Ex-Situ Agronomy Telemetry</div>
-    <h2 style="margin: 0 0 0.8rem 0;">Root-Zone Edaphic Telemetry Sensor Ingestion</h2>
-    <p style="color: var(--hx-muted); font-size: 0.92rem;">
-      Simulate or stream real-time pedological data to diagnose nutrient deficits and calculate ex-situ cultivation suitability for endangered taxa.
+  <!-- Model 2 Card -->
+  <div class="hx-card" style="border-top: 3px solid #4cc3ff;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <span class="hx-kicker" style="color: #4cc3ff;"><i class="fas fa-mountain"></i> Model 2: Future Kashmir Pipeline</span>
+      <span style="background: #193549; color: #4cc3ff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Pipeline Configured</span>
+    </div>
+    <h2 style="margin: 0 0 0.6rem 0; font-size: 1.35rem;">Kashmir High-Altitude Endemic Model (16 Taxa)</h2>
+    <p style="color: var(--hx-muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+      Dedicated secondary neural engine configured for high-altitude threatened Kashmir taxa (<em>Aconitum heterophyllum</em>, <em>Saussurea costus</em>, <em>Picrorhiza kurroa</em>, <em>Gentiana kurroo</em>, etc.).
     </p>
-    <pre class="hx-code">{
-  "device_id": "iust-alpine-plot-01",
-  "pH": 6.2, "N": 42.5, "P": 18.0, "K": 32.4,
-  "moisture": 26.5, "temperature": 18.2
-}</pre>
-    <div style="display: flex; gap: 0.6rem; margin-top: 0.8rem;">
-      <a class="hx-btn" href="{{ url_for('sensors_page') }}"><i class="fas fa-tachometer-alt"></i> Sensor Console</a>
-      <a class="hx-btn" href="{{ url_for('hybridization_explorer') }}"><i class="fas fa-dna"></i> Chemotaxonomy Hub</a>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0; font-size: 0.88rem; color: var(--hx-text); line-height: 1.8;">
+      <li><i class="fas fa-file-code" style="color: #4cc3ff; width: 20px;"></i> <strong>Target Model:</strong> <code>models/kashmir/kashmir_plant.h5</code></li>
+      <li><i class="fas fa-folder-open" style="color: #4cc3ff; width: 20px;"></i> <strong>Dedicated Partitions:</strong> <code>data/kashmir/</code> (train, val, test)</li>
+      <li><i class="fas fa-terminal" style="color: #4cc3ff; width: 20px;"></i> <strong>Turnkey Trainer:</strong> <code>python scripts/train_kashmir_model.py</code></li>
+      <li><i class="fas fa-microchip" style="color: #4cc3ff; width: 20px;"></i> <strong>Auto-Hardware:</strong> Apple Silicon MPS / NVIDIA CUDA / CPU</li>
+    </ul>
+    <div style="display: flex; gap: 0.6rem;">
+      <a class="hx-btn" href="{{ url_for('hybridization_explorer') }}"><i class="fas fa-dna"></i> View Endemic Chemotaxonomy</a>
+      <a class="hx-btn" href="{{ url_for('plants_browser') }}"><i class="fas fa-list"></i> 16 Kashmir Taxa</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Canonical Master Catalogs Section -->
+<section class="hx-card">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+    <div>
+      <div class="hx-kicker">Unified Knowledge Foundation</div>
+      <h2 style="margin: 0;">4 Canonical Master CSV Catalogs (216 Species Complete)</h2>
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+      <span style="background: #0f1824; border: 1px solid var(--hx-line); padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--hx-accent);">
+        <i class="fas fa-check"></i> 100% Non-Repetitive
+      </span>
+      <span style="background: #0f1824; border: 1px solid var(--hx-line); padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; color: #4cc3ff;">
+        <i class="fas fa-link"></i> Mapped via label_mapping.csv
+      </span>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem;">
+    <!-- Catalog 1 -->
+    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 8px; padding: 1rem;">
+      <strong style="color: var(--hx-accent); font-size: 1rem; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-mortar-pestle"></i> 1. medicinal.csv
+      </strong>
+      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.5rem 0;">
+        Taxonomy, Ayurvedic/Unani rasapanchaka, bioactive chemomarkers, IUCN Red List status, safe clinical indications, and pharmacopeial standards.
+      </p>
+      <span style="font-size: 0.75rem; color: var(--hx-accent-2);">216 records · 25 authoritative columns</span>
+    </div>
+
+    <!-- Catalog 2 -->
+    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 8px; padding: 1rem;">
+      <strong style="color: #2ee6a8; font-size: 1rem; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-seedling"></i> 2. fertiliser.csv
+      </strong>
+      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.5rem 0;">
+        Precision agronomy: Basal FYM (t/ha), specific N-P-K kg/ha ratios, split schedules, biofertilizers (Azotobacter, PSB), micronutrients, and hazards.
+      </p>
+      <span style="font-size: 0.75rem; color: var(--hx-accent-2);">216 records · 17 agronomic columns</span>
+    </div>
+
+    <!-- Catalog 3 -->
+    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 8px; padding: 1rem;">
+      <strong style="color: #ce93d8; font-size: 1rem; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-dna"></i> 3. chemicaltaxonomy.csv
+      </strong>
+      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.5rem 0;">
+        Phytochemical & cytogenetic profiles: Taxonomic order, primary bioactives, biosynthetic pathways, diagnostic chemomarkers, 2n karyotypes, and breeding targets.
+      </p>
+      <span style="font-size: 0.75rem; color: var(--hx-accent-2);">216 records · 17 chemotaxonomy columns</span>
+    </div>
+
+    <!-- Catalog 4 -->
+    <div style="background: #071018; border: 1px solid var(--hx-line); border-radius: 8px; padding: 1rem;">
+      <strong style="color: #f5a623; font-size: 1rem; display: block; margin-bottom: 0.3rem;">
+        <i class="fas fa-shield-virus"></i> 4. disease.csv
+      </strong>
+      <p style="font-size: 0.84rem; color: var(--hx-muted); margin: 0 0 0.5rem 0;">
+        Phytopathology & IPM: Major diseases, foliar diagnostic symptoms, cultural sanitation, biological organic IPM controls, and chemical pesticide warnings.
+      </p>
+      <span style="font-size: 0.75rem; color: var(--hx-accent-2);">216 records · 11 phytopathology columns</span>
     </div>
   </div>
 </section>
@@ -91,18 +172,19 @@
 <section class="hx-card">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
     <div>
-      <div class="hx-kicker">Canonical Knowledge Database</div>
-      <h2 style="margin: 0;">Medicinal Species & Pharmacognosy Catalog (215 Taxa)</h2>
+      <div class="hx-kicker">Botanical Species Catalog</div>
+      <h2 style="margin: 0;">Sample Medicinal Taxa (216 Taxa Complete)</h2>
     </div>
     <a class="hx-btn" href="{{ url_for('plants_browser') }}"><i class="fas fa-list"></i> Full Botanical Catalog</a>
   </div>
   <table class="hx-table">
     <thead>
-      <tr><th>Scientific Name</th><th>Vernacular / Common</th><th>Botanical Family</th><th>Conservation Status</th><th>Actions</th></tr>
+      <tr><th>Species ID</th><th>Scientific Name</th><th>Vernacular / Common</th><th>Botanical Family</th><th>Conservation Status</th><th>Actions</th></tr>
     </thead>
     <tbody>
       {% for p in plants %}
       <tr>
+        <td><code>{{ p.species_id }}</code></td>
         <td><strong><em>{{ p.Scientificname }}</em></strong></td>
         <td>{{ p.Biologicalname }}</td>
         <td><span style="background: #111e2e; color: #7bb5e8; padding: 2px 8px; border-radius: 4px; font-size: 0.82rem;">{{ p.Family }}</span></td>
@@ -115,7 +197,7 @@
         </td>
         <td>
           <a class="hx-btn" style="padding: 3px 8px; font-size: 0.8rem;" href="{{ url_for('agronomy', species=p.Scientificname) }}">
-            <i class="fas fa-eye"></i> Details
+            <i class="fas fa-eye"></i> View Dossier
           </a>
         </td>
       </tr>

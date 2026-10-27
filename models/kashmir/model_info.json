@@ -1,0 +1,40 @@
+{
+  "model_name": "Herbalist Kashmir Alpine Classifier (Model 2)",
+  "status": "Pipeline Architecture Verified (Awaiting User Field Captures)",
+  "num_classes": 16,
+  "target_species": [
+    "Aconitum_heterophyllum",
+    "Artemisia_absinthium",
+    "Berberis_lycium",
+    "Colchicum_luteum",
+    "Crocus_sativus",
+    "Datura_stramonium",
+    "Fritillaria_roylei",
+    "Gentiana_kurroo",
+    "Hyoscyamus_niger",
+    "Jurinea_dolomiaea",
+    "Picrorhiza_kurroa",
+    "Podophyllum_hexandrum",
+    "Rheum_emodi",
+    "Saussurea_costus",
+    "Taxus_wallichiana",
+    "Valeriana_jatamansi"
+  ],
+  "input_resolution": [
+    180,
+    180,
+    3
+  ],
+  "parameters_total": 20894264,
+  "accelerator_profile": {
+    "os": "Darwin",
+    "release": "25.6.0",
+    "machine": "arm64",
+    "python": "3.11.15",
+    "accelerator": "Apple Silicon (MPS / Metal)",
+    "device_name": "Apple M-Series GPU (arm64)",
+    "recommended_batch_size": 32
+  },
+  "csv_catalog_mapping": "data/csv/label_mapping.csv",
+  "timestamp": "2026-10-27 16:57:13"
+}
