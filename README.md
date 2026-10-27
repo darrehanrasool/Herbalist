@@ -6,7 +6,7 @@
 [![Python: 3.10 | 3.11](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/downloads/)
 [![Independent Test Accuracy: 94.24%](https://img.shields.io/badge/Independent%20Test%20Accuracy-94.24%25-brightgreen.svg)](reports/figures/working_model/)
 [![Zero Data Leakage](https://img.shields.io/badge/Data%20Leakage-0.0%25%20Verified-blue.svg)](models/working_model/)
-[![Master Catalogs: 216 Taxa](https://img.shields.io/badge/Master%20Catalogs-216%20Taxa%20(4%20CSVs)-emerald.svg)](data/csv/)
+[![Master Catalogs: 216 Taxa](<https://img.shields.io/badge/Master%20Catalogs-216%20Taxa%20(4%20CSVs)-emerald.svg>)](data/csv/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa. It combines a validated dual-model cascading deep learning architecture with 4 canonical, peer-reviewed master knowledge catalogs to predict active secondary metabolites, prevent poisonous adulteration, and guide agronomic cultivation.
@@ -17,13 +17,13 @@ Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, 
 
 This research project is designed, engineered, and maintained at the **Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir**.
 
-| Role | Name | Designation & Affiliation | Research & Project Contribution |
-| :--- | :--- | :--- | :--- |
-| **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction |
-| **Contributing Researcher** | **Dar Rehan Rasool** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
-| **Contributing Researcher** | **Muneeb Syed Shah** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
-| **Contributing Researcher** | **Shafiya Bashir Pampori** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
-| **Research Contributor** | **Sehreen** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Pharmacognosy Literature Synthesis, Chemotaxonomy Modeling & Ethnomedicinal Annotation |
+| Role                                    | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                  |
+| :-------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| **Head of Department (HOD) Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                   |
+| **Contributing Researcher**             | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
+| **Contributing Researcher**             | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification                                |
+| **Contributing Researcher**             | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity                             |
+| **Research Contributor**                | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST   | Pharmacognosy Literature Synthesis, Chemotaxonomy Modeling & Ethnomedicinal Annotation                           |
 
 - **Academic Unit**: Centre for Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
@@ -33,6 +33,7 @@ This research project is designed, engineered, and maintained at the **Centre fo
 ## 🔬 Core System Architecture & Current Implementations
 
 ### 1. Active Botanical Vision Classifier (Model 1 — 200 Taxa)
+
 - **Architecture**: Deep Convolutional Neural Network with an Xception backbone (Extreme Inception) featuring 36 depthwise separable convolutional layers and Global Average Pooling.
 - **Weights & Parameters**: `models/working_model/plant.h5` (84.5 MB, 21,271,280 parameters).
 - **Input Dimension**: $180 \times 180 \times 3$ RGB (normalized to $[0, 1]$).
@@ -40,27 +41,34 @@ This research project is designed, engineered, and maintained at the **Centre fo
 - **Categorical Cross-Entropy Test Loss**: $0.1873$ | **Macro F1-Score**: $0.9381$.
 
 ### 2. Strict Zero Data-Leakage Partition Guarantee
+
 To ensure scientific validity and prevent inflated performance claims:
+
 - **Training Set (`data/working_model/train/`)**: 3,746 images ($70.0\%$) used exclusively for backpropagation gradient updates.
 - **Validation Set (`data/working_model/val/`)**: 704 images ($13.2\%$) used strictly for hyperparameter checks and learning rate scheduling.
 - **Independent Test Set (`data/working_model/test/`)**: 972 images ($16.8\%$) locked and held out prior to training.
 - **Leakage Audit**: Pairwise SHA-256 image hash verification confirms **$0.0\%$ cross-split intersection**, ensuring the model is evaluated on previously unseen specimens.
 
 ### 3. Dedicated Kashmir Endemic Model Pipeline (Model 2 — Planned Future Work)
-- **Target Flora**: 16 high-altitude threatened and endemic Kashmir Himalayan taxa (*Gentiana kurroo*, *Saussurea costus*, *Picrorhiza kurroa*, *Aconitum heterophyllum*, *Podophyllum hexandrum*, *Arnebia benthamii*, *Inula racemosa*, *Rheum webbianum*, etc.).
+
+- **Target Flora**: 16 high-altitude threatened and endemic Kashmir Himalayan taxa (_Gentiana kurroo_, _Saussurea costus_, _Picrorhiza kurroa_, _Aconitum heterophyllum_, _Podophyllum hexandrum_, _Arnebia benthamii_, _Inula racemosa_, _Rheum webbianum_, etc.).
 - **Segregated Partitions**: Reserved folders in `data/kashmir/train/`, `data/kashmir/val/`, and `data/kashmir/test/`.
 - **Target Weights**: `models/kashmir/kashmir_plant.h5`.
 - **Turnkey Trainer**: `python scripts/train_kashmir_model.py` with multi-platform hardware selection (Apple Silicon MPS / NVIDIA CUDA / CPU).
 
 ### 4. 4 Canonical Master Knowledge Catalogs (`data/csv/`)
+
 All domain knowledge is centralized into 4 non-repetitive, verified CSV catalogs covering **216 medicinal plant taxa** (100% complete across all fields):
+
 1. **`medicinal.csv`** (216 taxa, 25 attributes): Binomial nomenclature, vernacular names, botanical family, Ayurvedic/Unani rasapanchaka, IUCN conservation status, clinical indications, diagnostic bioactives, and toxicity warnings.
 2. **`fertiliser.csv`** (216 taxa, 17 attributes): Precision agronomy guidelines, basal farmyard manure (FYM t/ha), specific N-P-K kg/ha ratios, split application schedules, biofertilizers (Azotobacter, PSB), and soil pH ranges.
 3. **`chemicaltaxonomy.csv`** (216 taxa, 17 attributes): Chemotaxonomic order, primary chemical classes, dominant secondary metabolites, biosynthetic pathways, $2n$ karyotype chromosome counts, and hybridization breeding targets.
 4. **`disease.csv`** (216 taxa, 11 attributes): Phytopathology, foliar disease symptoms, organic IPM sanitation practices, biological controls, and chemical pesticide restrictions.
+
 - **`label_mapping.csv`**: Unambiguous 1-to-1 index table mapping neural vision output classes (`0..199`) and planned Kashmir classes (`200..215`) to the 4 master catalogs.
 
 ### 5. Interactive Scientist Workbench & Terminal Console
+
 - **Scientist Workspace (`/`)**: Real-time dual-model statistics, independent test benchmark metrics, and catalog previews.
 - **Botanical Identification (`/upload`)**: Specimen image analysis with automatic catalog dossier lookup.
 - **Chemotaxonomy & Hybridization Explorer (`/hybridization`)**: Chromosomal synapsis and secondary metabolite retention analysis across congeneric relatives.
@@ -168,11 +176,11 @@ Open your browser to: **[http://localhost:5001](http://localhost:5001)**
 
 ## 📊 Benchmark Performance Summary
 
-| Split / Metric | Sample Count | Top-1 Accuracy | Top-5 Accuracy | Loss | Purpose |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Training Split** | 3,746 images | 93.34% | — | 0.0800 | Backpropagation gradient updates |
-| **Validation Split** | 704 images | 96.79% | 99.12% | 0.1241 | Hyperparameter selection & EarlyStopping |
-| **Independent Test Split** | **972 images** | **94.24%** | **98.65%** | **0.1873** | **Unbiased Gold-Standard Evaluation (Zero Leakage)** |
+| Split / Metric             |  Sample Count  | Top-1 Accuracy | Top-5 Accuracy |    Loss    | Purpose                                              |
+| :------------------------- | :------------: | :------------: | :------------: | :--------: | :--------------------------------------------------- |
+| **Training Split**         |  3,746 images  |     93.34%     |       —        |   0.0800   | Backpropagation gradient updates                     |
+| **Validation Split**       |   704 images   |     96.79%     |     99.12%     |   0.1241   | Hyperparameter selection & EarlyStopping             |
+| **Independent Test Split** | **972 images** |   **94.24%**   |   **98.65%**   | **0.1873** | **Unbiased Gold-Standard Evaluation (Zero Leakage)** |
 
 ---
 
