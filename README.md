@@ -21,9 +21,9 @@ This research project is designed, engineered, and maintained at the **Centre of
 | :-------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
 | **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                    |
 | **Project Lead & Author**                           | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
-| **Research Contributor**                            | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Pharmacognosy Curation & Chemotaxonomy Modeling                   |
-| **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Agronomic Soil Modeling, Phytochemical Feature Engineering & Cross-Dataset Evaluation                             |
+| **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Agronomic Soil Modeling & Cross-Dataset Evaluation                 |
 | **Contributing Researcher**                         | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity                                |
+| **Research Contributor**                            | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Curation, Chemotaxonomy Modeling & Botanical Literature Synthesis                                   |
 
 - **Academic Unit**: Centre of Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
@@ -199,7 +199,7 @@ Comprehensive academic evaluations, comparative matrices, and researcher reviews
 
 This project is licensed under the **Strict Academic & Non-Commercial Research Evaluation License** (All Rights Reserved).
 
-- **Copyright**: © 2026 Dr. Muzafar Rasool Bhat, Dar Rehan Rasool, Sehreen, Muneeb Syed Shah, and Shafiya Bashir Pampori.
+- **Copyright**: © 2026 Dr. Muzafar Rasool Bhat, Dar Rehan Rasool, Muneeb Syed Shah, Shafiya Bashir Pampori, and Sehreen.
 - **Affiliation**: Centre of Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India.
 - **Commercial Use**: **Strictly Prohibited**. No commercial exploitation, resale, closed-source packaging, or incorporation into proprietary agricultural or pharmaceutical tools is permitted without an executed licensing agreement.
 - **Academic Citation**: Any scientific paper, dissertation, or research study utilizing this architecture, dataset catalog, or codebase must formally cite the authors and official Zenodo DOI via [CITATION.cff](CITATION.cff).
@@ -214,7 +214,7 @@ If you use Herbalist-AI in your research or academic publications, please cite:
 
 ```bibtex
 @software{bhat2026herbalist,
-  author       = {Bhat, Dr. Muzafar Rasool and Rasool, Dar Rehan and Sehreen and Shah, Muneeb Syed and Pampori, Shafiya Bashir},
+  author       = {Bhat, Dr. Muzafar Rasool and Rasool, Dar Rehan and Shah, Muneeb Syed and Pampori, Shafiya Bashir and Sehreen},
   title        = {Herbalist-AI: Enterprise Deep Learning & Multi-Modal Fusion Framework for Himalayan Flora Taxonomy, Pharmacognosy, and Precision Agronomy},
   month        = oct,
   year         = 2026,

@@ -12,9 +12,9 @@ license = {text = "Strict Academic & Non-Commercial Research License"}
 authors = [
   {name = "Dr. Muzafar Rasool Bhat", email = "muzafar.rasool@iust.ac.in"},
   {name = "Dar Rehan Rasool", email = "darrehanrasool@gmail.com"},
-  {name = "Sehreen"},
   {name = "Muneeb Syed Shah"},
-  {name = "Shafiya Bashir Pampori"}
+  {name = "Shafiya Bashir Pampori"},
+  {name = "Sehreen"}
 ]
 keywords = [
   "computational-botany",
