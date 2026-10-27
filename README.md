@@ -1,92 +1,123 @@
-# Herbalist-AI: Enterprise Deep Learning & Botanical Intelligence Platform
+# Herbalist-AI: Computational Botany, Ethnomedicinal Intelligence & Dual-Model Cascade Platform
 
-[![Tests: 25 Passed](https://img.shields.io/badge/tests-25%20passed-brightgreen.svg?logo=pytest)](tests/)
+[![Tests: 26 Passed](https://img.shields.io/badge/tests-26%20passed-brightgreen.svg?logo=pytest)](tests/)
 [![CI Workflow](https://img.shields.io/badge/CI%20Workflow-passing-brightgreen.svg?logo=github-actions)](https://github.com/darrehanrasool/Herbalist/actions/workflows/tests.yml)
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
-[![DOI: Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.herbalist--ai-blue.svg)](https://zenodo.org/)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Top-1 Accuracy: 96.79%](https://img.shields.io/badge/Top--1%20Accuracy-96.79%25-brightgreen.svg)](reports/evaluation/evaluation_report.md)
-[![Kashmir Endemic Focus](https://img.shields.io/badge/Flora-Kashmir%20Himalaya-emerald.svg)](data/csv/kashmir_medicinal_plants.csv)
+[![Python: 3.10 | 3.11](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/downloads/)
+[![Independent Test Accuracy: 94.24%](https://img.shields.io/badge/Independent%20Test%20Accuracy-94.24%25-brightgreen.svg)](reports/figures/working_model/)
+[![Zero Data Leakage](https://img.shields.io/badge/Data%20Leakage-0.0%25%20Verified-blue.svg)](models/working_model/)
+[![Master Catalogs: 216 Taxa](https://img.shields.io/badge/Master%20Catalogs-216%20Taxa%20(4%20CSVs)-emerald.svg)](data/csv/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa, protect critically endangered high-altitude flora of the Kashmir Himalayas, predict active bioactive secondary metabolites, and guide precision agronomic ex-situ cultivation.
+Herbalist-AI is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa. It combines a validated dual-model cascading deep learning architecture with 4 canonical, peer-reviewed master knowledge catalogs to predict active secondary metabolites, prevent poisonous adulteration, and guide agronomic cultivation.
 
 ---
 
 ## 👥 Research Team & Contributors
 
-This research project is designed, engineered, and maintained at the **Centre of Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir**.
+This research project is designed, engineered, and maintained at the **Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir**.
 
-| Role                                                | Name                        | Designation & Affiliation                                                  | Research & Project Contribution                                                                                   |
-| :-------------------------------------------------- | :-------------------------- | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction                    |
-| **Project Lead & Author**                           | **Dar Rehan Rasool**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Multi-Modal Fusion Engine, Decoupled Xception Architecture, End-to-End Implementation & Full Platform Engineering |
-| **Contributing Researcher**                         | **Muneeb Syed Shah**        | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | High-Altitude Kashmir DSLR Collection Protocol, Agronomic Soil Modeling & Cross-Dataset Evaluation                 |
-| **Contributing Researcher**                         | **Shafiya Bashir Pampori**  | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity                                |
-| **Research Contributor**                            | **Sehreen**                 | Graduate Researcher, M.Tech AI, Centre of Artificial Intelligence, IUST    | Pharmacognosy Curation, Chemotaxonomy Modeling & Botanical Literature Synthesis                                   |
+| Role | Name | Designation & Affiliation | Research & Project Contribution |
+| :--- | :--- | :--- | :--- |
+| **Head of Department (HOD) & Principal Supervisor** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction |
+| **Project Lead & Author** | **Dar Rehan Rasool** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
+| **Contributing Researcher** | **Muneeb Syed Shah** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
+| **Contributing Researcher** | **Shafiya Bashir Pampori** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
+| **Research Contributor** | **Sehreen** | Graduate Researcher, M.Tech AI, Centre for Artificial Intelligence, IUST | Pharmacognosy Literature Synthesis, Chemotaxonomy Modeling & Ethnomedicinal Annotation |
 
-- **Academic Unit**: Centre of Artificial Intelligence (CAI)
+- **Academic Unit**: Centre for Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
 
 ---
 
-## Key Features
+## 🔬 Core System Architecture & Current Implementations
 
-- **Extreme Inception Decoupled Vision Architecture**: Decoupled Depthwise Separable Convolutions (36 conv layers across 14 modules, yielding an $88.9\%$ reduction in FLOP compute over standard convolutions) achieving **$96.79\%$ validation accuracy** across 200 medicinal taxa.
-- **Kashmir Himalayan Endemic Specialist Engine**: Dedicated high-altitude taxonomic intelligence module targeting 15 critically endangered and threatened alpine medicinal taxa (_Gentiana kurroo_, _Saussurea costus_, _Picrorhiza kurroa_, _Aconitum heterophyllum_, _Podophyllum hexandrum_, etc.) with elevation gating ($> 2,500\text{ m}$ masl).
-- **Automated Kashmir DSLR Ingestion & Stratified Splitting**: Native decoding of camera RAW (.CR2, .CR3, .NEF, .ARW) and standard RGB, Laplacian blur detection ($\sigma^2 < 80.0$), EXIF altitude extraction, and automated stratified 70/15/15 train/val/test splitting.
-- **Unified Canonical CSV Repository (`data/csv/`)**: Centrally organizes all 9 primary tabular datasets with zero filename clashes and standardized `snake_case` schema.
-- **Chemotaxonomy & Interspecific Hybridization Engine**: Evaluates cross-breeding compatibility ($2n$ karyotype synapsis, genetic distance $D_{\text{genomic}}$), bioactive secondary metabolite retention, and agronomic biomass vigour across 12 verified Himalayan-global congener pairs.
-- **GPU-Scale Training Engine**: Multi-platform accelerator support (Apple Silicon Metal MPS / NVIDIA CUDA / CPU), Label Smoothing, Cosine Decay LR, and live JSONL telemetry logging.
-- **10 Publication-Quality Research Visualizations**: 300 DPI figures covering altitudinal zonation, edaphic envelopes, confusion matrices, ROC curves, and breeding matrices.
-- **Hierarchical Multi-Modal Fusion**: Unifies deep visual representations ($2048$-dimensional feature vectors from Xception) with geographic elevation priors ($\mathbb{P}(\text{Taxon} \mid \text{Altitude})$) and 7-dimensional physicochemical soil telemetry (pH, N, P, K, moisture, temperature, EC) to eliminate out-of-distribution taxonomic hallucinations.
-- **1-Click Scientific Dossier Downloads**: Instant export of machine-readable JSON dossiers and standardized CSV records directly from the scientific workbench.
+### 1. Active Botanical Vision Classifier (Model 1 — 200 Taxa)
+- **Architecture**: Deep Convolutional Neural Network with an Xception backbone (Extreme Inception) featuring 36 depthwise separable convolutional layers and Global Average Pooling.
+- **Weights & Parameters**: `models/working_model/plant.h5` (84.5 MB, 21,271,280 parameters).
+- **Input Dimension**: $180 \times 180 \times 3$ RGB (normalized to $[0, 1]$).
+- **Primary Research Metric — Independent Test Accuracy**: **$94.24\%$ Top-1** and **$98.65\%$ Top-5** evaluated on 972 unseen leaf test images.
+- **Categorical Cross-Entropy Test Loss**: $0.1873$ | **Macro F1-Score**: $0.9381$.
+
+### 2. Strict Zero Data-Leakage Partition Guarantee
+To ensure scientific validity and prevent inflated performance claims:
+- **Training Set (`data/working_model/train/`)**: 3,746 images ($70.0\%$) used exclusively for backpropagation gradient updates.
+- **Validation Set (`data/working_model/val/`)**: 704 images ($13.2\%$) used strictly for hyperparameter checks and learning rate scheduling.
+- **Independent Test Set (`data/working_model/test/`)**: 972 images ($16.8\%$) locked and held out prior to training.
+- **Leakage Audit**: Pairwise SHA-256 image hash verification confirms **$0.0\%$ cross-split intersection**, ensuring the model is evaluated on previously unseen specimens.
+
+### 3. Dedicated Kashmir Endemic Model Pipeline (Model 2 — Planned Future Work)
+- **Target Flora**: 16 high-altitude threatened and endemic Kashmir Himalayan taxa (*Gentiana kurroo*, *Saussurea costus*, *Picrorhiza kurroa*, *Aconitum heterophyllum*, *Podophyllum hexandrum*, *Arnebia benthamii*, *Inula racemosa*, *Rheum webbianum*, etc.).
+- **Segregated Partitions**: Reserved folders in `data/kashmir/train/`, `data/kashmir/val/`, and `data/kashmir/test/`.
+- **Target Weights**: `models/kashmir/kashmir_plant.h5`.
+- **Turnkey Trainer**: `python scripts/train_kashmir_model.py` with multi-platform hardware selection (Apple Silicon MPS / NVIDIA CUDA / CPU).
+
+### 4. 4 Canonical Master Knowledge Catalogs (`data/csv/`)
+All domain knowledge is centralized into 4 non-repetitive, verified CSV catalogs covering **216 medicinal plant taxa** (100% complete across all fields):
+1. **`medicinal.csv`** (216 taxa, 25 attributes): Binomial nomenclature, vernacular names, botanical family, Ayurvedic/Unani rasapanchaka, IUCN conservation status, clinical indications, diagnostic bioactives, and toxicity warnings.
+2. **`fertiliser.csv`** (216 taxa, 17 attributes): Precision agronomy guidelines, basal farmyard manure (FYM t/ha), specific N-P-K kg/ha ratios, split application schedules, biofertilizers (Azotobacter, PSB), and soil pH ranges.
+3. **`chemicaltaxonomy.csv`** (216 taxa, 17 attributes): Chemotaxonomic order, primary chemical classes, dominant secondary metabolites, biosynthetic pathways, $2n$ karyotype chromosome counts, and hybridization breeding targets.
+4. **`disease.csv`** (216 taxa, 11 attributes): Phytopathology, foliar disease symptoms, organic IPM sanitation practices, biological controls, and chemical pesticide restrictions.
+- **`label_mapping.csv`**: Unambiguous 1-to-1 index table mapping neural vision output classes (`0..199`) and planned Kashmir classes (`200..215`) to the 4 master catalogs.
+
+### 5. Interactive Scientist Workbench & Terminal Console
+- **Scientist Workspace (`/`)**: Real-time dual-model statistics, independent test benchmark metrics, and catalog previews.
+- **Botanical Identification (`/upload`)**: Specimen image analysis with automatic catalog dossier lookup.
+- **Chemotaxonomy & Hybridization Explorer (`/hybridization`)**: Chromosomal synapsis and secondary metabolite retention analysis across congeneric relatives.
+- **Agronomy & Nutrient Guidelines (`/agronomy`)**: Species-specific soil envelopes, NPK fertilizer schedules, and disease management.
+- **Research Terminal & Logs Console (`/research-lab`)**: Interactive terminal-styled audit console displaying real-time hardware status, catalog checksum verification, zero-leakage data partition logs, and repository lineage.
+- **Archival Research Figures (`/lab`)**: 300 DPI publication plots (convergence curves, test generalization comparisons, and edaphic envelopes).
+- **Botanical Catalog Browser (`/plants`)**: Searchable index of all 216 medicinal taxa.
 
 ---
 
-## Project Architecture
+## 📁 Repository Directory Structure
 
 ```
-Herbalist-AI/
-├── .github/              # Issue templates, PR templates, and GitHub Actions CI/CD workflows
-├── configs/              # YAML configurations for project, data, models, training, hardware, viz
+Herbalist/
+├── .github/
+│   └── workflows/                # GitHub Actions CI/CD workflows (lint.yml, tests.yml)
+├── api/
+│   ├── app.py                    # Main Flask application & prediction API
+│   ├── static/                   # Platform CSS, JavaScript, and 300 DPI research graphs
+│   └── templates/platform/       # Modern responsive scientist platform templates
+├── backend/
+│   ├── knowledge.py              # Canonical knowledge base engine (queries data/csv/)
+│   └── platform_routes.py        # Platform endpoints (dashboard, agronomy, research terminal)
+├── configs/                      # YAML configurations (data.yaml, hardware, models)
 ├── data/
-│   ├── csv/              # Unified canonical CSV tables (master, kashmir, soil, disease, etc.)
-│   ├── manifests/        # Dataset manifests, checksums, and DSLR split logs
-│   ├── raw/
-│   │   ├── kashmir/      # Kashmir DSLR in-situ field photography
-│   │   └── kaggle/       # Standard botanical benchmarks
-│   ├── interim/          # Standardized normalized intermediate crops
-│   ├── processed/        # Stratified Train (70%), Val (15%), Test (15%) splits
-│   └── splits/           # Tabular train/val/test splits
-├── docs/                 # Architectural specifications, data lineage, safety, reproducibility
-├── experiments/          # Experiment tracking, parameter configs, and experiment_registry.csv
-├── logs/                 # Dedicated logs for application, training, errors, datasets, hardware
+│   ├── csv/                      # 4 Canonical Master Catalogs + Label Mapping (216 Taxa)
+│   │   ├── medicinal.csv
+│   │   ├── fertiliser.csv
+│   │   ├── chemicaltaxonomy.csv
+│   │   ├── disease.csv
+│   │   └── label_mapping.csv
+│   ├── working_model/            # Model 1 partitions (train, val, test)
+│   └── kashmir/                  # Model 2 planned partitions (train, val, test)
+├── docs/                         # Architecture, methodology, clinical safety, data dictionary
 ├── models/
-│   └── deep_learning/    # Trained weights (plant.h5, 21.2M parameters)
-├── notebooks/            # Publication-ready Jupyter notebooks for baseline, quality, and comparison
-├── papers/               # Research PDFs, metadata JSON, literature reviews, mathematical formulas
+│   ├── working_model/            # Active weights (plant.h5), model_info.json, class_labels.json
+│   └── kashmir/                  # Model 2 specifications & future training roadmap
+├── notebooks/                    # 00_btech_model_baseline.ipynb (annotated academic reference)
 ├── reports/
-│   └── figures/          # 300 DPI publication-quality figures
-├── scripts/              # Operational CLI scripts (process_kashmir_dslr, train_model, curate)
-├── src/herbalist/        # Production modular source code
-│   ├── core/             # Configuration, constants, typed exceptions, reproducibility
-│   ├── data/             # Ingestion, DSLR pipeline, augmentation, feature engineering
-│   ├── hardware/         # Device detection (MPS/CUDA), memory bounds, resource monitoring
-│   ├── models/           # Global vision (Xception), Kashmir specialist (MobileNetV3), Agronomy MLP
-│   ├── training/         # GPU trainer, callbacks, optimizer, checkpoint manager
-│   ├── validation/       # Cross-validation, threshold tuning, probability calibration
-│   ├── evaluation/       # Multi-class metrics, statistical testing (McNemar, Wilcoxon)
-│   ├── explainability/   # Grad-CAM, feature importance ranking, botanist reports
-│   └── utils/            # File I/O, hashing, microsecond timers
-└── tests/                # Unit and integration pytest test suite (25 passing tests)
+│   ├── figures/working_model/    # Publication figures (01_accuracy, 02_loss, 04_benchmark)
+│   └── evaluation/               # Model audit & evaluation JSON reports
+├── research/                     # DATASETS.md (official repositories) & download_log.txt
+├── scripts/
+│   ├── verify_hardware.py        # Validates Apple Silicon MPS / CUDA / RAM status
+│   ├── verify_datasets.py        # Validates 4 canonical CSVs and SHA-256 checksums
+│   ├── evaluate_all.py           # Evaluates model weights and logs performance
+│   ├── generate_working_model_artifacts.py # Generates 300 DPI convergence & test benchmark plots
+│   └── train_kashmir_model.py    # Turnkey training pipeline for Model 2
+├── src/herbalist/                # Modular Python source code (data, hardware, models)
+└── tests/                        # 26 Unit & integration tests (unit/, integration/)
 ```
 
 ---
 
-## Quickstart
+## 🚀 Quickstart Guide
 
-### 1. Installation & Environment Activation
+### 1. Environment Setup
 
 ```bash
 git clone https://github.com/darrehanrasool/Herbalist.git
@@ -97,130 +128,71 @@ pip install -r requirements.txt
 pip install -r requirements-dev.txt
 ```
 
-### 2. Launch Interactive Web Platform & Agronomy Console
-
-Launch the real-time diagnosis platform with drag-and-drop live image analysis, soil envelope sliders, and Kashmir flora Explorer:
+### 2. Run Hardware & Dataset Verifications
 
 ```bash
-python api/app.py
-# Or via enterprise CLI:
-python -m src.herbalist.main serve --port 5001
-# Or via Makefile:
-make run
-```
+# Verify compute accelerator (Apple Silicon MPS / NVIDIA CUDA / CPU):
+python scripts/verify_hardware.py
 
-Access URL: **[http://127.0.0.1:5001](http://127.0.0.1:5001)**
-
-- Modern Platform Console: **[http://127.0.0.1:5001/platform/](http://127.0.0.1:5001/platform/)**
-- Species Identification & Diagnosis: **[http://127.0.0.1:5001/platform/identify](http://127.0.0.1:5001/platform/identify)**
-- Kashmir & Global Taxa Explorer: **[http://127.0.0.1:5001/platform/plants](http://127.0.0.1:5001/platform/plants)**
-
-### 3. Run the Multi-Dataset Multi-Modal Fusion Pipeline
-
-Execute end-to-end integration across Global Vision (200 species), Kashmir Specialist (15 high-altitude species), and Agronomic Soil MLP:
-
-```bash
-python scripts/train_multimodal_fusion.py
-```
-
-### 4. CLI Species Prediction & Phytochemical Extraction
-
-```bash
-# Predict species, active metabolites, and toxicity on a sample image:
-python -m src.herbalist.main predict tests/fixtures/sample_leaf_34.jpg
-```
-
-### 5. Verify Compute Hardware & Accelerator (Apple Silicon MPS / CUDA)
-
-```bash
-python -m src.herbalist.main verify-hardware
-```
-
-### 6. Comprehensive Statistical Audits & Evaluation
-
-```bash
-# Verify cryptographic SHA-256 dataset integrity against manifests:
+# Verify the integrity, schemas, and completeness of all 4 canonical CSV catalogs:
 python scripts/verify_datasets.py
+```
 
-# Run all 18 automated unit and integration tests:
+### 3. Run the Automated Test Suite
+
+```bash
+# Run all 26 unit and integration tests:
 python -m unittest discover -s tests -p "test_*.py"
+
 # Or via pytest:
 pytest tests/ -v
 ```
 
----
+### 4. Launch the Web Platform & Research Terminal
 
-## 📊 Botanical Benchmark Performance & Convergence
+```bash
+python api/app.py
+```
 
-Evaluated across **17,973 images** spanning **200 medicinal plant species** (12,000 training, 5,973 validation/testing):
+Open your browser to: **[http://localhost:5001](http://localhost:5001)**
 
-| Epoch | Step Duration | Training Loss | Training Accuracy | Validation Loss | Validation Accuracy | Epoch Delta ($\Delta \text{Val Acc}$) |
-| :---: | :-----------: | :-----------: | :---------------: | :-------------: | :-----------------: | :-----------------------------------: |
-| **1** |    1,704s     |    2.4598     |      47.82%       |     1.0457      |       74.89%        |        Baseline initialization        |
-| **2** |    1,726s     |    1.0808     |      73.73%       |     0.6013      |       85.79%        |              $+10.90\%$               |
-| **3** |    1,738s     |    0.6936     |      82.74%       |     0.4381      |       89.42%        |               $+3.63\%$               |
-| **4** |    1,155s     |    0.4859     |      87.77%       |     0.3137      |       93.00%        |               $+3.58\%$               |
-| **5** |    1,111s     |    0.3506     |      91.47%       |     0.2160      |       95.45%        |               $+2.45\%$               |
-| **6** |    1,114s     |  **0.2653**   |    **93.57%**     |   **0.1672**    |     **96.79%**      |             **$+1.34\%$**             |
-
-### Priority Kashmir Endemic Taxa Catalog
-
-| Botanical Taxon          | Common / Kashmiri Name | IUCN Conservation Status                 | Elevation Range | Active Phytochemical Compounds                 |
-| :----------------------- | :--------------------- | :--------------------------------------- | :-------------- | :--------------------------------------------- |
-| _Gentiana kurroo_        | Nilkanth / Neel Kanth  | **Critically Endangered (CR)**           | 1,800 – 3,000 m | Gentiopicroside, Amarogentin, Swertiamarin     |
-| _Saussurea costus_       | Kuth / Costus          | **Critically Endangered (CR)** (CITES I) | 2,500 – 3,800 m | Costunolide, Dehydrocostus lactone, Saussurine |
-| _Picrorhiza kurroa_      | Kutki / Kour           | **Endangered (EN)**                      | 3,000 – 4,500 m | Picroside I, Picroside II, Kutkoside           |
-| _Aconitum heterophyllum_ | Atis / Patris          | **Critically Endangered (CR)**           | 2,400 – 4,000 m | Atisine, Heteratisine, Aconitine               |
-| _Podophyllum hexandrum_  | Wanwangan / Bankakri   | **Endangered (EN)**                      | 2,700 – 4,200 m | Podophyllotoxin, 4'-demethylpodophyllotoxin    |
-| _Arnebia benthamii_      | Kahzaban               | **Critically Endangered (CR)**           | 3,000 – 4,300 m | Shikonin derivatives, Alkannin                 |
-| _Inula racemosa_         | Poshkar                | **Endangered (EN)**                      | 2,000 – 3,200 m | Alantolactone, Isoalantolactone                |
-| _Rheum webbianum_        | Pambchalan             | **Vulnerable (VU)**                      | 2,800 – 4,200 m | Emodin, Rhein, Chrysophanol                    |
+- **Workspace Dashboard**: [http://localhost:5001/](http://localhost:5001/)
+- **Botanical Specimen Identification**: [http://localhost:5001/upload](http://localhost:5001/upload)
+- **Chemotaxonomy & Hybridization Explorer**: [http://localhost:5001/hybridization](http://localhost:5001/hybridization)
+- **Agronomy & Nutrient Guidelines**: [http://localhost:5001/agronomy](http://localhost:5001/agronomy)
+- **Research Figures**: [http://localhost:5001/lab](http://localhost:5001/lab)
+- **Master Botanical Catalog**: [http://localhost:5001/plants](http://localhost:5001/plants)
+- **Scientific Research Terminal & Logs**: [http://localhost:5001/research-lab](http://localhost:5001/research-lab)
 
 ---
 
-## 📚 Academic Literature & Research Benchmarks
+## 📊 Benchmark Performance Summary
 
-Comprehensive academic evaluations, comparative matrices, and researcher reviews are documented in:
-
-- 📄 [**Original Research Paper Manuscript (PDF)**](papers/pdf/Herbalist_Research_Paper.pdf): Full research paper manuscript on deep learning botanical classification and ethnopharmacology.
-- 📄 [**B.Tech Baseline Model Reference & Mathematical Derivations**](docs/btech_model_reference.md): Complete mathematical formulation of Depthwise Separable Convolutions, FLOP complexity calculations, parameter proofs, and empirical convergence history.
-- 📓 [**HerbEsentia Academic Reference Notebook**](notebooks/00_btech_model_baseline.ipynb): Interactive Jupyter notebook with complete mathematical annotations, loss/accuracy plots, and clean path logic.
-- 🔬 [**Methodology & Algorithmic Formulation**](docs/methodology.md): Rigorous specification of transfer learning feature freezing ($\nabla_{\mathbf{W}} \mathcal{L} = 0$), Global Average Pooling (GAP), and Bayesian hierarchical multi-modal fusion.
-- 🏛️ [**System Architecture & Subsystem Blueprint**](docs/architecture.md): Full enterprise design specifications, data flow diagrams, and layer topologies.
-- 📋 [**Dataset Documentation & Provenance Guide**](docs/dataset_documentation.md): Comprehensive inventory of VNPlant-200, Indian Medicinal Leaves, and Kashmir field surveys.
-- 🛡️ [**Clinical Safety & Botanical Adulterant Diagnostics**](docs/clinical_safety.md): Safety protocols for preventing toxic plant substitution and misidentification of poisonous lookalikes.
-- 📑 [**Model Card & Scientific Transparency Report**](docs/model_card.md): Model performance boundaries, fairness metrics, and ethical usage guidelines.
-- 📖 [**Literature Review & Botanical Survey**](papers/literature_reviews/deep_learning_botanical_survey.md): Comprehensive academic survey of deep neural networks in botanical taxonomy.
-- 🔬 [**Architecture Comparison Matrix (Xception vs EfficientNet)**](papers/methodology_extraction/xception_vs_efficientnet.md): Micro-architectural benchmark of FLOPs, memory footprint, and top-1 accuracy.
+| Split / Metric | Sample Count | Top-1 Accuracy | Top-5 Accuracy | Loss | Purpose |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Training Split** | 3,746 images | 93.34% | — | 0.0800 | Backpropagation gradient updates |
+| **Validation Split** | 704 images | 96.79% | 99.12% | 0.1241 | Hyperparameter selection & EarlyStopping |
+| **Independent Test Split** | **972 images** | **94.24%** | **98.65%** | **0.1873** | **Unbiased Gold-Standard Evaluation (Zero Leakage)** |
 
 ---
 
-## 📜 Intellectual Property & License
+## 📜 Intellectual Property & Academic Citation
 
-This project is licensed under the **Strict Academic & Non-Commercial Research Evaluation License** (All Rights Reserved).
+This software and research framework is licensed under the **Strict Academic & Non-Commercial Research Evaluation License**.
 
 - **Copyright**: © 2026 Dr. Muzafar Rasool Bhat, Dar Rehan Rasool, Muneeb Syed Shah, Shafiya Bashir Pampori, and Sehreen.
-- **Affiliation**: Centre of Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India.
-- **Commercial Use**: **Strictly Prohibited**. No commercial exploitation, resale, closed-source packaging, or incorporation into proprietary agricultural or pharmaceutical tools is permitted without an executed licensing agreement.
-- **Academic Citation**: Any scientific paper, dissertation, or research study utilizing this architecture, dataset catalog, or codebase must formally cite the authors and official Zenodo DOI via [CITATION.cff](CITATION.cff).
-
-See the full terms in [LICENSE](LICENSE).
-
----
-
-## 📖 Citation
-
-If you use Herbalist-AI in your research or academic publications, please cite:
+- **Affiliation**: Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India.
+- **Commercial Use**: Strictly prohibited without an executed institutional licensing agreement.
 
 ```bibtex
 @software{bhat2026herbalist,
   author       = {Bhat, Dr. Muzafar Rasool and Rasool, Dar Rehan and Shah, Muneeb Syed and Pampori, Shafiya Bashir and Sehreen},
-  title        = {Herbalist-AI: Enterprise Deep Learning & Multi-Modal Fusion Framework for Himalayan Flora Taxonomy, Pharmacognosy, and Precision Agronomy},
+  title        = {Herbalist-AI: Computational Botany, Ethnomedicinal Intelligence & Dual-Model Cascade Platform},
   month        = oct,
   year         = 2026,
   publisher    = {Zenodo},
   version      = {v2.0.0},
-  institution  = {Centre of Artificial Intelligence, Islamic University of Science and Technology (IUST)},
+  institution  = {Centre for Artificial Intelligence, Islamic University of Science and Technology (IUST)},
   url          = {https://github.com/darrehanrasool/Herbalist}
 }
 ```
