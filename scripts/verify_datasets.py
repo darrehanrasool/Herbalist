@@ -29,9 +29,11 @@ def main():
 
     # Detailed table inspection
     tables = [
-        ("data/processed/medicinal.csv", "VNPlant-200 Catalog"),
-        ("data/processed/kashmir_medicinal.csv", "Kashmir Endemics Catalog"),
-        ("knowledge/plants_master.csv", "Integrated Master Catalog"),
+        ("data/csv/medicinal.csv", "Medicinal Plants Master Catalog"),
+        ("data/csv/fertiliser.csv", "Fertiliser & Soil Agronomy Catalog"),
+        ("data/csv/chemicaltaxonomy.csv", "Phytochemistry & Hybridization Catalog"),
+        ("data/csv/disease.csv", "Phytopathology & Crop Health Catalog"),
+        ("data/csv/label_mapping.csv", "Label Mapping Index"),
     ]
 
     print("\nDataset Schema & Quality Reports:")
