@@ -17,19 +17,23 @@ class TestDataPipelineIntegration(unittest.TestCase):
 
         # Check existing datasets
         results = verify_manifest_checksums()
-        self.assertTrue(results.get("medicinal_catalog_200", False))
-        self.assertTrue(results.get("kashmir_medicinal", False))
+        self.assertTrue(results.get("medicinal", False))
+        self.assertTrue(results.get("fertiliser", False))
+        self.assertTrue(results.get("chemicaltaxonomy", False))
+        self.assertTrue(results.get("disease", False))
+        self.assertTrue(results.get("label_mapping", False))
 
     def test_kashmir_catalog_loading_and_features(self):
-        kashmir_csv = ROOT_DIR / "data" / "csv" / "kashmir_medicinal_plants.csv"
-        self.assertTrue(kashmir_csv.exists())
+        med_csv = ROOT_DIR / "data" / "csv" / "medicinal.csv"
+        self.assertTrue(med_csv.exists())
 
-        df = pd.read_csv(kashmir_csv)
-        self.assertGreaterEqual(len(df), 15)
-        self.assertIn("Scientificname", df.columns)
-        self.assertIn("ConservationStatus", df.columns)
+        df = pd.read_csv(med_csv)
+        kashmir_df = df[df["origin_geography"].astype(str).str.contains("Kashmir")]
+        self.assertGreaterEqual(len(kashmir_df), 16)
+        self.assertIn("scientific_name", kashmir_df.columns)
+        self.assertIn("iucn_conservation_status", kashmir_df.columns)
 
-        df_feat = encode_botanical_features(df)
+        df_feat = encode_botanical_features(kashmir_df)
         self.assertIn("Genus", df_feat.columns)
         self.assertIn("Toxicity_Ordinal", df_feat.columns)
 

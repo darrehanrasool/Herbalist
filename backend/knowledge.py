@@ -8,7 +8,6 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV_DIR = ROOT / "data" / "csv"
-KNOW = ROOT / "knowledge"
 
 
 @lru_cache(maxsize=1)
@@ -20,8 +19,6 @@ def _tables():
         "chemicaltaxonomy": CSV_DIR / "chemicaltaxonomy.csv",
         "disease": CSV_DIR / "disease.csv",
         "label_mapping": CSV_DIR / "label_mapping.csv",
-        "curated": KNOW / "medicinal_plants_global_curated.csv",
-        "hybridization": KNOW / "chemotaxonomy_hybridization.csv",
     }
     out = {}
     for key, path in tables.items():
@@ -53,24 +50,21 @@ def row_for(table: str, scientific_name: str) -> dict:
 
 
 def curated_row_for(scientific_name: str) -> dict:
-    """Retrieve canonical medicinal profile for a species."""
-    res = row_for("curated", scientific_name)
-    if res:
-        return res
+    """Retrieve canonical medicinal profile for a species from medicinal.csv."""
     return row_for("medicinal", scientific_name)
 
 
 def hybridization_for(scientific_name: str) -> list[dict]:
-    """Retrieve hybridization pairs from knowledge/chemotaxonomy_hybridization.csv."""
-    df = _tables().get("hybridization")
+    """Retrieve chemotaxonomy and hybridization details from chemicaltaxonomy.csv."""
+    df = _tables().get("chemicaltaxonomy")
     if df is None or df.empty:
         return []
     s = str(scientific_name).strip().lower()
     genus = s.split()[0] if s else ""
     hits = df[
-        (df["parent_species_1"].astype(str).str.lower().str.contains(s)) |
-        (df["parent_species_2"].astype(str).str.lower().str.contains(s)) |
-        (df["genus_group"].astype(str).str.lower() == genus.lower())
+        (df["scientific_name"].astype(str).str.lower() == s) |
+        (df["scientific_name"].astype(str).str.lower().str.contains(genus, case=False, na=False)) |
+        (df["congeneric_relatives"].astype(str).str.lower().str.contains(genus, case=False, na=False))
     ]
     if hits.empty:
         return []
@@ -138,7 +132,7 @@ def agronomy_bundle(scientific_name: str) -> dict:
         "fertiliser": fert,
         "chemicaltaxonomy": chem,
         "disease": dis,
-        "curated": curated_row_for(scientific_name),
+        "curated": med,
         "soil": soil_block,
         "cultivation": cultivation_block,
         "fertilizer": fertilizer_block,

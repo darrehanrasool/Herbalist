@@ -29,36 +29,55 @@ class DatasetRegistry:
 
     def _populate_defaults(self):
         self.register(DatasetEntry(
-            id="kashmir_endemics",
-            name="Kashmir High-Altitude Endemic Medicinal Flora",
+            id="medicinal",
+            name="Master Medicinal Flora & Ethnopharmacology Catalog",
             modality="tabular",
-            region="kashmir",
-            path="data/csv/kashmir_medicinal_plants.csv",
-            num_classes=16,
-            status="available",
-            description="16 Critically endangered & endangered high-altitude medicinal herbs endemic to Kashmir Himalaya.",
-            citation="Herbalist AI Ethnobotany Catalog (Rasool et al., 2025)"
-        ))
-        self.register(DatasetEntry(
-            id="medicinal_200",
-            name="VNPlant-200 Medicinal Flora Benchmark Catalog",
-            modality="tabular",
-            region="global",
+            region="global_and_kashmir",
             path="data/csv/medicinal.csv",
             num_classes=216,
             status="available",
-            description="Reference catalog of 216 medicinal species with active compounds, uses, and toxicity levels.",
-            citation="Nguyen Quoc & Truong Hoang, 2020 / Rasool et al., 2025"
+            description="Reference catalog of 216 medicinal species with active compounds, uses, and conservation status.",
+            citation="POWO 2024 / ICMR / Rasool et al., 2025"
         ))
         self.register(DatasetEntry(
-            id="plants_master",
-            name="Integrated Master Medicinal & Agronomy Catalog",
+            id="fertiliser",
+            name="Precision Agronomy & Nutrient Guidelines Catalog",
             modality="tabular",
-            region="global",
-            path="data/csv/medicinal_plants_master.csv",
+            region="global_and_kashmir",
+            path="data/csv/fertiliser.csv",
             num_classes=216,
             status="available",
-            description="Unified catalog merging Kashmir endemic taxa with global 200 species and agronomic parameters."
+            description="Precision agronomy catalog with NPK ratios, basal FYM, and application schedules."
+        ))
+        self.register(DatasetEntry(
+            id="chemicaltaxonomy",
+            name="Chemotaxonomy & Cytogenetic Breeding Catalog",
+            modality="tabular",
+            region="global_and_kashmir",
+            path="data/csv/chemicaltaxonomy.csv",
+            num_classes=216,
+            status="available",
+            description="Phytochemical classes, 2n karyotypes, and hybridization breeding objectives."
+        ))
+        self.register(DatasetEntry(
+            id="disease",
+            name="Phytopathology & Integrated Pest Management Catalog",
+            modality="tabular",
+            region="global_and_kashmir",
+            path="data/csv/disease.csv",
+            num_classes=216,
+            status="available",
+            description="Crop protection, foliar diagnostic symptoms, and biological organic IPM controls."
+        ))
+        self.register(DatasetEntry(
+            id="label_mapping",
+            name="Neural Vision Output to Catalog Mapping",
+            modality="tabular",
+            region="global_and_kashmir",
+            path="data/csv/label_mapping.csv",
+            num_classes=216,
+            status="available",
+            description="One-to-one neural index mapping connecting output logits to canonical catalogs."
         ))
         self.register(DatasetEntry(
             id="vnplant_images",

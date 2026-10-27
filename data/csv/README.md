@@ -23,11 +23,6 @@ Every single record across all 4 master CSVs has been enriched with authoritativ
 
 ---
 
-### 📁 Tabular Splits
-- `tabular_splits/`: Contains stratified train/val/test splits for tabular metadata models (`plants_tabular_train.csv`, `plants_tabular_val.csv`, `plants_tabular_test.csv`).
-
----
-
 ### 📷 Vision Datasets Directory Structure
 - **Working Model (200 Taxa)**: `data/working_model/train/`, `data/working_model/val/`, `data/working_model/test/`
 - **Kashmir Model (16 Taxa)**: `data/kashmir/train/`, `data/kashmir/val/`, `data/kashmir/test/`

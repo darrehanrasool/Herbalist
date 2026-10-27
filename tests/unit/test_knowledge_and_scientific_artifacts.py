@@ -10,48 +10,51 @@ from backend.knowledge import agronomy_bundle, curated_row_for, hybridization_fo
 class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
 
     def test_curated_global_catalog_attributes(self):
-        curated_path = ROOT_DIR / "knowledge" / "medicinal_plants_global_curated.csv"
-        self.assertTrue(curated_path.exists(), f"Missing {curated_path}")
+        med_path = ROOT_DIR / "data" / "csv" / "medicinal.csv"
+        self.assertTrue(med_path.exists(), f"Missing {med_path}")
 
-        df = pd.read_csv(curated_path)
-        self.assertEqual(len(df), 216, "Curated catalog must contain 216 species")
-        self.assertEqual(len(df.columns), 22, "Curated catalog must contain exactly 22 standardized attributes")
+        df = pd.read_csv(med_path)
+        self.assertEqual(len(df), 216, "Master catalog must contain 216 species")
+        self.assertEqual(len(df.columns), 25, "Master catalog must contain exactly 25 standardized attributes")
 
         expected_columns = [
-            "scientific_name", "common_name", "family", "local_names_kashmir_india",
+            "species_id", "scientific_name", "common_name", "family", "genus",
+            "local_names", "origin_geography", "plant_type_habit", "part_used",
             "primary_bioactives", "chemical_classes", "therapeutic_indications",
-            "part_used", "edaphic_soil_ph", "optimal_altitude_min_m",
-            "optimal_altitude_max_m", "soil_texture", "moisture_requirement",
-            "rainfall_annual_mm", "temperature_optimum_c", "iucn_conservation_status",
-            "endemic_to_kashmir_himalayas", "pharmacopeial_standard",
-            "ayurvedic_unani_siddha_usage", "toxicological_notes_contraindications",
-            "harvesting_season", "reference_citations"
+            "ayurvedic_unani_siddha_usage", "iucn_conservation_status",
+            "endemic_to_kashmir_himalayas", "optimal_altitude_min_m",
+            "optimal_altitude_max_m", "edaphic_soil_ph", "soil_texture",
+            "temperature_optimum_c", "annual_rainfall_mm", "toxicological_notes",
+            "harvesting_season", "pharmacopeial_standard", "reference_citations"
         ]
         for col in expected_columns:
             self.assertIn(col, df.columns, f"Missing required attribute: {col}")
 
     def test_chemotaxonomy_hybridization_integrity(self):
-        hyb_path = ROOT_DIR / "knowledge" / "chemotaxonomy_hybridization.csv"
-        self.assertTrue(hyb_path.exists(), f"Missing {hyb_path}")
+        chem_path = ROOT_DIR / "data" / "csv" / "chemicaltaxonomy.csv"
+        self.assertTrue(chem_path.exists(), f"Missing {chem_path}")
 
-        df = pd.read_csv(hyb_path)
-        self.assertGreaterEqual(len(df), 12, "Must contain at least 12 hybridization pairs")
+        df = pd.read_csv(chem_path)
+        self.assertEqual(len(df), 216, "Must contain 216 taxa chemotaxonomy records")
 
         # Verify key scientific columns
-        for col in ["hybrid_id", "genus_group", "parent_species_1", "parent_species_2",
-                    "chromosome_parent_1_2n", "chromosome_parent_2_2n", "genetic_distance_index",
-                    "hybridization_feasibility", "hypothetical_bioactive_synergy", "breeding_pros",
-                    "breeding_cons_risks", "scientific_literature_reference"]:
-            self.assertIn(col, df.columns, f"Missing hybridization column: {col}")
-
-        # Check no blank literature citations
-        for ref in df["scientific_literature_reference"]:
-            self.assertTrue(bool(ref and str(ref).strip()), "Literature reference cannot be empty")
+        for col in [
+            "species_id", "scientific_name", "common_name", "family", "order",
+            "primary_chemical_class", "secondary_chemical_class",
+            "dominant_secondary_metabolites", "biosynthetic_pathway",
+            "diagnostic_chemomarker", "diploid_chromosome_number_2n",
+            "congeneric_relatives", "hybridization_compatibility",
+            "hybridization_breeding_objective", "chemodiversity_altitude_effect",
+            "analytical_quantification_method", "pharmacopeial_literature_doi"
+        ]:
+            self.assertIn(col, df.columns, f"Missing column: {col}")
 
     def test_backend_knowledge_bundle_resolution(self):
         bundle = agronomy_bundle("Gentiana kurroo")
-        self.assertTrue(bool(bundle.get("curated")), "Gentiana kurroo must resolve in curated catalog")
-        self.assertGreaterEqual(len(bundle.get("hybridization", [])), 1, "Gentiana kurroo must have hybridization records")
+        self.assertTrue(bool(bundle.get("medicinal")), "Gentiana kurroo must resolve in medicinal catalog")
+        self.assertTrue(bool(bundle.get("fertiliser")), "Gentiana kurroo must resolve in fertiliser catalog")
+        self.assertTrue(bool(bundle.get("chemicaltaxonomy")), "Gentiana kurroo must resolve in chemicaltaxonomy")
+        self.assertTrue(bool(bundle.get("disease")), "Gentiana kurroo must resolve in disease catalog")
 
         # Check curated row content
         curated = curated_row_for("Aconitum heterophyllum")
@@ -83,26 +86,24 @@ class TestKnowledgeAndScientificArtifacts(unittest.TestCase):
         csv_dir = ROOT_DIR / "data" / "csv"
         self.assertTrue(csv_dir.exists(), "data/csv/ directory must exist")
 
-        required_csvs = [
+        useful_csvs = {
             "medicinal.csv",
             "fertiliser.csv",
-            "fertilizer.csv",
             "chemicaltaxonomy.csv",
-            "medicinal_plants_master.csv",
-            "kashmir_medicinal_plants.csv",
-            "chemotaxonomy_hybridization.csv",
-            "soil_pedological_requirements.csv",
-            "agronomic_cultivation_protocols.csv",
-            "nutrient_fertilizer_guidelines.csv",
-            "phytopathology_disease_ipm.csv",
-            "biochemical_literature.csv",
-            "dataset_image_sample_counts.csv",
-        ]
-        for name in required_csvs:
+            "disease.csv",
+            "label_mapping.csv",
+        }
+
+        # Check that all useful CSVs exist and have data
+        for name in useful_csvs:
             csv_path = csv_dir / name
             self.assertTrue(csv_path.exists(), f"Missing canonical CSV: {name}")
             df = pd.read_csv(csv_path)
             self.assertGreater(len(df), 0, f"Canonical CSV {name} cannot be empty")
+
+        # Check that no non-useful/redundant CSVs remain in data/csv/
+        actual_csvs = {p.name for p in csv_dir.glob("*.csv")}
+        self.assertEqual(actual_csvs, useful_csvs, f"data/csv/ contains unexpected CSVs: {actual_csvs - useful_csvs}")
 
     def test_non_repetitive_scientific_data_and_image_splits(self):
         csv_dir = ROOT_DIR / "data" / "csv"

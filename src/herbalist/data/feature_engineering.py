@@ -9,12 +9,22 @@ import numpy as np
 def encode_botanical_features(df: pd.DataFrame) -> pd.DataFrame:
     """Extract genus, family encoding, and toxicity ordinals from botanical catalog."""
     df_out = df.copy()
-    if "Scientificname" in df_out.columns:
-        df_out["Genus"] = df_out["Scientificname"].apply(lambda x: str(x).split()[0] if str(x) else "Unknown")
+    col_name = None
+    for candidate in ["scientific_name", "Scientificname"]:
+        if candidate in df_out.columns:
+            col_name = candidate
+            break
+    if col_name:
+        df_out["Genus"] = df_out[col_name].apply(lambda x: str(x).split()[0] if str(x) else "Unknown")
 
-    if "ToxicityLevel" in df_out.columns:
+    tox_col = None
+    for candidate in ["ToxicityLevel", "toxicological_notes", "iucn_conservation_status"]:
+        if candidate in df_out.columns:
+            tox_col = candidate
+            break
+    if tox_col:
         toxicity_map = {"None": 0, "Low": 1, "Moderate": 2, "High": 3, "Extreme": 4}
-        df_out["Toxicity_Ordinal"] = df_out["ToxicityLevel"].map(toxicity_map).fillna(1).astype(int)
+        df_out["Toxicity_Ordinal"] = df_out[tox_col].map(toxicity_map).fillna(1).astype(int)
 
     return df_out
 

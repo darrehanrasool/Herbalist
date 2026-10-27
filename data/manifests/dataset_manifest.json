@@ -1,85 +1,68 @@
 {
   "manifest_version": "2.0.0",
-  "generated_at": "2026-10-18T23:30:00Z",
+  "generated_at": "2026-10-27T17:30:00Z",
   "geographic_focus": {
-    "primary": "Kashmir Himalaya, India",
-    "global_benchmark": "VNPlant-200"
+    "primary": "Global, Indian & Kashmir Himalaya Medicinal Flora",
+    "classes_total": 216
   },
   "datasets": [
     {
-      "id": "kashmir_medicinal",
-      "name": "Kashmir Himalayan High-Altitude Endemic Medicinal Flora",
-      "file_path": "data/csv/kashmir_medicinal_plants.csv",
-      "raw_path": "data/raw/clinical/Kashmere.csv",
-      "records": 16,
-      "columns": [
-        "Scientificname",
-        "Biologicalname",
-        "Medicinalvalue",
-        "Family",
-        "CommonUses",
-        "ActiveCompounds",
-        "ToxicityLevel",
-        "GeographicalDistribution",
-        "GrowthHabit",
-        "PartsUsed",
-        "PreparationMethods",
-        "ConservationStatus"
-      ],
-      "endemic_status": "Critically Endangered, Endangered, Vulnerable, Near Threatened",
-      "iucn_highlights": {
-        "Critically Endangered": ["Gentiana kurroo", "Saussurea costus"],
-        "Endangered": ["Aconitum heterophyllum", "Fritillaria roylei", "Picrorhiza kurroa", "Podophyllum hexandrum", "Taxus wallichiana"],
-        "Vulnerable": ["Colchicum luteum", "Rheum emodi"],
-        "Near Threatened": ["Berberis lycium", "Jurinea dolomiaea", "Valeriana jatamansi"]
-      }
-    },
-    {
-      "id": "medicinal_catalog_200",
-      "name": "VNPlant-200 Global / Southeast Asian Medicinal Taxa Catalog",
+      "id": "medicinal",
+      "name": "Master Medicinal Flora & Ethnopharmacology Catalog",
       "file_path": "data/csv/medicinal.csv",
-      "raw_path": "data/raw/clinical/medicinal.csv",
       "records": 216,
-      "classes": 216,
-      "task": "216-class species identification and pharmacological attribute joining"
+      "columns_count": 25,
+      "task": "216-taxa species identification, pharmacognosy, and conservation joining"
     },
     {
-      "id": "plants_master_integrated",
-      "name": "Integrated Master Knowledge Base (Kashmir + 200 Species)",
-      "file_path": "data/csv/medicinal_plants_master.csv",
+      "id": "fertiliser",
+      "name": "Precision Agronomy & Nutrient Guidelines Catalog",
+      "file_path": "data/csv/fertiliser.csv",
       "records": 216,
-      "classes": 216,
-      "features": [
-        "Cultivation windows",
-        "Soil NPK & pH thresholds",
-        "Phytochemical literature",
-        "Disease IPM guidance"
-      ]
+      "columns_count": 17,
+      "task": "NPK ratio, basal FYM, split schedule, and agronomic management"
+    },
+    {
+      "id": "chemicaltaxonomy",
+      "name": "Chemotaxonomy & Cytogenetic Breeding Catalog",
+      "file_path": "data/csv/chemicaltaxonomy.csv",
+      "records": 216,
+      "columns_count": 17,
+      "task": "2n karyotypes, secondary metabolites, and hybridization objectives"
+    },
+    {
+      "id": "disease",
+      "name": "Phytopathology & Integrated Pest Management Catalog",
+      "file_path": "data/csv/disease.csv",
+      "records": 216,
+      "columns_count": 11,
+      "task": "Diagnostic symptoms, cultural sanitation, and organic IPM biocontrols"
+    },
+    {
+      "id": "label_mapping",
+      "name": "Neural Vision Output to Canonical Catalog Index Mapping",
+      "file_path": "data/csv/label_mapping.csv",
+      "records": 216,
+      "columns_count": 7,
+      "task": "One-to-one mapping linking neural output logits to canonical catalog records"
     }
   ],
   "external_sources_tracked": [
     {
-      "source_name": "VNPlant-200 Image Repository",
-      "url": "https://github.com/kencoca/VietNam-Medicinal-Plant",
-      "image_count": 17973,
-      "split": "12000 train / 5973 test",
-      "target_size": "180x180 RGB"
+      "source_name": "POWO 2024 (Plants of the World Online - Royal Botanic Gardens Kew)",
+      "url": "https://powo.science.kew.org"
     },
     {
-      "source_name": "Indian Medicinal Leaves Dataset (Kaggle)",
-      "slug": "aryashah2k/indian-medicinal-leaves-dataset",
-      "size_gb": 9.2,
-      "taxa_count": 80
+      "source_name": "ICMR Medicinal Plants Monographs",
+      "url": "https://www.icmr.nic.in"
     },
     {
-      "source_name": "GBIF Occurrence Records - Kashmir Himalaya",
-      "url": "https://www.gbif.org",
-      "purpose": "Geospatial coordinate validation and distribution envelope verification"
+      "source_name": "Ayurvedic Pharmacopoeia of India (API) / AYUSH",
+      "url": "https://www.ayush.gov.in"
     },
     {
-      "source_name": "PlantVillage Crop Disease Benchmark",
-      "url": "https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset",
-      "purpose": "Transfer learning for foliar stress and IPM classification"
+      "source_name": "CSIR-CIMAP & ICAR-DMAPR Agronomy Protocols",
+      "url": "https://www.cimap.res.in"
     }
   ]
 }
