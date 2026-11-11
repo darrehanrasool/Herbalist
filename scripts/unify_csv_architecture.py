@@ -9,7 +9,6 @@ maintaining backward-compatibility aliases in `knowledge/` and `data/processed/`
 
 Authors:
   - Dar Rehan Rasool (Project Lead & Author, M.Tech AI, CAI, IUST)
-  - Sehreen (Research Contributor, M.Tech AI, CAI, IUST)
 Faculty Supervisor & HOD:
   - Dr. Muzafar Rasool Bhat (Associate Professor & Head, CAI, IUST)
 """

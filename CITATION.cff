@@ -15,9 +15,6 @@ authors:
   - family-names: "Pampori"
     given-names: "Shafiya Bashir"
     affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
-  - family-names: "Sehreen"
-    given-names: ""
-    affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
 title: "Herbalist-AI: Enterprise Deep Learning & Multi-Modal Fusion Framework for Himalayan Flora Taxonomy, Pharmacognosy, and Precision Agronomy"
 version: 2.0.0
 date-released: 2026-10-18

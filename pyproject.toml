@@ -13,8 +13,7 @@ authors = [
   {name = "Dr. Muzafar Rasool Bhat", email = "muzafar.rasool@iust.ac.in"},
   {name = "Dar Rehan Rasool", email = "darrehanrasool@gmail.com"},
   {name = "Muneeb Syed Shah"},
-  {name = "Shafiya Bashir Pampori"},
-  {name = "Sehreen"}
+  {name = "Shafiya Bashir Pampori"}
 ]
 keywords = [
   "computational-botany",

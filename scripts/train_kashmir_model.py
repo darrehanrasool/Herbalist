@@ -7,7 +7,6 @@ Trains on data/kashmir/ (train, val, test) and saves model artifacts to models/k
 Authors:
   - Dr. Muzafar Rasool Bhat (Supervisor & Head, Centre for AI, IUST)
   - Dar Rehan Rasool (Project Lead & Author)
-  - Sehreen (Research Contributor)
 """
 from __future__ import annotations
 
