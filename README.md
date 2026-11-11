@@ -45,7 +45,7 @@ This research project and benchmark platform is collaboratively developed under 
 | Role | Name | Designation & Affiliation | Research & Project Contribution |
 | :--- | :--- | :--- | :--- |
 | **Faculty Research Supervisor & HOD** | **Dr. Muzafar Rasool Bhat\*** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction |
-| **Lead Author & Principal Researcher** | **Dar Rehan Rasool** | Lead Architect (`@darrehanrasool`), M.Tech Student, CAI, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
+| **Lead Author & Principal Researcher** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
 | **Contributing Researcher** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
 | **Contributing Researcher** | **Shafiya Bashir Pampori** | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
 
