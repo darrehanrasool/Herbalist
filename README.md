@@ -44,7 +44,8 @@ This research project and benchmark platform is collaboratively developed under 
 
 | Role | Name | Designation & Affiliation | Research & Project Contribution |
 | :--- | :--- | :--- | :--- |
-| **Faculty Research Supervisor & HOD** | **Dr. Muzafar Rasool Bhat\*** | Associate Professor & Head, Centre for Artificial Intelligence (CAI), IUST | Project Conceptualization, Academic Supervision, Deep Learning & Vision Architecture Direction |
+| **Faculty Research Supervisor** | **Dr. Javad Ahmad\*** | Professor & Faculty Supervisor, Centre for Artificial Intelligence (CAI) | Project Conceptualization, Research Supervision & Strategic Architecture Direction |
+| **Faculty Research Supervisor** | **Dr. Riyaz\*** | Professor & Faculty Supervisor, Centre for Artificial Intelligence (CAI) | Co-Supervision, System Architecture Advisory & Theoretical Oversight |
 | **Lead Author & Principal Researcher** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
 | **Contributing Researcher** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
 | **Contributing Researcher** | **Shafiya Bashir Pampori** | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
@@ -358,10 +359,10 @@ curl -s http://localhost:5001/api/export/csv/Gentiana%20kurroo -o gentiana_kurro
 ## 📜 Citation & Intellectual Property
 
 ```bibtex
-@article{bhat2026herbalist,
+@article{rasool2026herbalist,
   title={Herbalist-AI: Unified Multi-Modal Botanical Intelligence & Dual-Model Deep Learning Platform for Himalayan and Subcontinental Flora},
-  author={Bhat, Dr. Muzafar Rasool* and Rasool, Dar Rehan and Shah, Muneeb Syed and Pampori, Shafiya Bashir},
-  affiliation={Centre for Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir, India},
+  author={Rasool, Dar Rehan and Ahmad, Dr. Javad* and Riyaz, Dr.* and Shah, Muneeb Syed and Pampori, Shafiya Bashir},
+  affiliation={Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir, India},
   journal={arXiv preprint},
   year={2026},
   note={Copyright \copyright 2026 Dar Rehan Rasool (@darrehanrasool). All Rights Reserved.}
@@ -369,4 +370,4 @@ curl -s http://localhost:5001/api/export/csv/Gentiana%20kurroo -o gentiana_kurro
 ```
 
 **Copyright © 2026 Dar Rehan Rasool (`@darrehanrasool`). All Rights Reserved.**  
-Supervised by **Dr. Muzafar Rasool Bhat\***, Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir.
+Supervised by **Dr. Javad Ahmad\*** & **Dr. Riyaz\***, Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir.

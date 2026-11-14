@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "Strict Academic & Non-Commercial Research License"}
 authors = [
-  {name = "Dr. Muzafar Rasool Bhat", email = "muzafar.rasool@iust.ac.in"},
+  {name = "Dr. Javad Ahmad"},
+  {name = "Dr. Riyaz"},
   {name = "Dar Rehan Rasool", email = "darrehanrasool@gmail.com"},
   {name = "Muneeb Syed Shah"},
   {name = "Shafiya Bashir Pampori"}

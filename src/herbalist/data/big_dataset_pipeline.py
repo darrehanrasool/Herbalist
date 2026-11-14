@@ -22,7 +22,7 @@ Capabilities:
 Authors:
   - Dar Rehan Rasool (Project Lead & Author, M.Tech AI, CAI, IUST)
 Faculty Supervisor & HOD:
-  - Dr. Muzafar Rasool Bhat (Associate Professor & Head, CAI, IUST)
+  - Dr. Javad Ahmad & Dr. Riyaz (Faculty Supervisors, CAI, IUST)
 """
 
 from __future__ import annotations

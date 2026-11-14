@@ -5,7 +5,7 @@ Automated environment detection (Apple Silicon MPS, NVIDIA CUDA, CPU fallback).
 Trains on data/kashmir/ (train, val, test) and saves model artifacts to models/kashmir/.
 
 Authors:
-  - Dr. Muzafar Rasool Bhat (Supervisor & Head, Centre for AI, IUST)
+  - Dr. Javad Ahmad & Dr. Riyaz (Faculty Supervisors, Centre for AI, IUST)
   - Dar Rehan Rasool (Project Lead & Author)
 """
 from __future__ import annotations

@@ -12,7 +12,8 @@ This document establishes the official scientific data lineage, authoritative bo
 
 | Role | Investigator | Designation & Affiliation | Research Responsibilities |
 | :--- | :--- | :--- | :--- |
-| **Faculty Supervisor & HOD** | **Dr. Muzafar Rasool Bhat** | Associate Professor & Head, Centre for Artificial Intelligence, IUST | Research Conceptualization, Botanical Taxonomy Supervision & Strategic Architecture Direction |
+| **Faculty Research Supervisor** | **Dr. Javad Ahmad** | Professor & Faculty Supervisor, Centre for Artificial Intelligence, IUST | Research Conceptualization, Botanical Taxonomy Supervision & Strategic Architecture Direction |
+| **Faculty Research Supervisor** | **Dr. Riyaz** | Professor & Faculty Supervisor, Centre for Artificial Intelligence, IUST | Co-Supervision, System Architecture Advisory & Theoretical Oversight |
 | **Contributing Researcher** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Tier Vision Models, Agronomic Pedology Pipeline & Scientific Engine Implementation |
 | **Contributing Researcher** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | High-Altitude Kashmir DSLR Collection Protocol, Agronomic Soil Modeling & Cross-Dataset Evaluation |
 | **Contributing Researcher** | **Shafiya Bashir Pampori** | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Telemetry Quality Auditing & Taxonomic Data Integrity |
