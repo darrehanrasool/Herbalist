@@ -4,10 +4,10 @@ project:
   version: "2.0.0"
   description: "Enterprise Research Platform for Himalayan (Kashmir) and Global Medicinal Flora Identification, Phytochemical Characterization, and Agronomic Soil Diagnostics."
   authors:
-    - name: "Dr. Javad Ahmad"
+    - name: "Dr. M Abdul Jawad"
       role: "Faculty Research Supervisor"
       institution: "Centre for Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir"
-    - name: "Dr. Riyaz"
+    - name: "Dr. Riyaz Ahmed"
       role: "Faculty Research Supervisor"
       institution: "Centre for Artificial Intelligence, Islamic University of Science and Technology (IUST), Kashmir"
     - name: "Dar Rehan Rasool"

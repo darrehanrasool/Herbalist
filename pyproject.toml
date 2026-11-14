@@ -10,8 +10,8 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "Strict Academic & Non-Commercial Research License"}
 authors = [
-  {name = "Dr. Javad Ahmad"},
-  {name = "Dr. Riyaz"},
+  {name = "Dr. M Abdul Jawad"},
+  {name = "Dr. Riyaz Ahmed"},
   {name = "Dar Rehan Rasool", email = "darrehanrasool@gmail.com"},
   {name = "Muneeb Syed Shah"},
   {name = "Shafiya Bashir Pampori"}

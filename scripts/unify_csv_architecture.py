@@ -10,7 +10,7 @@ maintaining backward-compatibility aliases in `knowledge/` and `data/processed/`
 Authors:
   - Dar Rehan Rasool (Project Lead & Author, M.Tech AI, CAI, IUST)
 Faculty Supervisor & HOD:
-  - Dr. Javad Ahmad & Dr. Riyaz (Faculty Supervisors, CAI, IUST)
+  - Dr. M Abdul Jawad & Dr. Riyaz Ahmed (Faculty Supervisors, CAI, IUST)
 """
 
 import os
