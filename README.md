@@ -310,7 +310,9 @@ Herbalist/
 git clone https://github.com/darrehanrasool/Herbalist.git
 cd Herbalist
 python3 -m venv .venv
-source .venv/bin/activate
+# Activate virtual environment:
+source .venv/bin/activate      # On Linux / macOS
+# .venv\Scripts\activate       # On Windows
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 ```
