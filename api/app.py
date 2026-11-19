@@ -515,6 +515,22 @@ def analyze():
     # Render results page
     return render_template('platform/report.html', result=result)
 
+
+@app.route('/report')
+def report_view():
+    """Interactive Diagnostic Dossier & Prediction Output Report"""
+    import shutil
+    sample_img = os.path.join(ROOT, "tests", "fixtures", "sample_leaf_34.jpg")
+    dest_name = "sample_specimen_aloe_vera.jpg"
+    dest_path = os.path.join(app.config['UPLOAD_FOLDER'], dest_name)
+    if os.path.exists(sample_img) and not os.path.exists(dest_path):
+        shutil.copyfile(sample_img, dest_path)
+
+    result = predict_plant(dest_path if os.path.exists(dest_path) else sample_img)
+    result = _attach_agronomy(result)
+    result['image_path'] = f"uploads/{dest_name}"
+    return render_template('platform/report.html', result=result)
+
 @app.route('/api/predict', methods=['POST'])
 def api_predict():
     """API endpoint for predictions"""

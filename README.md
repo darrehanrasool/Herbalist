@@ -10,7 +10,7 @@
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Lead Author](https://img.shields.io/badge/Lead%20Author-Dar%20Rehan%20Rasool-0284c7.svg)](https://github.com/darrehanrasool)
+[![Project Lead](https://img.shields.io/badge/Project%20Lead-Dar%20Rehan%20Rasool-0284c7.svg)](https://github.com/darrehanrasool)
 [![Copyright](https://img.shields.io/badge/Copyright-%40darrehanrasool-10b981.svg)](https://github.com/darrehanrasool)
 
 **Herbalist-AI** is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa. It combines a validated dual-model cascading deep learning architecture with 4 canonical, peer-reviewed master knowledge catalogs to predict active secondary metabolites, prevent poisonous adulteration, and guide precision agronomic cultivation.
@@ -20,6 +20,18 @@
 ## 🖥️ Interactive Web UI & Botanical Intelligence Dashboard
 
 Herbalist-AI includes a comprehensive, full-stack scientific platform equipped with live botanical image diagnosis, real-time dual-model cascading inference, an interactive chemotaxonomic and interspecific hybridization explorer, precision agronomic nutrient and NPK guidance, peer-reviewed 300 DPI research figures, a searchable 216-taxa botanical catalog browser, and an interactive macOS-styled research terminal console with zero-leakage verification telemetry.
+
+<div align="center">
+  <img src="assets/screenshots/01_botanical_diagnostic_report_output.png" alt="Herbalist-AI Botanical Diagnostic Dossier UI Output - Neural Prediction & 4 Master Catalogs" width="100%">
+  <p><em>UI Output 1: Herbalist-AI Botanical Diagnostic Dossier — Real-time foliar inference on an Aloe vera specimen exhibiting 100.0% Top-1 prediction confidence, calibrated Top-5 candidate probability distribution, automated species identification (ID: HERB-010), and real-time cross-referencing across all 4 Master Catalogs (Ethnopharmacology, Precision Agronomy N-P-K & FYM Protocols, Chemotaxonomic Cytogenetics 2n=14, and Phytopathology IPM Controls).</em></p>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="assets/screenshots/02_workspace_telemetry_dashboard.png" alt="Herbalist-AI Computational Botany & Telemetry Workspace Dashboard" width="100%">
+  <p><em>UI Output 2: Herbalist-AI Computational Botany & Telemetry Dashboard — Multi-modal research workspace showcasing real-time platform metrics (216 medicinal taxa, 94.24% independent test accuracy, 4 canonical master CSV catalogs, 0% cross-split data leakage), cascading dual-model execution cards (Model 1 Active 200 Taxa vs. Model 2 Kashmir Endemics Pipeline), and live publication benchmark visualizations.</em></p>
+</div>
 
 ---
 
@@ -231,6 +243,11 @@ Open **[http://localhost:5001](http://localhost:5001)** in your browser:
 * **Master Botanical Catalog Browser (`/plants`)**: Searchable index of all 216 medicinal taxa with scientific names, common vernacular names, families, and conservation status.
 * **Scientific Research Terminal & Logs (`/research-lab`)**: Live interactive terminal console displaying system audits, catalog checksums, test benchmarks, and data partition integrity logs.
 
+<div align="center">
+  <img src="assets/screenshots/03_specimen_ingestion_studio.png" alt="Herbalist-AI Foliar Specimen Ingestion Studio" width="100%">
+  <p><em>Figure 4: Herbalist-AI Foliar Specimen Ingestion Studio (<code>/upload</code>) — High-throughput drag-and-drop foliar photography ingestion with automated 180×180 RGB pre-scaling and dual-model execution routing.</em></p>
+</div>
+
 ---
 
 ## 📜 Crystal Clean Dataset Log Terminal & Research Console
@@ -248,6 +265,11 @@ The platform includes a dedicated, dark-themed interactive terminal console acce
   * **One-Click Copy Buffer**: Instant clipboard copying of console output with visual toast feedback.
   * **Terminal Prompt Formatting**: Color-coded prompts (`researcher@cai-iust:~/herbalist$`) and a blinking cursor.
 
+<div align="center">
+  <img src="assets/screenshots/04_terminal_research_console.png" alt="Herbalist-AI macOS-Styled Research Terminal & Audit Console" width="100%">
+  <p><em>Figure 5: Herbalist-AI Terminal Research Console (<code>/research-lab</code>) — Authentic macOS terminal chrome running live hardware audits, 4 canonical CSV integrity checksums, model architecture parameters, and independent held-out test evaluations.</em></p>
+</div>
+
 ---
 
 ## 📁 Directory Structure
@@ -263,6 +285,8 @@ Herbalist/
 │   │   ├── js/platform.js        # Dynamic interactive UI controllers
 │   │   └── graphs/               # 300 DPI publication research figures
 │   └── templates/platform/       # Jinja2 platform templates (dashboard, report, research)
+├── assets/
+│   └── screenshots/              # High-resolution Retina UI screenshots & output dossiers
 ├── backend/
 │   ├── knowledge.py              # Canonical knowledge base engine (queries data/csv/)
 │   └── platform_routes.py        # Platform endpoints (dashboard, agronomy, research terminal)
