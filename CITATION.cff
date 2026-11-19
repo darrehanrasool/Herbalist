@@ -4,6 +4,7 @@ authors:
   - family-names: "Rasool"
     given-names: "Dar Rehan"
     affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
+    role: "Project Lead (M.Tech Student)"
     email: "darrehanrasool@gmail.com"
   - family-names: "Jawad"
     given-names: "Dr. M Abdul"
@@ -16,9 +17,11 @@ authors:
   - family-names: "Shah"
     given-names: "Muneeb Syed"
     affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
+    role: "M.Tech Student"
   - family-names: "Pampori"
     given-names: "Shafiya Bashir"
     affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
+    role: "M.Tech Student"
 title: "Herbalist-AI: Enterprise Deep Learning & Multi-Modal Fusion Framework for Himalayan Flora Taxonomy, Pharmacognosy, and Precision Agronomy"
 version: 2.0.0
 date-released: 2026-10-18

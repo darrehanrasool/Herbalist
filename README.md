@@ -10,7 +10,7 @@
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Lead Author](https://img.shields.io/badge/Lead%20Author-Dar%20Rehan%20Rasool-0284c7.svg)](https://github.com/darrehanrasool)
+[![Project Lead](https://img.shields.io/badge/Project%20Lead-Dar%20Rehan%20Rasool-0284c7.svg)](https://github.com/darrehanrasool)
 [![Copyright](https://img.shields.io/badge/Copyright-%40darrehanrasool-10b981.svg)](https://github.com/darrehanrasool)
 
 **Herbalist-AI** is an enterprise-grade computational botany, deep vision taxonomy, and ethnopharmacology research platform engineered to identify, catalog, and evaluate medicinal plant taxa. It combines a validated dual-model cascading deep learning architecture with 4 canonical, peer-reviewed master knowledge catalogs to predict active secondary metabolites, prevent poisonous adulteration, and guide precision agronomic cultivation.
@@ -58,9 +58,9 @@ This research project and benchmark platform is collaboratively developed under 
 | :--- | :--- | :--- | :--- |
 | **Faculty Research Supervisor** | **Dr. M Abdul Jawad\*** | Professor & Faculty Supervisor, Centre for Artificial Intelligence (CAI) | Project Conceptualization, Research Supervision & Strategic Architecture Direction |
 | **Faculty Research Supervisor** | **Dr. Riyaz Ahmed\*** | Professor & Faculty Supervisor, Centre for Artificial Intelligence (CAI) | Co-Supervision, System Architecture Advisory & Theoretical Oversight |
-| **Contributing Researcher** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
-| **Contributing Researcher** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
-| **Contributing Researcher** | **Shafiya Bashir Pampori** | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
+| **Project Lead & Contributing Student** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
+| **Contributing Student** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
+| **Contributing Student** | **Shafiya Bashir Pampori** | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
 
 - **Academic Unit**: Centre for Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
