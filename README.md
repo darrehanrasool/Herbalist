@@ -60,7 +60,7 @@ This research project and benchmark platform is collaboratively developed under 
 | **Faculty Research Supervisor** | **Dr. Riyaz Ahmed\*** | Professor & Faculty Supervisor, Centre for Artificial Intelligence (CAI) | Co-Supervision, System Architecture Advisory & Theoretical Oversight |
 | **Contributing Researcher** | **Dar Rehan Rasool** | M.Tech Student, Centre for Artificial Intelligence, IUST | Dual-Model Cascade Architecture, Deep Neural Network Implementation, Benchmark Evaluation & Platform Engineering |
 | **Contributing Researcher** | **Muneeb Syed Shah** | M.Tech Student, Centre for Artificial Intelligence, IUST | Himalayan Flora Research, Field Expedition Planning & Agronomic Data Verification |
-| **Contributing Researcher** | [**Shafiya Bashir Pampori**](https://github.com/Shafiya-Bashir) | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
+| **Contributing Researcher** | [**Shafiya Bashir Pampori**](https://github.com/shafiyabashirpampori) | M.Tech Student, Centre for Artificial Intelligence, IUST | Pharmacognosy Data Modeling, Curated Catalog Verification & Taxonomic Data Integrity |
 
 - **Academic Unit**: Centre for Artificial Intelligence (CAI)
 - **Institution**: Islamic University of Science and Technology (IUST), Awantipora, Jammu & Kashmir, India
