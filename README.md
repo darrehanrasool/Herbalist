@@ -114,9 +114,17 @@ Herbalist-AI structures its taxonomic intelligence across a planned two-tier cas
 * **Turnkey Trainer**: `python scripts/train_kashmir_model.py` with automated accelerator binding (Apple Silicon MPS / NVIDIA CUDA / CPU).
 
 ### 3. Hierarchical Cross-Modal Fusion
+
 Unifies visual neural representations with geographic elevation priors and pedological soil envelopes:
-$$\mathbb{P}(\text{Species}_i \mid \text{Image}, \text{Elevation}, \text{Soil}) \propto \mathbb{P}_{\text{vis}}(\text{Species}_i)^{w_{\text{vis}}} \cdot \mathbb{P}_{\text{geo}}(\text{Species}_i \mid \text{Elev})^{w_{\text{geo}}} \cdot \mathbb{P}_{\text{soil}}(\text{Species}_i \mid \text{Soil})^{w_{\text{soil}}}$$
-where $w_{\text{vis}} = 0.70$, $w_{\text{geo}} = 0.15$, and $w_{\text{soil}} = 0.15$.
+
+$$
+\mathbb{P}(\text{Species}_i \mid \text{Image}, \text{Elevation}, \text{Soil}) \propto \mathbb{P}_{\text{vis}}(\text{Species}_i)^{w_{\text{vis}}} \cdot \mathbb{P}_{\text{geo}}(\text{Species}_i \mid \text{Elev})^{w_{\text{geo}}} \cdot \mathbb{P}_{\text{soil}}(\text{Species}_i \mid \text{Soil})^{w_{\text{soil}}}
+$$
+
+where:
+* **$w_{\text{vis}} = 0.70$** — Visual deep neural confidence weight
+* **$w_{\text{geo}} = 0.15$** — Geographic elevation distribution prior weight
+* **$w_{\text{soil}} = 0.15$** — Pedological soil envelope prior weight
 
 ---
 
@@ -385,13 +393,15 @@ curl -s http://localhost:5001/api/export/csv/Gentiana%20kurroo -o gentiana_kurro
 ## 📜 Citation & Intellectual Property
 
 ```bibtex
-@article{rasool2026herbalist,
-  title={Herbalist-AI: Unified Multi-Modal Botanical Intelligence & Dual-Model Deep Learning Platform for Himalayan and Subcontinental Flora},
-  author={Rasool, Dar Rehan and Jawad, Dr. M Abdul* and Ahmed, Dr. Riyaz* and Shah, Muneeb Syed and Pampori, Shafiya Bashir},
-  affiliation={Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir, India},
-  journal={arXiv preprint},
-  year={2026},
-  note={Copyright \copyright 2026 Dar Rehan Rasool (@darrehanrasool). All Rights Reserved.}
+@software{rasool2026herbalist,
+  title = {Herbalist-AI: Unified Multi-Modal Botanical Intelligence & Dual-Model Deep Learning Platform for Himalayan and Subcontinental Flora},
+  author = {Rasool, Dar Rehan and Jawad, Dr. M Abdul and Ahmed, Dr. Riyaz and Shah, Muneeb Syed and Pampori, Shafiya Bashir},
+  affiliation = {Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir, India},
+  publisher = {Zenodo / GitHub},
+  year = {2026},
+  version = {2.0.0},
+  url = {https://github.com/darrehanrasool/Herbalist},
+  note = {Open-source research architecture and software benchmark. ORCID: 0009-0004-6426-5195}
 }
 ```
 
