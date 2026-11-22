@@ -3,6 +3,7 @@ message: "If you use Herbalist AI in your scientific research or dissertation, p
 authors:
   - family-names: "Rasool"
     given-names: "Dar Rehan"
+    orcid: "https://orcid.org/0009-0004-6426-5195"
     affiliation: "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
     role: "Project Lead (M.Tech Student)"
     email: "darrehanrasool@gmail.com"

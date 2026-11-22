@@ -1,0 +1,24 @@
+{
+  "title": "Herbalist-AI: Botanical Classification and Phytochemical Identification Using Deep Convolutional Vision",
+  "description": "An advanced machine learning and computer vision framework for botanical classification, medicinal herb identification, and phytochemical profiling.",
+  "creators": [
+    {
+      "name": "Rasool, Dar Rehan",
+      "affiliation": "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir",
+      "orcid": "0009-0004-6426-5195"
+    },
+    {
+      "name": "Jawad, Dr. M Abdul",
+      "affiliation": "Centre for Artificial Intelligence (CAI), Islamic University of Science and Technology (IUST), Kashmir"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "botanical-ai",
+    "phytomedicine",
+    "computer-vision",
+    "deep-learning",
+    "herbal-classification"
+  ]
+}
