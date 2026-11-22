@@ -7,6 +7,7 @@
 [![Independent Test Accuracy: 94.24%](https://img.shields.io/badge/Independent%20Test%20Accuracy-94.24%25-brightgreen.svg)](reports/figures/working_model/)
 [![Zero Data Leakage](https://img.shields.io/badge/Data%20Leakage-0.0%25%20Verified-blue.svg)](models/working_model/)
 [![Master Catalogs: 216 Taxa](https://img.shields.io/badge/Master%20Catalogs-216%20Taxa%20(4%20CSVs)-emerald.svg)](data/csv/)
+[![DOI](https://zenodo.org/badge/947313271.svg)](https://zenodo.org/badge/latestdoi/947313271)
 [![License: Strict Academic](https://img.shields.io/badge/License-Strict%20Academic-red.svg)](LICENSE)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
